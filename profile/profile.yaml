@@ -1,0 +1,34 @@
+# Your details. The tool and the letter writer read this file.
+name: Oluwatobi Melvyn Mayungbo
+email: mayungboluwatobi@gmail.com   # use this one for applications
+github: github.com/MelvTheGoat
+linkedin: linkedin.com/in/oluwatobi-mayungbo-3a567026b
+location: Lagos, Nigeria
+timezone: WAT (UTC+1)
+availability: can start immediately
+willing_to_relocate: true   # to any country
+work_authorization: >
+  Nigerian citizen with no visa for any other country.
+  Needs sponsorship for any role based outside Nigeria.
+home_country: Nigeria
+
+levels:
+  preferred: [intern, graduate, junior, entry]
+  stretch: [mid]            # welcome, but flagged as stretch
+  low: [senior, staff, principal, lead, manager]   # kept, with a low score
+
+target_roles:
+  - ML Engineer
+  - Machine Learning Engineer
+  - AI Engineer
+  - LLM Engineer
+  - Applied Scientist
+  - Data Scientist
+  - MLOps Engineer
+  - Research Engineer
+  - Fraud ML
+  - Risk ML
+  - Credit ML
+related_roles:
+  - Data Analyst
+  - Analytics Engineer
