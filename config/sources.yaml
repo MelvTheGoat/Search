@@ -1,0 +1,48 @@
+# Which sources to use and how hard to hit them.
+# min_interval is the least number of seconds between two calls to one host.
+# refetch_hours: aggregator results are cached and not fetched again sooner
+# than this, to respect their rate limits.
+
+http:
+  min_interval: 1.0
+  retries: 4
+  backoff: 2.0
+  timeout: 30
+  per_host:
+    remoteok.com: 3.0
+    remotive.com: 3.0
+    himalayas.app: 1.5
+    www.arbeitnow.com: 1.5
+    api.adzuna.com: 1.5
+
+greenhouse: {enabled: true}
+lever: {enabled: true}
+ashby: {enabled: true}
+
+remoteok:
+  enabled: true
+  refetch_hours: 6
+
+remotive:
+  enabled: true
+  refetch_hours: 8          # Remotive asks for at most 4 calls a day
+  categories: [data, software-dev, ai-ml]
+
+arbeitnow:
+  enabled: true
+  refetch_hours: 6
+  max_pages: 8
+
+himalayas:
+  enabled: true
+  refetch_hours: 6
+  max_pages: 40             # 20 jobs a page
+
+adzuna:
+  # Only used when ADZUNA_APP_ID and ADZUNA_APP_KEY are set in .env
+  enabled: true
+  refetch_hours: 20
+  countries: [gb, us, at, au, be, br, ca, ch, de, es, fr, in, it, mx, nl, nz, pl, sg, za]
+  queries: ["machine learning", "data scientist", "AI engineer"]
+  results_per_page: 50
+  max_days_old: 30
