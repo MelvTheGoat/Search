@@ -1,0 +1,13 @@
+# Secrets and local data
+.env
+data/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Rebuilt on every run
+tracker.xlsx
+tracker.csv
+tracker-*.xlsx
+queue/
