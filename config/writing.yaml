@@ -1,0 +1,60 @@
+# Rules `python hunt.py check` uses on every letter file.
+
+# Characters that count as dashes. Hyphens inside words (like "end-to-end")
+# are fine. A hyphen with spaces on both sides is flagged, as it is used as a dash.
+dash_chars: ["—", "–", "‒", "―", "−", "⸺", "⸻", "﹘", "﹣", "－"]
+
+# Phrases that must never appear (any case). Add more any time.
+banned_phrases:
+  - "excited to apply"
+  - "i am excited"
+  - "i'm excited"
+  - "thrilled"
+  - "passionate"
+  - "passion for"
+  - "leverage"
+  - "leveraging"
+  - "cutting-edge"
+  - "cutting edge"
+  - "fast-paced"
+  - "fast paced"
+  - "great fit"
+  - "perfect fit"
+  - "ideal candidate"
+  - "i believe i would"
+  - "delve"
+  - "tapestry"
+  - "i am writing to"
+  - "i'm writing to"
+  - "synergy"
+  - "synergies"
+  - "world-class"
+  - "results-driven"
+  - "hit the ground running"
+  - "game-changer"
+  - "game changer"
+  - "spearhead"
+  - "dynamic team"
+  - "team player"
+  - "go-getter"
+  - "think outside the box"
+  - "hard-working"
+  - "detail-oriented"
+  - "proven track record"
+  - "wealth of experience"
+  - "in today's"
+  - "ever-evolving"
+  - "landscape"
+  - "unlock"
+  - "harness"
+  - "seamless"
+  - "robust"
+  - "holistic"
+  - "journey"
+  - "embark"
+  - "furthermore"
+  - "moreover"
+  - "testament"
+
+letter_words: [150, 250]
+sign_off_email: mayungboluwatobi@gmail.com
