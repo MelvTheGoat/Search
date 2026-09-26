@@ -1,0 +1,53 @@
+# Phrases the tool looks for in job posts. Each line is a regular
+# expression, matched without caring about upper or lower case.
+# The tool saves the full sentence that matched as evidence.
+
+# A post that says any of these is labelled "restricted"
+# (unless it is in Nigeria, or remote and open to Nigeria, see below).
+no_sponsorship:
+  - "(unable|not able|cannot|can ?not|can't|won't|will not|do not|don't|does not|doesn't|are not able|is not able)( to)? (currently )?(provide |offer |support |consider )?(any )?(visa |immigration |work permit )?sponsor"
+  - "\\bno (visa |immigration )?sponsorship"
+  - "sponsorship (is |will )?(not|un)available"
+  - "not (be )?(eligible|available|offered|provided) for (visa |immigration )?sponsorship"
+  - "(visa|immigration) sponsorship (is|will) not"
+  - "not (offer|provide)(ing)? (visa |immigration )?sponsorship"
+  - "without (the need for |requiring |needing )?(current or future |now or in the future )?(visa |employer |immigration )?sponsorship"
+  - "(now or in the future|currently or in the future) require (visa |employer )?sponsorship"
+
+# These restrict a job everywhere, remote jobs included.
+right_to_work:
+  - "(must|should|need to|needs to|required to|will need to) (already )?(have|hold|possess) (the |a |an )?(existing |current |full |valid |unrestricted )?(legal )?right to work"
+  - "(existing|current|valid|full|unrestricted) right to work"
+  - "(must|should|need to) be (legally )?(authori[sz]ed|eligible|entitled|permitted) to work in"
+  - "requires? (existing |valid |current )?(work authori[sz]ation|right to work)"
+  - "work authori[sz]ation (is )?required"
+citizenship:
+  - "(u\\.?s\\.?|uk|british|canadian|australian|eu|german|french|israeli) citizen(ship)?s? (is |are )?(required|only)"
+  - "must be a (u\\.?s\\.? |uk |british |canadian |australian )?citizen"
+  - "\\bcitizens? only\\b"
+  - "(requires?|required) (u\\.?s\\.? |uk )?citizenship"
+  - "(citizens?|nationals?) or (lawful )?(permanent residents?|green card holders?)"
+  - "green card holders?"
+  - "permanent residen(t|cy|ts) (status )?(is |are )?(required|only)"
+clearance:
+  - "security clearance"
+  - "\\b(ts/sci|top secret|sc clearance|dv clearance|nv1|nv2|baseline clearance|active clearance|secret clearance)\\b"
+  - "(eligible|able) to (obtain|hold) (a |an )?(\\w+ )?clearance"
+location_only:
+  - "(must|need to|needs to|required to|should) (currently )?(be )?(located|based|reside|residing|living|live) (in|within) (the )?(u\\.?s\\.?|usa|united states|uk|united kingdom|canada|germany|france|netherlands|australia|india|spain|ireland|israel|brazil|mexico|poland|sweden|singapore|japan|european union|eu|europe|us or canada)\\b"
+  - "\\b(us|usa|u\\.s\\.|uk|canada|germany|netherlands|australia|india|eu)[- ]only\\b"
+  - "only (open|available) to (candidates|applicants|residents|people) (who are )?(based |located |residing |living )?in (the )?(u\\.?s\\.?|usa|united states|uk|united kingdom|canada|germany|europe|eu|australia|india)"
+  - "remote (within|in) the (u\\.?s\\.?|united states|uk|united kingdom)( only)?\\b"
+
+# Phrases that mean the company will help you move or get a visa.
+positive:
+  - "(visa|immigration|work permit) sponsorship (is |will be )?(available|provided|offered|possible|supported|support)"
+  - "(we|will|can|able to|happy to|are able to|is able to) (also )?(offer |provide |support )?(visa |immigration |work permit )?sponsor(ship)?\\b"
+  - "sponsor (your |a |work |the )?visas?"
+  - "relocation (support|assistance|package|bonus|stipend|allowance|help|budget)"
+  - "relocation (is |will be )?(provided|offered|available|supported|covered)"
+  - "(help|support|assist)(s|ing)? (you )?(with )?(your )?relocat"
+  - "visa (support|assistance|help|and relocation)"
+  - "(support|help|assist)\\w* .{0,30}(visa|work permit|blue card)"
+  - "we sponsor"
+  - "open to (candidates|applicants) (who need|requiring) (visa )?sponsorship"
