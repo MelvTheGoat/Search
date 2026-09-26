@@ -17,5 +17,7 @@ def cached(name, hours, fetch, log=print):
         log(f"  {name}: using cache (fetched less than {hours}h ago)")
         return [Job(**d) for d in json.loads(path.read_text())]
     jobs = fetch()
+    if not jobs:
+        return jobs  # do not cache a failed or empty fetch
     path.write_text(json.dumps([j.__dict__ for j in jobs]))
     return jobs
