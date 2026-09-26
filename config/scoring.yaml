@@ -1,0 +1,102 @@
+# How the fit score (0 to 100) is built. Change the weights to tune it.
+# The score is the weighted average of these parts, each between 0 and 1.
+weights:
+  cv_similarity: 0.25       # job text vs your whole CV (embeddings)
+  project_similarity: 0.15  # job text vs your best matching project
+  skills: 0.20              # share of the job's skills that are in your CV
+  level: 0.20               # intern and junior high, senior low
+  role: 0.15                # target title high, related title lower
+  domain: 0.05              # fraud, risk, credit, payments, fintech
+
+embedding:
+  model: all-MiniLM-L6-v2
+  # Raw cosine similarity is mapped to 0..1 between these two values.
+  floor: 0.10
+  ceiling: 0.60
+  chunk_words: 180
+  max_chunks: 4
+
+level_scores:
+  intern: 1.0
+  graduate: 1.0
+  junior: 1.0
+  entry: 1.0
+  unspecified: 0.7
+  mid: 0.5          # flagged as "stretch"
+  senior: 0.15
+  lead: 0.08
+  staff: 0.05
+  principal: 0.05
+  manager: 0.05
+
+role_scores:
+  target: 1.0
+  related: 0.5
+  other: 0.25
+
+# Title patterns (regular expressions, any case).
+target_titles:
+  - "machine learning"
+  - "\\bml\\b"
+  - "\\bai\\b"
+  - "artificial intelligence"
+  - "\\bllm"
+  - "gen(erative)? ?ai"
+  - "applied scien"
+  - "data scien"
+  - "mlops|ml ops|ml platform|ml infra"
+  - "research engineer"
+  - "research scientist"
+  - "deep learning"
+  - "\\bnlp\\b|natural language"
+  - "computer vision"
+  - "fraud"
+  - "risk (model|scien|analytic|data|ml|engineer)"
+  - "credit (risk|model|scien|decision)"
+  - "decision scien"
+  - "quantitative (research|analyst|developer)"
+related_titles:
+  - "data analy"
+  - "analytics engineer"
+  - "data engineer"
+  - "business intelligence|\\bbi\\b"
+  - "analytics"
+  - "statistic"
+  - "insights"
+  - "data platform"
+  - "risk analyst"
+  - "quant"
+
+domain_keywords:
+  - fraud
+  - "credit risk"
+  - "risk model"
+  - underwriting
+  - payments
+  - fintech
+  - "anti-money laundering|\\baml\\b"
+  - "\\bkyc\\b"
+  - reconciliation
+  - lending
+  - chargeback
+
+# Step 2 of the pipeline: drop jobs clearly unrelated to data, ML or AI.
+filter:
+  # Keep the job if the title matches any of these...
+  keep_titles:
+    - "machine learning|\\bml\\b|\\bai\\b|artificial intelligence|\\bllm|gen ?ai|generative"
+    - "data scien|data analy|data engineer|analytics|\\bdata\\b"
+    - "applied scien|research (engineer|scientist)|scientist"
+    - "mlops|deep learning|\\bnlp\\b|computer vision|perception|recommend|search relevance|ranking"
+    - "fraud|risk|credit|quant|statistic|decision scien|insights|business intelligence"
+  # ...or if the title looks like engineering or research AND the text
+  # mentions ML words at least this many times.
+  engineer_titles: "engineer|developer|scientist|researcher|research"
+  ml_words: "machine learning|\\bml\\b|deep learning|\\bllms?\\b|pytorch|tensorflow|model training|neural|embedding|\\brag\\b|inference"
+  min_ml_words: 4
+  # Always drop titles with these words, even if they match the above.
+  drop_titles:
+    - "sales|account executive|account manager|recruit|talent|counsel|legal|attorney|paralegal"
+    - "marketing|copywriter|content writer|customer success|support specialist|office manager"
+    - "sourcer|payroll|accountant|bookkeep|facilities|executive assistant|\\bhr\\b|people partner"
+    - "data entry|annotator|annotation|labell?er|tutor|writing evaluator|rater\\b|transcri"
