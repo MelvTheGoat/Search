@@ -1,0 +1,10 @@
+{"jobs": [
+  {"id": 1, "title": "Machine Learning Engineer, Fraud (Graduate)", "absolute_url": "https://boards.greenhouse.io/acmepay/jobs/1",
+   "location": {"name": "London, UK"}, "updated_at": "2026-09-20T10:00:00-04:00",
+   "content": "&lt;p&gt;Build fraud detection models with Python, PyTorch and LightGBM.&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Experience with SQL and Docker&lt;/li&gt;&lt;li&gt;Kubernetes is a plus&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;We offer visa sponsorship and relocation support.&lt;/p&gt;",
+   "departments": [{"name": "Risk"}], "offices": [{"name": "London", "location": "London, UK"}]},
+  {"id": 2, "title": "Senior Account Executive", "absolute_url": "https://boards.greenhouse.io/acmepay/jobs/2",
+   "location": {"name": "New York, NY"}, "updated_at": "2026-09-20", "content": "Sell things.", "departments": [], "offices": []},
+  {"id": 3, "title": "Data Scientist", "absolute_url": "https://boards.greenhouse.io/acmepay/jobs/3",
+   "location": {"name": "Remote - US"}, "updated_at": "2026-09-20", "content": "&lt;p&gt;3+ years of experience with Python and SQL.&lt;/p&gt;", "departments": [], "offices": []}
+]}

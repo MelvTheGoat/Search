@@ -98,8 +98,8 @@ class Labeller:
             # treat it like a job abroad.
 
         # 3. Jobs abroad.
-        if no_sponsor:
-            return self._restricted(country, no_sponsor[0])
+        if hard or no_sponsor:
+            return self._restricted(country, (hard + no_sponsor)[0])
         if positive:
             return LabelResult("sponsor_yes", country, sponsorship="yes", evidence=evidence)
         register_hits = self._known_sponsor(job)
