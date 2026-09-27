@@ -52,8 +52,9 @@ pip install -r requirements.txt
 The first run downloads the small `all-MiniLM-L6-v2` model (about 90 MB)
 once. It runs on CPU.
 
-If `pip` pulls a very large PyTorch with GPU parts, install the CPU build
-first, then the rest:
+On Mac or Linux, `bash scripts/setup.sh` does all of this and uses the
+small CPU build of PyTorch. If you install by hand and `pip` pulls a very
+large PyTorch with GPU parts, install the CPU build first, then the rest:
 
 ```bash
 pip install torch --index-url https://download.pytorch.org/whl/cpu
