@@ -9,9 +9,15 @@ applies for you. You read each job and apply yourself.
 ## What it does
 
 1. Reads jobs from free, official sources:
-   - company boards on Greenhouse, Lever and Ashby (list in `config/companies.yaml`)
-   - RemoteOK, Remotive, Arbeitnow and Himalayas
-   - Adzuna, only if you add a free key to `.env`
+   - company boards on Greenhouse, Lever, Ashby, SmartRecruiters, Workable,
+     Recruitee and Personio (list in `config/companies.yaml`)
+   - RemoteOK, Remotive, Arbeitnow, Himalayas, Jobicy, Working Nomads,
+     We Work Remotely (RSS), The Muse, and the monthly Hacker News
+     "Who is hiring?" thread
+   - Adzuna, Reed (UK), Jooble and Findwork, only if you add their free
+     keys to `.env`
+
+   LinkedIn and Indeed are not used. They do not allow scraping.
 2. Puts them in one format and removes duplicates (same apply link, or same
    company, title and location).
 3. Drops jobs clearly unrelated to data, ML or AI.
@@ -54,10 +60,17 @@ pip install torch --index-url https://download.pytorch.org/whl/cpu
 pip install -r requirements.txt
 ```
 
-Optional: Adzuna. Get a free key at https://developer.adzuna.com/, then:
+Optional: more sources with free keys. Each one is skipped until its key is set.
+
+| Source | Where to get the key | `.env` names |
+| --- | --- | --- |
+| Adzuna (19 countries) | https://developer.adzuna.com/ | `ADZUNA_APP_ID`, `ADZUNA_APP_KEY` |
+| Reed (UK) | https://www.reed.co.uk/developers | `REED_API_KEY` |
+| Jooble (many countries, including Nigeria) | https://jooble.org/api/about | `JOOBLE_API_KEY` |
+| Findwork | https://findwork.dev/developers/ | `FINDWORK_API_KEY` |
 
 ```bash
-cp .env.example .env     # then put your ADZUNA_APP_ID and ADZUNA_APP_KEY in .env
+cp .env.example .env     # then paste your keys into .env
 ```
 
 Check the company list once (and any time you add companies):
@@ -67,7 +80,7 @@ python hunt.py verify-companies
 ```
 
 It tests every board. If a token is dead, it tries the same name on the
-other two ATSs, and moves boards that are gone to `config/companies_removed.yaml`.
+other ATSs, and moves boards that are gone to `config/companies_removed.yaml`.
 
 ## Daily routine
 
