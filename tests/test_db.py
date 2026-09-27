@@ -91,3 +91,21 @@ def test_edits_in_tracker_xlsx_are_kept(tmp_path):
     ws = load_workbook(xlsx)["Open"]
     assert ws.cell(2, header.index("status") + 1).value == "skipped"
     assert Path(csv_path).read_text().count("skipped") == 1
+
+
+def test_drafted_status_survives_an_older_tracker_sheet(tmp_path):
+    import os
+    import time
+
+    from hunt.export import export, sync_from_xlsx
+
+    conn = db.connect(tmp_path / "jobs.db")
+    jid, _ = db.upsert(conn, row())
+    conn.commit()
+    xlsx, csv_path = tmp_path / "tracker.xlsx", tmp_path / "tracker.csv"
+    export(conn, xlsx=xlsx, csv_path=csv_path, log=lambda *_: None)
+    old = time.time() - 120
+    os.utime(xlsx, (old, old))  # the sheet was saved before the letter
+    db.set_letter(conn, jid, "output/letters/x.md")
+    sync_from_xlsx(conn, path=xlsx, log=lambda *_: None)
+    assert conn.execute("SELECT status FROM jobs WHERE id = ?", (jid,)).fetchone()[0] == "drafted"

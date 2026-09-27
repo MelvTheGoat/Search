@@ -125,8 +125,9 @@ def add_note(conn, job_id, note):
 
 def set_letter(conn, job_id, letter_file):
     """Record a letter; moves a job from new to drafted, never backwards."""
-    conn.execute("UPDATE jobs SET letter_file = ?, status = CASE WHEN status = 'new' THEN 'drafted' ELSE status END "
-                 "WHERE id = ?", (letter_file, job_id))
+    # Counts as your change, so an older tracker.xlsx cannot undo it.
+    conn.execute("UPDATE jobs SET letter_file = ?, status = CASE WHEN status = 'new' THEN 'drafted' ELSE status END, "
+                 "user_updated_at = ? WHERE id = ?", (letter_file, utc_now(), job_id))
     conn.commit()
 
 
