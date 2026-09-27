@@ -307,6 +307,7 @@ function packCard(j){
   const lvl = j.lvl === "unspecified" ? "Level not stated" : (j.lvl || "").replace(/^./, c => c.toUpperCase());
   const opts = STATUSES.map(s => `<option value="${s}" ${s===j.status?"selected":""}>${STATUS_TEXT[s]}</option>`).join("");
   const L = pk ? splitLetter(pk.letter) : {letter:"", why:""};
+  const cvOpen = state.open.has("cv:" + j.k), clOpen = state.open.has("cl:" + j.k);
   return `<article class="pack job" data-k="${esc(j.k)}">
     <div class="pack-head">
       <div class="score" title="Fit score out of 100"><span class="v" style="color:${fitColor(f)}">${f}</span><span class="meter"><i style="width:${Math.min(100,f)}%;background:${fitColor(f)}"></i></span></div>
@@ -324,11 +325,11 @@ function packCard(j){
     </div>
     <section class="pack-sec"><h3><span class="step">1</span>Job posting</h3>
       ${pk ? `<pre class="posting">${esc(pk.desc)}</pre>` : "<p class='ev'>Loading…</p>"}</section>
-    <section class="pack-sec"><h3><span class="step">2</span>Tailored CV<span class="tools">${j.cvp ? `<a class="btn cv-pdf" href="${esc(j.cvp)}" target="_blank" rel="noopener">Download PDF</a>` : ""}${j.cvn ? `<button class="btn cv-word">Download Word</button>` : ""}</span></h3>
-      ${pk && pk.cv_html ? `<div class="cvdoc">${pk.cv_html}</div>` : "<p class='ev'>No CV yet.</p>"}</section>
-    <section class="pack-sec"><h3><span class="step">3</span>Cover letter<span class="tools"><button class="btn copy-pack">Copy letter</button></span></h3>
-      ${L.letter ? `<pre class="letter-text">${esc(L.letter)}</pre>` : "<p class='ev'>No letter yet.</p>"}
-      ${L.why ? `<p class="why-text"><b>Why this company</b> (for application forms): ${esc(L.why)}</p>` : ""}</section>
+    <section class="pack-sec"><h3><span class="step">2</span>Tailored CV<span class="tools">${pk && pk.cv_html ? `<button class="btn toggle" data-open="cv:${esc(j.k)}" aria-expanded="${cvOpen}">${cvOpen ? "Hide CV" : "Show CV"}</button>` : ""}${j.cvp ? `<a class="btn cv-pdf" href="${esc(j.cvp)}" target="_blank" rel="noopener">Download PDF</a>` : ""}${j.cvn ? `<button class="btn cv-word">Download Word</button>` : ""}</span></h3>
+      ${pk && pk.cv_html ? (cvOpen ? `<div class="cvdoc">${pk.cv_html}</div>` : "") : "<p class='ev'>No CV yet.</p>"}</section>
+    <section class="pack-sec"><h3><span class="step">3</span>Cover letter<span class="tools">${L.letter ? `<button class="btn toggle" data-open="cl:${esc(j.k)}" aria-expanded="${clOpen}">${clOpen ? "Hide letter" : "Show letter"}</button><button class="btn copy-pack">Copy letter</button>` : ""}</span></h3>
+      ${L.letter ? (clOpen ? `<pre class="letter-text">${esc(L.letter)}</pre>` : "") : "<p class='ev'>No letter yet.</p>"}
+      ${L.why && clOpen ? `<p class="why-text"><b>Why this company</b> (for application forms): ${esc(L.why)}</p>` : ""}</section>
     ${(j.notes || state.open.has("n:"+j.k)) ? `<div class="note" style="grid-column:auto"><textarea aria-label="Notes" placeholder="Recruiter name, dates, next step" ${state.writable?"":"disabled"}>${esc(j.notes)}</textarea><div class="hint">Saved when you click away.</div></div>` : `<div><button class="btn note-btn">Add note</button></div>`}
   </article>`;
 }
@@ -413,11 +414,13 @@ document.addEventListener("click", e => {
   const k = art.dataset.k;
   if (t.classList.contains("letter-btn")) { state.open.has(k) ? state.open.delete(k) : (state.open.add(k), loadLetter(k)); render(); }
   if (t.classList.contains("note-btn")) { state.open.add("n:"+k); render(); const ta = document.querySelector(`.job[data-k="${CSS.escape(k)}"] textarea`); ta && ta.focus(); }
+  if (t.classList.contains("toggle")) { const id = t.dataset.open; state.open.has(id) ? state.open.delete(id) : state.open.add(id); render(); return; }
   if (t.classList.contains("cv-word")) { saveWord(k); return; }
   if (t.classList.contains("copy-pack")) {
     const text = splitLetter((state.packs[k]||{}).letter).letter;
     navigator.clipboard.writeText(text).then(() => toast("Letter copied")).catch(() => {
-      const pre = art.querySelector(".letter-text"); if (!pre) return; const r = document.createRange(); r.selectNodeContents(pre); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); toast("Selected. Press copy.");
+      if (!art.querySelector(".letter-text")) { state.open.add("cl:" + k); render(); }
+      const pre = document.querySelector(`.job[data-k="${CSS.escape(k)}"] .letter-text`); if (!pre) return; const r = document.createRange(); r.selectNodeContents(pre); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); toast("Selected. Press copy.");
     });
     return;
   }
