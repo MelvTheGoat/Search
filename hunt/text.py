@@ -35,11 +35,14 @@ def html_to_text(raw):
 
 def fix_mojibake(s):
     """Repair UTF-8 text that was decoded as Latin-1, like "MecÃ¡nico"."""
-    if s and ("Ã" in s or "â€" in s):
+    if s and re.search(r"[\u00c2-\u00f0][\u0080-\u00bf]", s):
         try:
             return s.encode("latin-1").decode("utf-8")
         except (UnicodeEncodeError, UnicodeDecodeError):
-            return s
+            try:
+                return s.encode("cp1252").decode("utf-8")
+            except (UnicodeEncodeError, UnicodeDecodeError):
+                return s
     return s
 
 

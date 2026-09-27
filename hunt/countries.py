@@ -87,6 +87,12 @@ COUNTRIES = {
     "New Zealand": ("NZ", [], ["auckland", "wellington", "christchurch"]),
 }
 
+# Every other country, by name only (no cities), so no place is mistaken
+# for "no limit".
+EXTRA_COUNTRIES = """Afghanistan|Albania|Algeria|Andorra|Angola|Antigua and Barbuda|Armenia|Azerbaijan|Bahamas|Barbados|Belarus|Belize|Benin|Bhutan|Bolivia|Bosnia and Herzegovina|Botswana|Brunei|Burkina Faso|Burundi|Cabo Verde|Cape Verde|Cambodia|Cameroon|Central African Republic|Chad|Comoros|Congo|Costa Rica|Cuba|Djibouti|Dominica|Dominican Republic|Ecuador|El Salvador|Equatorial Guinea|Eritrea|Eswatini|Fiji|Gabon|Gambia|Georgia|Grenada|Guatemala|Guinea|Guinea-Bissau|Guyana|Haiti|Honduras|Iceland|Iran|Iraq|Jamaica|Kazakhstan|Kiribati|Kosovo|Kuwait|Kyrgyzstan|Laos|Lebanon|Lesotho|Liberia|Libya|Liechtenstein|Madagascar|Malawi|Maldives|Mali|Marshall Islands|Mauritania|Mauritius|Micronesia|Moldova|Monaco|Mongolia|Montenegro|Mozambique|Myanmar|Namibia|Nauru|Nepal|Nicaragua|Niger|North Macedonia|Palau|Palestine|Panama|Papua New Guinea|Paraguay|Puerto Rico|Saint Lucia|Samoa|San Marino|Sao Tome and Principe|Seychelles|Sierra Leone|Slovakia|Slovenia|Solomon Islands|Somalia|South Sudan|Sudan|Suriname|Syria|Tajikistan|Timor-Leste|Togo|Tonga|Trinidad and Tobago|Turkmenistan|Tuvalu|Uruguay|Uzbekistan|Vanuatu|Venezuela|Yemen|Zambia|Zimbabwe""".split("|")
+for _name in EXTRA_COUNTRIES:
+    COUNTRIES.setdefault(_name, ("", [], []))
+
 US_STATES = ("AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC "
              "ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY DC").split()
 US_STATE_NAMES = ["california", "new york state", "texas", "washington state", "massachusetts", "colorado", "illinois",
@@ -105,7 +111,7 @@ OTHER_REGIONS = ["europe", "eu", "european union", "eea", "americas", "north ame
 # City names that also exist in the US or Canada, like Cambridge, MA or London, ON.
 AMBIGUOUS_CITIES = {"cambridge", "london", "birmingham", "reading", "waterloo", "valencia", "athens", "perth"}
 
-ISO_TO_COUNTRY = {v[0]: k for k, v in COUNTRIES.items()}
+ISO_TO_COUNTRY = {v[0]: k for k, v in COUNTRIES.items() if v[0]}
 ISO_TO_COUNTRY["UK"] = "United Kingdom"
 # Two-letter codes that are usually something else in a location line:
 # time zones (PT, ET, MT), "IT", "IN", "ID", "IS", "AT", "CO", "SE" and so on.
@@ -128,7 +134,7 @@ _STATE_RE = re.compile(r"(?:,|\s-|\()\s*(" + "|".join(US_STATES) + r")\b(?!\.)")
 _PROV_RE = re.compile(r"(?:,|\()\s*(" + "|".join(CA_PROVINCES) + r")\b")
 _ISO_RE = re.compile(r"(?:^|[,(\s-])(" + "|".join(sorted(set(ISO_TO_COUNTRY) - ISO_SKIP)) + r")(?:$|[,)\s-])(?!\s*(?:hours|time|/))")
 # Parts of a location line about working hours, not places.
-_HOURS_RE = re.compile(r"\([^)]*\b(overlap|hours|time ?zones?|tz)\b[^)]*\)|\b(overlap with|hours in|working hours|time ?zones?)\b.*", re.I)
+_HOURS_RE = re.compile(r"\(\s*[^)]*\b(overlap|hours)\b[^)]*\)|\b(overlap with|hours in|working hours|time ?zones?)\b.*", re.I)
 
 
 def _clean(s):
@@ -190,4 +196,9 @@ def has_city(location):
 
 def has_region(location, regions):
     text = _clean(location)
+    # "South Africa" is a country, not the Africa region; "anywhere in
+    # France" is France only.
+    text = text.replace(" south africa ", " ")
+    text = re.sub(r" anywhere in [a-z ]+", " ", text)
+    text = re.sub(r" [a-z]+ anywhere ", " ", text) if re.search(r" anywhere ", text) and find_countries(location) else text
     return any(f" {r} " in text for r in regions)

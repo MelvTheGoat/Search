@@ -13,7 +13,7 @@ import re
 from dataclasses import dataclass, field
 
 from .config import load_yaml
-from .countries import OPEN_REGIONS, OTHER_REGIONS, find_countries, has_city, has_region
+from .countries import _HOURS_RE, OPEN_REGIONS, OTHER_REGIONS, find_countries, has_city, has_region
 from .text import sentences
 
 HOME = "Nigeria"
@@ -89,6 +89,13 @@ class Labeller:
             onsite_option = has_city(loc) or re.search(r"hybrid|on-?site|office", loc, re.I)
             if len(abroad) == 1 and not other_region and not onsite_option:
                 return self._restricted(country, f"Location: {loc or hints}", note="remote for one country only")
+            leftover = re.sub(r"(?i)\b(remote|anywhere|work from home|wfh|full[- ]?time|part[- ]?time|contract|flexible|"
+                              r"global|worldwide|home based|hours?|preferred|overlap|with|time ?zones?|tz|"
+                              r"pt|et|ct|mt|est|pst|cet|gmt|utc|pacific|eastern|central|\d+h?)\b|[\W\d_]", "",
+                              _HOURS_RE.sub(" ", where.lower()))
+            if not abroad and not other_region and not onsite_option and leftover:
+                # A place we do not recognise: do not assume it is open to Nigeria.
+                return self._abroad(job, country, found)
             if not abroad and not other_region and not onsite_option:
                 # Plain "Remote" with no country named.
                 if no_sponsor:
@@ -98,7 +105,14 @@ class Labeller:
             # Remote for a group of countries that does not include Nigeria,
             # or remote with an office option abroad: treat it like a job abroad.
 
-        # 3. Jobs abroad.
+        return self._abroad(job, country, found)
+
+    def _abroad(self, job, country, found):
+        """Label a job outside Nigeria from its sponsorship signals."""
+        hard = found["right_to_work"] + found["citizenship"] + found["clearance"] + found["location_only"]
+        no_sponsor = found["no_sponsorship"]
+        positive = found["positive"]
+        evidence = [f"post: \"{s}\"" for s in positive[:2]]
         if hard or no_sponsor:
             return self._restricted(country, (hard + no_sponsor)[0])
         if positive:

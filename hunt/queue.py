@@ -3,17 +3,29 @@ from datetime import date
 
 from .config import LETTERS_DIR, QUEUE_DIR, label_rank
 from .db import loads, rows
-from .text import slug
+from .text import norm, slug
 
 
 def letter_path(job, day):
     return LETTERS_DIR / f"{day}_{slug(job['company'], 30)}_{slug(job['title'], 50)}.md"
 
 
+def unique_roles(jobs):
+    """Keep one job per company and title, so a role posted in five cities
+    shows once. The list must already be sorted best first."""
+    seen, out = set(), []
+    for j in jobs:
+        k = (norm(j["company"]), norm(j["title"]))
+        if k not in seen:
+            seen.add(k)
+            out.append(j)
+    return out
+
+
 def pick(conn, top):
     jobs = rows(conn, "status = 'new' AND location_label != 'restricted' AND (letter_file IS NULL OR letter_file = '')")
     jobs.sort(key=lambda j: (-round(j["fit_score"] or 0), label_rank(j["location_label"]), -(j["fit_score"] or 0)))
-    return jobs[:top]
+    return unique_roles(jobs)[:top]
 
 
 def build_queue(conn, top=15, day=None):

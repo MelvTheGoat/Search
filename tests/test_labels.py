@@ -118,3 +118,22 @@ def test_time_zone_notes_are_not_countries(labeller):
 def test_country_code_next_to_foreign_city(labeller):
     r = labeller.label(job("Berlin, DE"))
     assert r.country == "Germany"
+
+
+def test_remote_for_an_unlisted_country_is_not_open(labeller):
+    r = labeller.label(job("Remote (Guatemala)", remote=True))
+    assert r.label == "restricted" and r.country == "Guatemala"
+
+
+def test_remote_with_unknown_place_is_not_assumed_open(labeller):
+    assert labeller.label(job("Remote (Atlantis Region)", remote=True)).label == "sponsor_unknown"
+
+
+def test_south_africa_and_anywhere_in_one_country(labeller):
+    assert labeller.label(job("Remote (South Africa)", remote=True)).label == "restricted"
+    assert labeller.label(job("Anywhere in France", remote=True)).label == "restricted"
+    assert labeller.label(job("Remote (USA, Canada, USA timezones)", remote=True)).label != "remote_open"
+
+
+def test_non_latin_place_is_not_assumed_open(labeller):
+    assert labeller.label(job("Remote (دبي)", remote=True)).label != "remote_open"

@@ -50,9 +50,10 @@ def cmd_run(args):
     show_stats(conn)
     print()
     print("Top 10 jobs:")
+    from .queue import unique_roles
     jobs = [j for j in db.rows(conn, "location_label != 'restricted'")]
     jobs.sort(key=lambda j: (-round(j["fit_score"] or 0), label_rank(j["location_label"])))
-    print_jobs(jobs[:10])
+    print_jobs(unique_roles(jobs)[:10])
 
 
 def cmd_rescore(args):
@@ -79,8 +80,10 @@ def cmd_list(args):
     if not jobs:
         print("No jobs match." + (" Nothing new today; try `python hunt.py list`." if args.new else ""))
         return
+    from .queue import unique_roles
+    jobs = unique_roles(jobs)
     print_jobs(jobs[: args.top])
-    print(f"\nShowing {min(args.top, len(jobs))} of {len(jobs)}. See one with `python hunt.py show <id>`.")
+    print(f"\nShowing {min(args.top, len(jobs))} of {len(jobs)} roles. See one with `python hunt.py show <id>`.")
 
 
 def cmd_show(args):

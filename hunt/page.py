@@ -57,8 +57,9 @@ def export_page(conn, top_open=300, top_restricted=60, out=PAGE_DIR):
     jobs = rows(conn)
     jobs.sort(key=lambda j: (-(j["fit_score"] or 0), label_rank(j["location_label"])))
     tracked = [j for j in jobs if j["status"] != "new"]
-    fresh_open = [j for j in jobs if j["status"] == "new" and j["location_label"] != "restricted"][:top_open]
-    fresh_rest = [j for j in jobs if j["status"] == "new" and j["location_label"] == "restricted"][:top_restricted]
+    from .queue import unique_roles
+    fresh_open = unique_roles([j for j in jobs if j["status"] == "new" and j["location_label"] != "restricted"])[:top_open]
+    fresh_rest = unique_roles([j for j in jobs if j["status"] == "new" and j["location_label"] == "restricted"])[:top_restricted]
     chosen = tracked + fresh_open + fresh_rest
 
     if out.exists():

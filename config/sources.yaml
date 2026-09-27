@@ -26,7 +26,7 @@ http:
     findwork.dev: 1.5
     smartrecruiters.com: 0.5
     workable.com: 4.0
-    personio.de: 6.0
+    personio.de: 12.0
     recruitee.com: 2.0
 
 # Company boards (the list is in companies.yaml)
