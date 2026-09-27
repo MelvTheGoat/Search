@@ -1,4 +1,5 @@
 """The full run: fetch, dedupe, filter, label, score, store, export."""
+import re
 import time
 from collections import Counter
 from datetime import date
@@ -12,8 +13,8 @@ from .labels import Labeller
 from .registers import load_registers
 from .scoring import Scorer, is_relevant
 from .sources import cached
-from .sources.ats import fetch_company
-from .sources.boards import BOARDS, adzuna_keys
+from .sources.ats import ATS_NAMES, fetch_company
+from .sources.boards import BOARDS, NEEDS_KEY, has_keys
 
 
 def make_http(cfg):
@@ -31,15 +32,23 @@ def fetch_all(http, cfg, log=print, only=None):
     """Fetch every enabled source. One broken source never stops the run."""
     jobs, counts, errors = [], Counter(), []
     companies = load_companies()
-    ats_on = [a for a in ("greenhouse", "lever", "ashby") if cfg.get(a, {}).get("enabled", True)]
+    ats_on = [a for a in ATS_NAMES if cfg.get(a, {}).get("enabled", True)]
     if only:
         ats_on = [a for a in ats_on if a in only]
     todo = [c for c in companies if c["ats"] in ats_on]
     if todo:
         log(f"Fetching {len(todo)} company boards...")
+    scoring = load_yaml("scoring.yaml")
+
+    def keep_title(title):
+        # Used by boards that need one extra call per job for the description.
+        f = scoring["filter"]
+        return (not any(re.search(p, title, re.I) for p in f["drop_titles"])
+                and any(re.search(p, title, re.I) for p in f["keep_titles"]))
+
     for i, c in enumerate(todo, start=1):
         try:
-            found = fetch_company(http, c)
+            found = fetch_company(http, c, keep_title=keep_title)
         except Exception as e:  # noqa: BLE001
             errors.append(f"{c['ats']}/{c['token']}: {e}")
             continue
@@ -55,8 +64,8 @@ def fetch_all(http, cfg, log=print, only=None):
         scfg = cfg.get(name, {})
         if not scfg.get("enabled", True) or (only and name not in only):
             continue
-        if name == "adzuna" and not all(adzuna_keys()):
-            log("  adzuna: skipped (no key in .env)")
+        if not has_keys(name):
+            log(f"  {name}: skipped (add {' and '.join(NEEDS_KEY[name])} to .env to use it)")
             continue
         try:
             found = cached(name, scfg.get("refetch_hours", 6), lambda: fn(http, scfg, log=log), log=log)

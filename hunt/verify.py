@@ -1,5 +1,5 @@
 """Check every board in companies.yaml. If a token is dead on its ATS, try
-the same token on the other two. Dead ones move to companies_removed.yaml.
+the same token on the other supported ATSs. Dead ones move to companies_removed.yaml.
 
 companies.yaml keeps one company per line, so this rewrite keeps your
 comments and order."""
@@ -9,7 +9,7 @@ from datetime import date
 from .config import CONFIG_DIR, load_yaml
 from .http import HttpError
 from .pipeline import make_http
-from .sources.ats import fetch_company
+from .sources.ats import ATS_NAMES, SMARTRECRUITERS, fetch_company
 
 LINE = re.compile(r"^\s*-\s*\{.*\btoken:\s*([^,}\s]+).*\}\s*$")
 
@@ -17,6 +17,10 @@ LINE = re.compile(r"^\s*-\s*\{.*\btoken:\s*([^,}\s]+).*\}\s*$")
 def _probe(http, company):
     """Return ("ok", count), ("missing", 0) or ("error", message)."""
     try:
+        if company["ats"] == "smartrecruiters":
+            # Count from the list only, to skip one call per job.
+            data = http.get(SMARTRECRUITERS.format(token=company["token"]), params={"limit": 1}, missing_ok=True)
+            return ("missing", 0) if data is None else ("ok", int(data.get("totalFound", 0)))
         jobs = fetch_company(http, company)
     except HttpError as e:
         msg = str(e)
@@ -39,7 +43,7 @@ def verify_companies(write=True, log=print):
         state, value = outcomes[c["ats"]]
         switched = None
         if not (state == "ok" and value > 0):
-            for other in ("greenhouse", "lever", "ashby"):
+            for other in ATS_NAMES:
                 if other == c["ats"]:
                     continue
                 outcomes[other] = _probe(http, {**c, "ats": other})
@@ -53,7 +57,7 @@ def verify_companies(write=True, log=print):
         elif state == "ok":
             verdict, note = "empty", "board exists but has no jobs today"
         elif all(o[0] == "missing" for o in outcomes.values()):
-            verdict, note = "dead", "not found on greenhouse, lever or ashby"
+            verdict, note = "dead", "not found on any supported ATS"
         else:
             errs = [o[1] for o in outcomes.values() if o[0] == "error"]
             verdict, note = "error", errs[0][:100] if errs else "unknown error"

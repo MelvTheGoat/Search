@@ -14,10 +14,26 @@ http:
     himalayas.app: 1.5
     www.arbeitnow.com: 1.5
     api.adzuna.com: 1.5
+    jobicy.com: 3.0
+    www.workingnomads.com: 3.0
+    weworkremotely.com: 3.0
+    hn.algolia.com: 1.0
+    www.themuse.com: 1.5
+    www.reed.co.uk: 1.5
+    jooble.org: 1.5
+    findwork.dev: 1.5
+    api.smartrecruiters.com: 0.5
 
+# Company boards (the list is in companies.yaml)
 greenhouse: {enabled: true}
 lever: {enabled: true}
 ashby: {enabled: true}
+smartrecruiters: {enabled: true}
+workable: {enabled: true}
+recruitee: {enabled: true}
+personio: {enabled: true}
+
+# Public job boards and feeds, no key needed
 
 remoteok:
   enabled: true
@@ -38,6 +54,33 @@ himalayas:
   refetch_hours: 6
   max_pages: 40             # 20 jobs a page
 
+jobicy:
+  enabled: true
+  refetch_hours: 6
+  industries: [data-science, engineering]
+
+workingnomads:
+  enabled: true
+  refetch_hours: 6
+
+weworkremotely:
+  enabled: true
+  refetch_hours: 6
+  feeds: [remote-jobs]      # the feed of all jobs; the keyword filter does the rest
+
+hn_whoishiring:
+  # The monthly "Ask HN: Who is hiring?" thread
+  enabled: true
+  refetch_hours: 24
+
+themuse:
+  enabled: true
+  refetch_hours: 12
+  categories: ["Data and Analytics", "Data Science", "Software Engineering"]
+  levels: [Internship, Entry Level, Mid Level]
+  max_pages: 10
+
+# Sources that need a free key in .env. They are skipped without one.
 adzuna:
   # Only used when ADZUNA_APP_ID and ADZUNA_APP_KEY are set in .env
   enabled: true
@@ -46,3 +89,22 @@ adzuna:
   queries: ["machine learning", "data scientist", "AI engineer"]
   results_per_page: 50
   max_days_old: 30
+
+reed:
+  # UK jobs. Free key: https://www.reed.co.uk/developers  (REED_API_KEY)
+  enabled: true
+  refetch_hours: 20
+  queries: ["machine learning", "data scientist", "AI engineer", "graduate data scientist"]
+
+jooble:
+  # Jobs from many countries. Free key: https://jooble.org/api/about  (JOOBLE_API_KEY)
+  enabled: true
+  refetch_hours: 20
+  queries: ["machine learning engineer", "data scientist", "AI engineer"]
+  locations: ["", "Nigeria", "United Kingdom", "Germany", "Netherlands", "Canada", "United Arab Emirates"]
+
+findwork:
+  # Tech jobs. Free key: https://findwork.dev/developers/  (FINDWORK_API_KEY)
+  enabled: true
+  refetch_hours: 20
+  queries: ["machine learning", "data scientist"]
