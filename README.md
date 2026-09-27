@@ -10,8 +10,12 @@ applies for you. You read each job and apply yourself.
 
 1. Reads jobs from free, official sources:
    - company boards on Greenhouse, Lever, Ashby, SmartRecruiters, Workable,
-     Recruitee and Personio (list in `config/companies.yaml`)
-   - RemoteOK, Remotive, Arbeitnow, Himalayas, Jobicy, Working Nomads,
+     Recruitee, Personio, BambooHR and Breezy (list in `config/companies.yaml`,
+     including 60+ African companies)
+   - Amazon's own job search, for African countries (South Africa, Kenya,
+     Nigeria, Egypt, Morocco, Ghana, Rwanda)
+   - RemoteOK, Remotive, Arbeitnow, Himalayas (also searched for remote jobs
+     open to Nigeria), Jobicy, Working Nomads,
      We Work Remotely (RSS), The Muse, and the monthly Hacker News
      "Who is hiring?" thread
    - Adzuna, Reed (UK), Jooble and Findwork, only if you add their free
@@ -24,6 +28,9 @@ applies for you. You read each job and apply yourself.
 4. Gives each job a location label, best first:
    - `remote_open`: remote and open to Nigeria, Africa, EMEA or worldwide
    - `nigeria`: onsite or hybrid in Nigeria
+   - `africa`: onsite or hybrid in another African country. ECOWAS countries
+     (Ghana, Senegal, Cote d'Ivoire and others) need no visa for Nigerians;
+     the rest need a work permit
    - `sponsor_yes`: abroad, and the post offers a visa or relocation
    - `sponsor_likely`: abroad, and the company is a known sponsor (UK or
      Netherlands register, or marked in `companies.yaml`)
