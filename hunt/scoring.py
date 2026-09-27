@@ -65,6 +65,9 @@ def detect_level(title, description=""):
         if re.search(pat, t, re.I):
             return level, level == "mid"
     d = description or ""
+    m = re.search(r"(looking for|hiring|seeking) (a|an) (senior|staff|lead|principal)\b", d[:3000], re.I)
+    if m:
+        return m.group(3).lower(), False
     if re.search(r"new grad|recent graduate|entry[- ]level|graduate programme|graduate program|no experience required", d, re.I):
         return "entry", False
     y = required_years(d)

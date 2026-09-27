@@ -102,8 +102,14 @@ def test_plain_remote_with_no_sponsorship_is_restricted(labeller):
     assert r.label == "restricted"
 
 
-def test_remote_europe_is_treated_as_abroad(labeller):
-    assert labeller.label(job("Remote - Europe")).label == "sponsor_unknown"
+def test_remote_for_another_region_is_restricted(labeller):
+    assert labeller.label(job("Remote - Europe")).label == "restricted"
+    assert labeller.label(job("North America", "Location:\n - Remote - United States or Canada", remote=True)).label == "restricted"
+
+
+def test_senior_in_the_text_counts():
+    from hunt.scoring import detect_level
+    assert detect_level("Data Engineer", "About the role\nWe are looking for a Senior Data/ML Engineer")[0] == "senior"
 
 
 def test_remote_with_an_office_city_is_treated_as_abroad(labeller):

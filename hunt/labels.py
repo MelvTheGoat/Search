@@ -102,8 +102,11 @@ class Labeller:
                     return self._restricted(country, no_sponsor[0])
                 return LabelResult("remote_open", country, sponsorship="not needed",
                                    evidence=["remote, no country limit named in the post"])
-            # Remote for a group of countries that does not include Nigeria,
-            # or remote with an office option abroad: treat it like a job abroad.
+            if other_region and not onsite_option and not positive:
+                # Remote, but only inside a region that leaves Nigeria out.
+                return self._restricted(country, f"Location: {loc or hints}",
+                                        note="remote for a region that does not include Nigeria")
+            # Remote with an office option abroad: treat it like a job abroad.
 
         return self._abroad(job, country, found)
 
