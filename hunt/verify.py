@@ -20,7 +20,9 @@ def _probe(http, company):
         if company["ats"] == "smartrecruiters":
             # Count from the list only, to skip one call per job.
             data = http.get(SMARTRECRUITERS.format(token=company["token"]), params={"limit": 1}, missing_ok=True)
-            return ("missing", 0) if data is None else ("ok", int(data.get("totalFound", 0)))
+            # An unknown SmartRecruiters id returns an empty list, not a 404.
+            found = int((data or {}).get("totalFound", 0))
+            return ("ok", found) if found else ("missing", 0)
         jobs = fetch_company(http, company)
     except HttpError as e:
         msg = str(e)
