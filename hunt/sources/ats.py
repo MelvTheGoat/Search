@@ -266,7 +266,12 @@ def fetch_bamboohr(http, company, keep_title=None):
             pass
         where = detail.get("location") or j.get("location") or {}
         place = ", ".join(x for x in (where.get("city"), where.get("state"), where.get("addressCountry"))
-                          if x and x.strip(" .")) 
+                          if x and x.strip(" ."))
+        if not place:
+            # Some boards fill only the ATS location (often just a country).
+            ats_loc = detail.get("atsLocation") or j.get("atsLocation") or {}
+            place = ", ".join(x for x in (ats_loc.get("city"), ats_loc.get("state"), ats_loc.get("country")) if x)
+            where = {**where, "addressCountry": where.get("addressCountry") or ats_loc.get("country")}
         remote = bool(j.get("isRemote")) or j.get("locationType") == "1"
         jobs.append(Job(
             source="bamboohr",

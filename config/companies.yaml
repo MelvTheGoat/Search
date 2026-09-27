@@ -244,6 +244,26 @@ companies:
   - {name: Ozow, ats: greenhouse, token: ozow, country: South Africa, sector: africa}
   - {name: Apollo Agriculture, ats: lever, token: apolloagriculture, country: Kenya, sector: africa}
   - {name: Zipline, ats: greenhouse, token: flyzipline, country: US, sector: africa}
+  # Found by probing BambooHR, Breezy, SmartRecruiters, Recruitee and Ashby, 2026-09-27
+  - {name: Flutterwave, ats: bamboohr, token: flutterwavego, country: Nigeria, sector: africa}
+  - {name: Paga, ats: bamboohr, token: paga, country: Nigeria, sector: africa}
+  - {name: Chowdeck, ats: bamboohr, token: chowdeck, country: Nigeria, sector: africa}
+  - {name: Duplo, ats: bamboohr, token: duplo, country: Nigeria, sector: africa}
+  - {name: Raenest, ats: smartrecruiters, token: raenest, country: Nigeria, sector: africa}
+  - {name: Busha, ats: breezy, token: busha, country: Nigeria, sector: africa}
+  - {name: Yellow Card, ats: bamboohr, token: yellowcard, country: Nigeria, sector: africa}
+  - {name: Cellulant, ats: bamboohr, token: cellulant, country: Kenya, sector: africa}
+  - {name: Amini, ats: bamboohr, token: amini, country: Kenya, sector: africa}
+  - {name: One Acre Fund, ats: greenhouse, token: oneacrefund, country: Kenya, sector: africa}
+  - {name: Peach Payments, ats: bamboohr, token: peachpayments, country: South Africa, sector: africa}
+  - {name: Onafriq, ats: bamboohr, token: onafriq, country: South Africa, sector: africa}
+  - {name: Lulalend, ats: breezy, token: lulalend, country: South Africa, sector: africa}
+  - {name: Mukuru, ats: breezy, token: mukuru, country: South Africa, sector: africa}
+  - {name: iKhokha, ats: smartrecruiters, token: ikhokha, country: South Africa, sector: africa}
+  - {name: Thndr, ats: ashby, token: thndr, country: Egypt, sector: africa}
+  - {name: Synapse Analytics, ats: recruitee, token: synapseanalytics, country: Egypt, sector: africa}
+  - {name: Instabug, ats: bamboohr, token: instabug, country: Egypt, sector: africa}
+  - {name: Gozem, ats: breezy, token: gozem, country: Togo, sector: africa}
   - {name: Turing, ats: greenhouse, token: turing, country: US, sector: africa}
 
   # --- UK and Europe -----------------------------------------------------
@@ -340,9 +360,9 @@ companies:
   - {name: Kuda (Workable), ats: workable, token: kuda, country: Nigeria, sector: africa}
   - {name: Renmoney, ats: workable, token: renmoney, country: Nigeria, sector: africa}
   - {name: FairMoney (Workable), ats: workable, token: fairmoney, country: Nigeria, sector: africa}
-  - {name: PalmPay, ats: workable, token: palmpay, country: Nigeria, sector: africa}
+  - {name: PalmPay, ats: smartrecruiters, token: palmpay, country: Nigeria, sector: africa}
   - {name: OPay, ats: workable, token: opay, country: Nigeria, sector: africa}
-  - {name: Cowrywise (Workable), ats: workable, token: cowrywise, country: Nigeria, sector: africa}
+  - {name: Cowrywise, ats: breezy, token: cowrywise, country: Nigeria, sector: africa}
   - {name: Autochek, ats: workable, token: autochek, country: Nigeria, sector: africa}
   - {name: TradeDepot, ats: workable, token: tradedepot, country: Nigeria, sector: africa}
   - {name: Sabi, ats: workable, token: sabi, country: Nigeria, sector: africa}
@@ -368,9 +388,9 @@ companies:
   - {name: Zeepay, ats: workable, token: zeepay, country: Ghana, sector: africa}
   - {name: Hubtel, ats: workable, token: hubtel, country: Ghana, sector: africa}
   - {name: Stitch, ats: workable, token: stitch, country: South Africa, sector: africa}
-  - {name: Clickatell, ats: workable, token: clickatell, country: South Africa, sector: africa}
-  - {name: Aerobotics, ats: workable, token: aerobotics, country: South Africa, sector: africa}
-  - {name: DataProphet, ats: workable, token: dataprophet, country: South Africa, sector: africa}
+  - {name: Clickatell, ats: bamboohr, token: clickatell, country: South Africa, sector: africa}
+  - {name: Aerobotics, ats: bamboohr, token: aerobotics, country: South Africa, sector: africa}
+  - {name: DataProphet, ats: bamboohr, token: dataprophet, country: South Africa, sector: africa}
   - {name: Cognite, ats: workable, token: cognite, country: Norway, sector: ml-infra}
   - {name: Mistral AI (Workable), ats: workable, token: mistral-ai, country: France, sector: ai-lab}
   - {name: Kaiko, ats: workable, token: kaiko, country: France, sector: fintech}
