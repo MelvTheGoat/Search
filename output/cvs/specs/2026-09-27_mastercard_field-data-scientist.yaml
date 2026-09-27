@@ -1,0 +1,46 @@
+job_id: 6128
+company: Mastercard
+title: Field Data Scientist
+headline: fraud
+summary: Machine learning engineer focused on fraud and risk decisioning who explains models clearly. Built fraud detection
+  judged by precision at fixed review capacity, a credit decisioning system with reason codes and a fairness audit, and an
+  explainable risk scorer. Teaches machine learning to student cohorts.
+skills:
+- group: domain
+  lead:
+  - Transaction Fraud Detection
+  - Credit Risk Decisioning
+  - Web3 Fraud Risk Scoring
+- group: ml
+  lead:
+  - LightGBM
+  - PyTorch
+  - SHAP
+  - Feature Engineering
+- group: eng
+  lead:
+  - Python
+  - SQL
+  - FastAPI
+- stats
+- data
+- ai
+projects:
+- id: fraud
+  bullets:
+  - bench
+  - models
+  - deploy
+- id: credit
+  bullets:
+  - system
+  - fairness
+- id: web3
+  bullets:
+  - scorer
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

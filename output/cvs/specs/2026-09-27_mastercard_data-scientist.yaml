@@ -1,0 +1,48 @@
+job_id: 6141
+company: Mastercard
+title: Data Scientist
+headline: fraud
+summary: Machine learning engineer focused on payment fraud. Built sequence-based fraud detection judged per attack type and
+  served at 5.1 ms p99, and an explainable rule-based risk scorer that traces funds to mixers and phishing addresses. Works
+  in Python and SQL with a B.Sc. in Statistics.
+skills:
+- group: domain
+  lead:
+  - Transaction Fraud Detection
+  - Web3 Fraud Risk Scoring
+- group: ml
+  lead:
+  - PyTorch
+  - LightGBM
+  - XGBoost
+  - Sequence Models (GRU, TCN, Transformers)
+  - Feature Engineering
+- group: eng
+  lead:
+  - Python
+  - SQL
+  - FastAPI
+  - Docker
+- stats
+- data
+- ai
+projects:
+- id: fraud
+  bullets:
+  - models
+  - bench
+  - imbalance
+  - deploy
+- id: web3
+  bullets:
+  - detect
+  - scorer
+- id: credit
+  bullets:
+  - system
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

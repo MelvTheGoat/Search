@@ -1,0 +1,54 @@
+job_id: 6446
+company: Yassir
+title: Data Scientist (Pricing)
+headline: quant
+summary: Data scientist with a B.Sc. in Statistics who builds models that price and allocate under real costs. Built a demand
+  forecasting platform that ships the cost-optimal quantile, an uplift study for targeting and discounts under a fixed budget,
+  and deployed ML services with FastAPI and Docker.
+skills:
+- group: stats
+  lead:
+  - Causal Inference (S/T/X-Learners, Causal Forests)
+  - Uplift Modeling
+  - Time-Series Backtesting
+  - Experiment Design
+- group: domain
+  lead:
+  - Demand Forecasting
+- group: ml
+  lead:
+  - LightGBM
+  - Scikit-learn
+  - Feature Engineering
+- group: eng
+  lead:
+  - Python
+  - SQL
+  - Prefect
+  - FastAPI
+  - Docker
+- data
+- ai
+projects:
+- id: forecast
+  bullets:
+  - system
+  - cost
+  - validation
+- id: uplift
+  bullets:
+  - study
+  - findings
+  - eval
+- id: fraud
+  bullets:
+  - deploy
+- id: churn
+  bullets:
+  - deploy
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit
