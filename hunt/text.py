@@ -4,7 +4,7 @@ import html
 import re
 import unicodedata
 
-_BLOCK_TAGS = re.compile(r"<\s*(br|/p|/div|/li|/h\d|/tr|/ul|/ol)\b[^>]*>", re.I)
+_BLOCK_TAGS = re.compile(r"<\s*(br|p|/p|div|/div|/li|h\d|/h\d|/tr|/ul|/ol)\b[^>]*>", re.I)
 _LI_TAG = re.compile(r"<\s*li\b[^>]*>", re.I)
 _TAG = re.compile(r"<[^>]+>")
 
