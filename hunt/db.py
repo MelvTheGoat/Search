@@ -39,7 +39,8 @@ CREATE TABLE IF NOT EXISTS jobs (
     date_applied TEXT,
     notes TEXT,
     letter_file TEXT,
-    user_updated_at TEXT
+    user_updated_at TEXT,
+    cv_file TEXT
 );
 CREATE INDEX IF NOT EXISTS idx_jobs_url ON jobs(url_key);
 CREATE INDEX IF NOT EXISTS idx_jobs_status ON jobs(status);
@@ -65,6 +66,9 @@ def connect(path=None):
     conn = sqlite3.connect(str(path))
     conn.row_factory = sqlite3.Row
     conn.executescript(SCHEMA)
+    cols = {r[1] for r in conn.execute("PRAGMA table_info(jobs)")}
+    if "cv_file" not in cols:  # databases made before tailored CVs
+        conn.execute("ALTER TABLE jobs ADD COLUMN cv_file TEXT")
     return conn
 
 

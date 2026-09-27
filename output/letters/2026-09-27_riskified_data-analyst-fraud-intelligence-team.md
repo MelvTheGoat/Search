@@ -16,10 +16,10 @@ I also built Reckon, a payment reconciliation system that finds duplicate settle
 
 The role also asks for watching detection logic for drift. My demand forecasting platform runs drift monitoring with Evidently and retrains when the data moves.
 
-Python and SQL are my main tools. I am based in Lagos, can start immediately and am happy to relocate to Lisbon. I would welcome a conversation about the role.
+Python and SQL are my main tools. I can start immediately and am happy to relocate to Lisbon. I would welcome a conversation about the role.
 
 Oluwatobi Melvyn Mayungbo
-mayungboluwatobi@gmail.com
+mlvyn.t@gmail.com
 
 ## Why this company
 

@@ -1,0 +1,155 @@
+# Master CV data. Every tailored CV is built only from what is in this file.
+# Facts come from profile/cv.md and profile/projects.md. Bullets are never
+# rewritten per job, only chosen and ordered. Keep this file free of dashes
+# used as punctuation, and keep "Nigeria" off it (it is left off the CV on
+# purpose).
+
+name: Oluwatobi Melvyn Mayungbo
+email: mlvyn.t@gmail.com
+links:
+  - {text: "LinkedIn: linkedin.com/in/oluwatobi-mayungbo-3a567026b", url: "https://linkedin.com/in/oluwatobi-mayungbo-3a567026b"}
+  - {text: "GitHub: github.com/MelvTheGoat", url: "https://github.com/MelvTheGoat"}
+
+# Headlines a tailored CV may use. Each one describes the skills shown here.
+headlines:
+  ml: Machine Learning Engineer
+  ml_ai: Machine Learning and AI Engineer
+  ds: Data Scientist, Machine Learning and Statistics
+  fraud: Machine Learning Engineer, Fraud and Risk
+  risk: Data Scientist, Credit and Fraud Risk
+  llm: AI Engineer, LLM and Retrieval Systems
+  analyst: Data Analyst, Fraud and Risk
+  backend: Software Engineer, Payments and Risk Systems
+  mlops: ML Engineer, MLOps and Production Systems
+  quant: Data Scientist, Statistics and Forecasting
+
+skills:
+  ai: {label: "AI and LLM Systems", items: ["Retrieval-Augmented Generation (RAG)", "Hybrid Search (BM25, Dense Embeddings, RRF)", "LLM Evaluation and Guardrails", "Prompt Engineering", "Citation Verification", "Model Context Protocol (MCP)", "Hugging Face", "ONNX Runtime"]}
+  ml: {label: "Machine Learning", items: ["PyTorch", "Scikit-learn", "LightGBM", "XGBoost", "Deep Learning", "Sequence Models (GRU, TCN, Transformers)", "Model Calibration (Isotonic Regression, Temperature Scaling)", "SHAP", "Feature Engineering"]}
+  stats: {label: "Statistics and Causal Inference", items: ["Statistical Inference", "Experiment Design", "Power Analysis", "CUPED", "Causal Inference (S/T/X-Learners, Causal Forests)", "Uplift Modeling", "Qini and AUUC", "Time-Series Backtesting", "Logistic Regression", "WOE Scorecards"]}
+  eng: {label: "Engineering and MLOps", items: ["Python", "SQL", "DuckDB", "PostgreSQL", "Redis", "FastAPI", "Docker", "GCP Cloud Run", "AWS ECS Fargate", "Railway", "Prefect", "dbt-core", "MLflow", "Evidently", "CI/CD (GitHub Actions)", "Git", "Pytest", "Streamlit", "React"]}
+  domain: {label: "Payments and Risk", items: ["Transaction Fraud Detection", "Credit Risk Decisioning", "Payment Reconciliation", "Double-Entry Ledgers and Idempotency", "Regulatory Compliance (CBN/NDPA)", "Demand Forecasting", "Web3 Fraud Risk Scoring"]}
+  data: {label: "Data Analysis", items: ["Pandas", "NumPy", "SQL", "Anomaly Detection"]}
+
+projects:
+  fraud:
+    name: Sequence-Based Transaction Fraud Detection System
+    stack: Python, PyTorch, LightGBM, ONNX Runtime, FastAPI, Docker, SHAP
+    links: [{text: GitHub, url: "https://github.com/MelvTheGoat/Fraud-Detection-With-Sequence-Models"}]
+    bullets:
+      models: "Built and compared three deep sequence architectures (GRU, Temporal Convolutional Network and a causally masked Transformer encoder) over customer transaction histories, with learned embeddings for high-cardinality merchant (~2.9k vocabulary), MCC and device-type categoricals; all models under 115k parameters and CPU-trainable in under 6 minutes."
+      bench: "Benchmarked all architectures against a strong LightGBM baseline on engineered velocity and deviation features, reporting PR-AUC and precision at fixed review capacity (top 0.1%, 0.5%, 1%) across 3 seeds, with a per-attack-type breakdown covering card testing, account takeover and merchant compromise; sequence models cut expected cost per transaction 27% under an explicit cost model."
+      imbalance: "Handled extreme class imbalance with focal loss and weighted sampling and isolated their failure modes: focal loss degraded probability calibration (ECE 0.0063) while weighted sampling cost 0.042 PR-AUC. Corrected calibration with temperature scaling and isotonic regression, reducing ECE to 0.0005."
+      deploy: "Deployed real-time scoring by exporting to ONNX Runtime (2.9× faster than eager PyTorch at batch size 1) and serving via FastAPI, reaching 5.1 ms p99 end-to-end latency against a 50 ms budget, with append-only per-decision audit logging and attention-based attribution of the prior transactions driving each flag."
+  credit:
+    name: Credit Risk Decisioning and Fairness Audit System
+    stack: Python, LightGBM, scikit-learn, SHAP, WOE Scorecards, FastAPI, Docker
+    links: [{text: GitHub, url: "https://github.com/MelvTheGoat/Credit-Risk-Decisioning"}, {text: Live App, url: "https://credit-risk-decisioning-702657773047.europe-west1.run.app/"}]
+    bullets:
+      system: "Developed a full credit decisioning system producing calibrated default probabilities, cost-optimal approve and decline cutoffs, adverse action reason codes and an append-only audit trail that lets any individual decision be reconstructed months later."
+      calib: "Benchmarked gradient boosting against a traditional WOE-binned logistic scorecard, prioritising calibration quality (Brier score, reliability diagrams, expected calibration error) over ranking metrics, because expected loss needs true probabilities rather than rankings."
+      fairness: "Audited fairness across sex, age, education and marital status using demographic parity and equal opportunity differences plus within-group calibration, and presented the accuracy and fairness tradeoff curve as a policy decision rather than silently optimising it away."
+  rag:
+    name: Fintech Compliance RAG Assistant
+    stack: Python, Streamlit, BM25, ONNX Runtime, Reciprocal Rank Fusion, FastAPI, Docker, GCP Cloud Run
+    links: [{text: GitHub, url: "https://github.com/MelvTheGoat/Nigerian-Fintech-Compliance-RAG"}, {text: Live App, url: "https://nigerian-fintech-regulation-assistant-474115007874.europe-west1.run.app/"}]
+    bullets:
+      system: "Built and deployed a regulatory question-answering system over central bank (CBN) circulars and the NDPA, combining sparse (BM25) and dense (ONNX-served MiniLM) retrieval fused via reciprocal rank fusion, reaching 0.96 recall@5 and 0.842 MRR on a 50-question labelled golden set with zero retrieval misses in the top 10."
+      chunking: "Engineered section-aware chunking that never merges across a document's own structural boundaries, keeping every citation attributable to exactly one clause, and validated it against a structure-blind fixed-window baseline rather than asserting it was better."
+      safety: "Designed generation to fail safely under uncertainty: a sentinel-token refusal mechanism enforced across the prompt, output guardrail and evaluation harness, plus post-generation citation verification that strips any marker the model cited but never retrieved."
+      eval: "Ran retrieval and generation evaluation as separate metrics to localise failure by component; traced a 0.40 refusal-correctness result to a lexical-overlap limitation in the offline stub judge and flagged re-validation against a live provider as the next step instead of overstating readiness."
+      deploy: "Deployed on GCP Cloud Run via Docker within a ~225MB peak memory footprint (2GB budget), with per-session and daily request caps in application code to bound API cost on a public endpoint."
+  reckon:
+    name: "Reckon: Payment Reconciliation and Review System"
+    stack: Python, PyTorch, DuckDB, FastAPI, React, Docker, Railway, PostgreSQL
+    links: [{text: GitHub, url: "https://github.com/MelvTheGoat/Stack"}, {text: Live App, url: "https://stack-production-d2a4.up.railway.app/review"}]
+    bullets:
+      system: "Built and deployed a payment reconciliation system processing multi-source transaction feeds to detect uncollected revenue, duplicate settlements and payout discrepancies, combining deterministic matching rules with ML-assisted discrepancy resolution."
+      pipeline: "Engineered a multi-stage reconciliation pipeline using DuckDB and FastAPI, with temporal join logic and tolerance thresholds to handle asynchronous processor webhooks and bank settlement files."
+      review: "Designed a human-in-the-loop review interface in React showing match confidence scores, audit trails and suggested resolution actions to streamline exception handling."
+      ops: "Containerised and deployed the full service on Railway with structured log collection, automated integration testing and persistent transaction state tracking."
+  forecast:
+    name: Self-Operating Demand Forecasting Platform
+    stack: Python, Prefect, dbt-core, DuckDB, LightGBM, MLflow, Evidently, FastAPI, Docker, GitHub Actions
+    links: [{text: GitHub, url: "https://github.com/MelvTheGoat/nyc-taxi-demand-forecast"}]
+    bullets:
+      system: "Built an end-to-end hourly demand forecasting system for NYC taxi zones, producing 24-hour quantile forecasts through an orchestrated Prefect pipeline spanning ingestion, dbt/DuckDB transformations, backtesting, drift monitoring and conditional retraining."
+      cost: "Modelled asymmetric business cost by penalising unmet demand at 3× idle supply and shipping the cost-optimal quantile rather than the median, cutting expected cost by 25% on an identical model and beating a seasonal-naive baseline by 32%."
+      validation: "Validated with rolling-origin backtesting across 6 expanding-window folds against seasonal-naive and historical-mean baselines, reporting MASE and pinball loss, with automated leakage tests that fail the build if any feature reads past the forecast origin."
+  web3:
+    name: "web3-risk-mcp: Web3 Fraud Risk MCP Server"
+    stack: Python, Model Context Protocol (MCP), Etherscan V2, GoPlus, DexScreener, Docker, GitHub Actions
+    links: [{text: GitHub, url: "https://github.com/MelvTheGoat/web3-risk-mcp"}]
+    bullets:
+      system: "Built an MCP server that gives AI assistants (Claude Desktop, Cursor) six read-only tools to check a crypto wallet, token or smart contract for risk before anyone interacts with it, returning a 0 to 100 risk score with a reason for every point, across Ethereum, Base, Arbitrum One, Polygon PoS and BNB Chain."
+      detect: "Detects honeypot tokens, rug pull signs, hidden owner powers (mint, blacklist, pause), buy and sell tax, holder concentration, unlocked liquidity, and fund links to mixers, sanctioned wallets, exploiters and phishing addresses over 1 or 2 hops."
+      scorer: "Designed a rule-based, fully explainable scorer where findings carry stable IDs and decisive findings set a floor of 75 so trust signals can never hide them; each score carries a confidence level based on how many sources answered."
+      http: "Built a resilient HTTP layer with caching, per-source rate limits and retries with exponential backoff and jitter; one failing source never breaks an investigation, and missing data lowers confidence rather than the score."
+      eval: "Assembled an evaluation set of 34 hand-checked addresses (12 risky, 22 safe) with a record and replay harness reporting ROC AUC, precision and recall."
+  ledger:
+    name: Production-Grade Double-Entry Ledger API
+    stack: Python 3.12, FastAPI, PostgreSQL 16, Redis 7, Alembic, Docker
+    links: [{text: GitHub, url: "https://github.com/MelvTheGoat/Production-Grade-Double-Entry-Ledger-API"}]
+    bullets:
+      system: "Built a double-entry ledger and payments API where correctness under concurrency, retries, partial failure and replay is enforced in the database: integer minor units, every transaction summing to zero through a deferred constraint trigger, and an append-only ledger where corrections are reversals."
+      idem: "Required an Idempotency-Key on every mutating endpoint so a replayed key returns the original response and creates nothing; events go out through a transactional outbox."
+      locking: "Benchmarked pessimistic against optimistic locking: on a hot single account pessimistic reached 144.8 tps against 41.3 tps (3.5×) while optimistic shed 46% of writes as conflicts; spread across 16 accounts it was 206.5 tps against 112.6 tps."
+      load: "Load tested to find throughput saturating at about 250 to 260 req/s; removing the hot account cut transfer p99 from 1800 ms to 390 ms (4.6×) at 50 users."
+      tests: "Wrote 138 tests against real PostgreSQL and Redis, including a concurrency test where exactly half of N simultaneous transfers succeed and no balance goes negative."
+  uplift:
+    name: Uplift Modelling for Campaign Targeting
+    stack: Python, scikit-learn, LightGBM, EconML, pytest, GitHub Actions
+    links: [{text: GitHub, url: "https://github.com/MelvTheGoat/Uplift-Modelling-Decision"}]
+    bullets:
+      study: "Ran a causal inference study on the Hillstrom randomised e-mail trial (64,000 customers) to decide which customers to contact under a fixed budget, delivered as a two-page decision memo for a marketing director."
+      learners: "Hand-implemented S-, T- and X-learners over a swappable scikit-learn and LightGBM base plus an EconML causal forest, validated first on synthetic data with a known individual treatment effect."
+      findings: "Showed the campaign works (1.25% conversion against 0.57%) but that a non-randomised list overstates the effect by 7.5×, and that a response model mails five times as many customers the campaign harms as an uplift model does."
+      eval: "Evaluated with Qini curves, AUUC, decile tables and bootstrap intervals; uplift targeting was worth about $1,390 against about $3,170 for raising the budget, and a failed placebo test on the primary campaign was reported openly."
+      experiment: "Added a power and MDE calculator and a CUPED variance-reduction demo; 135 tests on synthetic data with CI on Python 3.10 to 3.12."
+  epl:
+    name: Premier League Match Predictor
+    stack: Python, LightGBM, scikit-learn, pandas, SQLite, Flask, Vercel
+    links: [{text: GitHub, url: "https://github.com/MelvTheGoat/Premier-League"}]
+    bullets:
+      system: "Built a predictor that forecasts Premier League outcomes and scorelines each gameweek and retrains itself after every gameweek, keeping a public record of every past prediction."
+      model: "Blended a LightGBM classifier over a 204-column feature table with a multinomial logistic regression, trained on log loss so draws keep realistic probability."
+      backtest: "Backtested gameweek by gameweek over 1,050 matches: 52.1% outcome accuracy against 43.2% for always picking the home side, and log loss 0.9948 against 1.0061 for an Elo-only baseline, with well calibrated probabilities."
+  fpl:
+    name: FPL AI Manager
+    stack: Python, SQLite, FastAPI, React, Docker, Render
+    links: [{text: GitHub, url: "https://github.com/MelvTheGoat/Fantasy-Premier-League"}]
+    bullets:
+      system: "Built two models that play Fantasy Premier League against the live FPL API: a Manager that carries one squad all season under real transfer, budget and chip rules, and a Best XI optimiser that rebuilds the best legal squad each gameweek."
+      engine: "Wrote a rules engine, an expected-points model over a multi-gameweek horizon and a leakage-free backfill; cached, rate-limited API client, scheduled jobs and one-command deployment, with 574 tests."
+  churn:
+    name: Telco Customer Churn, End to End on AWS
+    stack: Python, XGBoost, MLflow, FastAPI, Gradio, Docker, GitHub Actions, AWS ECS Fargate, Application Load Balancer, CloudWatch
+    links: [{text: GitHub, url: "https://github.com/MelvTheGoat/Customer-Churn"}]
+    bullets:
+      model: "Built a churn prediction model with feature engineering and an XGBoost classifier, with experiments tracked in MLflow."
+      deploy: "Served it through a FastAPI /predict endpoint with a Gradio UI, containerised with Docker and deployed on AWS ECS Fargate behind an Application Load Balancer, with CloudWatch logs and GitHub Actions CI/CD."
+
+experience:
+  sqi:
+    role: Machine Learning Instructor
+    org: SQI College of ICT
+    dates: March 2026 to Present
+    bullets:
+      teach: "Teach machine learning and deep learning to student cohorts, covering statistical foundations, classical ML algorithms, neural architectures, sequence models and production evaluation metrics."
+      tools: "Instruct students on data analysis, feature engineering and model building with PyTorch, Scikit-Learn, Pandas and NumPy."
+      projects: "Guide learners through end-to-end ML projects on real-world datasets."
+  niser:
+    role: Internal Auditor
+    org: NISER
+    dates: May 2024 to July 2024
+    bullets:
+      audit: "Analysed financial and operational records to identify inconsistencies and irregularities, performing manual anomaly detection across complex transactional datasets."
+
+education:
+  - {degree: "B.Sc. Statistics", school: "University of Ibadan", dates: "January 2021 to March 2025"}
+  - {degree: "Professional Diploma in Artificial Intelligence", school: "SQI College of ICT", dates: "July 2025 to Present"}
+
+certificates:
+  - Google Data Analytics Professional Certificate
+  - Google Advanced Data Analytics Professional Certificate
+  - Claude Code In Action

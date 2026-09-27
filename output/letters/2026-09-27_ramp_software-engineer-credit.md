@@ -16,10 +16,10 @@ On the credit side, I built a decisioning system with calibrated default probabi
 
 For low-latency risk controls, my fraud scoring service runs on ONNX Runtime behind FastAPI at 5.1 ms p99 end to end against a 50 ms budget, with per-decision audit logging.
 
-I am based in Lagos, can start immediately and am willing to relocate to New York. I would be glad to talk about the role.
+I can start immediately and am willing to relocate to New York. I would be glad to talk about the role.
 
 Oluwatobi Melvyn Mayungbo
-mayungboluwatobi@gmail.com
+mlvyn.t@gmail.com
 
 ## Why this company
 

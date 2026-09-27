@@ -29,6 +29,9 @@ citizenship:
   - "(citizens?|nationals?) or (lawful )?(permanent residents?|green card holders?)"
   - "green card holders?"
   - "permanent residen(t|cy|ts) (status )?(is |are )?(required|only)"
+  - "\\b(emirati|saudi|qatari|kuwaiti|omani|bahraini|uae|gcc) (nationals?|citizens?)\\b"
+  - "\\bnationals only\\b|\\bemiratisation\\b|\\bemiratization\\b|\\bsaudi[sz]ation\\b|\\bnitaqat\\b"
+  - "\\((emirati|saudi|qatari)[^)]*\\)"
 clearance:
   - "security clearance"
   - "\\b(ts/sci|top secret|sc clearance|dv clearance|nv1|nv2|baseline clearance|active clearance|secret clearance)\\b"

@@ -36,13 +36,15 @@ message.
 7. Sign off with:
 
    Oluwatobi Melvyn Mayungbo
-   mayungboluwatobi@gmail.com
+   mlvyn.t@gmail.com
 
-   Use this email, not the one printed on the CV.
+   This is the email on the CV too.
 
-Other facts you may state (from `profile/profile.yaml`): based in Lagos,
-Nigeria (WAT, UTC+1), can start immediately, willing to relocate to any
-country. Do not mention visas unless the post asks.
+Other facts you may state (from `profile/profile.yaml`): can start
+immediately, willing to relocate to any country, works in UTC+1 (useful for
+remote roles). Do not name Lagos or Nigeria in letters or CVs, and do not
+mention visas unless the post asks. Tailored CVs follow the same rules and
+are built only from `profile/cv_data.yaml`.
 
 After writing, always run `python hunt.py check` and fix every problem it
 lists before finishing.

@@ -16,10 +16,10 @@ Your team deploys and monitors its own models. I work the same way: my projects 
 
 For experiments, my uplift modelling study on 64,000 customers includes a power and MDE calculator and a CUPED variance reduction demo.
 
-I work in Python and SQL with NumPy and Pandas, and I teach machine learning at SQI College of ICT. I am based in Lagos, can start immediately and am open to relocating to London. I would like to talk about the role.
+I work in Python and SQL with NumPy and Pandas, and I teach machine learning at SQI College of ICT. I can start immediately and am open to relocating to London. I would like to talk about the role.
 
 Oluwatobi Melvyn Mayungbo
-mayungboluwatobi@gmail.com
+mlvyn.t@gmail.com
 
 ## Why this company
 

@@ -27,7 +27,7 @@ Write cover letters for the jobs in the newest queue file.
    <150 to 250 words>
 
    Oluwatobi Melvyn Mayungbo
-   mayungboluwatobi@gmail.com
+   mlvyn.t@gmail.com
 
    ## Why this company
 

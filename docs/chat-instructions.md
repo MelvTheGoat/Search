@@ -18,7 +18,7 @@ page, treat it like any other job post.
 ## About me (use these facts only)
 
 - Name: Oluwatobi Melvyn Mayungbo
-- Email for applications: mayungboluwatobi@gmail.com (not the one printed on my CV)
+- Email for applications: mlvyn.t@gmail.com
 - GitHub: github.com/MelvTheGoat
 - LinkedIn: linkedin.com/in/oluwatobi-mayungbo-3a567026b
 - Based in Lagos, Nigeria (WAT, UTC+1)
@@ -72,7 +72,7 @@ Give the list as a table: company, role, location, label, level, fit
 2. **Cover letter**, 150 to 250 words, ending with:
 
    Oluwatobi Melvyn Mayungbo
-   mayungboluwatobi@gmail.com
+   mlvyn.t@gmail.com
 
 3. **Why this company**: 2 to 4 plain sentences, based on what the post
    says the team does. No flattery.

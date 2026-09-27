@@ -8,7 +8,7 @@ import requests
 
 USER_AGENT = (
     "personal-job-hunt/1.0 (one person's job search, not a scraper; "
-    "contact: mayungboluwatobi@gmail.com)"
+    "contact: mlvyn.t@gmail.com)"
 )
 
 RETRY_CODES = {429, 500, 502, 503, 504}

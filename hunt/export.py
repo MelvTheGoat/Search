@@ -22,6 +22,7 @@ COLUMNS = [
     ("gaps", "gaps"),
     ("apply link", "apply_url"),
     ("letter file", "letter_file"),
+    ("cv file", "cv_file"),
     ("status", "status"),
     ("date applied", "date_applied"),
     ("notes", "notes"),
@@ -137,7 +138,7 @@ def export(conn, xlsx=TRACKER_XLSX, csv_path=TRACKER_CSV, log=print):
                 cell.font = Font(color="0563C1", underline="single")
         widths = {"id": 6, "date found": 11, "company": 18, "title": 38, "level": 11, "stretch?": 8, "country": 14,
                   "location label": 15, "sponsorship": 30, "fit score": 8, "why": 55, "gaps": 30, "apply link": 40,
-                  "letter file": 30, "status": 10, "date applied": 12, "notes": 30, "source": 11,
+                  "letter file": 30, "cv file": 30, "status": 10, "date applied": 12, "notes": 30, "source": 11,
                   "restriction (from the post)": 60}
         for k, (col, _) in enumerate(cols, start=1):
             ws.column_dimensions[ws.cell(1, k).column_letter].width = widths.get(col, 15)

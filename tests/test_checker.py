@@ -7,7 +7,7 @@ RULES = load_yaml("writing.yaml")
 GOOD_BODY = " ".join(["Plain words here."] * 55)
 
 
-def write(tmp_path, body, sign="Oluwatobi Melvyn Mayungbo\nmayungboluwatobi@gmail.com"):
+def write(tmp_path, body, sign="Oluwatobi Melvyn Mayungbo\nmlvyn.t@gmail.com"):
     p = tmp_path / "letter.md"
     p.write_text(f"---\njob_id: 3\nlink: https://x.com/jobs/12345\n---\n\n## Cover letter\n\n{body}\n\n{sign}\n\n## Why this company\n\nShort.\n")
     return p

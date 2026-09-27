@@ -236,6 +236,13 @@ def cmd_page_import(args):
     _quiet_export(conn)
 
 
+def cmd_cv(args):
+    from .cv import build_all
+    built, problems = build_all(db.connect())
+    if problems:
+        sys.exit(1)
+
+
 def cmd_verify(args):
     from .verify import verify_companies
     verify_companies(write=not args.dry_run)
@@ -291,6 +298,9 @@ def main(argv=None):
 
     s = sub.add_parser("stats", help="counts by status, source, country and label")
     s.set_defaults(fn=cmd_stats)
+
+    s = sub.add_parser("cv", help="build tailored CVs (Word and PDF) from output/cvs/specs")
+    s.set_defaults(fn=cmd_cv)
 
     s = sub.add_parser("page-export", help="write files for the online tracker page")
     s.add_argument("--open", type=int, default=300, help="how many new open jobs to show")
