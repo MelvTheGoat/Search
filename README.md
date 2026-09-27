@@ -110,6 +110,18 @@ You can also change `status`, `notes` and `date applied` right in
 `tracker.xlsx`. The next run reads your edits back before it writes the
 file again, so they are kept. Close the file before a run.
 
+## The online tracker page
+
+Your tracker page is at https://claude.ai/artifact/DBCY7SWfExAuyaTUifxm4G.
+It shows the latest run: fit score, location label, level, gaps and a link
+to each post. You can change a job's status and add notes there, and read
+and copy its cover letter. Changes save at once and flow back into
+`data/jobs.db` and `tracker.xlsx` on the next run.
+
+A daily run in Claude Code on the web fetches new jobs and refreshes the
+page (steps in `CLAUDE.md`). On your own computer, `python hunt.py
+page-export` writes the files for the page; ask Claude Code to send them.
+
 ## All commands
 
 | Command | What it does |
@@ -127,6 +139,8 @@ file again, so they are kept. Close the file before a run.
 | `python hunt.py stats` | Counts by status, source, country and label |
 | `python hunt.py rescore` | Score stored jobs again after you change the config |
 | `python hunt.py verify-companies` | Test all company boards and remove dead ones |
+| `python hunt.py page-export` | Write the files that refresh the online page |
+| `python hunt.py page-import <folder>` | Apply status and notes changed on the page |
 
 A re-run never changes your status, notes, date applied, letter file or the
 date a job was first found.

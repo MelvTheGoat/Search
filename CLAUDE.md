@@ -42,3 +42,21 @@ country. Do not mention visas unless the post asks.
 
 After writing, always run `python hunt.py check` and fix every problem it
 lists before finishing.
+
+## Daily run and the online tracker page
+
+The tracker page is https://claude.ai/artifact/DBCY7SWfExAuyaTUifxm4G. It
+reads records from its own database. Oluwatobi changes status and notes on
+the page, and those changes live in the `edits` collection. Follow these
+steps in order, so no change made on the page is lost:
+
+1. If `.venv` is missing, run `bash scripts/setup.sh`.
+2. Read the page edits: ArtifactData `list` on collection `edits` with
+   `out_dir: data/page_in`, then `python hunt.py page-import data/page_in/edits`.
+3. `python hunt.py run`
+4. `python hunt.py page-import data/page_in/edits` again, because the run
+   may have added jobs that the edits point to.
+5. `python hunt.py page-export`, then send each batch in
+   `data/page/writes.json` with ArtifactData `batch` (each batch is a list
+   of writes; send them in order, the last one updates `meta/run`).
+6. Report the top new jobs in a few lines.
