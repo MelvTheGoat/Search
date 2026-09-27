@@ -16,7 +16,7 @@ class FakeHttp:
     def __init__(self, payload):
         self.payload = payload
 
-    def get(self, url, params=None, as_json=True, missing_ok=False):
+    def get(self, url, params=None, as_json=True, missing_ok=False, **kw):
         return self.payload
 
 
