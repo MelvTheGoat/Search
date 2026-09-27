@@ -2,9 +2,11 @@
 #
 # One company per line. To add one, copy a line and change it:
 #   name:   company name as you want it shown
-#   ats:    greenhouse, lever or ashby
+#   ats:    greenhouse, lever, ashby, smartrecruiters, workable, recruitee or personio
 #   token:  the board name in the job board URL, for example
-#           boards.greenhouse.io/TOKEN, jobs.lever.co/TOKEN, jobs.ashbyhq.com/TOKEN
+#           boards.greenhouse.io/TOKEN, jobs.lever.co/TOKEN, jobs.ashbyhq.com/TOKEN,
+#           jobs.smartrecruiters.com/TOKEN, apply.workable.com/TOKEN,
+#           TOKEN.recruitee.com, TOKEN.jobs.personio.de
 #   country: where the head office is (for your reference)
 #   sector: ai-lab, ml-infra, fintech, africa, tech, quant, health, mobility, other
 #   known_sponsor: true (optional) if the company is known to sponsor visas
@@ -12,7 +14,7 @@
 #   region: eu (optional, Lever only) for boards on jobs.eu.lever.co
 #
 # After adding, run `python hunt.py verify-companies` to test the tokens.
-# It tries the other two ATSs if a token is dead, and moves dead ones to
+# It tries the other ATSs if a token is dead, and moves dead ones to
 # companies_removed.yaml.
 
 companies:
@@ -480,3 +482,124 @@ companies:
   - {name: Employment Hero, ats: lever, token: employmenthero, country: Australia, sector: tech}
   - {name: Xero, ats: greenhouse, token: xero, country: New Zealand, sector: fintech, known_sponsor: true}
   - {name: Rocket Lab, ats: greenhouse, token: rocketlab, country: New Zealand, sector: other}
+
+  # --- SmartRecruiters boards (token is the company id in jobs.smartrecruiters.com/TOKEN)
+  - {name: Visa, ats: smartrecruiters, token: Visa, country: US, sector: fintech, known_sponsor: true}
+  - {name: ServiceNow, ats: smartrecruiters, token: ServiceNow, country: US, sector: tech, known_sponsor: true}
+  - {name: Bosch, ats: smartrecruiters, token: BoschGroup, country: Germany, sector: other, known_sponsor: true}
+  - {name: Delivery Hero SE, ats: smartrecruiters, token: DeliveryHero, country: Germany, sector: tech, known_sponsor: true}
+  - {name: Ubisoft, ats: smartrecruiters, token: Ubisoft2, country: France, sector: tech}
+  - {name: Sanofi, ats: smartrecruiters, token: Sanofi, country: France, sector: health}
+  - {name: Equinix, ats: smartrecruiters, token: Equinix, country: US, sector: tech}
+  - {name: NielsenIQ, ats: smartrecruiters, token: NielsenIQ, country: US, sector: tech}
+  - {name: Experian, ats: smartrecruiters, token: Experian, country: UK, sector: fintech, known_sponsor: true}
+  - {name: Western Union, ats: smartrecruiters, token: WesternUnion, country: US, sector: fintech}
+  - {name: Deezer, ats: smartrecruiters, token: Deezer, country: France, sector: tech}
+  - {name: Wolt SR, ats: smartrecruiters, token: Wolt, country: Finland, sector: tech}
+  - {name: IKEA, ats: smartrecruiters, token: IKEA, country: Sweden, sector: other}
+  - {name: Sixt, ats: smartrecruiters, token: Sixt, country: Germany, sector: mobility}
+  - {name: Allegro, ats: smartrecruiters, token: Allegro, country: Poland, sector: tech}
+  - {name: Adevinta, ats: smartrecruiters, token: Adevinta, country: Spain, sector: tech}
+  - {name: Careem SR, ats: smartrecruiters, token: Careem, country: UAE, sector: mobility}
+  - {name: Jumia SR, ats: smartrecruiters, token: Jumia, country: Nigeria, sector: africa}
+  - {name: Interswitch, ats: smartrecruiters, token: Interswitch, country: Nigeria, sector: africa}
+  - {name: MTN Group, ats: smartrecruiters, token: MTNGroup, country: South Africa, sector: africa}
+  - {name: Safaricom, ats: smartrecruiters, token: Safaricom, country: Kenya, sector: africa}
+  - {name: Standard Bank, ats: smartrecruiters, token: StandardBankGroup, country: South Africa, sector: africa}
+  - {name: Ecobank, ats: smartrecruiters, token: Ecobank, country: Togo, sector: africa}
+
+  # --- Workable boards (token from apply.workable.com/TOKEN)
+  - {name: Hugging Face (Workable), ats: workable, token: huggingface, country: US, sector: ai-lab}
+  - {name: InstaDeep (Workable), ats: workable, token: instadeep, country: UK, sector: ai-lab}
+  - {name: Moniepoint (Workable), ats: workable, token: moniepoint, country: Nigeria, sector: africa}
+  - {name: Kuda (Workable), ats: workable, token: kuda, country: Nigeria, sector: africa}
+  - {name: Renmoney, ats: workable, token: renmoney, country: Nigeria, sector: africa}
+  - {name: FairMoney (Workable), ats: workable, token: fairmoney, country: Nigeria, sector: africa}
+  - {name: PalmPay, ats: workable, token: palmpay, country: Nigeria, sector: africa}
+  - {name: OPay, ats: workable, token: opay, country: Nigeria, sector: africa}
+  - {name: Cowrywise (Workable), ats: workable, token: cowrywise, country: Nigeria, sector: africa}
+  - {name: Autochek, ats: workable, token: autochek, country: Nigeria, sector: africa}
+  - {name: TradeDepot, ats: workable, token: tradedepot, country: Nigeria, sector: africa}
+  - {name: Sabi, ats: workable, token: sabi, country: Nigeria, sector: africa}
+  - {name: Eden Life, ats: workable, token: edenlife, country: Nigeria, sector: africa}
+  - {name: VFD Group, ats: workable, token: vfd-group, country: Nigeria, sector: africa}
+  - {name: Sterling Bank, ats: workable, token: sterling-bank, country: Nigeria, sector: africa}
+  - {name: Wema Bank, ats: workable, token: wemabank, country: Nigeria, sector: africa}
+  - {name: Access Bank, ats: workable, token: accessbank, country: Nigeria, sector: africa}
+  - {name: Nomba, ats: workable, token: nomba, country: Nigeria, sector: africa}
+  - {name: Bankly, ats: workable, token: bankly, country: Nigeria, sector: africa}
+  - {name: 54gene, ats: workable, token: 54gene, country: Nigeria, sector: africa}
+  - {name: Wakanow, ats: workable, token: wakanow, country: Nigeria, sector: africa}
+  - {name: Semicolon, ats: workable, token: semicolon, country: Nigeria, sector: africa}
+  - {name: Data Science Nigeria, ats: workable, token: datasciencenigeria, country: Nigeria, sector: africa}
+  - {name: Chipper Cash (Workable), ats: workable, token: chippercash, country: US, sector: africa}
+  - {name: Paystack (Workable), ats: workable, token: paystack, country: Nigeria, sector: africa}
+  - {name: Flutterwave (Workable), ats: workable, token: flutterwave, country: Nigeria, sector: africa}
+  - {name: Sendwave, ats: workable, token: sendwave, country: US, sector: africa}
+  - {name: Pezesha, ats: workable, token: pezesha, country: Kenya, sector: africa}
+  - {name: Kopo Kopo, ats: workable, token: kopokopo, country: Kenya, sector: africa}
+  - {name: Lipa Later, ats: workable, token: lipalater, country: Kenya, sector: africa}
+  - {name: Watu Credit, ats: workable, token: watu, country: Kenya, sector: africa}
+  - {name: Zeepay, ats: workable, token: zeepay, country: Ghana, sector: africa}
+  - {name: Hubtel, ats: workable, token: hubtel, country: Ghana, sector: africa}
+  - {name: Stitch, ats: workable, token: stitch, country: South Africa, sector: africa}
+  - {name: Clickatell, ats: workable, token: clickatell, country: South Africa, sector: africa}
+  - {name: Aerobotics, ats: workable, token: aerobotics, country: South Africa, sector: africa}
+  - {name: DataProphet, ats: workable, token: dataprophet, country: South Africa, sector: africa}
+  - {name: Cognite, ats: workable, token: cognite, country: Norway, sector: ml-infra}
+  - {name: Mistral AI (Workable), ats: workable, token: mistral-ai, country: France, sector: ai-lab}
+  - {name: Kaiko, ats: workable, token: kaiko, country: France, sector: fintech}
+  - {name: Lokalise, ats: workable, token: lokalise, country: Latvia, sector: tech}
+  - {name: Toloka, ats: workable, token: toloka, country: Netherlands, sector: ml-infra}
+  - {name: Nexos, ats: workable, token: nexos, country: Lithuania, sector: ai-lab}
+  - {name: Smartly, ats: workable, token: smartly, country: Finland, sector: tech}
+  - {name: Sportradar, ats: workable, token: sportradar, country: Switzerland, sector: tech}
+  - {name: Mambu, ats: workable, token: mambu, country: Germany, sector: fintech}
+  - {name: Payhawk, ats: workable, token: payhawk, country: Bulgaria, sector: fintech}
+  - {name: Viva Wallet, ats: workable, token: viva-wallet, country: Greece, sector: fintech}
+  - {name: Blueground, ats: workable, token: blueground, country: Greece, sector: tech}
+  - {name: Workable, ats: workable, token: workable, country: Greece, sector: tech}
+  - {name: Hims & Hers, ats: workable, token: hims-and-hers, country: US, sector: health}
+  - {name: Careem (Workable), ats: workable, token: careem, country: UAE, sector: mobility}
+  - {name: Pure Harvest, ats: workable, token: pureharvest, country: UAE, sector: other}
+  - {name: Baraka, ats: workable, token: baraka, country: UAE, sector: fintech}
+  - {name: Rain, ats: workable, token: rain, country: Bahrain, sector: fintech}
+  - {name: Tabby (Workable), ats: workable, token: tabby, country: UAE, sector: fintech}
+
+  # --- Recruitee boards (token from TOKEN.recruitee.com)
+  - {name: Bynder, ats: recruitee, token: bynder, country: Netherlands, sector: tech}
+  - {name: Tiqets, ats: recruitee, token: tiqets, country: Netherlands, sector: tech}
+  - {name: Channable, ats: recruitee, token: channable, country: Netherlands, sector: tech}
+  - {name: Bitvavo, ats: recruitee, token: bitvavo, country: Netherlands, sector: fintech}
+  - {name: Sendcloud, ats: recruitee, token: sendcloud, country: Netherlands, sector: tech}
+  - {name: Mews, ats: recruitee, token: mews, country: Netherlands, sector: tech}
+  - {name: Catawiki, ats: recruitee, token: catawiki, country: Netherlands, sector: tech}
+  - {name: Ohpen, ats: recruitee, token: ohpen, country: Netherlands, sector: fintech}
+  - {name: Bux, ats: recruitee, token: bux, country: Netherlands, sector: fintech}
+  - {name: Dexter Energy, ats: recruitee, token: dexterenergy, country: Netherlands, sector: ai-lab}
+  - {name: Vandebron, ats: recruitee, token: vandebron, country: Netherlands, sector: other}
+  - {name: Productboard, ats: recruitee, token: productboard, country: Czechia, sector: tech}
+  - {name: Rohlik, ats: recruitee, token: rohlik, country: Czechia, sector: tech}
+  - {name: Brainly, ats: recruitee, token: brainly, country: Poland, sector: ai-lab}
+  - {name: Docplanner (Recruitee), ats: recruitee, token: docplanner, country: Poland, sector: health}
+  - {name: Glovo (Recruitee), ats: recruitee, token: glovo, country: Spain, sector: tech}
+
+  # --- Personio boards (token from TOKEN.jobs.personio.de)
+  - {name: Personio (own board), ats: personio, token: personio, country: Germany, sector: tech}
+  - {name: Trade Republic (Personio), ats: personio, token: traderepublic, country: Germany, sector: fintech}
+  - {name: Scalable Capital (Personio), ats: personio, token: scalablecapital, country: Germany, sector: fintech}
+  - {name: wefox, ats: personio, token: wefox, country: Germany, sector: fintech}
+  - {name: Moss, ats: personio, token: getmoss, country: Germany, sector: fintech}
+  - {name: Pliant, ats: personio, token: pliant, country: Germany, sector: fintech}
+  - {name: Billie, ats: personio, token: billie, country: Germany, sector: fintech}
+  - {name: Grover, ats: personio, token: grover, country: Germany, sector: tech}
+  - {name: TIER Dott, ats: personio, token: tier, country: Germany, sector: mobility}
+  - {name: Enpal (Personio), ats: personio, token: enpal, country: Germany, sector: other}
+  - {name: Merantix, ats: personio, token: merantix, country: Germany, sector: ai-lab}
+  - {name: Parloa, ats: personio, token: parloa, country: Germany, sector: ai-lab}
+  - {name: Langdock, ats: personio, token: langdock, country: Germany, sector: ai-lab}
+  - {name: Nuri, ats: personio, token: nuri, country: Germany, sector: fintech}
+  - {name: Finom, ats: personio, token: finom, country: Netherlands, sector: fintech}
+  - {name: Vivid Money, ats: personio, token: vivid, country: Germany, sector: fintech}
+  - {name: Kontist, ats: personio, token: kontist, country: Germany, sector: fintech}
+  - {name: Clark, ats: personio, token: clark, country: Germany, sector: fintech}
