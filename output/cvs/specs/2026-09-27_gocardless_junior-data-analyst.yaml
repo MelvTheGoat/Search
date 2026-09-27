@@ -1,0 +1,48 @@
+job_id: 3740
+company: GoCardless
+title: Junior Data Analyst
+headline: data_ml
+summary: Data analyst with a B.Sc. in Statistics and the Google Data Analytics certificates. Cleans, models and explains data
+  with SQL, dbt, pandas and Streamlit, and has built payment reconciliation and fraud analysis tools. Explains findings clearly
+  to technical and non-technical audiences as a machine learning instructor.
+skills:
+- group: data
+  lead:
+  - SQL
+  - Pandas
+  - NumPy
+  - Anomaly Detection
+- group: eng
+  lead:
+  - dbt-core
+  - DuckDB
+  - Streamlit
+  - Python
+- group: domain
+  lead:
+  - Payment Reconciliation
+  - Transaction Fraud Detection
+- stats
+- ml
+projects:
+- id: reckon
+  bullets:
+  - system
+  - pipeline
+  - review
+- id: forecast
+  bullets:
+  - system
+  - validation
+- id: uplift
+  bullets:
+  - study
+- id: fraud
+  bullets:
+  - bench
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

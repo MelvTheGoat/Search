@@ -1,0 +1,52 @@
+job_id: 1779
+company: Supabase
+title: AI Platform Engineer
+headline: llm
+summary: AI engineer who builds agent tools and the checks around them. Built an MCP server of read-only tools for AI assistants,
+  a retrieval assistant with guardrails, golden-set evaluation and citation verification, and a ledger API with idempotency,
+  audit logs and reversals instead of edits. Works in Python, PostgreSQL and Docker.
+skills:
+- group: ai
+  lead:
+  - Model Context Protocol (MCP)
+  - LLM Evaluation and Guardrails
+  - Prompt Engineering
+  - Retrieval-Augmented Generation (RAG)
+  - Citation Verification
+- group: eng
+  lead:
+  - Python
+  - PostgreSQL
+  - FastAPI
+  - Docker
+  - CI/CD (GitHub Actions)
+- ml
+- stats
+- data
+- domain
+projects:
+- id: web3
+  bullets:
+  - system
+  - scorer
+  - http
+  - eval
+- id: rag
+  bullets:
+  - safety
+  - eval
+  - deploy
+- id: ledger
+  bullets:
+  - system
+  - idem
+  - tests
+- id: credit
+  bullets:
+  - system
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

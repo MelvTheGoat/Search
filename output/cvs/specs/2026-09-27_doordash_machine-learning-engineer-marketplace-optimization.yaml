@@ -1,0 +1,48 @@
+job_id: 2087
+company: DoorDash
+title: Machine Learning Engineer, Marketplace Optimization
+headline: ml
+summary: Machine learning engineer with a B.Sc. in Statistics working on decisions under budgets. Built an uplift model for
+  campaign targeting under a fixed budget, a forecasting platform that ships the cost-optimal quantile, and fraud models served
+  at 5.1 ms p99. Measures impact with experiments, power analysis and CUPED.
+skills:
+- group: stats
+  lead:
+  - Uplift Modeling
+  - Experiment Design
+  - Power Analysis
+  - CUPED
+  - Causal Inference (S/T/X-Learners, Causal Forests)
+- group: ml
+  lead:
+  - XGBoost
+  - LightGBM
+  - PyTorch
+- group: eng
+  lead:
+  - Python
+  - SQL
+- data
+- ai
+- domain
+projects:
+- id: uplift
+  bullets:
+  - study
+  - findings
+  - eval
+  - experiment
+- id: forecast
+  bullets:
+  - system
+  - cost
+- id: fraud
+  bullets:
+  - bench
+  - deploy
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

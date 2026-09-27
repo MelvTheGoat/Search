@@ -1,0 +1,49 @@
+job_id: 2163
+company: Notion
+title: Software Engineer, Early Career (AI)
+headline: llm
+summary: Early-career AI engineer who has shipped LLM features end to end, including a hybrid retrieval assistant with
+  guardrails and citation checks, an MCP server of tools for AI assistants, and evaluation sets to measure both. Builds with
+  Python, FastAPI, PostgreSQL and React.
+skills:
+- group: ai
+  lead:
+  - Retrieval-Augmented Generation (RAG)
+  - Hybrid Search (BM25, Dense Embeddings, RRF)
+  - LLM Evaluation and Guardrails
+  - Prompt Engineering
+  - Model Context Protocol (MCP)
+- group: eng
+  lead:
+  - Python
+  - FastAPI
+  - PostgreSQL
+  - React
+  - Docker
+- ml
+- stats
+- data
+projects:
+- id: rag
+  bullets:
+  - system
+  - safety
+  - eval
+  - deploy
+- id: web3
+  bullets:
+  - system
+  - eval
+- id: ledger
+  bullets:
+  - system
+  - tests
+- id: reckon
+  bullets:
+  - review
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

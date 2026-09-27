@@ -1,0 +1,52 @@
+job_id: 4209
+company: Zego
+title: Telematics Data Scientist
+headline: ds
+summary: Data scientist with a B.Sc. in Statistics who writes production code, not just notebooks. Built time-series pipelines
+  in Python and SQL with Prefect, dbt and DuckDB, sequence models over event histories in PyTorch, and rule-based and ML scoring
+  systems. Tests ideas as hypotheses and ships with Docker.
+skills:
+- group: eng
+  lead:
+  - Python
+  - SQL
+  - Prefect
+  - dbt-core
+  - DuckDB
+  - Docker
+- group: ml
+  lead:
+  - Scikit-learn
+  - PyTorch
+  - Sequence Models (GRU, TCN, Transformers)
+  - Feature Engineering
+- group: stats
+  lead:
+  - Time-Series Backtesting
+  - Statistical Inference
+- data
+- domain
+- ai
+projects:
+- id: forecast
+  bullets:
+  - system
+  - validation
+  - cost
+- id: fraud
+  bullets:
+  - models
+  - bench
+- id: web3
+  bullets:
+  - scorer
+- id: epl
+  bullets:
+  - system
+  - backtest
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

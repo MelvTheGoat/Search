@@ -1,0 +1,50 @@
+job_id: 105
+company: Anthropic
+title: Research Engineer, Model Evaluations
+headline: llm
+summary: AI engineer focused on evaluation. Built evaluation harnesses that separate retrieval from generation and catch judge
+  errors, a record and replay harness for an AI assistant tool server, and data pipelines with backtesting, drift monitoring
+  and leakage tests. B.Sc. in Statistics with a background in experiment design.
+skills:
+- group: ai
+  lead:
+  - LLM Evaluation and Guardrails
+  - Prompt Engineering
+  - Model Context Protocol (MCP)
+- group: eng
+  lead:
+  - Python
+  - Prefect
+  - MLflow
+  - Evidently
+  - Streamlit
+- group: stats
+  lead:
+  - Experiment Design
+  - Statistical Inference
+- ml
+- data
+- domain
+projects:
+- id: rag
+  bullets:
+  - eval
+  - safety
+  - system
+- id: web3
+  bullets:
+  - eval
+  - system
+- id: forecast
+  bullets:
+  - system
+  - validation
+- id: uplift
+  bullets:
+  - experiment
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

@@ -1,0 +1,52 @@
+job_id: 4840
+company: Delivery Hero SE
+title: Data Analyst I, Courier RTO Global HQ
+headline: data_ml
+summary: Data and machine learning analyst with a B.Sc. in Statistics. Finds the real driver behind a problem and builds the
+  fix, including detection and scoring services, LLM pipelines with output checks, and experiments reported honestly, even
+  when a result did not work. Works in SQL and Python.
+skills:
+- group: data
+  lead:
+  - SQL
+  - Pandas
+  - Anomaly Detection
+- group: stats
+  lead:
+  - Experiment Design
+  - Power Analysis
+  - CUPED
+- group: ai
+  lead:
+  - Prompt Engineering
+  - LLM Evaluation and Guardrails
+- group: eng
+  lead:
+  - Python
+  - FastAPI
+- ml
+- domain
+projects:
+- id: uplift
+  bullets:
+  - study
+  - findings
+  - eval
+- id: reckon
+  bullets:
+  - system
+  - pipeline
+  - review
+- id: rag
+  bullets:
+  - safety
+  - eval
+- id: fraud
+  bullets:
+  - deploy
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

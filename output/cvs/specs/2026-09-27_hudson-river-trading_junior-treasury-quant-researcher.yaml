@@ -1,0 +1,50 @@
+job_id: 2883
+company: Hudson River Trading
+title: Junior Treasury Quant Researcher
+headline: quant
+summary: Quantitative data scientist with a B.Sc. in Statistics. Builds models that turn predictions into cost-optimal decisions
+  under explicit costs and budgets, in Python with NumPy, pandas and PyTorch, and validates them with backtesting and calibration
+  checks. Has built a double-entry ledger with correctness enforced in the database.
+skills:
+- group: stats
+  lead:
+  - Statistical Inference
+  - Time-Series Backtesting
+  - Logistic Regression
+- group: ml
+  lead:
+  - PyTorch
+  - LightGBM
+  - Model Calibration (Isotonic Regression, Temperature Scaling)
+- group: data
+  lead:
+  - NumPy
+  - Pandas
+- group: eng
+  lead:
+  - Python
+  - SQL
+  - PostgreSQL
+- domain
+- ai
+projects:
+- id: forecast
+  bullets:
+  - cost
+  - validation
+- id: credit
+  bullets:
+  - system
+  - calib
+- id: uplift
+  bullets:
+  - eval
+- id: ledger
+  bullets:
+  - system
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

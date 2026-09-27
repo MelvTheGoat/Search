@@ -1,0 +1,46 @@
+job_id: 4855
+company: Delivery Hero SE
+title: Analytics Engineer I, AI and Data Enablement
+headline: data_eng
+summary: Data engineer and analyst with a B.Sc. in Statistics who uses AI with checks in place. Builds SQL transformations
+  and data models with dbt and DuckDB, tests pipelines so bad data fails the build, and has built LLM systems that verify
+  their own citations. Teaches data analysis to student cohorts.
+skills:
+- group: eng
+  lead:
+  - SQL
+  - dbt-core
+  - DuckDB
+  - Python
+  - Git
+- group: data
+  lead:
+  - Pandas
+  - NumPy
+- group: ai
+  lead:
+  - Prompt Engineering
+  - LLM Evaluation and Guardrails
+  - Citation Verification
+- stats
+- ml
+- domain
+projects:
+- id: forecast
+  bullets:
+  - system
+  - validation
+- id: reckon
+  bullets:
+  - system
+  - pipeline
+- id: rag
+  bullets:
+  - safety
+  - eval
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

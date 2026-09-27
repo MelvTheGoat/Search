@@ -1,0 +1,49 @@
+job_id: 2672
+company: Nuro
+title: Software Engineer, ML Data Infrastructure
+headline: data_eng
+summary: Data and machine learning engineer who builds reliable pipelines for training and evaluation data. Built an orchestrated
+  Prefect, dbt and DuckDB pipeline with backtesting, drift monitoring and leakage tests, a PostgreSQL service with 138 tests,
+  and evaluation harnesses and review tools for ML outputs.
+skills:
+- group: eng
+  lead:
+  - Python
+  - SQL
+  - PostgreSQL
+  - Prefect
+  - dbt-core
+  - DuckDB
+  - Docker
+  - CI/CD (GitHub Actions)
+  - GCP Cloud Run
+- group: ai
+  lead:
+  - LLM Evaluation and Guardrails
+- ml
+- stats
+- data
+projects:
+- id: forecast
+  bullets:
+  - system
+  - validation
+- id: ledger
+  bullets:
+  - system
+  - tests
+  - load
+- id: reckon
+  bullets:
+  - pipeline
+  - review
+- id: web3
+  bullets:
+  - eval
+  - http
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit
