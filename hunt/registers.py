@@ -17,13 +17,29 @@ MAX_AGE_DAYS = 7
 # Endings that differ between a brand name and a legal name.
 SUFFIXES = {
     "ltd", "limited", "plc", "llp", "llc", "inc", "incorporated", "corp", "corporation", "co", "company",
-    "bv", "b v", "nv", "n v", "gmbh", "ag", "sa", "sas", "sarl", "ab", "as", "oy", "srl", "spa", "pty",
-    "uk", "europe", "emea", "holdings", "holding", "group", "the", "and",
+    "bv", "b", "v", "nv", "n", "gmbh", "ag", "sa", "sas", "sarl", "ab", "as", "oy", "srl", "spa", "pty",
+    "uk", "europe", "emea", "holdings", "holding", "group", "branch", "london",
+}
+
+
+# Extra words allowed after a company name, as in "Monzo Bank" or
+# "Stripe Netherlands". Anything else ("Stripe Consulting") is a different firm.
+GENERIC = {
+    "bank", "payments", "payment", "technologies", "technology", "tech", "services", "labs", "ai", "software",
+    "digital", "financial", "finance", "systems", "solutions", "operations", "global", "international",
+    "netherlands", "nederland", "uk", "gb", "europe", "emea", "research", "data", "ireland", "platforms",
+    "online", "trading", "capital", "markets", "securities", "investments", "engineering", "health",
 }
 
 
 def clean_name(name):
-    words = [w for w in norm(name).split() if w not in SUFFIXES]
+    """Drop legal endings like "Ltd" or "B.V." from the end of a name."""
+    words = norm(name).split()
+    if words and words[0] == "the":
+        words = words[1:]
+    while words and words[-1] in SUFFIXES:
+        words.pop()
+    # "b v" and "n v" are two words after norm()
     return " ".join(words)
 
 
@@ -48,9 +64,10 @@ class Registers:
             first = c.split()[0]
             for tag in ("UK Register of Licensed Sponsors", "NL IND register of recognised sponsors"):
                 for reg_clean, raw in self.index.get((tag, first), []):
-                    # Exact match, or the register name starts with the company
-                    # name (for example "Monzo" and "Monzo Bank Limited").
-                    if reg_clean == c or (len(c) >= 5 and reg_clean.startswith(c + " ")):
+                    # Exact match, or the company name plus generic words
+                    # (for example "Monzo" and "Monzo Bank Limited").
+                    extra = reg_clean[len(c):].split() if reg_clean.startswith(c + " ") else None
+                    if reg_clean == c or (len(c) >= 4 and extra and all(w in GENERIC for w in extra)):
                         hits.append(f"{tag}: \"{raw}\"")
                         break
         return list(dict.fromkeys(hits))[:3]
