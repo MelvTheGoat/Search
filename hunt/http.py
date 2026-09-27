@@ -49,27 +49,29 @@ class Http:
                 time.sleep(wait)
             self._last[host] = time.time()
 
-    def get(self, url, params=None, as_json=True, missing_ok=False, headers=None, auth=None):
-        """GET a URL. Returns None on 404 when missing_ok is set."""
+    def get(self, url, params=None, as_json=True, missing_ok=False, headers=None, auth=None, allow_redirects=True):
+        """GET a URL. Returns None on 404 when missing_ok is set, and on a
+        redirect when allow_redirects is False (some boards redirect when a
+        company is missing)."""
         return self.request("GET", url, params=params, as_json=as_json, missing_ok=missing_ok,
-                            headers=headers, auth=auth)
+                            headers=headers, auth=auth, allow_redirects=allow_redirects)
 
     def post(self, url, json_body=None, as_json=True, headers=None):
         return self.request("POST", url, json_body=json_body, as_json=as_json, headers=headers)
 
     def request(self, method, url, params=None, json_body=None, as_json=True, missing_ok=False,
-                headers=None, auth=None):
+                headers=None, auth=None, allow_redirects=True):
         host = urlparse(url).netloc
         error = None
         for attempt in range(self.retries + 1):
             self._wait(host)
             try:
                 r = self.session.request(method, url, params=params, json=json_body, headers=headers,
-                                         auth=auth, timeout=self.timeout)
+                                         auth=auth, timeout=self.timeout, allow_redirects=allow_redirects)
             except requests.RequestException as e:
                 error = HttpError(f"{url}: {e}")
             else:
-                if r.status_code == 404 and missing_ok:
+                if missing_ok and (r.status_code == 404 or (not allow_redirects and 300 <= r.status_code < 400)):
                     return None
                 if r.status_code in RETRY_CODES:
                     error = HttpError(f"{url}: HTTP {r.status_code}")

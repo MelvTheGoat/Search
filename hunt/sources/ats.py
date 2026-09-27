@@ -1,5 +1,5 @@
 """Company job boards: Greenhouse, Lever, Ashby, SmartRecruiters, Workable,
-Recruitee and Personio. All are the companies' own public job feeds."""
+Recruitee, Personio and BambooHR. All are the companies' own public job feeds."""
 import re
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
@@ -16,6 +16,7 @@ SMARTRECRUITERS = "https://api.smartrecruiters.com/v1/companies/{token}/postings
 WORKABLE = "https://apply.workable.com/api/v1/widget/accounts/{token}?details=true"
 RECRUITEE = "https://{token}.recruitee.com/api/offers/"
 PERSONIO = "https://{token}.jobs.personio.de/xml?language=en"
+BAMBOOHR = "https://{token}.bamboohr.com/careers"
 
 
 def _extra(company):
@@ -243,6 +244,44 @@ def fetch_personio(http, company, keep_title=None):
     return jobs
 
 
+def fetch_bamboohr(http, company, keep_title=None):
+    """BambooHR lists jobs without descriptions, so like SmartRecruiters we
+    fetch details only for titles that pass keep_title."""
+    base = BAMBOOHR.format(token=company["token"])
+    # A missing BambooHR site redirects instead of returning 404.
+    data = http.get(f"{base}/list", missing_ok=True, allow_redirects=False)
+    if not isinstance(data, dict) or "result" not in data:
+        return None
+    jobs = []
+    for j in data["result"]:
+        title = (j.get("jobOpeningName") or "").strip()
+        if keep_title and not keep_title(title):
+            continue
+        detail = {}
+        try:
+            detail = ((http.get(f"{base}/{j['id']}/detail") or {}).get("result") or {}).get("jobOpening") or {}
+        except Exception:  # noqa: BLE001
+            pass
+        where = detail.get("location") or j.get("location") or {}
+        place = ", ".join(x for x in (where.get("city"), where.get("state"), where.get("addressCountry"))
+                          if x and x.strip(" .")) 
+        remote = bool(j.get("isRemote")) or j.get("locationType") == "1"
+        jobs.append(Job(
+            source="bamboohr",
+            company=company["name"],
+            title=title,
+            location=("Remote, " + place) if remote else place,
+            apply_url=detail.get("jobOpeningShareUrl") or f"{base}/{j['id']}",
+            description=html_to_text(detail.get("description", "")),
+            remote=remote,
+            country=where.get("addressCountry") or "",
+            posted_at=(detail.get("datePosted") or "")[:10],
+            department=j.get("departmentLabel", "") or "",
+            extra=_extra(company),
+        ))
+    return jobs
+
+
 FETCHERS = {
     "greenhouse": fetch_greenhouse,
     "lever": fetch_lever,
@@ -251,6 +290,7 @@ FETCHERS = {
     "workable": fetch_workable,
     "recruitee": fetch_recruitee,
     "personio": fetch_personio,
+    "bamboohr": fetch_bamboohr,
 }
 ATS_NAMES = list(FETCHERS)
 

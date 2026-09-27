@@ -143,3 +143,20 @@ def test_south_africa_and_anywhere_in_one_country(labeller):
 
 def test_non_latin_place_is_not_assumed_open(labeller):
     assert labeller.label(job("Remote (دبي)", remote=True)).label != "remote_open"
+
+
+def test_ecowas_country_is_africa_without_visa(labeller):
+    r = labeller.label(job("Accra, Ghana"))
+    assert r.label == "africa" and r.country == "Ghana" and "ECOWAS" in r.sponsorship
+
+
+def test_other_african_country_needs_work_permit(labeller):
+    r = labeller.label(job("Nairobi, Kenya"))
+    assert r.label == "africa" and r.sponsorship == "work permit needed"
+    assert labeller.label(job("Lusaka")).label == "africa"
+
+
+def test_african_citizens_only_is_restricted(labeller):
+    r = labeller.label(job("Cape Town, South Africa", "Must be a South African citizen. This is an EE position."))
+    assert r.label == "restricted"
+    assert labeller.label(job("Johannesburg", "We serve South African citizens and businesses.")).label == "africa"

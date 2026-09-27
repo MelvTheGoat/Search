@@ -32,6 +32,11 @@ citizenship:
   - "\\b(emirati|saudi|qatari|kuwaiti|omani|bahraini|uae|gcc) (nationals?|citizens?)\\b"
   - "\\bnationals only\\b|\\bemiratisation\\b|\\bemiratization\\b|\\bsaudi[sz]ation\\b|\\bnitaqat\\b"
   - "\\((emirati|saudi|qatari)[^)]*\\)"
+  - "(south african|kenyan|ghanaian|egyptian|moroccan|rwandan|ugandan|tanzanian|ethiopian|zambian|zimbabwean|namibian) (citizens?|nationals?|citizenship|residents?) (only|is required|are required|required)\\b"
+  - "must be (a |an )?(south african|kenyan|ghanaian|egyptian|moroccan|rwandan|ugandan|tanzanian|ethiopian|zambian|zimbabwean|namibian) (citizen|national|resident)"
+  - "only (south african|kenyan|ghanaian|egyptian|moroccan|rwandan|ugandan|tanzanian|ethiopian|zambian|zimbabwean|namibian) (citizens|nationals|residents)"
+  - "(this is an|position is an|is an) (ee|employment equity|affirmative action) (position|appointment|role)"
+  - "preference will be given to (ee|employment equity|designated|previously disadvantaged)"
 clearance:
   - "security clearance"
   - "\\b(ts/sci|top secret|sc clearance|dv clearance|nv1|nv2|baseline clearance|active clearance|secret clearance)\\b"

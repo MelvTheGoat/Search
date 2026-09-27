@@ -16,6 +16,25 @@ COUNTRIES = {
     "Cote d'Ivoire": ("CI", ["ivory coast", "cote divoire"], ["abidjan"]),
     "Ethiopia": ("ET", [], ["addis ababa"]),
     "Tunisia": ("TN", [], ["tunis"]),
+    "Zambia": ("ZM", [], ["lusaka"]),
+    "Zimbabwe": ("ZW", [], ["harare", "bulawayo"]),
+    "Botswana": ("BW", [], ["gaborone"]),
+    "Namibia": ("", [], ["windhoek"]),
+    "Mozambique": ("MZ", [], ["maputo"]),
+    "Malawi": ("MW", [], ["lilongwe", "blantyre"]),
+    "Cameroon": ("CM", [], ["douala", "yaounde"]),
+    "Benin": ("BJ", [], ["cotonou", "porto novo"]),
+    "Togo": ("TG", [], ["lome"]),
+    "Mali": ("ML", [], ["bamako"]),
+    "Burkina Faso": ("BF", [], ["ouagadougou"]),
+    "Sierra Leone": ("SL", [], ["freetown"]),
+    "Liberia": ("LR", [], ["monrovia"]),
+    "Gambia": ("GM", ["the gambia"], ["banjul"]),
+    "Algeria": ("DZ", [], ["algiers"]),
+    "Mauritius": ("MU", [], ["port louis", "ebene"]),
+    "Madagascar": ("MG", [], ["antananarivo"]),
+    "DR Congo": ("CD", ["drc", "democratic republic of the congo", "democratic republic of congo"], ["kinshasa"]),
+    "Angola": ("AO", [], ["luanda"]),
     "United Kingdom": ("GB", ["uk", "u k", "england", "scotland", "wales", "great britain", "britain", "northern ireland"],
                        ["london", "manchester", "edinburgh", "cambridge", "oxford", "bristol", "leeds", "glasgow", "birmingham", "belfast", "cardiff", "reading"]),
     "Ireland": ("IE", [], ["dublin", "cork", "galway"]),
@@ -92,6 +111,17 @@ COUNTRIES = {
 EXTRA_COUNTRIES = """Afghanistan|Albania|Algeria|Andorra|Angola|Antigua and Barbuda|Armenia|Azerbaijan|Bahamas|Barbados|Belarus|Belize|Benin|Bhutan|Bolivia|Bosnia and Herzegovina|Botswana|Brunei|Burkina Faso|Burundi|Cabo Verde|Cape Verde|Cambodia|Cameroon|Central African Republic|Chad|Comoros|Congo|Costa Rica|Cuba|Djibouti|Dominica|Dominican Republic|Ecuador|El Salvador|Equatorial Guinea|Eritrea|Eswatini|Fiji|Gabon|Gambia|Georgia|Grenada|Guatemala|Guinea|Guinea-Bissau|Guyana|Haiti|Honduras|Iceland|Iran|Iraq|Jamaica|Kazakhstan|Kiribati|Kosovo|Kuwait|Kyrgyzstan|Laos|Lebanon|Lesotho|Liberia|Libya|Liechtenstein|Madagascar|Malawi|Maldives|Mali|Marshall Islands|Mauritania|Mauritius|Micronesia|Moldova|Monaco|Mongolia|Montenegro|Mozambique|Myanmar|Namibia|Nauru|Nepal|Nicaragua|Niger|North Macedonia|Palau|Palestine|Panama|Papua New Guinea|Paraguay|Puerto Rico|Saint Lucia|Samoa|San Marino|Sao Tome and Principe|Seychelles|Sierra Leone|Slovakia|Slovenia|Solomon Islands|Somalia|South Sudan|Sudan|Suriname|Syria|Tajikistan|Timor-Leste|Togo|Tonga|Trinidad and Tobago|Turkmenistan|Tuvalu|Uruguay|Uzbekistan|Vanuatu|Venezuela|Yemen|Zambia|Zimbabwe""".split("|")
 for _name in EXTRA_COUNTRIES:
     COUNTRIES.setdefault(_name, ("", [], []))
+
+# African countries, used for the "africa" label. ECOWAS members allow
+# Nigerians to live and work there without a visa (a residence permit
+# may still be needed).
+ECOWAS = {"Benin", "Burkina Faso", "Cabo Verde", "Cape Verde", "Cote d'Ivoire", "Gambia", "Ghana", "Guinea",
+          "Guinea-Bissau", "Liberia", "Mali", "Niger", "Nigeria", "Senegal", "Sierra Leone", "Togo"}
+AFRICA = ECOWAS | {"Kenya", "South Africa", "Egypt", "Morocco", "Rwanda", "Uganda", "Tanzania", "Ethiopia", "Tunisia",
+                   "Zambia", "Zimbabwe", "Botswana", "Namibia", "Mozambique", "Malawi", "Cameroon", "Algeria",
+                   "Mauritius", "Madagascar", "DR Congo", "Congo", "Angola", "Libya", "Sudan", "South Sudan",
+                   "Somalia", "Djibouti", "Eritrea", "Lesotho", "Eswatini", "Gabon", "Chad", "Burundi", "Mauritania",
+                   "Seychelles", "Comoros", "Equatorial Guinea", "Central African Republic", "Sao Tome and Principe"}
 
 US_STATES = ("AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC "
              "ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY DC").split()

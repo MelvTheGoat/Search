@@ -1,5 +1,5 @@
 """Parsers for the extra sources, fed with small saved samples."""
-from hunt.sources.ats import fetch_personio, fetch_recruitee, fetch_smartrecruiters, fetch_workable
+from hunt.sources.ats import fetch_bamboohr, fetch_personio, fetch_recruitee, fetch_smartrecruiters, fetch_workable
 from hunt.sources.boards import fetch_hn_whoishiring, fetch_jobicy, fetch_weworkremotely
 
 
@@ -98,3 +98,25 @@ def test_hn_whoishiring():
     j = jobs[0]
     assert j.company == "Acme AI" and "ML Engineer" in j.title and j.remote
     assert j.apply_url == "https://news.ycombinator.com/item?id=1"
+
+
+def test_bamboohr_fetches_details_only_for_kept_titles():
+    http = RouteHttp({
+        "/careers/7/detail": {"result": {"jobOpening": {
+            "jobOpeningShareUrl": "https://co.bamboohr.com/careers/7", "description": "<p>Fraud models in Python.</p>",
+            "location": {"city": "Lekki", "state": "Lagos", "addressCountry": "Nigeria"}, "datePosted": "2026-09-20"}}},
+        "/careers/list": {"result": [
+            {"id": "7", "jobOpeningName": "Data Scientist, Fraud", "location": {"city": "Lekki", "state": "Lagos"},
+             "departmentLabel": "Risk", "isRemote": None, "locationType": "0"},
+            {"id": "8", "jobOpeningName": "Office Assistant", "location": {"city": "Accra"}},
+        ]},
+    })
+    jobs = fetch_bamboohr(http, {**CO, "ats": "bamboohr"}, keep_title=lambda t: "Data" in t)
+    assert len(jobs) == 1
+    j = jobs[0]
+    assert j.location == "Lekki, Lagos, Nigeria" and j.country == "Nigeria"
+    assert "Fraud models" in j.description and j.apply_url.endswith("/careers/7")
+
+
+def test_bamboohr_missing_board_is_none():
+    assert fetch_bamboohr(RouteHttp({}), {**CO, "ats": "bamboohr"}) is None

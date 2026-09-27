@@ -19,7 +19,7 @@ TRACKER_CSV = ROOT / "tracker.csv"
 STATUSES = ["new", "drafted", "applied", "interview", "rejected", "offer", "skipped"]
 
 # Order used when two jobs have the same fit score.
-LABEL_ORDER = ["remote_open", "nigeria", "sponsor_yes", "sponsor_likely", "sponsor_unknown", "restricted"]
+LABEL_ORDER = ["remote_open", "nigeria", "africa", "sponsor_yes", "sponsor_likely", "sponsor_unknown", "restricted"]
 
 
 def load_yaml(name):

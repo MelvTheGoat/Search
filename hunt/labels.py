@@ -3,6 +3,8 @@
 Labels, best first:
   remote_open      remote and open to Nigeria, Africa, EMEA or worldwide
   nigeria          onsite or hybrid in Nigeria
+  africa           onsite or hybrid in another African country (ECOWAS
+                   countries need no visa; others need a work permit)
   sponsor_yes      abroad, and the post offers sponsorship or relocation
   sponsor_likely   abroad, and the company is a known visa sponsor
   sponsor_unknown  abroad, and the post says nothing about sponsorship
@@ -13,7 +15,7 @@ import re
 from dataclasses import dataclass, field
 
 from .config import load_yaml
-from .countries import _HOURS_RE, OPEN_REGIONS, OTHER_REGIONS, find_countries, has_city, has_region
+from .countries import _HOURS_RE, AFRICA, ECOWAS, OPEN_REGIONS, OTHER_REGIONS, find_countries, has_city, has_region
 from .text import sentences
 
 HOME = "Nigeria"
@@ -118,6 +120,12 @@ class Labeller:
         evidence = [f"post: \"{s}\"" for s in positive[:2]]
         if hard or no_sponsor:
             return self._restricted(country, (hard + no_sponsor)[0])
+        if country in AFRICA:
+            if country in ECOWAS:
+                return LabelResult("africa", country, sponsorship="not needed (ECOWAS)",
+                                   evidence=[f"job is in {country}, an ECOWAS country: no visa needed"] + evidence)
+            return LabelResult("africa", country, sponsorship="yes" if positive else "work permit needed",
+                               evidence=evidence or [f"job is in {country}: a work permit is needed"])
         if positive:
             return LabelResult("sponsor_yes", country, sponsorship="yes", evidence=evidence)
         register_hits = self._known_sponsor(job)
