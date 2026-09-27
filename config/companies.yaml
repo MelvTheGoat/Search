@@ -21,57 +21,42 @@ companies:
   # --- AI labs ----------------------------------------------------------
   - {name: Anthropic, ats: greenhouse, token: anthropic, country: US, sector: ai-lab, known_sponsor: true}
   - {name: OpenAI, ats: ashby, token: openai, country: US, sector: ai-lab, known_sponsor: true}
-  - {name: Google DeepMind, ats: greenhouse, token: deepmind, country: UK, sector: ai-lab, known_sponsor: true, aliases: [DeepMind Technologies]}
   - {name: xAI, ats: greenhouse, token: xai, country: US, sector: ai-lab}
   - {name: Mistral AI, ats: lever, token: mistral, country: France, sector: ai-lab}
   - {name: Cohere, ats: ashby, token: cohere, country: Canada, sector: ai-lab, known_sponsor: true}
   - {name: Perplexity, ats: ashby, token: perplexity, country: US, sector: ai-lab}
   - {name: Character.AI, ats: ashby, token: character, country: US, sector: ai-lab}
-  - {name: Runway, ats: greenhouse, token: runwayml, country: US, sector: ai-lab}
   - {name: Stability AI, ats: greenhouse, token: stabilityai, country: UK, sector: ai-lab}
-  - {name: Adept, ats: greenhouse, token: adept, country: US, sector: ai-lab}
   - {name: Inflection AI, ats: greenhouse, token: inflectionai, country: US, sector: ai-lab}
   - {name: Together AI, ats: greenhouse, token: togetherai, country: US, sector: ai-lab}
   - {name: Reka AI, ats: ashby, token: reka, country: US, sector: ai-lab}
-  - {name: AI21 Labs, ats: greenhouse, token: ai21, country: Israel, sector: ai-lab}
-  - {name: Aleph Alpha, ats: ashby, token: aleph-alpha, country: Germany, sector: ai-lab}
-  - {name: Black Forest Labs, ats: greenhouse, token: blackforestlabs, country: Germany, sector: ai-lab}
   - {name: DeepL, ats: ashby, token: deepl, country: Germany, sector: ai-lab, known_sponsor: true}
   - {name: Poolside, ats: ashby, token: poolside, country: France, sector: ai-lab}
-  - {name: Anysphere (Cursor), ats: ashby, token: anysphere, country: US, sector: ai-lab}
   - {name: Cognition, ats: ashby, token: cognition, country: US, sector: ai-lab}
-  - {name: Sakana AI, ats: ashby, token: sakana, country: Japan, sector: ai-lab}
   - {name: Physical Intelligence, ats: ashby, token: physicalintelligence, country: US, sector: ai-lab}
   - {name: Figure AI, ats: greenhouse, token: figureai, country: US, sector: ai-lab}
   - {name: Isomorphic Labs, ats: greenhouse, token: isomorphiclabs, country: UK, sector: ai-lab, known_sponsor: true}
-  - {name: Hugging Face, ats: ashby, token: huggingface, country: US, sector: ai-lab}
   - {name: ElevenLabs, ats: ashby, token: elevenlabs, country: UK, sector: ai-lab}
   - {name: Synthesia, ats: ashby, token: synthesia, country: UK, sector: ai-lab, known_sponsor: true}
   - {name: PolyAI, ats: greenhouse, token: polyai, country: UK, sector: ai-lab, known_sponsor: true}
   - {name: Wayve, ats: greenhouse, token: wayve, country: UK, sector: ai-lab, known_sponsor: true}
   - {name: Faculty, ats: ashby, token: faculty, country: UK, sector: ai-lab, known_sponsor: true}
-  - {name: InstaDeep, ats: greenhouse, token: instadeep, country: UK, sector: ai-lab}
   - {name: Writer, ats: ashby, token: writer, country: US, sector: ai-lab}
   - {name: Harvey, ats: ashby, token: harvey, country: US, sector: ai-lab}
   - {name: Sierra, ats: ashby, token: sierra, country: US, sector: ai-lab}
   - {name: Decagon, ats: ashby, token: decagon, country: US, sector: ai-lab}
   - {name: Glean, ats: greenhouse, token: gleanwork, country: US, sector: ai-lab}
-  - {name: AssemblyAI, ats: ashby, token: assemblyai, country: US, sector: ai-lab}
+  - {name: AssemblyAI, ats: greenhouse, token: assemblyai, country: US, sector: ai-lab}
   - {name: Deepgram, ats: ashby, token: deepgram, country: US, sector: ai-lab}
-  - {name: Speechmatics, ats: ashby, token: speechmatics, country: UK, sector: ai-lab, known_sponsor: true}
-  - {name: Tractable, ats: greenhouse, token: tractable, country: UK, sector: ai-lab, known_sponsor: true}
+  - {name: Speechmatics, ats: greenhouse, token: speechmatics, country: UK, sector: ai-lab, known_sponsor: true}
+  - {name: Tractable, ats: ashby, token: tractable, country: UK, sector: ai-lab, known_sponsor: true}
   - {name: Photoroom, ats: ashby, token: photoroom, country: France, sector: ai-lab}
-  - {name: Luma AI, ats: ashby, token: lumalabs, country: US, sector: ai-lab}
   - {name: Pika, ats: ashby, token: pika, country: US, sector: ai-lab}
   - {name: Suno, ats: ashby, token: suno, country: US, sector: ai-lab}
-  - {name: Hebbia, ats: ashby, token: hebbia, country: US, sector: ai-lab}
   - {name: Abridge, ats: ashby, token: abridge, country: US, sector: health}
   - {name: Cresta, ats: greenhouse, token: cresta, country: US, sector: ai-lab}
-  - {name: Jasper, ats: ashby, token: jasper, country: US, sector: ai-lab}
-  - {name: Contextual AI, ats: ashby, token: contextualai, country: US, sector: ai-lab}
   - {name: Nomic AI, ats: ashby, token: nomic, country: US, sector: ai-lab}
   - {name: Sarvam AI, ats: ashby, token: sarvam, country: India, sector: ai-lab}
-  - {name: Lelapa AI, ats: ashby, token: lelapa, country: South Africa, sector: africa}
 
   # --- ML infrastructure and data tools ---------------------------------
   - {name: Scale AI, ats: greenhouse, token: scaleai, country: US, sector: ml-infra, known_sponsor: true}
@@ -79,26 +64,17 @@ companies:
   - {name: Anyscale, ats: ashby, token: anyscale, country: US, sector: ml-infra}
   - {name: Modal, ats: ashby, token: modal, country: US, sector: ml-infra}
   - {name: Baseten, ats: ashby, token: baseten, country: US, sector: ml-infra}
-  - {name: Replicate, ats: ashby, token: replicate, country: US, sector: ml-infra}
-  - {name: Fireworks AI, ats: greenhouse, token: fireworksai, country: US, sector: ml-infra}
   - {name: Snorkel AI, ats: greenhouse, token: snorkelai, country: US, sector: ml-infra}
   - {name: Labelbox, ats: greenhouse, token: labelbox, country: US, sector: ml-infra}
-  - {name: Weights & Biases, ats: lever, token: wandb, country: US, sector: ml-infra}
   - {name: Pinecone, ats: ashby, token: pinecone, country: US, sector: ml-infra}
   - {name: Weaviate, ats: ashby, token: weaviate, country: Netherlands, sector: ml-infra}
-  - {name: Qdrant, ats: ashby, token: qdrant, country: Germany, sector: ml-infra}
   - {name: Chroma, ats: ashby, token: trychroma, country: US, sector: ml-infra}
   - {name: LangChain, ats: ashby, token: langchain, country: US, sector: ml-infra}
   - {name: LlamaIndex, ats: ashby, token: llamaindex, country: US, sector: ml-infra}
   - {name: Arize AI, ats: greenhouse, token: arizeai, country: US, sector: ml-infra}
-  - {name: Fiddler AI, ats: ashby, token: fiddler, country: US, sector: ml-infra}
   - {name: Tecton, ats: greenhouse, token: tecton, country: US, sector: ml-infra}
-  - {name: DataRobot, ats: greenhouse, token: datarobot, country: US, sector: ml-infra}
   - {name: Dataiku, ats: greenhouse, token: dataiku, country: France, sector: ml-infra, known_sponsor: true}
-  - {name: H2O.ai, ats: greenhouse, token: h2oai, country: US, sector: ml-infra}
   - {name: Domino Data Lab, ats: greenhouse, token: dominodatalab, country: US, sector: ml-infra}
-  - {name: Cerebras, ats: greenhouse, token: cerebrassystems, country: US, sector: ml-infra}
-  - {name: Groq, ats: greenhouse, token: groq, country: US, sector: ml-infra}
   - {name: SambaNova, ats: greenhouse, token: sambanovasystems, country: US, sector: ml-infra}
   - {name: Graphcore, ats: greenhouse, token: graphcore, country: UK, sector: ml-infra, known_sponsor: true}
   - {name: Lambda, ats: ashby, token: lambda, country: US, sector: ml-infra}
@@ -109,20 +85,18 @@ companies:
   - {name: Tenstorrent, ats: greenhouse, token: tenstorrent, country: Canada, sector: ml-infra}
   - {name: Dagster Labs, ats: greenhouse, token: dagsterlabs, country: US, sector: ml-infra}
   - {name: Prefect, ats: ashby, token: prefect, country: US, sector: ml-infra}
-  - {name: Astronomer, ats: greenhouse, token: astronomer, country: US, sector: ml-infra}
+  - {name: Astronomer, ats: ashby, token: astronomer, country: US, sector: ml-infra}
   - {name: Fivetran, ats: greenhouse, token: fivetran, country: US, sector: ml-infra}
-  - {name: dbt Labs, ats: greenhouse, token: dbtlabsinc, country: US, sector: ml-infra}
   - {name: Airbyte, ats: ashby, token: airbyte, country: US, sector: ml-infra}
   - {name: Hex, ats: ashby, token: hex, country: US, sector: ml-infra}
   - {name: MotherDuck, ats: ashby, token: motherduck, country: US, sector: ml-infra}
-  - {name: ClickHouse, ats: greenhouse, token: clickhouse, country: US, sector: ml-infra}
+  - {name: ClickHouse, ats: ashby, token: clickhouse, country: US, sector: ml-infra}
   - {name: Confluent, ats: ashby, token: confluent, country: US, sector: ml-infra, known_sponsor: true}
   - {name: Elastic, ats: greenhouse, token: elastic, country: US, sector: ml-infra}
   - {name: MongoDB, ats: greenhouse, token: mongodb, country: US, sector: ml-infra, known_sponsor: true}
   - {name: Cockroach Labs, ats: greenhouse, token: cockroachlabs, country: US, sector: ml-infra}
   - {name: Starburst, ats: greenhouse, token: starburst, country: US, sector: ml-infra}
   - {name: Neo4j, ats: greenhouse, token: neo4j, country: US, sector: ml-infra}
-  - {name: Temporal, ats: greenhouse, token: temporaltechnologies, country: US, sector: ml-infra}
   - {name: Grafana Labs, ats: greenhouse, token: grafanalabs, country: US, sector: ml-infra}
   - {name: Vercel, ats: greenhouse, token: vercel, country: US, sector: tech}
   - {name: Supabase, ats: ashby, token: supabase, country: US, sector: tech}
@@ -151,7 +125,6 @@ companies:
   - {name: HubSpot, ats: greenhouse, token: hubspot, country: US, sector: tech, known_sponsor: true}
   - {name: Squarespace, ats: greenhouse, token: squarespace, country: US, sector: tech}
   - {name: Duolingo, ats: greenhouse, token: duolingo, country: US, sector: tech, known_sponsor: true}
-  - {name: Grammarly, ats: greenhouse, token: grammarly, country: US, sector: ai-lab}
   - {name: Samsara, ats: greenhouse, token: samsara, country: US, sector: tech}
   - {name: Verkada, ats: greenhouse, token: verkada, country: US, sector: tech}
   - {name: Anduril, ats: greenhouse, token: andurilindustries, country: US, sector: tech}
@@ -159,25 +132,17 @@ companies:
   - {name: Spotify, ats: lever, token: spotify, country: Sweden, sector: tech, known_sponsor: true}
   - {name: Waymo, ats: greenhouse, token: waymo, country: US, sector: mobility, known_sponsor: true}
   - {name: Nuro, ats: greenhouse, token: nuro, country: US, sector: mobility}
-  - {name: Aurora, ats: greenhouse, token: aurorainnovation, country: US, sector: mobility}
   - {name: Zoox, ats: lever, token: zoox, country: US, sector: mobility}
-  - {name: Applied Intuition, ats: greenhouse, token: appliedintuition, country: US, sector: mobility}
   - {name: Flexport, ats: greenhouse, token: flexport, country: US, sector: tech}
   - {name: Faire, ats: greenhouse, token: faire, country: US, sector: tech}
   - {name: Roblox, ats: greenhouse, token: roblox, country: US, sector: tech, known_sponsor: true}
-  - {name: Unity, ats: greenhouse, token: unity3d, country: US, sector: tech}
   - {name: Twitch, ats: greenhouse, token: twitch, country: US, sector: tech}
   - {name: Nextdoor, ats: greenhouse, token: nextdoor, country: US, sector: tech}
-  - {name: Quora, ats: greenhouse, token: quora, country: US, sector: tech}
-  - {name: Scribd, ats: greenhouse, token: scribd, country: US, sector: tech}
+  - {name: Quora, ats: ashby, token: quora, country: US, sector: tech}
   - {name: Coursera, ats: greenhouse, token: coursera, country: US, sector: tech}
-  - {name: Chegg, ats: greenhouse, token: chegg, country: US, sector: tech}
-  - {name: Zillow, ats: greenhouse, token: zillow, country: US, sector: tech}
-  - {name: Opendoor, ats: greenhouse, token: opendoor, country: US, sector: tech}
-  - {name: Tempus AI, ats: greenhouse, token: tempus, country: US, sector: health}
   - {name: Recursion, ats: greenhouse, token: recursionpharmaceuticals, country: US, sector: health}
-  - {name: Insitro, ats: greenhouse, token: insitro, country: US, sector: health}
-  - {name: Benchling, ats: greenhouse, token: benchling, country: US, sector: health}
+  - {name: Insitro, ats: ashby, token: insitro, country: US, sector: health}
+  - {name: Benchling, ats: ashby, token: benchling, country: US, sector: health}
   - {name: Flatiron Health, ats: greenhouse, token: flatironhealth, country: US, sector: health}
   - {name: Oscar Health, ats: greenhouse, token: oscar, country: US, sector: health}
   - {name: Doximity, ats: greenhouse, token: doximity, country: US, sector: health}
@@ -185,7 +150,6 @@ companies:
   # --- Quant and trading ------------------------------------------------
   - {name: Hudson River Trading, ats: greenhouse, token: wehrtyou, country: US, sector: quant, known_sponsor: true}
   - {name: Jump Trading, ats: greenhouse, token: jumptrading, country: US, sector: quant, known_sponsor: true}
-  - {name: Two Sigma, ats: greenhouse, token: twosigma, country: US, sector: quant, known_sponsor: true}
   - {name: IMC Trading, ats: greenhouse, token: imc, country: Netherlands, sector: quant, known_sponsor: true}
   - {name: Optiver, ats: greenhouse, token: optiverus, country: Netherlands, sector: quant, known_sponsor: true}
   - {name: Tower Research Capital, ats: greenhouse, token: towerresearchcapital, country: US, sector: quant, known_sponsor: true}
@@ -195,9 +159,7 @@ companies:
   - {name: Squarepoint Capital, ats: greenhouse, token: squarepointcapital, country: UK, sector: quant, known_sponsor: true}
   - {name: Qube Research & Technologies, ats: greenhouse, token: quberesearchandtechnologies, country: UK, sector: quant, known_sponsor: true}
   - {name: Man Group, ats: greenhouse, token: mangroup, country: UK, sector: quant, known_sponsor: true}
-  - {name: G-Research, ats: greenhouse, token: gresearch, country: UK, sector: quant, known_sponsor: true}
   - {name: DRW, ats: greenhouse, token: drweng, country: US, sector: quant, known_sponsor: true}
-  - {name: Susquehanna (SIG), ats: greenhouse, token: sig, country: US, sector: quant, known_sponsor: true}
 
   # --- Fintech with fraud, risk or credit teams --------------------------
   - {name: Coinbase, ats: greenhouse, token: coinbase, country: US, sector: fintech, known_sponsor: true}
@@ -205,308 +167,169 @@ companies:
   - {name: Affirm, ats: greenhouse, token: affirm, country: US, sector: fintech, known_sponsor: true}
   - {name: Brex, ats: greenhouse, token: brex, country: US, sector: fintech, known_sponsor: true}
   - {name: Chime, ats: greenhouse, token: chime, country: US, sector: fintech, known_sponsor: true}
-  - {name: Marqeta, ats: greenhouse, token: marqeta, country: US, sector: fintech}
   - {name: SoFi, ats: greenhouse, token: sofi, country: US, sector: fintech, known_sponsor: true}
   - {name: Gusto, ats: greenhouse, token: gusto, country: US, sector: fintech}
-  - {name: Plaid, ats: lever, token: plaid, country: US, sector: fintech, known_sponsor: true}
+  - {name: Plaid, ats: ashby, token: plaid, country: US, sector: fintech, known_sponsor: true}
   - {name: Ramp, ats: ashby, token: ramp, country: US, sector: fintech}
-  - {name: Mercury, ats: ashby, token: mercury, country: US, sector: fintech}
+  - {name: Mercury, ats: greenhouse, token: mercury, country: US, sector: fintech}
   - {name: Carta, ats: greenhouse, token: carta, country: US, sector: fintech}
   - {name: Betterment, ats: greenhouse, token: betterment, country: US, sector: fintech}
   - {name: Upstart, ats: greenhouse, token: upstart, country: US, sector: fintech, known_sponsor: true}
   - {name: Toast, ats: greenhouse, token: toast, country: US, sector: fintech}
   - {name: Block, ats: greenhouse, token: block, country: US, sector: fintech, known_sponsor: true}
   - {name: Bill, ats: greenhouse, token: billcom, country: US, sector: fintech}
-  - {name: Remitly, ats: greenhouse, token: remitly, country: US, sector: fintech, known_sponsor: true}
   - {name: Wealthsimple, ats: ashby, token: wealthsimple, country: Canada, sector: fintech}
-  - {name: Klarna, ats: greenhouse, token: klarna, country: Sweden, sector: fintech, known_sponsor: true}
   - {name: Monzo, ats: greenhouse, token: monzo, country: UK, sector: fintech, known_sponsor: true, aliases: [Monzo Bank]}
   - {name: Wise, ats: greenhouse, token: wise, country: UK, sector: fintech, known_sponsor: true, aliases: [Wise Payments]}
-  - {name: Checkout.com, ats: greenhouse, token: checkoutcom, country: UK, sector: fintech, known_sponsor: true, aliases: [Checkout Ltd]}
   - {name: GoCardless, ats: greenhouse, token: gocardless, country: UK, sector: fintech, known_sponsor: true}
-  - {name: Revolut, ats: lever, token: revolut, country: UK, sector: fintech, known_sponsor: true}
-  - {name: Starling Bank, ats: greenhouse, token: starlingbank, country: UK, sector: fintech, known_sponsor: true}
-  - {name: TrueLayer, ats: ashby, token: truelayer, country: UK, sector: fintech, known_sponsor: true}
+  - {name: TrueLayer, ats: greenhouse, token: truelayer, country: UK, sector: fintech, known_sponsor: true}
   - {name: Tide, ats: greenhouse, token: tide, country: UK, sector: fintech, known_sponsor: true}
-  - {name: Zopa, ats: greenhouse, token: zopa, country: UK, sector: fintech, known_sponsor: true}
-  - {name: ClearScore, ats: greenhouse, token: clearscore, country: UK, sector: fintech, known_sponsor: true}
-  - {name: OakNorth, ats: greenhouse, token: oaknorth, country: UK, sector: fintech, known_sponsor: true}
-  - {name: Cleo, ats: greenhouse, token: cleoai, country: UK, sector: fintech, known_sponsor: true}
-  - {name: Onfido (Entrust), ats: greenhouse, token: onfido, country: UK, sector: fintech, known_sponsor: true}
-  - {name: Quantexa, ats: greenhouse, token: quantexa, country: UK, sector: fintech, known_sponsor: true}
-  - {name: Featurespace, ats: greenhouse, token: featurespace, country: UK, sector: fintech, known_sponsor: true}
+  - {name: Zopa, ats: lever, token: zopa, country: UK, sector: fintech, known_sponsor: true}
+  - {name: OakNorth, ats: ashby, token: oaknorth, country: UK, sector: fintech, known_sponsor: true}
+  - {name: Quantexa, ats: ashby, token: quantexa, country: UK, sector: fintech, known_sponsor: true}
   - {name: Ebury, ats: greenhouse, token: ebury, country: UK, sector: fintech, known_sponsor: true}
-  - {name: Paddle, ats: greenhouse, token: paddle, country: UK, sector: fintech, known_sponsor: true}
-  - {name: Curve, ats: greenhouse, token: curve, country: UK, sector: fintech}
-  - {name: Moneybox, ats: greenhouse, token: moneybox, country: UK, sector: fintech}
-  - {name: Lendable, ats: greenhouse, token: lendable, country: UK, sector: fintech, known_sponsor: true}
+  - {name: Paddle, ats: ashby, token: paddle, country: UK, sector: fintech, known_sponsor: true}
+  - {name: Moneybox, ats: ashby, token: moneybox, country: UK, sector: fintech}
+  - {name: Lendable, ats: ashby, token: lendable, country: UK, sector: fintech, known_sponsor: true}
   - {name: Adyen, ats: greenhouse, token: adyen, country: Netherlands, sector: fintech, known_sponsor: true}
-  - {name: Mollie, ats: greenhouse, token: mollie, country: Netherlands, sector: fintech, known_sponsor: true}
-  - {name: bunq, ats: greenhouse, token: bunq, country: Netherlands, sector: fintech, known_sponsor: true}
+  - {name: Mollie, ats: ashby, token: mollie, country: Netherlands, sector: fintech, known_sponsor: true}
   - {name: N26, ats: greenhouse, token: n26, country: Germany, sector: fintech, known_sponsor: true}
   - {name: Trade Republic, ats: greenhouse, token: traderepublicbank, country: Germany, sector: fintech}
   - {name: SumUp, ats: greenhouse, token: sumup, country: UK, sector: fintech, known_sponsor: true}
   - {name: Solaris, ats: greenhouse, token: solarisbank, country: Germany, sector: fintech}
-  - {name: Scalable Capital, ats: greenhouse, token: scalablecapital, country: Germany, sector: fintech}
   - {name: Qonto, ats: lever, token: qonto, country: France, sector: fintech}
   - {name: Pennylane, ats: ashby, token: pennylane, country: France, sector: fintech}
   - {name: Feedzai, ats: greenhouse, token: feedzai, country: Portugal, sector: fintech, known_sponsor: true}
   - {name: Riskified, ats: greenhouse, token: riskified, country: Israel, sector: fintech}
   - {name: Forter, ats: greenhouse, token: forter, country: Israel, sector: fintech}
-  - {name: Sift, ats: greenhouse, token: sift, country: US, sector: fintech}
-  - {name: Signifyd, ats: greenhouse, token: signifyd, country: US, sector: fintech}
-  - {name: Socure, ats: greenhouse, token: socure, country: US, sector: fintech}
+  - {name: Sift, ats: ashby, token: sift, country: US, sector: fintech}
+  - {name: Socure, ats: ashby, token: socure, country: US, sector: fintech}
   - {name: Alloy, ats: greenhouse, token: alloy, country: US, sector: fintech}
   - {name: Sardine, ats: ashby, token: sardine, country: US, sector: fintech}
-  - {name: Unit21, ats: ashby, token: unit21, country: US, sector: fintech}
   - {name: Persona, ats: ashby, token: persona, country: US, sector: fintech}
-  - {name: Chainalysis, ats: greenhouse, token: chainalysis, country: US, sector: fintech}
   - {name: Elliptic, ats: ashby, token: elliptic, country: UK, sector: fintech, known_sponsor: true}
   - {name: ComplyAdvantage, ats: greenhouse, token: complyadvantage, country: UK, sector: fintech, known_sponsor: true}
-  - {name: Sumsub, ats: ashby, token: sumsub, country: UK, sector: fintech}
   - {name: Kraken, ats: ashby, token: kraken.com, country: US, sector: fintech}
   - {name: Gemini, ats: greenhouse, token: gemini, country: US, sector: fintech}
   - {name: Ripple, ats: greenhouse, token: ripple, country: US, sector: fintech, known_sponsor: true}
-  - {name: Circle, ats: greenhouse, token: circle, country: US, sector: fintech}
+  - {name: Circle, ats: ashby, token: circle, country: US, sector: fintech}
   - {name: Anchorage Digital, ats: lever, token: anchorage, country: US, sector: fintech}
-  - {name: MoonPay, ats: ashby, token: moonpay, country: US, sector: fintech}
-  - {name: Nubank, ats: greenhouse, token: nubank, country: Brazil, sector: fintech, known_sponsor: true}
+  - {name: MoonPay, ats: lever, token: moonpay, country: US, sector: fintech}
+  - {name: Nubank, ats: ashby, token: nubank, country: Brazil, sector: fintech, known_sponsor: true}
   - {name: Airwallex, ats: ashby, token: airwallex, country: Singapore, sector: fintech, known_sponsor: true}
-  - {name: Rapyd, ats: greenhouse, token: rapyd, country: UK, sector: fintech}
   - {name: Payoneer, ats: greenhouse, token: payoneer, country: US, sector: fintech}
-  - {name: Flywire, ats: greenhouse, token: flywire, country: US, sector: fintech}
   - {name: Nium, ats: lever, token: nium, country: Singapore, sector: fintech}
-  - {name: Xendit, ats: lever, token: xendit, country: Indonesia, sector: fintech}
-  - {name: Tabby, ats: ashby, token: tabby, country: UAE, sector: fintech, known_sponsor: true}
+  - {name: Xendit, ats: greenhouse, token: xendit, country: Indonesia, sector: fintech}
   - {name: Tamara, ats: greenhouse, token: tamara, country: Saudi Arabia, sector: fintech, known_sponsor: true}
-  - {name: Sarwa, ats: lever, token: sarwa, country: UAE, sector: fintech}
-  - {name: Neo Financial, ats: lever, token: neofinancial, country: Canada, sector: fintech}
-  - {name: KOHO, ats: lever, token: koho, country: Canada, sector: fintech}
+  - {name: Neo Financial, ats: ashby, token: neofinancial, country: Canada, sector: fintech}
+  - {name: KOHO, ats: ashby, token: koho, country: Canada, sector: fintech}
   - {name: Float, ats: ashby, token: float, country: Canada, sector: fintech}
-  - {name: Trulioo, ats: greenhouse, token: trulioo, country: Canada, sector: fintech}
-  - {name: Dave, ats: greenhouse, token: dave, country: US, sector: fintech}
-  - {name: Varo Bank, ats: greenhouse, token: varomoney, country: US, sector: fintech}
-  - {name: MX, ats: greenhouse, token: mxtechnologies, country: US, sector: fintech}
+  - {name: Trulioo, ats: ashby, token: trulioo, country: Canada, sector: fintech}
+  - {name: Dave, ats: ashby, token: dave, country: US, sector: fintech}
   - {name: Oportun, ats: greenhouse, token: oportun, country: US, sector: fintech}
   - {name: Tala, ats: lever, token: tala, country: US, sector: fintech}
-  - {name: Branch International, ats: greenhouse, token: branchinternational, country: US, sector: fintech}
-  - {name: Pipe, ats: ashby, token: pipe, country: US, sector: fintech}
   - {name: Current, ats: greenhouse, token: current, country: US, sector: fintech}
-  - {name: Petal, ats: greenhouse, token: petal, country: US, sector: fintech}
   - {name: Mission Lane, ats: greenhouse, token: missionlane, country: US, sector: fintech}
   - {name: Capchase, ats: ashby, token: capchase, country: US, sector: fintech}
 
   # --- Nigerian and African tech ----------------------------------------
-  - {name: Flutterwave, ats: greenhouse, token: flutterwave, country: Nigeria, sector: africa}
-  - {name: Paystack, ats: greenhouse, token: paystack, country: Nigeria, sector: africa}
   - {name: Moniepoint, ats: greenhouse, token: moniepoint, country: Nigeria, sector: africa}
-  - {name: Kuda, ats: greenhouse, token: kuda, country: Nigeria, sector: africa}
-  - {name: Andela, ats: greenhouse, token: andela, country: Nigeria, sector: africa}
-  - {name: Chipper Cash, ats: greenhouse, token: chippercash, country: US, sector: africa}
-  - {name: Wave, ats: lever, token: wave, country: Senegal, sector: africa}
-  - {name: M-KOPA, ats: lever, token: m-kopa, country: Kenya, sector: africa}
-  - {name: Yoco, ats: lever, token: yoco, country: South Africa, sector: africa}
+  - {name: Andela, ats: ashby, token: andela, country: Nigeria, sector: africa}
+  - {name: M-KOPA, ats: ashby, token: m-kopa, country: Kenya, sector: africa}
   - {name: LemFi, ats: ashby, token: lemfi, country: UK, sector: africa}
-  - {name: Moove, ats: greenhouse, token: moove, country: Nigeria, sector: africa}
-  - {name: FairMoney, ats: lever, token: fairmoney, country: Nigeria, sector: africa}
-  - {name: Carbon, ats: lever, token: getcarbon, country: Nigeria, sector: africa}
-  - {name: Cowrywise, ats: lever, token: cowrywise, country: Nigeria, sector: africa}
-  - {name: PiggyVest, ats: lever, token: piggyvest, country: Nigeria, sector: africa}
-  - {name: Bamboo, ats: lever, token: investbamboo, country: Nigeria, sector: africa}
-  - {name: Risevest, ats: ashby, token: risevest, country: Nigeria, sector: africa}
-  - {name: Korapay, ats: lever, token: korapay, country: Nigeria, sector: africa}
-  - {name: Mono, ats: lever, token: mono, country: Nigeria, sector: africa}
-  - {name: Paga, ats: greenhouse, token: paga, country: Nigeria, sector: africa}
-  - {name: TeamApt, ats: greenhouse, token: teamapt, country: Nigeria, sector: africa}
-  - {name: Helium Health, ats: lever, token: heliumhealth, country: Nigeria, sector: africa}
-  - {name: Reliance Health, ats: lever, token: reliancehealth, country: Nigeria, sector: africa}
-  - {name: mPharma, ats: lever, token: mpharma, country: Ghana, sector: africa}
-  - {name: Twiga Foods, ats: lever, token: twiga, country: Kenya, sector: africa}
-  - {name: Sendy, ats: lever, token: sendy, country: Kenya, sector: africa}
-  - {name: Cellulant, ats: lever, token: cellulant, country: Kenya, sector: africa}
-  - {name: Onafriq, ats: lever, token: onafriq, country: Mauritius, sector: africa}
   - {name: Jumia, ats: greenhouse, token: jumia, country: Nigeria, sector: africa}
-  - {name: Takealot, ats: greenhouse, token: takealot, country: South Africa, sector: africa}
   - {name: Luno, ats: greenhouse, token: luno, country: South Africa, sector: africa}
-  - {name: VALR, ats: lever, token: valr, country: South Africa, sector: africa}
-  - {name: Peach Payments, ats: lever, token: peachpayments, country: South Africa, sector: africa}
-  - {name: Ozow, ats: lever, token: ozow, country: South Africa, sector: africa}
-  - {name: TymeBank, ats: lever, token: tymebank, country: South Africa, sector: africa}
-  - {name: JUMO, ats: lever, token: jumo, country: South Africa, sector: africa}
+  - {name: Ozow, ats: greenhouse, token: ozow, country: South Africa, sector: africa}
   - {name: Apollo Agriculture, ats: lever, token: apolloagriculture, country: Kenya, sector: africa}
-  - {name: Sun King, ats: greenhouse, token: sunking, country: Kenya, sector: africa}
   - {name: Zipline, ats: greenhouse, token: flyzipline, country: US, sector: africa}
-  - {name: Kobo360, ats: lever, token: kobo360, country: Nigeria, sector: africa}
-  - {name: MNT-Halan, ats: lever, token: mnt-halan, country: Egypt, sector: africa}
-  - {name: Paymob, ats: lever, token: paymob, country: Egypt, sector: africa}
-  - {name: Swvl, ats: lever, token: swvl, country: Egypt, sector: africa}
-  - {name: Kuda Bank UK, ats: lever, token: kudabank, country: UK, sector: africa}
-  - {name: Chaka, ats: lever, token: chaka, country: Nigeria, sector: africa}
-  - {name: Octamile, ats: lever, token: octamile, country: Nigeria, sector: africa}
-  - {name: Duplo, ats: ashby, token: duplo, country: Nigeria, sector: africa}
-  - {name: Brass, ats: lever, token: brass, country: Nigeria, sector: africa}
-  - {name: Credpal, ats: lever, token: credpal, country: Nigeria, sector: africa}
-  - {name: Lidya, ats: lever, token: lidya, country: Nigeria, sector: africa}
-  - {name: Seamless HR, ats: lever, token: seamlesshr, country: Nigeria, sector: africa}
   - {name: Turing, ats: greenhouse, token: turing, country: US, sector: africa}
-  - {name: Gebeya, ats: lever, token: gebeya, country: Ethiopia, sector: africa}
-  - {name: Africa's Talking, ats: lever, token: africastalking, country: Kenya, sector: africa}
 
   # --- UK and Europe -----------------------------------------------------
   - {name: Deliveroo, ats: greenhouse, token: deliveroo, country: UK, sector: tech, known_sponsor: true}
-  - {name: Ocado Technology, ats: greenhouse, token: ocadotechnology, country: UK, sector: tech, known_sponsor: true}
-  - {name: Darktrace, ats: greenhouse, token: darktrace, country: UK, sector: tech, known_sponsor: true}
-  - {name: BenevolentAI, ats: greenhouse, token: benevolentai, country: UK, sector: health, known_sponsor: true}
-  - {name: Skyscanner, ats: greenhouse, token: skyscanner, country: UK, sector: tech, known_sponsor: true}
-  - {name: Improbable, ats: greenhouse, token: improbable, country: UK, sector: tech, known_sponsor: true}
-  - {name: Zego, ats: lever, token: zego, country: UK, sector: fintech, known_sponsor: true}
-  - {name: Cera, ats: lever, token: cera, country: UK, sector: health}
-  - {name: Huma, ats: lever, token: huma, country: UK, sector: health}
+  - {name: Improbable, ats: ashby, token: improbable, country: UK, sector: tech, known_sponsor: true}
+  - {name: Zego, ats: ashby, token: zego, country: UK, sector: fintech, known_sponsor: true}
   - {name: Peak AI, ats: greenhouse, token: peak, country: UK, sector: ai-lab, known_sponsor: true}
-  - {name: Motorway, ats: greenhouse, token: motorway, country: UK, sector: tech}
-  - {name: Gousto, ats: greenhouse, token: gousto, country: UK, sector: tech, known_sponsor: true}
-  - {name: Trainline, ats: greenhouse, token: trainline, country: UK, sector: tech, known_sponsor: true}
-  - {name: Depop, ats: greenhouse, token: depop, country: UK, sector: tech}
+  - {name: Motorway, ats: ashby, token: motorway, country: UK, sector: tech}
+  - {name: Trainline, ats: ashby, token: trainline, country: UK, sector: tech, known_sponsor: true}
   - {name: Bumble, ats: greenhouse, token: bumble, country: UK, sector: tech}
-  - {name: Hopin, ats: ashby, token: hopin, country: UK, sector: tech}
-  - {name: Cleo AI, ats: ashby, token: cleo, country: UK, sector: fintech}
-  - {name: Multiverse, ats: greenhouse, token: multiverse, country: UK, sector: tech, known_sponsor: true}
+  - {name: Cleo AI, ats: greenhouse, token: cleo, country: UK, sector: fintech}
+  - {name: Multiverse, ats: ashby, token: multiverse, country: UK, sector: tech, known_sponsor: true}
   - {name: Miro, ats: greenhouse, token: realtimeboardglobal, country: Netherlands, sector: tech, known_sponsor: true}
-  - {name: Booking.com, ats: greenhouse, token: bookingcom, country: Netherlands, sector: tech, known_sponsor: true}
-  - {name: Picnic, ats: greenhouse, token: picnic, country: Netherlands, sector: tech, known_sponsor: true}
-  - {name: Bird, ats: greenhouse, token: messagebird, country: Netherlands, sector: tech}
-  - {name: Personio, ats: greenhouse, token: personio, country: Germany, sector: tech}
   - {name: Celonis, ats: greenhouse, token: celonis, country: Germany, sector: tech, known_sponsor: true}
   - {name: GetYourGuide, ats: greenhouse, token: getyourguide, country: Germany, sector: tech, known_sponsor: true}
   - {name: Helsing, ats: greenhouse, token: helsing, country: Germany, sector: ai-lab}
   - {name: Contentful, ats: greenhouse, token: contentful, country: Germany, sector: tech}
   - {name: HelloFresh, ats: greenhouse, token: hellofresh, country: Germany, sector: tech, known_sponsor: true}
-  - {name: Zalando, ats: greenhouse, token: zalando, country: Germany, sector: tech, known_sponsor: true}
-  - {name: Delivery Hero, ats: greenhouse, token: deliveryhero, country: Germany, sector: tech, known_sponsor: true}
-  - {name: Taxfix, ats: greenhouse, token: taxfix, country: Germany, sector: fintech}
   - {name: Raisin, ats: greenhouse, token: raisin, country: Germany, sector: fintech}
-  - {name: Enpal, ats: greenhouse, token: enpal, country: Germany, sector: other}
+  - {name: Enpal, ats: ashby, token: enpal, country: Germany, sector: other}
   - {name: Doctolib, ats: greenhouse, token: doctolib, country: France, sector: health}
-  - {name: Alan, ats: lever, token: alan, country: France, sector: health}
-  - {name: Back Market, ats: greenhouse, token: backmarket, country: France, sector: tech}
-  - {name: Contentsquare, ats: greenhouse, token: contentsquare, country: France, sector: tech}
-  - {name: Criteo, ats: greenhouse, token: criteo, country: France, sector: tech}
-  - {name: Owkin, ats: lever, token: owkin, country: France, sector: health}
-  - {name: Glovo, ats: greenhouse, token: glovo, country: Spain, sector: tech, known_sponsor: true}
+  - {name: Alan, ats: ashby, token: alan, country: France, sector: health}
+  - {name: Back Market, ats: ashby, token: backmarket, country: France, sector: tech}
+  - {name: Contentsquare, ats: lever, token: contentsquare, country: France, sector: tech}
+  - {name: Owkin, ats: ashby, token: owkin, country: France, sector: health}
   - {name: Cabify, ats: greenhouse, token: cabify, country: Spain, sector: mobility}
   - {name: Typeform, ats: greenhouse, token: typeform, country: Spain, sector: tech}
-  - {name: Factorial, ats: greenhouse, token: factorial, country: Spain, sector: tech}
   - {name: Wallapop, ats: greenhouse, token: wallapop, country: Spain, sector: tech}
-  - {name: Vinted, ats: greenhouse, token: vinted, country: Lithuania, sector: tech}
   - {name: Bolt, ats: greenhouse, token: bolt, country: Estonia, sector: mobility, known_sponsor: true}
-  - {name: Pipedrive, ats: greenhouse, token: pipedrive, country: Estonia, sector: tech}
+  - {name: Pipedrive, ats: lever, token: pipedrive, country: Estonia, sector: tech}
   - {name: Veriff, ats: greenhouse, token: veriff, country: Estonia, sector: fintech}
   - {name: Wolt, ats: greenhouse, token: wolt, country: Finland, sector: tech}
-  - {name: Supercell, ats: greenhouse, token: supercell, country: Finland, sector: tech}
+  - {name: Supercell, ats: ashby, token: supercell, country: Finland, sector: tech}
   - {name: Oura, ats: greenhouse, token: oura, country: Finland, sector: health}
-  - {name: Epidemic Sound, ats: greenhouse, token: epidemicsound, country: Sweden, sector: tech}
-  - {name: King, ats: greenhouse, token: king, country: Sweden, sector: tech}
-  - {name: Tink, ats: greenhouse, token: tink, country: Sweden, sector: fintech}
-  - {name: Pleo, ats: greenhouse, token: pleo, country: Denmark, sector: fintech}
-  - {name: Lunar, ats: greenhouse, token: lunar, country: Denmark, sector: fintech}
-  - {name: Kahoot!, ats: greenhouse, token: kahoot, country: Norway, sector: tech}
-  - {name: Vipps MobilePay, ats: greenhouse, token: vipps, country: Norway, sector: fintech}
+  - {name: Pleo, ats: ashby, token: pleo, country: Denmark, sector: fintech}
+  - {name: Lunar, ats: ashby, token: lunar, country: Denmark, sector: fintech}
   - {name: Scandit, ats: greenhouse, token: scandit, country: Switzerland, sector: ai-lab}
   - {name: Proton, ats: greenhouse, token: proton, country: Switzerland, sector: tech}
-  - {name: Nexthink, ats: greenhouse, token: nexthink, country: Switzerland, sector: tech}
   - {name: Bitpanda, ats: greenhouse, token: bitpanda, country: Austria, sector: fintech}
   - {name: Intercom, ats: greenhouse, token: intercom, country: Ireland, sector: ai-lab, known_sponsor: true}
-  - {name: Workhuman, ats: greenhouse, token: workhuman, country: Ireland, sector: tech}
+  - {name: Workhuman, ats: ashby, token: workhuman, country: Ireland, sector: tech}
   - {name: Tines, ats: greenhouse, token: tines, country: Ireland, sector: tech}
   - {name: Sword Health, ats: greenhouse, token: swordhealth, country: Portugal, sector: health}
-  - {name: DocPlanner, ats: greenhouse, token: docplanner, country: Poland, sector: health}
-  - {name: Booksy, ats: greenhouse, token: booksy, country: Poland, sector: tech}
-  - {name: UiPath, ats: greenhouse, token: uipath, country: Romania, sector: ai-lab}
-  - {name: Monday.com, ats: greenhouse, token: mondaycom, country: Israel, sector: tech}
-  - {name: Wix, ats: greenhouse, token: wix, country: Israel, sector: tech}
+  - {name: DocPlanner, ats: ashby, token: docplanner, country: Poland, sector: health}
+  - {name: UiPath, ats: ashby, token: uipath, country: Romania, sector: ai-lab}
   - {name: Lightricks, ats: greenhouse, token: lightricks, country: Israel, sector: ai-lab}
 
   # --- Canada -------------------------------------------------------------
   - {name: Ada, ats: greenhouse, token: ada18, country: Canada, sector: ai-lab}
   - {name: 1Password, ats: ashby, token: 1password, country: Canada, sector: tech}
-  - {name: Clio, ats: greenhouse, token: clio, country: Canada, sector: tech}
-  - {name: Wattpad, ats: greenhouse, token: wattpad, country: Canada, sector: tech}
+  - {name: Wattpad, ats: lever, token: wattpad, country: Canada, sector: tech}
   - {name: Dialpad, ats: greenhouse, token: dialpad, country: Canada, sector: ai-lab}
   - {name: Hootsuite, ats: greenhouse, token: hootsuite, country: Canada, sector: tech}
-  - {name: Lightspeed, ats: greenhouse, token: lightspeedhq, country: Canada, sector: fintech}
+  - {name: Lightspeed, ats: ashby, token: lightspeedhq, country: Canada, sector: fintech}
   - {name: BenchSci, ats: greenhouse, token: benchsci, country: Canada, sector: health}
   - {name: Borealis AI, ats: greenhouse, token: borealisai, country: Canada, sector: ai-lab}
   - {name: Waabi, ats: lever, token: waabi, country: Canada, sector: mobility}
-  - {name: Coveo, ats: greenhouse, token: coveo, country: Canada, sector: ai-lab}
-  - {name: Hopper, ats: greenhouse, token: hopper, country: Canada, sector: tech}
-  - {name: Thinkific, ats: greenhouse, token: thinkific, country: Canada, sector: tech}
-  - {name: Jobber, ats: greenhouse, token: jobber, country: Canada, sector: tech}
-  - {name: Vena, ats: greenhouse, token: vena, country: Canada, sector: fintech}
+  - {name: Hopper, ats: ashby, token: hopper, country: Canada, sector: tech}
+  - {name: Thinkific, ats: ashby, token: thinkific, country: Canada, sector: tech}
+  - {name: Jobber, ats: ashby, token: jobber, country: Canada, sector: tech}
 
   # --- Middle East --------------------------------------------------------
   - {name: Careem, ats: greenhouse, token: careem, country: UAE, sector: mobility, known_sponsor: true}
-  - {name: G42, ats: lever, token: g42, country: UAE, sector: ai-lab, known_sponsor: true}
-  - {name: Kitopi, ats: lever, token: kitopi, country: UAE, sector: tech, known_sponsor: true}
-  - {name: Anghami, ats: lever, token: anghami, country: UAE, sector: tech}
-  - {name: Talabat, ats: greenhouse, token: talabat, country: UAE, sector: tech, known_sponsor: true}
-  - {name: Property Finder, ats: lever, token: propertyfinder, country: UAE, sector: tech, known_sponsor: true}
-  - {name: Lean Technologies, ats: lever, token: leantech, country: Saudi Arabia, sector: fintech, known_sponsor: true}
-  - {name: Foodics, ats: lever, token: foodics, country: Saudi Arabia, sector: tech}
-  - {name: Salla, ats: lever, token: salla, country: Saudi Arabia, sector: tech}
+  - {name: Lean Technologies, ats: ashby, token: leantech, country: Saudi Arabia, sector: fintech, known_sponsor: true}
   - {name: Ziina, ats: ashby, token: ziina, country: UAE, sector: fintech}
-  - {name: Presight, ats: lever, token: presight, country: UAE, sector: ai-lab, known_sponsor: true}
 
   # --- Asia and Australia -------------------------------------------------
-  - {name: Grab, ats: greenhouse, token: grab, country: Singapore, sector: mobility, known_sponsor: true}
-  - {name: Carousell, ats: greenhouse, token: carousell, country: Singapore, sector: tech}
   - {name: Ninja Van, ats: lever, token: ninjavan, country: Singapore, sector: tech}
-  - {name: Shopback, ats: lever, token: shopback, country: Singapore, sector: tech}
-  - {name: Advance Intelligence, ats: lever, token: advance, country: Singapore, sector: fintech}
-  - {name: Aspire, ats: lever, token: aspire, country: Singapore, sector: fintech}
-  - {name: Razorpay, ats: lever, token: razorpay, country: India, sector: fintech}
   - {name: CRED, ats: lever, token: cred, country: India, sector: fintech}
   - {name: Meesho, ats: lever, token: meesho, country: India, sector: tech}
-  - {name: PhonePe, ats: greenhouse, token: phonepe, country: India, sector: fintech}
   - {name: Groww, ats: greenhouse, token: groww, country: India, sector: fintech}
-  - {name: Postman, ats: greenhouse, token: postman, country: India, sector: tech}
   - {name: Mercari, ats: lever, token: mercari, country: Japan, sector: tech, known_sponsor: true}
-  - {name: SmartNews, ats: greenhouse, token: smartnews, country: Japan, sector: tech, known_sponsor: true}
-  - {name: Preferred Networks, ats: greenhouse, token: preferrednetworks, country: Japan, sector: ai-lab}
   - {name: Coupang, ats: greenhouse, token: coupang, country: South Korea, sector: tech}
-  - {name: Canva, ats: lever, token: canva, country: Australia, sector: tech, known_sponsor: true}
-  - {name: Atlassian, ats: lever, token: atlassian, country: Australia, sector: tech, known_sponsor: true}
-  - {name: Rokt, ats: greenhouse, token: rokt, country: Australia, sector: tech, known_sponsor: true}
   - {name: Culture Amp, ats: greenhouse, token: cultureamp, country: Australia, sector: tech}
-  - {name: SafetyCulture, ats: greenhouse, token: safetyculture, country: Australia, sector: tech}
-  - {name: Harrison.ai, ats: lever, token: harrison, country: Australia, sector: health}
-  - {name: Employment Hero, ats: lever, token: employmenthero, country: Australia, sector: tech}
-  - {name: Xero, ats: greenhouse, token: xero, country: New Zealand, sector: fintech, known_sponsor: true}
+  - {name: Xero, ats: ashby, token: xero, country: New Zealand, sector: fintech, known_sponsor: true}
   - {name: Rocket Lab, ats: greenhouse, token: rocketlab, country: New Zealand, sector: other}
 
   # --- SmartRecruiters boards (token is the company id in jobs.smartrecruiters.com/TOKEN)
-  - {name: Visa, ats: smartrecruiters, token: Visa, country: US, sector: fintech, known_sponsor: true}
   - {name: ServiceNow, ats: smartrecruiters, token: ServiceNow, country: US, sector: tech, known_sponsor: true}
   - {name: Bosch, ats: smartrecruiters, token: BoschGroup, country: Germany, sector: other, known_sponsor: true}
   - {name: Delivery Hero SE, ats: smartrecruiters, token: DeliveryHero, country: Germany, sector: tech, known_sponsor: true}
   - {name: Ubisoft, ats: smartrecruiters, token: Ubisoft2, country: France, sector: tech}
-  - {name: Sanofi, ats: smartrecruiters, token: Sanofi, country: France, sector: health}
-  - {name: Equinix, ats: smartrecruiters, token: Equinix, country: US, sector: tech}
   - {name: NielsenIQ, ats: smartrecruiters, token: NielsenIQ, country: US, sector: tech}
   - {name: Experian, ats: smartrecruiters, token: Experian, country: UK, sector: fintech, known_sponsor: true}
-  - {name: Western Union, ats: smartrecruiters, token: WesternUnion, country: US, sector: fintech}
-  - {name: Deezer, ats: smartrecruiters, token: Deezer, country: France, sector: tech}
-  - {name: Wolt SR, ats: smartrecruiters, token: Wolt, country: Finland, sector: tech}
-  - {name: IKEA, ats: smartrecruiters, token: IKEA, country: Sweden, sector: other}
+  - {name: Western Union, ats: greenhouse, token: WesternUnion, country: US, sector: fintech}
   - {name: Sixt, ats: smartrecruiters, token: Sixt, country: Germany, sector: mobility}
   - {name: Allegro, ats: smartrecruiters, token: Allegro, country: Poland, sector: tech}
-  - {name: Adevinta, ats: smartrecruiters, token: Adevinta, country: Spain, sector: tech}
-  - {name: Careem SR, ats: smartrecruiters, token: Careem, country: UAE, sector: mobility}
-  - {name: Jumia SR, ats: smartrecruiters, token: Jumia, country: Nigeria, sector: africa}
-  - {name: Interswitch, ats: smartrecruiters, token: Interswitch, country: Nigeria, sector: africa}
-  - {name: MTN Group, ats: smartrecruiters, token: MTNGroup, country: South Africa, sector: africa}
-  - {name: Safaricom, ats: smartrecruiters, token: Safaricom, country: Kenya, sector: africa}
   - {name: Standard Bank, ats: smartrecruiters, token: StandardBankGroup, country: South Africa, sector: africa}
-  - {name: Ecobank, ats: smartrecruiters, token: Ecobank, country: Togo, sector: africa}
 
   # --- Workable boards (token from apply.workable.com/TOKEN)
   - {name: Hugging Face (Workable), ats: workable, token: huggingface, country: US, sector: ai-lab}
@@ -567,26 +390,18 @@ companies:
   - {name: Tabby (Workable), ats: workable, token: tabby, country: UAE, sector: fintech}
 
   # --- Recruitee boards (token from TOKEN.recruitee.com)
-  - {name: Bynder, ats: recruitee, token: bynder, country: Netherlands, sector: tech}
-  - {name: Tiqets, ats: recruitee, token: tiqets, country: Netherlands, sector: tech}
+  - {name: Bynder, ats: ashby, token: bynder, country: Netherlands, sector: tech}
   - {name: Channable, ats: recruitee, token: channable, country: Netherlands, sector: tech}
-  - {name: Bitvavo, ats: recruitee, token: bitvavo, country: Netherlands, sector: fintech}
+  - {name: Bitvavo, ats: ashby, token: bitvavo, country: Netherlands, sector: fintech}
   - {name: Sendcloud, ats: recruitee, token: sendcloud, country: Netherlands, sector: tech}
-  - {name: Mews, ats: recruitee, token: mews, country: Netherlands, sector: tech}
-  - {name: Catawiki, ats: recruitee, token: catawiki, country: Netherlands, sector: tech}
-  - {name: Ohpen, ats: recruitee, token: ohpen, country: Netherlands, sector: fintech}
-  - {name: Bux, ats: recruitee, token: bux, country: Netherlands, sector: fintech}
-  - {name: Dexter Energy, ats: recruitee, token: dexterenergy, country: Netherlands, sector: ai-lab}
+  - {name: Catawiki, ats: greenhouse, token: catawiki, country: Netherlands, sector: tech}
   - {name: Vandebron, ats: recruitee, token: vandebron, country: Netherlands, sector: other}
-  - {name: Productboard, ats: recruitee, token: productboard, country: Czechia, sector: tech}
-  - {name: Rohlik, ats: recruitee, token: rohlik, country: Czechia, sector: tech}
-  - {name: Brainly, ats: recruitee, token: brainly, country: Poland, sector: ai-lab}
-  - {name: Docplanner (Recruitee), ats: recruitee, token: docplanner, country: Poland, sector: health}
-  - {name: Glovo (Recruitee), ats: recruitee, token: glovo, country: Spain, sector: tech}
+  - {name: Rohlik, ats: ashby, token: rohlik, country: Czechia, sector: tech}
+  - {name: Brainly, ats: ashby, token: brainly, country: Poland, sector: ai-lab}
 
   # --- Personio boards (token from TOKEN.jobs.personio.de)
   - {name: Personio (own board), ats: personio, token: personio, country: Germany, sector: tech}
-  - {name: Trade Republic (Personio), ats: personio, token: traderepublic, country: Germany, sector: fintech}
+  - {name: Trade Republic (Personio), ats: greenhouse, token: traderepublic, country: Germany, sector: fintech}
   - {name: Scalable Capital (Personio), ats: personio, token: scalablecapital, country: Germany, sector: fintech}
   - {name: wefox, ats: personio, token: wefox, country: Germany, sector: fintech}
   - {name: Moss, ats: personio, token: getmoss, country: Germany, sector: fintech}

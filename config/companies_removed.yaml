@@ -1,0 +1,182 @@
+# Boards that stopped working or were never found. Fix the token and move a line back to companies.yaml to retry.
+- {name: Google DeepMind, ats: greenhouse, token: deepmind, country: UK, sector: ai-lab, known_sponsor: true, aliases: [DeepMind Technologies]}  # removed 2026-09-27: not found on any supported ATS
+- {name: Runway, ats: greenhouse, token: runwayml, country: US, sector: ai-lab}  # removed 2026-09-27: not found on any supported ATS
+- {name: Adept, ats: greenhouse, token: adept, country: US, sector: ai-lab}  # removed 2026-09-27: not found on any supported ATS
+- {name: AI21 Labs, ats: greenhouse, token: ai21, country: Israel, sector: ai-lab}  # removed 2026-09-27: not found on any supported ATS
+- {name: Aleph Alpha, ats: ashby, token: aleph-alpha, country: Germany, sector: ai-lab}  # removed 2026-09-27: not found on any supported ATS
+- {name: Black Forest Labs, ats: greenhouse, token: blackforestlabs, country: Germany, sector: ai-lab}  # removed 2026-09-27: not found on any supported ATS
+- {name: Anysphere (Cursor), ats: ashby, token: anysphere, country: US, sector: ai-lab}  # removed 2026-09-27: not found on any supported ATS
+- {name: Sakana AI, ats: ashby, token: sakana, country: Japan, sector: ai-lab}  # removed 2026-09-27: not found on any supported ATS
+- {name: Hugging Face, ats: ashby, token: huggingface, country: US, sector: ai-lab}  # removed 2026-09-27: not found on any supported ATS
+- {name: InstaDeep, ats: greenhouse, token: instadeep, country: UK, sector: ai-lab}  # removed 2026-09-27: not found on any supported ATS
+- {name: Luma AI, ats: ashby, token: lumalabs, country: US, sector: ai-lab}  # removed 2026-09-27: not found on any supported ATS
+- {name: Hebbia, ats: ashby, token: hebbia, country: US, sector: ai-lab}  # removed 2026-09-27: not found on any supported ATS
+- {name: Jasper, ats: ashby, token: jasper, country: US, sector: ai-lab}  # removed 2026-09-27: not found on any supported ATS
+- {name: Contextual AI, ats: ashby, token: contextualai, country: US, sector: ai-lab}  # removed 2026-09-27: not found on any supported ATS
+- {name: Lelapa AI, ats: ashby, token: lelapa, country: South Africa, sector: africa}  # removed 2026-09-27: not found on any supported ATS
+- {name: Replicate, ats: ashby, token: replicate, country: US, sector: ml-infra}  # removed 2026-09-27: not found on any supported ATS
+- {name: Fireworks AI, ats: greenhouse, token: fireworksai, country: US, sector: ml-infra}  # removed 2026-09-27: not found on any supported ATS
+- {name: Weights & Biases, ats: lever, token: wandb, country: US, sector: ml-infra}  # removed 2026-09-27: not found on any supported ATS
+- {name: Qdrant, ats: ashby, token: qdrant, country: Germany, sector: ml-infra}  # removed 2026-09-27: not found on any supported ATS
+- {name: Fiddler AI, ats: ashby, token: fiddler, country: US, sector: ml-infra}  # removed 2026-09-27: not found on any supported ATS
+- {name: DataRobot, ats: greenhouse, token: datarobot, country: US, sector: ml-infra}  # removed 2026-09-27: not found on any supported ATS
+- {name: H2O.ai, ats: greenhouse, token: h2oai, country: US, sector: ml-infra}  # removed 2026-09-27: not found on any supported ATS
+- {name: Cerebras, ats: greenhouse, token: cerebrassystems, country: US, sector: ml-infra}  # removed 2026-09-27: not found on any supported ATS
+- {name: Groq, ats: greenhouse, token: groq, country: US, sector: ml-infra}  # removed 2026-09-27: not found on any supported ATS
+- {name: dbt Labs, ats: greenhouse, token: dbtlabsinc, country: US, sector: ml-infra}  # removed 2026-09-27: not found on any supported ATS
+- {name: Temporal, ats: greenhouse, token: temporaltechnologies, country: US, sector: ml-infra}  # removed 2026-09-27: not found on any supported ATS
+- {name: Grammarly, ats: greenhouse, token: grammarly, country: US, sector: ai-lab}  # removed 2026-09-27: not found on any supported ATS
+- {name: Aurora, ats: greenhouse, token: aurorainnovation, country: US, sector: mobility}  # removed 2026-09-27: not found on any supported ATS
+- {name: Applied Intuition, ats: greenhouse, token: appliedintuition, country: US, sector: mobility}  # removed 2026-09-27: not found on any supported ATS
+- {name: Unity, ats: greenhouse, token: unity3d, country: US, sector: tech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Scribd, ats: greenhouse, token: scribd, country: US, sector: tech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Chegg, ats: greenhouse, token: chegg, country: US, sector: tech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Zillow, ats: greenhouse, token: zillow, country: US, sector: tech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Opendoor, ats: greenhouse, token: opendoor, country: US, sector: tech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Tempus AI, ats: greenhouse, token: tempus, country: US, sector: health}  # removed 2026-09-27: not found on any supported ATS
+- {name: Two Sigma, ats: greenhouse, token: twosigma, country: US, sector: quant, known_sponsor: true}  # removed 2026-09-27: not found on any supported ATS
+- {name: G-Research, ats: greenhouse, token: gresearch, country: UK, sector: quant, known_sponsor: true}  # removed 2026-09-27: not found on any supported ATS
+- {name: Susquehanna (SIG), ats: greenhouse, token: sig, country: US, sector: quant, known_sponsor: true}  # removed 2026-09-27: not found on any supported ATS
+- {name: Marqeta, ats: greenhouse, token: marqeta, country: US, sector: fintech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Remitly, ats: greenhouse, token: remitly, country: US, sector: fintech, known_sponsor: true}  # removed 2026-09-27: not found on any supported ATS
+- {name: Klarna, ats: greenhouse, token: klarna, country: Sweden, sector: fintech, known_sponsor: true}  # removed 2026-09-27: not found on any supported ATS
+- {name: Checkout.com, ats: greenhouse, token: checkoutcom, country: UK, sector: fintech, known_sponsor: true, aliases: [Checkout Ltd]}  # removed 2026-09-27: not found on any supported ATS
+- {name: Revolut, ats: lever, token: revolut, country: UK, sector: fintech, known_sponsor: true}  # removed 2026-09-27: not found on any supported ATS
+- {name: Starling Bank, ats: greenhouse, token: starlingbank, country: UK, sector: fintech, known_sponsor: true}  # removed 2026-09-27: not found on any supported ATS
+- {name: ClearScore, ats: greenhouse, token: clearscore, country: UK, sector: fintech, known_sponsor: true}  # removed 2026-09-27: not found on any supported ATS
+- {name: Cleo, ats: greenhouse, token: cleoai, country: UK, sector: fintech, known_sponsor: true}  # removed 2026-09-27: not found on any supported ATS
+- {name: Onfido (Entrust), ats: greenhouse, token: onfido, country: UK, sector: fintech, known_sponsor: true}  # removed 2026-09-27: not found on any supported ATS
+- {name: Featurespace, ats: greenhouse, token: featurespace, country: UK, sector: fintech, known_sponsor: true}  # removed 2026-09-27: not found on any supported ATS
+- {name: Curve, ats: greenhouse, token: curve, country: UK, sector: fintech}  # removed 2026-09-27: not found on any supported ATS
+- {name: bunq, ats: greenhouse, token: bunq, country: Netherlands, sector: fintech, known_sponsor: true}  # removed 2026-09-27: not found on any supported ATS
+- {name: Scalable Capital, ats: greenhouse, token: scalablecapital, country: Germany, sector: fintech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Signifyd, ats: greenhouse, token: signifyd, country: US, sector: fintech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Unit21, ats: ashby, token: unit21, country: US, sector: fintech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Chainalysis, ats: greenhouse, token: chainalysis, country: US, sector: fintech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Sumsub, ats: ashby, token: sumsub, country: UK, sector: fintech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Rapyd, ats: greenhouse, token: rapyd, country: UK, sector: fintech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Flywire, ats: greenhouse, token: flywire, country: US, sector: fintech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Tabby, ats: ashby, token: tabby, country: UAE, sector: fintech, known_sponsor: true}  # removed 2026-09-27: not found on any supported ATS
+- {name: Sarwa, ats: lever, token: sarwa, country: UAE, sector: fintech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Varo Bank, ats: greenhouse, token: varomoney, country: US, sector: fintech}  # removed 2026-09-27: not found on any supported ATS
+- {name: MX, ats: greenhouse, token: mxtechnologies, country: US, sector: fintech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Branch International, ats: greenhouse, token: branchinternational, country: US, sector: fintech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Pipe, ats: ashby, token: pipe, country: US, sector: fintech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Petal, ats: greenhouse, token: petal, country: US, sector: fintech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Flutterwave, ats: greenhouse, token: flutterwave, country: Nigeria, sector: africa}  # removed 2026-09-27: not found on any supported ATS
+- {name: Paystack, ats: greenhouse, token: paystack, country: Nigeria, sector: africa}  # removed 2026-09-27: not found on any supported ATS
+- {name: Kuda, ats: greenhouse, token: kuda, country: Nigeria, sector: africa}  # removed 2026-09-27: not found on any supported ATS
+- {name: Chipper Cash, ats: greenhouse, token: chippercash, country: US, sector: africa}  # removed 2026-09-27: not found on any supported ATS
+- {name: Wave, ats: lever, token: wave, country: Senegal, sector: africa}  # removed 2026-09-27: not found on any supported ATS
+- {name: Yoco, ats: lever, token: yoco, country: South Africa, sector: africa}  # removed 2026-09-27: not found on any supported ATS
+- {name: Moove, ats: greenhouse, token: moove, country: Nigeria, sector: africa}  # removed 2026-09-27: not found on any supported ATS
+- {name: FairMoney, ats: lever, token: fairmoney, country: Nigeria, sector: africa}  # removed 2026-09-27: not found on any supported ATS
+- {name: Carbon, ats: lever, token: getcarbon, country: Nigeria, sector: africa}  # removed 2026-09-27: not found on any supported ATS
+- {name: Cowrywise, ats: lever, token: cowrywise, country: Nigeria, sector: africa}  # removed 2026-09-27: not found on any supported ATS
+- {name: PiggyVest, ats: lever, token: piggyvest, country: Nigeria, sector: africa}  # removed 2026-09-27: not found on any supported ATS
+- {name: Bamboo, ats: lever, token: investbamboo, country: Nigeria, sector: africa}  # removed 2026-09-27: not found on any supported ATS
+- {name: Risevest, ats: ashby, token: risevest, country: Nigeria, sector: africa}  # removed 2026-09-27: not found on any supported ATS
+- {name: Korapay, ats: lever, token: korapay, country: Nigeria, sector: africa}  # removed 2026-09-27: not found on any supported ATS
+- {name: Mono, ats: lever, token: mono, country: Nigeria, sector: africa}  # removed 2026-09-27: not found on any supported ATS
+- {name: Paga, ats: greenhouse, token: paga, country: Nigeria, sector: africa}  # removed 2026-09-27: not found on any supported ATS
+- {name: TeamApt, ats: greenhouse, token: teamapt, country: Nigeria, sector: africa}  # removed 2026-09-27: not found on any supported ATS
+- {name: Helium Health, ats: lever, token: heliumhealth, country: Nigeria, sector: africa}  # removed 2026-09-27: not found on any supported ATS
+- {name: Reliance Health, ats: lever, token: reliancehealth, country: Nigeria, sector: africa}  # removed 2026-09-27: not found on any supported ATS
+- {name: mPharma, ats: lever, token: mpharma, country: Ghana, sector: africa}  # removed 2026-09-27: not found on any supported ATS
+- {name: Twiga Foods, ats: lever, token: twiga, country: Kenya, sector: africa}  # removed 2026-09-27: not found on any supported ATS
+- {name: Sendy, ats: lever, token: sendy, country: Kenya, sector: africa}  # removed 2026-09-27: not found on any supported ATS
+- {name: Cellulant, ats: lever, token: cellulant, country: Kenya, sector: africa}  # removed 2026-09-27: not found on any supported ATS
+- {name: Onafriq, ats: lever, token: onafriq, country: Mauritius, sector: africa}  # removed 2026-09-27: not found on any supported ATS
+- {name: Takealot, ats: greenhouse, token: takealot, country: South Africa, sector: africa}  # removed 2026-09-27: not found on any supported ATS
+- {name: VALR, ats: lever, token: valr, country: South Africa, sector: africa}  # removed 2026-09-27: not found on any supported ATS
+- {name: Peach Payments, ats: lever, token: peachpayments, country: South Africa, sector: africa}  # removed 2026-09-27: not found on any supported ATS
+- {name: TymeBank, ats: lever, token: tymebank, country: South Africa, sector: africa}  # removed 2026-09-27: not found on any supported ATS
+- {name: JUMO, ats: lever, token: jumo, country: South Africa, sector: africa}  # removed 2026-09-27: not found on any supported ATS
+- {name: Sun King, ats: greenhouse, token: sunking, country: Kenya, sector: africa}  # removed 2026-09-27: not found on any supported ATS
+- {name: Kobo360, ats: lever, token: kobo360, country: Nigeria, sector: africa}  # removed 2026-09-27: not found on any supported ATS
+- {name: MNT-Halan, ats: lever, token: mnt-halan, country: Egypt, sector: africa}  # removed 2026-09-27: not found on any supported ATS
+- {name: Paymob, ats: lever, token: paymob, country: Egypt, sector: africa}  # removed 2026-09-27: not found on any supported ATS
+- {name: Swvl, ats: lever, token: swvl, country: Egypt, sector: africa}  # removed 2026-09-27: not found on any supported ATS
+- {name: Kuda Bank UK, ats: lever, token: kudabank, country: UK, sector: africa}  # removed 2026-09-27: not found on any supported ATS
+- {name: Chaka, ats: lever, token: chaka, country: Nigeria, sector: africa}  # removed 2026-09-27: not found on any supported ATS
+- {name: Octamile, ats: lever, token: octamile, country: Nigeria, sector: africa}  # removed 2026-09-27: not found on any supported ATS
+- {name: Duplo, ats: ashby, token: duplo, country: Nigeria, sector: africa}  # removed 2026-09-27: not found on any supported ATS
+- {name: Brass, ats: lever, token: brass, country: Nigeria, sector: africa}  # removed 2026-09-27: not found on any supported ATS
+- {name: Credpal, ats: lever, token: credpal, country: Nigeria, sector: africa}  # removed 2026-09-27: not found on any supported ATS
+- {name: Lidya, ats: lever, token: lidya, country: Nigeria, sector: africa}  # removed 2026-09-27: not found on any supported ATS
+- {name: Seamless HR, ats: lever, token: seamlesshr, country: Nigeria, sector: africa}  # removed 2026-09-27: not found on any supported ATS
+- {name: Gebeya, ats: lever, token: gebeya, country: Ethiopia, sector: africa}  # removed 2026-09-27: not found on any supported ATS
+- {name: Africa's Talking, ats: lever, token: africastalking, country: Kenya, sector: africa}  # removed 2026-09-27: not found on any supported ATS
+- {name: Ocado Technology, ats: greenhouse, token: ocadotechnology, country: UK, sector: tech, known_sponsor: true}  # removed 2026-09-27: not found on any supported ATS
+- {name: Darktrace, ats: greenhouse, token: darktrace, country: UK, sector: tech, known_sponsor: true}  # removed 2026-09-27: not found on any supported ATS
+- {name: BenevolentAI, ats: greenhouse, token: benevolentai, country: UK, sector: health, known_sponsor: true}  # removed 2026-09-27: not found on any supported ATS
+- {name: Skyscanner, ats: greenhouse, token: skyscanner, country: UK, sector: tech, known_sponsor: true}  # removed 2026-09-27: not found on any supported ATS
+- {name: Cera, ats: lever, token: cera, country: UK, sector: health}  # removed 2026-09-27: not found on any supported ATS
+- {name: Huma, ats: lever, token: huma, country: UK, sector: health}  # removed 2026-09-27: not found on any supported ATS
+- {name: Gousto, ats: greenhouse, token: gousto, country: UK, sector: tech, known_sponsor: true}  # removed 2026-09-27: not found on any supported ATS
+- {name: Depop, ats: greenhouse, token: depop, country: UK, sector: tech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Hopin, ats: ashby, token: hopin, country: UK, sector: tech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Booking.com, ats: greenhouse, token: bookingcom, country: Netherlands, sector: tech, known_sponsor: true}  # removed 2026-09-27: not found on any supported ATS
+- {name: Picnic, ats: greenhouse, token: picnic, country: Netherlands, sector: tech, known_sponsor: true}  # removed 2026-09-27: not found on any supported ATS
+- {name: Bird, ats: greenhouse, token: messagebird, country: Netherlands, sector: tech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Personio, ats: greenhouse, token: personio, country: Germany, sector: tech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Zalando, ats: greenhouse, token: zalando, country: Germany, sector: tech, known_sponsor: true}  # removed 2026-09-27: not found on any supported ATS
+- {name: Delivery Hero, ats: greenhouse, token: deliveryhero, country: Germany, sector: tech, known_sponsor: true}  # removed 2026-09-27: not found on any supported ATS
+- {name: Taxfix, ats: greenhouse, token: taxfix, country: Germany, sector: fintech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Criteo, ats: greenhouse, token: criteo, country: France, sector: tech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Glovo, ats: greenhouse, token: glovo, country: Spain, sector: tech, known_sponsor: true}  # removed 2026-09-27: not found on any supported ATS
+- {name: Factorial, ats: greenhouse, token: factorial, country: Spain, sector: tech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Vinted, ats: greenhouse, token: vinted, country: Lithuania, sector: tech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Epidemic Sound, ats: greenhouse, token: epidemicsound, country: Sweden, sector: tech}  # removed 2026-09-27: not found on any supported ATS
+- {name: King, ats: greenhouse, token: king, country: Sweden, sector: tech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Tink, ats: greenhouse, token: tink, country: Sweden, sector: fintech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Kahoot!, ats: greenhouse, token: kahoot, country: Norway, sector: tech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Vipps MobilePay, ats: greenhouse, token: vipps, country: Norway, sector: fintech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Nexthink, ats: greenhouse, token: nexthink, country: Switzerland, sector: tech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Booksy, ats: greenhouse, token: booksy, country: Poland, sector: tech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Monday.com, ats: greenhouse, token: mondaycom, country: Israel, sector: tech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Wix, ats: greenhouse, token: wix, country: Israel, sector: tech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Clio, ats: greenhouse, token: clio, country: Canada, sector: tech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Coveo, ats: greenhouse, token: coveo, country: Canada, sector: ai-lab}  # removed 2026-09-27: not found on any supported ATS
+- {name: Vena, ats: greenhouse, token: vena, country: Canada, sector: fintech}  # removed 2026-09-27: not found on any supported ATS
+- {name: G42, ats: lever, token: g42, country: UAE, sector: ai-lab, known_sponsor: true}  # removed 2026-09-27: not found on any supported ATS
+- {name: Kitopi, ats: lever, token: kitopi, country: UAE, sector: tech, known_sponsor: true}  # removed 2026-09-27: not found on any supported ATS
+- {name: Anghami, ats: lever, token: anghami, country: UAE, sector: tech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Talabat, ats: greenhouse, token: talabat, country: UAE, sector: tech, known_sponsor: true}  # removed 2026-09-27: not found on any supported ATS
+- {name: Property Finder, ats: lever, token: propertyfinder, country: UAE, sector: tech, known_sponsor: true}  # removed 2026-09-27: not found on any supported ATS
+- {name: Foodics, ats: lever, token: foodics, country: Saudi Arabia, sector: tech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Salla, ats: lever, token: salla, country: Saudi Arabia, sector: tech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Presight, ats: lever, token: presight, country: UAE, sector: ai-lab, known_sponsor: true}  # removed 2026-09-27: not found on any supported ATS
+- {name: Grab, ats: greenhouse, token: grab, country: Singapore, sector: mobility, known_sponsor: true}  # removed 2026-09-27: not found on any supported ATS
+- {name: Carousell, ats: greenhouse, token: carousell, country: Singapore, sector: tech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Shopback, ats: lever, token: shopback, country: Singapore, sector: tech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Advance Intelligence, ats: lever, token: advance, country: Singapore, sector: fintech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Aspire, ats: lever, token: aspire, country: Singapore, sector: fintech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Razorpay, ats: lever, token: razorpay, country: India, sector: fintech}  # removed 2026-09-27: not found on any supported ATS
+- {name: PhonePe, ats: greenhouse, token: phonepe, country: India, sector: fintech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Postman, ats: greenhouse, token: postman, country: India, sector: tech}  # removed 2026-09-27: not found on any supported ATS
+- {name: SmartNews, ats: greenhouse, token: smartnews, country: Japan, sector: tech, known_sponsor: true}  # removed 2026-09-27: not found on any supported ATS
+- {name: Preferred Networks, ats: greenhouse, token: preferrednetworks, country: Japan, sector: ai-lab}  # removed 2026-09-27: not found on any supported ATS
+- {name: Canva, ats: lever, token: canva, country: Australia, sector: tech, known_sponsor: true}  # removed 2026-09-27: not found on any supported ATS
+- {name: Atlassian, ats: lever, token: atlassian, country: Australia, sector: tech, known_sponsor: true}  # removed 2026-09-27: not found on any supported ATS
+- {name: Rokt, ats: greenhouse, token: rokt, country: Australia, sector: tech, known_sponsor: true}  # removed 2026-09-27: not found on any supported ATS
+- {name: SafetyCulture, ats: greenhouse, token: safetyculture, country: Australia, sector: tech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Harrison.ai, ats: lever, token: harrison, country: Australia, sector: health}  # removed 2026-09-27: not found on any supported ATS
+- {name: Employment Hero, ats: lever, token: employmenthero, country: Australia, sector: tech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Visa, ats: smartrecruiters, token: Visa, country: US, sector: fintech, known_sponsor: true}  # removed 2026-09-27: not found on any supported ATS
+- {name: Sanofi, ats: smartrecruiters, token: Sanofi, country: France, sector: health}  # removed 2026-09-27: not found on any supported ATS
+- {name: Equinix, ats: smartrecruiters, token: Equinix, country: US, sector: tech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Deezer, ats: smartrecruiters, token: Deezer, country: France, sector: tech}  # removed 2026-09-27: not found on any supported ATS
+- {name: IKEA, ats: smartrecruiters, token: IKEA, country: Sweden, sector: other}  # removed 2026-09-27: not found on any supported ATS
+- {name: Adevinta, ats: smartrecruiters, token: Adevinta, country: Spain, sector: tech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Interswitch, ats: smartrecruiters, token: Interswitch, country: Nigeria, sector: africa}  # removed 2026-09-27: not found on any supported ATS
+- {name: MTN Group, ats: smartrecruiters, token: MTNGroup, country: South Africa, sector: africa}  # removed 2026-09-27: not found on any supported ATS
+- {name: Safaricom, ats: smartrecruiters, token: Safaricom, country: Kenya, sector: africa}  # removed 2026-09-27: not found on any supported ATS
+- {name: Ecobank, ats: smartrecruiters, token: Ecobank, country: Togo, sector: africa}  # removed 2026-09-27: not found on any supported ATS
+- {name: Tiqets, ats: recruitee, token: tiqets, country: Netherlands, sector: tech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Mews, ats: recruitee, token: mews, country: Netherlands, sector: tech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Ohpen, ats: recruitee, token: ohpen, country: Netherlands, sector: fintech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Bux, ats: recruitee, token: bux, country: Netherlands, sector: fintech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Dexter Energy, ats: recruitee, token: dexterenergy, country: Netherlands, sector: ai-lab}  # removed 2026-09-27: not found on any supported ATS
+- {name: Productboard, ats: recruitee, token: productboard, country: Czechia, sector: tech}  # removed 2026-09-27: not found on any supported ATS
+- {name: Glovo (Recruitee), ats: recruitee, token: glovo, country: Spain, sector: tech}  # removed 2026-09-27: not found on any supported ATS
