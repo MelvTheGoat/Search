@@ -308,6 +308,7 @@ function packCard(j){
   const opts = STATUSES.map(s => `<option value="${s}" ${s===j.status?"selected":""}>${STATUS_TEXT[s]}</option>`).join("");
   const L = pk ? splitLetter(pk.letter) : {letter:"", why:""};
   const cvOpen = state.open.has("cv:" + j.k), clOpen = state.open.has("cl:" + j.k);
+  const jpOpen = state.open.has("jp:" + j.k);
   return `<article class="pack job" data-k="${esc(j.k)}">
     <div class="pack-head">
       <div class="score" title="Fit score out of 100"><span class="v" style="color:${fitColor(f)}">${f}</span><span class="meter"><i style="width:${Math.min(100,f)}%;background:${fitColor(f)}"></i></span></div>
@@ -323,8 +324,8 @@ function packCard(j){
         <a class="btn primary" href="${esc(j.url)}" target="_blank" rel="noopener">Apply on their site ↗</a>
       </div>
     </div>
-    <section class="pack-sec"><h3><span class="step">1</span>Job posting</h3>
-      ${pk ? `<pre class="posting">${esc(pk.desc)}</pre>` : "<p class='ev'>Loading…</p>"}</section>
+    <section class="pack-sec"><h3><span class="step">1</span>Job posting<span class="tools">${pk ? `<button class="btn toggle" data-open="jp:${esc(j.k)}" aria-expanded="${jpOpen}">${jpOpen ? "Hide posting" : "Show posting"}</button>` : ""}<a class="btn" href="${esc(j.url)}" target="_blank" rel="noopener">Open original ↗</a></span></h3>
+      ${pk ? (jpOpen ? `<pre class="posting">${esc(pk.desc)}</pre>` : "") : "<p class='ev'>Loading…</p>"}</section>
     <section class="pack-sec"><h3><span class="step">2</span>Tailored CV<span class="tools">${pk && pk.cv_html ? `<button class="btn toggle" data-open="cv:${esc(j.k)}" aria-expanded="${cvOpen}">${cvOpen ? "Hide CV" : "Show CV"}</button>` : ""}${j.cvp ? `<a class="btn cv-pdf" href="${esc(j.cvp)}" target="_blank" rel="noopener">Download PDF</a>` : ""}${j.cvn ? `<button class="btn cv-word">Download Word</button>` : ""}</span></h3>
       ${pk && pk.cv_html ? (cvOpen ? `<div class="cvdoc">${pk.cv_html}</div>` : "") : "<p class='ev'>No CV yet.</p>"}</section>
     <section class="pack-sec"><h3><span class="step">3</span>Cover letter<span class="tools">${L.letter ? `<button class="btn toggle" data-open="cl:${esc(j.k)}" aria-expanded="${clOpen}">${clOpen ? "Hide letter" : "Show letter"}</button><button class="btn copy-pack">Copy letter</button>` : ""}</span></h3>
