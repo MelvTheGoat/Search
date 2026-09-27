@@ -1,0 +1,50 @@
+job_id: 5589
+company: Eclipse Laboratories
+title: Data Scientist (AI Data and LLM Specialist)
+headline: ds
+summary: Data scientist focused on data quality and evaluation for AI. Built labelled evaluation sets for an LLM retrieval
+  assistant and a crypto risk tool, a structure-aware document chunking method for LLM retrieval, and fraud models with careful
+  handling of class imbalance. Works in Python with pandas, scikit-learn and Hugging Face.
+skills:
+- group: ai
+  lead:
+  - LLM Evaluation and Guardrails
+  - Hugging Face
+  - Retrieval-Augmented Generation (RAG)
+  - Prompt Engineering
+  - Citation Verification
+- group: data
+  lead:
+  - Pandas
+  - NumPy
+- group: ml
+  lead:
+  - Scikit-learn
+- group: domain
+  lead:
+  - Web3 Fraud Risk Scoring
+- eng
+- stats
+projects:
+- id: rag
+  bullets:
+  - chunking
+  - eval
+  - system
+- id: web3
+  bullets:
+  - eval
+  - system
+  - detect
+- id: fraud
+  bullets:
+  - imbalance
+- id: reckon
+  bullets:
+  - review
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

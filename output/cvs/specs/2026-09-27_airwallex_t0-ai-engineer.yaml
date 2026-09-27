@@ -1,0 +1,51 @@
+job_id: 4007
+company: Airwallex
+title: T0 AI Engineer
+headline: llm
+summary: AI engineer building agents and LLM workflows for finance. Built a compliance assistant with retrieval, guardrails
+  and citation checks, an MCP server of tools for AI assistants, a payment reconciliation system, and credit and fraud models
+  with audit trails. Chooses the simplest approach that works, from prompting to retrieval to rules.
+skills:
+- group: ai
+  lead:
+  - Model Context Protocol (MCP)
+  - Retrieval-Augmented Generation (RAG)
+  - Prompt Engineering
+  - LLM Evaluation and Guardrails
+- group: eng
+  lead:
+  - Python
+  - FastAPI
+  - Docker
+  - PostgreSQL
+- group: domain
+  lead:
+  - Payment Reconciliation
+  - Credit Risk Decisioning
+- ml
+- stats
+- data
+projects:
+- id: web3
+  bullets:
+  - system
+  - http
+  - scorer
+- id: rag
+  bullets:
+  - system
+  - safety
+  - eval
+- id: reckon
+  bullets:
+  - system
+  - review
+- id: credit
+  bullets:
+  - system
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

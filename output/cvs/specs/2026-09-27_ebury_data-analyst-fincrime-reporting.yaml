@@ -1,0 +1,46 @@
+job_id: 3759
+company: Ebury
+title: Data Analyst, Fincrime Reporting
+headline: analyst
+summary: Data analyst focused on financial crime, fraud and risk. Built transaction fraud detection with per-attack analysis,
+  a payment reconciliation system with audit trails, a compliance assistant over central bank regulation, and wallet screening
+  against sanctioned and mixer addresses. Works in SQL, dbt and Python.
+skills:
+- group: domain
+  lead:
+  - Transaction Fraud Detection
+  - Regulatory Compliance (CBN/NDPA)
+  - Payment Reconciliation
+- group: data
+  lead:
+  - SQL
+  - Anomaly Detection
+- group: eng
+  lead:
+  - dbt-core
+  - Python
+  - Git
+- stats
+- ml
+projects:
+- id: fraud
+  bullets:
+  - bench
+  - deploy
+- id: reckon
+  bullets:
+  - system
+  - pipeline
+  - review
+- id: web3
+  bullets:
+  - detect
+- id: rag
+  bullets:
+  - system
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

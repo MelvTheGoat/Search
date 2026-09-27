@@ -1,0 +1,49 @@
+job_id: 3593
+company: Ramp
+title: Credit Risk Associate
+headline: risk
+summary: Credit and fraud risk data scientist who builds the first working version. Built a credit decisioning system with
+  calibrated default probabilities, cost-optimal cutoffs, reason codes and an audit trail, plus a fairness audit, and prototypes
+  tools with AI coding assistants. Works in SQL and Python.
+skills:
+- group: domain
+  lead:
+  - Credit Risk Decisioning
+  - Transaction Fraud Detection
+- group: stats
+  lead:
+  - WOE Scorecards
+  - Logistic Regression
+- group: ml
+  lead:
+  - LightGBM
+  - SHAP
+  - Model Calibration (Isotonic Regression, Temperature Scaling)
+- group: eng
+  lead:
+  - SQL
+  - Python
+  - FastAPI
+- group: ai
+  lead:
+  - Prompt Engineering
+  - LLM Evaluation and Guardrails
+- data
+projects:
+- id: credit
+  bullets:
+  - system
+  - calib
+  - fairness
+- id: fraud
+  bullets:
+  - bench
+- id: reckon
+  bullets:
+  - review
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

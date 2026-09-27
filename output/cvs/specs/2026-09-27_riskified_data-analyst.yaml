@@ -1,0 +1,43 @@
+job_id: 3883
+company: Riskified
+title: Data Analyst
+headline: analyst
+summary: Data analyst focused on online fraud. Built transaction fraud detection with per-attack-type analysis and precision
+  at fixed review capacity, a wallet and token risk tool with an explainable score, and a payment reconciliation system with
+  human review. Works in SQL and Python and explains results to non-technical audiences.
+skills:
+- group: domain
+  lead:
+  - Transaction Fraud Detection
+  - Web3 Fraud Risk Scoring
+  - Payment Reconciliation
+- group: data
+  lead:
+  - SQL
+  - Pandas
+  - Anomaly Detection
+- group: eng
+  lead:
+  - Python
+- ml
+- stats
+projects:
+- id: fraud
+  bullets:
+  - bench
+  - models
+  - imbalance
+- id: web3
+  bullets:
+  - system
+  - detect
+- id: reckon
+  bullets:
+  - system
+  - review
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

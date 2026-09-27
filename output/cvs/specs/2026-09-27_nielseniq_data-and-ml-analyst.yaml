@@ -1,0 +1,42 @@
+job_id: 4951
+company: NielsenIQ
+title: Data and ML Analyst
+headline: data_ml
+summary: Data and machine learning analyst with a B.Sc. in Statistics. Investigates data quality problems to their root cause,
+  writes SQL and Python checks and fixes, and retrains and monitors ML models with drift tracking. Brings an auditor's attention
+  to detail from reviewing financial records.
+skills:
+- group: data
+  lead:
+  - SQL
+  - Pandas
+  - Anomaly Detection
+- group: eng
+  lead:
+  - Python
+  - MLflow
+  - Evidently
+- group: ml
+  lead:
+  - Scikit-learn
+  - XGBoost
+- stats
+- domain
+projects:
+- id: forecast
+  bullets:
+  - system
+  - validation
+- id: reckon
+  bullets:
+  - system
+  - pipeline
+- id: churn
+  bullets:
+  - model
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

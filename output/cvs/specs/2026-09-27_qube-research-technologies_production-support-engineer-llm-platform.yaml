@@ -1,0 +1,47 @@
+job_id: 3260
+company: Qube Research & Technologies
+title: Production Support Engineer, LLM Platform
+headline: llm
+summary: Engineer who builds and debugs API-driven AI services. Built a resilient HTTP layer with caching, per-source rate
+  limits and retries with backoff, an LLM assistant with request caps and guardrails, and load tested a PostgreSQL service
+  to find its saturation point and p99 latency. Works in Python and SQL.
+skills:
+- group: eng
+  lead:
+  - Python
+  - PostgreSQL
+  - SQL
+  - Docker
+  - Redis
+  - FastAPI
+  - CI/CD (GitHub Actions)
+- group: ai
+  lead:
+  - LLM Evaluation and Guardrails
+  - Prompt Engineering
+  - Model Context Protocol (MCP)
+- ml
+- data
+projects:
+- id: web3
+  bullets:
+  - http
+  - system
+- id: ledger
+  bullets:
+  - load
+  - tests
+  - locking
+- id: rag
+  bullets:
+  - deploy
+  - safety
+- id: fraud
+  bullets:
+  - deploy
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

@@ -1,0 +1,44 @@
+job_id: 805
+company: Glean
+title: Machine Learning Engineer, Assistant Quality
+headline: llm
+summary: AI engineer focused on assistant quality, covering retrieval, evaluation and guardrails. Built a hybrid search assistant
+  with 0.96 recall@5 and component-level evaluation, an MCP server of tools for AI assistants, and production ML services
+  with FastAPI and Docker. Chooses simple, reliable systems when they are the better answer.
+skills:
+- group: ai
+  lead:
+  - Retrieval-Augmented Generation (RAG)
+  - Hybrid Search (BM25, Dense Embeddings, RRF)
+  - LLM Evaluation and Guardrails
+  - Prompt Engineering
+  - Model Context Protocol (MCP)
+- group: eng
+  lead:
+  - Python
+  - FastAPI
+  - Docker
+- ml
+- stats
+- data
+projects:
+- id: rag
+  bullets:
+  - system
+  - eval
+  - chunking
+  - safety
+- id: web3
+  bullets:
+  - system
+  - scorer
+  - eval
+- id: fraud
+  bullets:
+  - deploy
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

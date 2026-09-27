@@ -1,0 +1,49 @@
+job_id: 5178
+company: Sonarsource
+title: Data Scientist, Product Analytics
+headline: ds
+summary: Data scientist with a B.Sc. in Statistics who connects behaviour to outcomes. Built and deployed a churn model on
+  AWS, ran a causal uplift study with honest reporting of significance and a failed placebo test, and builds SQL and dbt data
+  models. Makes recommendations, not just reports.
+skills:
+- group: stats
+  lead:
+  - Experiment Design
+  - Statistical Inference
+  - Causal Inference (S/T/X-Learners, Causal Forests)
+  - Uplift Modeling
+  - Power Analysis
+- group: eng
+  lead:
+  - SQL
+  - Python
+  - dbt-core
+  - MLflow
+- group: ml
+  lead:
+  - XGBoost
+  - Scikit-learn
+- data
+- ai
+- domain
+projects:
+- id: churn
+  bullets:
+  - model
+  - deploy
+- id: uplift
+  bullets:
+  - study
+  - findings
+  - eval
+  - experiment
+- id: forecast
+  bullets:
+  - system
+  - validation
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

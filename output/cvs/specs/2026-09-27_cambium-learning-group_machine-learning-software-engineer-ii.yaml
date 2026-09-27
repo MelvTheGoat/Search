@@ -1,0 +1,48 @@
+job_id: 5308
+company: Cambium Learning Group
+title: Machine Learning Software Engineer II
+headline: mlops
+summary: ML engineer who takes models from research to production. Converted a PyTorch model to ONNX Runtime for a 2.9× speedup
+  and served it at 5.1 ms p99, deployed a model with Docker on AWS ECS Fargate with CI/CD, and writes tested, documented Python.
+  B.Sc. in Statistics and teaches machine learning.
+skills:
+- group: eng
+  lead:
+  - AWS ECS Fargate
+  - Docker
+  - CI/CD (GitHub Actions)
+  - FastAPI
+  - Python
+  - Pytest
+- group: ai
+  lead:
+  - ONNX Runtime
+- group: ml
+  lead:
+  - PyTorch
+  - Scikit-learn
+  - Sequence Models (GRU, TCN, Transformers)
+- stats
+- data
+- domain
+projects:
+- id: fraud
+  bullets:
+  - deploy
+  - models
+- id: churn
+  bullets:
+  - deploy
+  - model
+- id: rag
+  bullets:
+  - deploy
+- id: forecast
+  bullets:
+  - system
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit
