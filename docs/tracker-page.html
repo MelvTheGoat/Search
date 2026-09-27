@@ -413,8 +413,27 @@ async function savePdf(k, a){
   const j = jobs().find(x => x.k === k);
   const dl = await getDownloads();
   if (!dl || !j) { window.open(a.href, "_blank", "noopener"); return; }
-  try { const blob = await (await fetch(j.cvp)).blob(); await dl.save({filename: j.cvn + ".pdf", data: blob}); toast("Saved"); }
-  catch(e) { if (!e || e.code !== "declined") window.open(a.href, "_blank", "noopener"); }
+  try {
+    // The PDF is kept in the page database too; that works on phones.
+    let data = null;
+    if (state.db) {
+      const snap = await state.db.doc("cvpdfs/" + k).get();
+      if (snap.exists) data = b64bytes(snap.data().b64);
+    }
+    if (!data) {
+      const r = await fetch(j.cvp);
+      const blob = await r.blob();
+      // Only accept a real PDF, never a short error page.
+      const head = new Uint8Array(await blob.slice(0, 5).arrayBuffer());
+      if (!r.ok || blob.size < 1000 || String.fromCharCode(...head) !== "%PDF-") throw new Error("bad pdf");
+      data = blob;
+    }
+    await dl.save({filename: j.cvn + ".pdf", data});
+    toast("Saved");
+  } catch(e) {
+    if (e && e.code === "declined") return;
+    toast("Could not get the PDF. Try Download Word, or try again after the next sync.");
+  }
 }
 document.addEventListener("click", e => {
   const a = e.target.closest("a.cv-pdf"); if (!a) return;

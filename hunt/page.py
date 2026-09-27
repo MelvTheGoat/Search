@@ -4,6 +4,9 @@ The page keeps two kinds of records:
   chunks/<n>   job details from the last run, 100 jobs per record
   meta/run     when the last run happened, plus counts
   letters/<key> the cover letter text for a job
+  cvdocs/<key> the tailored CV as a Word file (base64)
+  cvpdfs/<key> the tailored CV as a PDF (base64), so the page can save it
+               on phones, where fetching the uploaded PDF can fail
   edits/<key>  what you changed on the page: status, notes, date applied
 
 page-export writes JSON files and a list of writes for Claude to send.
@@ -97,6 +100,7 @@ def export_page(conn, top_open=300, top_restricted=60, top_near=150, out=PAGE_DI
     (out / "chunks").mkdir(parents=True)
     (out / "letters").mkdir()
     (out / "cvdocs").mkdir()
+    (out / "cvpdfs").mkdir()
     (out / "packs").mkdir()
     assets = _assets()
     run = now_utc()
@@ -133,6 +137,11 @@ def export_page(conn, top_open=300, top_restricted=60, top_near=150, out=PAGE_DI
             p = out / "cvdocs" / f"{j['key']}.json"
             p.write_text(json.dumps({"name": Path(cvf).name, "b64": base64.b64encode((ROOT / cvf).read_bytes()).decode()}))
             writes.append({"op": "set", "collection": "cvdocs", "doc_id": j["key"], "file_path": str(p)})
+            pdf = (ROOT / cvf).with_suffix(".pdf")
+            if pdf.exists():
+                p = out / "cvpdfs" / f"{j['key']}.json"
+                p.write_text(json.dumps({"name": pdf.name, "b64": base64.b64encode(pdf.read_bytes()).decode()}))
+                writes.append({"op": "set", "collection": "cvpdfs", "doc_id": j["key"], "file_path": str(p)})
 
     counts = {
         "status": dict(Counter(j["status"] for j in jobs)),

@@ -66,7 +66,8 @@ steps in order, so no change made on the page is lost:
    `data/page/writes.json` with ArtifactData `batch` (each batch is a list
    of writes; send them in order, the last one updates `meta/run`).
    The database refuses to overwrite a record without its version, so
-   first `list` the `chunks`, `letters` and `meta` collections, and add
+   first `list` the `chunks`, `letters`, `packs`, `cvdocs`, `cvpdfs` and
+   `meta` collections, and add
    `if_version` to every write that targets a record that already exists.
    Drop `delete` writes for chunks that do not exist.
 6. Report the top new jobs in a few lines.
