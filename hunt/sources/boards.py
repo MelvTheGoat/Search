@@ -82,29 +82,40 @@ def fetch_arbeitnow(http, cfg, log=print):
 
 
 def fetch_himalayas(http, cfg, log=print):
-    jobs = []
-    limit = 20
-    for page in range(cfg.get("max_pages", 20)):
-        data = http.get("https://himalayas.app/jobs/api", params={"limit": limit, "offset": page * limit})
-        batch = data.get("jobs", [])
-        for j in batch:
-            limits = j.get("locationRestrictions") or []
-            limits = [l if isinstance(l, str) else l.get("name", "") for l in limits]
-            where = ", ".join(l for l in limits if l) or "Worldwide"
-            jobs.append(Job(
-                source="himalayas",
-                company=j.get("companyName", ""),
-                title=j.get("title", ""),
-                location=f"Remote ({where})",
-                apply_url=j.get("applicationLink") or j.get("guid", ""),
-                description=html_to_text(j.get("description") or j.get("excerpt", "")),
-                remote=True,
-                posted_at=_himalayas_date(j.get("pubDate")),
-                department=", ".join(j.get("categories") or [])[:200],
-                extra={"location_hints": limits} if limits else {},
-            ))
-        if len(batch) < limit:
-            break
+    """Himalayas search API, one query at a time, 20 jobs a page."""
+    jobs, seen = [], set()
+    for q in cfg.get("queries", ["machine learning"]):
+        for page in range(1, cfg.get("max_pages", 10) + 1):
+            try:
+                data = http.get("https://himalayas.app/jobs/api/search", params={"q": q, "page": page})
+            except Exception as e:  # noqa: BLE001
+                log(f"  himalayas/{q}/page {page}: {e}")
+                break
+            batch = data.get("jobs", [])
+            for j in batch:
+                gid = j.get("guid") or j.get("applicationLink")
+                if gid in seen:
+                    continue
+                seen.add(gid)
+                limits = j.get("locationRestrictions") or []
+                limits = [l if isinstance(l, str) else l.get("name", "") for l in limits]
+                where = ", ".join(l for l in limits if l) or "Worldwide"
+                seniority = ", ".join(j.get("seniority") or [])
+                jobs.append(Job(
+                    source="himalayas",
+                    company=j.get("companyName", ""),
+                    title=j.get("title", ""),
+                    location=f"Remote ({where})",
+                    apply_url=j.get("applicationLink") or j.get("guid", ""),
+                    description=html_to_text(j.get("description") or j.get("excerpt", ""))
+                    + (f"\nSeniority: {seniority}" if seniority else ""),
+                    remote=True,
+                    posted_at=_himalayas_date(j.get("pubDate")),
+                    department=", ".join(j.get("categories") or [])[:200],
+                    extra={"location_hints": limits} if limits else {},
+                ))
+            if len(batch) < 20:
+                break
     return jobs
 
 

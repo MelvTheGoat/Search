@@ -12,6 +12,7 @@ http:
     remoteok.com: 3.0
     remotive.com: 3.0
     himalayas.app: 1.5
+    apply.workable.com: 4.0
     www.arbeitnow.com: 1.5
     api.adzuna.com: 1.5
     jobicy.com: 3.0
@@ -52,7 +53,8 @@ arbeitnow:
 himalayas:
   enabled: true
   refetch_hours: 6
-  max_pages: 40             # 20 jobs a page
+  queries: ["machine learning", "data scientist", "AI engineer", "LLM", "MLOps", "data analyst", "fraud", "research engineer"]
+  max_pages: 10             # 20 jobs a page, per query
 
 jobicy:
   enabled: true
@@ -76,7 +78,7 @@ hn_whoishiring:
 themuse:
   enabled: true
   refetch_hours: 12
-  categories: ["Data and Analytics", "Data Science", "Software Engineering"]
+  categories: ["Data and Analytics", "Data Science", "Science and Engineering", "Software Engineering"]
   levels: [Internship, Entry Level, Mid Level]
   max_pages: 10
 
