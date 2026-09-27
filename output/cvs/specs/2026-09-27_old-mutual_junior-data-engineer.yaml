@@ -1,0 +1,46 @@
+job_id: 6124
+company: Old Mutual
+title: Junior Data Engineer
+headline: data_eng
+summary: Data and machine learning engineer with a B.Sc. in Statistics. Builds tested data pipelines in Python and SQL with
+  Prefect, dbt and DuckDB, a payment reconciliation pipeline with audit trails, and a PostgreSQL ledger API with 138 tests.
+  Works with Git, CI/CD and Docker.
+skills:
+- group: eng
+  lead:
+  - Python
+  - SQL
+  - dbt-core
+  - Prefect
+  - DuckDB
+  - PostgreSQL
+  - Git
+  - CI/CD (GitHub Actions)
+  - Docker
+- group: domain
+  lead:
+  - Payment Reconciliation
+  - Double-Entry Ledgers and Idempotency
+- data
+- ml
+- stats
+projects:
+- id: forecast
+  bullets:
+  - system
+  - validation
+- id: reckon
+  bullets:
+  - system
+  - pipeline
+  - ops
+- id: ledger
+  bullets:
+  - system
+  - tests
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

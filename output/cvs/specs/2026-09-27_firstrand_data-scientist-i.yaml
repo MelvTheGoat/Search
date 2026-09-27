@@ -1,0 +1,49 @@
+job_id: 6118
+company: FirstRand
+title: Data Scientist I
+headline: fraud
+summary: Data scientist with a B.Sc. in Statistics focused on financial crime and fraud. Built transaction fraud detection
+  with per-attack analysis, wallet screening against sanctioned and mixer addresses, and a compliance assistant over central
+  bank regulation, all documented for review. Works in SQL and Python.
+skills:
+- group: domain
+  lead:
+  - Transaction Fraud Detection
+  - Regulatory Compliance (CBN/NDPA)
+  - Web3 Fraud Risk Scoring
+  - Credit Risk Decisioning
+- group: eng
+  lead:
+  - SQL
+  - Python
+- group: ml
+  lead:
+  - LightGBM
+  - Scikit-learn
+  - SHAP
+  - Model Calibration (Isotonic Regression, Temperature Scaling)
+- stats
+- data
+- ai
+projects:
+- id: fraud
+  bullets:
+  - bench
+  - imbalance
+  - deploy
+- id: web3
+  bullets:
+  - detect
+  - scorer
+- id: credit
+  bullets:
+  - system
+- id: rag
+  bullets:
+  - system
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

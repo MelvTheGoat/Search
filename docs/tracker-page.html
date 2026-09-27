@@ -68,7 +68,7 @@ label.fit output{font:600 13px var(--mono);color:var(--ink);min-width:2ch}
 .meta{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;font-size:13px;color:var(--muted)}
 .co{color:var(--ink);font-weight:600}
 .pill{font:600 11px/1 var(--body);letter-spacing:.03em;padding:5px 8px;border-radius:999px;white-space:nowrap}
-.p-remote_open,.p-nigeria{background:var(--accent-soft);color:var(--accent)}
+.p-remote_open,.p-nigeria,.p-africa{background:var(--accent-soft);color:var(--accent)}
 .p-sponsor_yes{background:var(--info-soft);color:var(--info)}
 .p-sponsor_likely{background:var(--info-soft);color:var(--info)}
 .p-sponsor_unknown{background:var(--sunk);color:var(--muted)}
@@ -146,6 +146,7 @@ label.fit output{font:600 13px var(--mono);color:var(--ink);min-width:2ch}
       <option value="">Any location</option>
       <option value="remote_open">Remote, open to Nigeria</option>
       <option value="nigeria">In Nigeria</option>
+      <option value="africa">Elsewhere in Africa</option>
       <option value="sponsor_yes">Abroad, sponsors</option>
       <option value="sponsor_likely">Abroad, known sponsor</option>
       <option value="sponsor_unknown">Abroad, not stated</option>
@@ -169,8 +170,8 @@ label.fit output{font:600 13px var(--mono);color:var(--ink);min-width:2ch}
 <script>
 const STATUSES = ["new","drafted","applied","interview","offer","rejected","skipped"];
 const STATUS_TEXT = {new:"New",drafted:"Drafted",applied:"Applied",interview:"Interview",offer:"Offer",rejected:"Rejected",skipped:"Skipped"};
-const LABEL_TEXT = {remote_open:"Remote, open to you",nigeria:"Nigeria",sponsor_yes:"Sponsors visa",sponsor_likely:"Known sponsor",sponsor_unknown:"Sponsorship not stated",restricted:"Restricted"};
-const LABEL_RANK = {remote_open:0,nigeria:1,sponsor_yes:2,sponsor_likely:3,sponsor_unknown:4,restricted:5};
+const LABEL_TEXT = {remote_open:"Remote, open to you",nigeria:"Nigeria",africa:"Africa",sponsor_yes:"Sponsors visa",sponsor_likely:"Known sponsor",sponsor_unknown:"Sponsorship not stated",restricted:"Restricted"};
+const LABEL_RANK = {remote_open:0,nigeria:1,africa:2,sponsor_yes:3,sponsor_likely:4,sponsor_unknown:5,restricted:6};
 const JUNIOR = new Set(["intern","graduate","junior","entry"]);
 const SENIOR = new Set(["senior","lead","staff","principal","manager"]);
 const TABS = [
