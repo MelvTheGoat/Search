@@ -111,7 +111,7 @@ label.fit output{font:600 13px var(--mono);color:var(--ink);min-width:2ch}
 .cvdoc li{margin:0 0 2px}
 .cvdoc .cv-item{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:6px}
 .cvdoc .cv-tech{font-style:italic;color:#404040;font-size:12px}
-.letter-text{white-space:pre-wrap;font:15px/1.6 var(--body);background:var(--sunk);padding:16px;border-radius:8px;margin:0}
+.letter-text{white-space:pre-wrap;overflow-wrap:anywhere;font:15px/1.6 var(--body);background:var(--sunk);padding:16px;border-radius:8px;margin:0}
 .why-text{font-size:14px;color:var(--muted);margin:0}
 @media (max-width:760px){.pack-head{grid-template-columns:52px minmax(0,1fr)}.pack-head .side{grid-column:1 / -1}.cvdoc{padding:14px}}
 .empty{background:var(--surface);border:1px dashed var(--line);border-radius:12px;padding:28px;text-align:center;color:var(--muted)}
@@ -126,6 +126,27 @@ label.fit output{font:600 13px var(--mono);color:var(--ink);min-width:2ch}
   .run{text-align:left}
 }
 @media (prefers-reduced-motion:no-preference){.stage,.btn,.tab{transition:border-color .15s, background .15s}}
+/* Pack cards are one column at every width; they must not take the
+   2-column grid of the compact .job card. */
+.job.pack{grid-template-columns:minmax(0,1fr)}
+.btn{white-space:nowrap}
+.pack-sec h3 .tools{flex-wrap:wrap;justify-content:flex-end}
+@media (max-width:760px){
+  .job.pack{padding:14px;gap:12px}
+  .pack-head{grid-template-columns:48px minmax(0,1fr);gap:10px}
+  .pack-head .side{grid-column:1 / -1;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:stretch}
+  .pack-head .side select,.pack-head .side .btn{min-height:44px}
+  .pack-sec h3{row-gap:10px}
+  .pack-sec h3 .tools{margin-left:0;width:100%;justify-content:flex-start}
+  .pack-sec h3 .tools .btn{flex:1 1 calc(50% - 6px);min-height:44px}
+  .posting{max-height:60vh;font-size:14px;padding:12px}
+  .letter-text{font-size:14px;padding:12px}
+  .pack-head .side .btn{white-space:normal;text-align:center;line-height:1.25}
+  .cvdoc{max-height:70vh;padding:12px;font-size:12.5px}
+  .note textarea{font-size:16px}
+  .stage{padding:9px 8px;min-width:0}
+  .stage .l{font-size:10px;letter-spacing:.02em;overflow-wrap:anywhere}
+}
 </style>
 
 <div class="wrap">
