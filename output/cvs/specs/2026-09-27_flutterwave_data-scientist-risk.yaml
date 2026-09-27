@@ -1,0 +1,52 @@
+job_id: 6093
+company: Flutterwave
+title: Data Scientist, Risk
+headline: fraud
+summary: Machine learning engineer focused on fraud and risk in payments. Built sequence-based fraud detection judged per
+  attack type and served at 5.1 ms p99, credit decisioning with an audit trail, and pipelines with drift monitoring and retraining.
+  Works in Python, SQL, PyTorch and LightGBM.
+skills:
+- group: domain
+  lead:
+  - Transaction Fraud Detection
+  - Credit Risk Decisioning
+  - Payment Reconciliation
+  - Regulatory Compliance (CBN/NDPA)
+- group: ml
+  lead:
+  - LightGBM
+  - XGBoost
+  - PyTorch
+  - Scikit-learn
+  - Feature Engineering
+- group: eng
+  lead:
+  - Python
+  - SQL
+  - MLflow
+  - Evidently
+- stats
+- data
+- ai
+projects:
+- id: fraud
+  bullets:
+  - models
+  - bench
+  - imbalance
+  - deploy
+- id: credit
+  bullets:
+  - system
+- id: forecast
+  bullets:
+  - system
+- id: reckon
+  bullets:
+  - system
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

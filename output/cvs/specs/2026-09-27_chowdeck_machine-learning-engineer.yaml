@@ -1,0 +1,56 @@
+job_id: 6097
+company: Chowdeck
+title: Machine Learning Engineer
+headline: ml
+summary: Machine learning engineer who builds and deploys production ML. Built a demand forecasting platform with backtesting,
+  drift monitoring and cost-optimal forecasts, a fraud model served at 5.1 ms p99, and an uplift model for targeting, all
+  deployed with FastAPI and Docker.
+skills:
+- group: domain
+  lead:
+  - Demand Forecasting
+  - Transaction Fraud Detection
+- group: ml
+  lead:
+  - LightGBM
+  - PyTorch
+  - XGBoost
+  - Feature Engineering
+- group: eng
+  lead:
+  - Python
+  - FastAPI
+  - Docker
+  - Prefect
+  - MLflow
+  - CI/CD (GitHub Actions)
+- group: stats
+  lead:
+  - Experiment Design
+  - Uplift Modeling
+- data
+- ai
+projects:
+- id: forecast
+  bullets:
+  - system
+  - cost
+  - validation
+- id: fraud
+  bullets:
+  - bench
+  - deploy
+- id: uplift
+  bullets:
+  - study
+  - findings
+  - experiment
+- id: churn
+  bullets:
+  - deploy
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

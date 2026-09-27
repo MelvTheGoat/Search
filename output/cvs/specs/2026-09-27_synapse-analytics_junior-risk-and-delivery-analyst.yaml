@@ -1,0 +1,45 @@
+job_id: 6106
+company: Synapse Analytics
+title: Junior Risk and Delivery Analyst
+headline: risk
+summary: Analyst with a B.Sc. in Statistics who turns credit and risk policy into working logic. Built a credit decisioning
+  system with scorecards, cost-based cutoffs and reason codes, and rule-based and ML risk scoring with clear documentation.
+  Explains technical work to non-technical audiences as a teacher.
+skills:
+- group: domain
+  lead:
+  - Credit Risk Decisioning
+  - Transaction Fraud Detection
+- group: stats
+  lead:
+  - WOE Scorecards
+  - Logistic Regression
+- group: eng
+  lead:
+  - Python
+  - SQL
+  - Git
+- ml
+- data
+- ai
+projects:
+- id: credit
+  bullets:
+  - system
+  - calib
+- id: web3
+  bullets:
+  - scorer
+  - eval
+- id: reckon
+  bullets:
+  - review
+- id: rag
+  bullets:
+  - system
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

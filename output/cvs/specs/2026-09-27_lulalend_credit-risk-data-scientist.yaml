@@ -1,0 +1,52 @@
+job_id: 6102
+company: Lulalend
+title: Credit Risk Data Scientist
+headline: risk
+summary: Credit risk data scientist with a B.Sc. in Statistics. Built a credit decisioning system with calibrated default
+  probabilities, cost-optimal approve and decline cutoffs, reason codes and a fairness audit, and compared gradient boosting
+  with a WOE scorecard. Works in Python, SQL and dbt.
+skills:
+- group: domain
+  lead:
+  - Credit Risk Decisioning
+- group: stats
+  lead:
+  - WOE Scorecards
+  - Logistic Regression
+  - Experiment Design
+- group: ml
+  lead:
+  - LightGBM
+  - SHAP
+  - Model Calibration (Isotonic Regression, Temperature Scaling)
+- group: eng
+  lead:
+  - Python
+  - SQL
+  - dbt-core
+  - Git
+- data
+- ai
+projects:
+- id: credit
+  bullets:
+  - system
+  - calib
+  - fairness
+- id: uplift
+  bullets:
+  - study
+  - eval
+- id: forecast
+  bullets:
+  - cost
+  - validation
+- id: fraud
+  bullets:
+  - bench
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

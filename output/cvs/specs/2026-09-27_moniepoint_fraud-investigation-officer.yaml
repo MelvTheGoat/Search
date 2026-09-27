@@ -1,0 +1,46 @@
+job_id: 5862
+company: Moniepoint
+title: Fraud Investigation Officer
+headline: analyst
+summary: Fraud analyst who investigates irregularities and builds detection tools. Reviewed financial records by hand as an
+  internal auditor, and built transaction fraud detection by attack type, an explainable scam detection tool, and a reconciliation
+  system with an audit trail. Works in SQL and Python.
+skills:
+- group: domain
+  lead:
+  - Transaction Fraud Detection
+  - Payment Reconciliation
+  - Regulatory Compliance (CBN/NDPA)
+  - Web3 Fraud Risk Scoring
+- group: data
+  lead:
+  - SQL
+  - Anomaly Detection
+  - Pandas
+- group: eng
+  lead:
+  - Python
+- ml
+- stats
+projects:
+- id: fraud
+  bullets:
+  - bench
+  - models
+- id: web3
+  bullets:
+  - detect
+  - scorer
+- id: reckon
+  bullets:
+  - system
+  - review
+- id: rag
+  bullets:
+  - system
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

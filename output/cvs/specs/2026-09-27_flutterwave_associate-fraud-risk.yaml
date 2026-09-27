@@ -1,0 +1,43 @@
+job_id: 6095
+company: Flutterwave
+title: Associate, Fraud Risk
+headline: analyst
+summary: Fraud and risk analyst who builds detection rules and models. Built transaction fraud detection covering card testing,
+  account takeover and merchant compromise, a scam detection tool with explainable rules, and a reconciliation system that
+  flags duplicate settlements for review. Works in SQL and Python.
+skills:
+- group: domain
+  lead:
+  - Transaction Fraud Detection
+  - Payment Reconciliation
+  - Web3 Fraud Risk Scoring
+  - Regulatory Compliance (CBN/NDPA)
+- group: data
+  lead:
+  - SQL
+  - Anomaly Detection
+  - Pandas
+- group: eng
+  lead:
+  - Python
+- ml
+- stats
+projects:
+- id: fraud
+  bullets:
+  - bench
+  - models
+- id: web3
+  bullets:
+  - detect
+  - scorer
+- id: reckon
+  bullets:
+  - system
+  - review
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

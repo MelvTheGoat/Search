@@ -1,0 +1,55 @@
+job_id: 6109
+company: DataProphet
+title: Data Scientist
+headline: ds
+summary: Data scientist with a B.Sc. in Statistics who builds models for real operational use. Built forecasting with backtesting
+  and cost-optimal decisions, sequence models over event data, and experiments with power analysis, and deployed services
+  with Docker and FastAPI. Explains results clearly to non-technical users.
+skills:
+- group: stats
+  lead:
+  - Time-Series Backtesting
+  - Experiment Design
+  - Power Analysis
+  - Statistical Inference
+- group: ml
+  lead:
+  - Scikit-learn
+  - LightGBM
+  - PyTorch
+  - Feature Engineering
+- group: eng
+  lead:
+  - Python
+  - SQL
+  - Docker
+  - FastAPI
+- group: data
+  lead:
+  - Pandas
+  - NumPy
+- domain
+- ai
+projects:
+- id: forecast
+  bullets:
+  - system
+  - cost
+  - validation
+- id: fraud
+  bullets:
+  - models
+  - deploy
+- id: uplift
+  bullets:
+  - study
+  - experiment
+- id: epl
+  bullets:
+  - backtest
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

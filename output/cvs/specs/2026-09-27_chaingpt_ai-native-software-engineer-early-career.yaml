@@ -1,0 +1,53 @@
+job_id: 5481
+company: ChainGPT
+title: AI-Native Software Engineer, Early Career
+headline: llm
+summary: AI-native engineer who builds with AI tools and ships working projects. Built an MCP server that lets AI assistants
+  check crypto wallets and tokens for risk across five chains, a retrieval assistant with guardrails, and a payments ledger
+  API. Holds the Claude Code in Action certificate.
+skills:
+- group: ai
+  lead:
+  - Model Context Protocol (MCP)
+  - Retrieval-Augmented Generation (RAG)
+  - LLM Evaluation and Guardrails
+  - Prompt Engineering
+- group: domain
+  lead:
+  - Web3 Fraud Risk Scoring
+  - Double-Entry Ledgers and Idempotency
+- group: eng
+  lead:
+  - Python
+  - FastAPI
+  - PostgreSQL
+  - React
+  - Docker
+  - CI/CD (GitHub Actions)
+- ml
+- data
+projects:
+- id: web3
+  bullets:
+  - system
+  - detect
+  - scorer
+  - http
+- id: rag
+  bullets:
+  - system
+  - safety
+- id: ledger
+  bullets:
+  - system
+  - tests
+- id: fpl
+  bullets:
+  - system
+  - engine
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

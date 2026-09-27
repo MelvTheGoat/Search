@@ -1,0 +1,53 @@
+job_id: 4118
+company: Moniepoint
+title: Credit Risk Analyst
+headline: risk
+summary: Credit risk data scientist with a B.Sc. in Statistics. Built a credit decisioning system with calibrated default
+  probabilities, cost-based cutoffs, reason codes, an audit trail and a fairness audit, and a compliance assistant over CBN
+  circulars and the NDPA. Works in SQL and Python.
+skills:
+- group: domain
+  lead:
+  - Credit Risk Decisioning
+  - Regulatory Compliance (CBN/NDPA)
+  - Transaction Fraud Detection
+- group: stats
+  lead:
+  - WOE Scorecards
+  - Logistic Regression
+  - Experiment Design
+- group: ml
+  lead:
+  - LightGBM
+  - SHAP
+  - Model Calibration (Isotonic Regression, Temperature Scaling)
+- group: eng
+  lead:
+  - SQL
+  - Python
+- group: data
+  lead:
+  - Pandas
+  - NumPy
+- ai
+projects:
+- id: credit
+  bullets:
+  - system
+  - calib
+  - fairness
+- id: rag
+  bullets:
+  - system
+- id: uplift
+  bullets:
+  - study
+- id: forecast
+  bullets:
+  - system
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit
