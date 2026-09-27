@@ -4,8 +4,8 @@ description: Write cover letters for the newest letter queue
 
 Write cover letters for the jobs in the newest queue file.
 
-1. Read `CLAUDE.md` (the writing rules), `profile/cv.md` and
-   `profile/profile.yaml`. Then read the newest file in `queue/` (the one with
+1. Read `CLAUDE.md` (the writing rules), `profile/cv.md`,
+   `profile/projects.md` (extra GitHub projects) and `profile/profile.yaml`. Then read the newest file in `queue/` (the one with
    the latest date in its name). $ARGUMENTS may limit which jobs to do, for
    example "top 3" or "jobs 12 and 15". If it is empty, do every job in the
    queue.
@@ -42,16 +42,21 @@ Write cover letters for the jobs in the newest queue file.
    - Cover letter: open with something specific from the post about the
      company or role. Pick the one or two CV projects that fit the job best
      (the queue lists the top matching projects) and show what was built and
-     the result, with the CV's own numbers. Say plainly what the role needs
+     the result, with the CV's own numbers. GitHub projects in
+     `projects.md` count as real work too. Say plainly what the role needs
      and how the work shown matches it. Do not claim any skill listed under
      "gaps". End with a short, direct line about talking further. Keep it
      between 150 and 250 words, counting only the letter body and sign-off.
    - Why this company: short and concrete, based on what the post says the
      team does. No flattery.
-   - CV bullets: choose the 3 or 4 bullets from `profile/cv.md` that match
-     this job best. Keep their facts and numbers. You may shorten them, but
-     remove every dash character and write "0.042 lower PR-AUC" style text
-     instead of a minus sign.
+   - CV bullets: choose the 3 or 4 bullets that match this job best, from
+     `profile/cv.md` or `profile/projects.md`. When a GitHub project fits the
+     job better than a CV project (for example the ledger API for a payments
+     backend role, or web3-risk-mcp for a crypto fraud role), put it first
+     and say which CV project it should replace for this application. Keep
+     the facts and numbers. You may shorten them, but remove every dash
+     character and write "0.042 lower PR-AUC" style text instead of a minus
+     sign.
 
 3. Run `python hunt.py check`. Fix every problem it lists (dashes, banned
    phrases, numbers not in the CV, length, sign-off), then run it again

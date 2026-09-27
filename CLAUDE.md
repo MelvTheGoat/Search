@@ -13,9 +13,12 @@ Main commands: `python hunt.py run`, `list --new`, `queue --top 15`, `check`,
 These apply to every cover letter, "why this company" answer, CV bullet and
 message.
 
-1. **Only use facts from `profile/cv.md`.** Never invent experience, skills,
-   employers, numbers or dates. If the job asks for something the CV does not
-   show, do not claim it. Leave it out.
+1. **Only use facts from `profile/cv.md` and `profile/projects.md`.**
+   `projects.md` holds extra GitHub projects, taken from each repo's README.
+   Never invent experience, skills, employers, numbers or dates. If the job
+   asks for something neither file shows, do not claim it. Leave it out.
+   To add a project, read its README on github.com/MelvTheGoat and copy
+   only what it states into `projects.md`.
 2. **No em dashes or en dashes anywhere** (no "—", "–" or "−"). Do not use a
    spaced hyphen " - " as a dash either. Use a comma, a full stop or "and".
    This includes titles copied from a job post.
@@ -28,7 +31,8 @@ message.
 5. Open with something specific about the company or the role, taken from
    the job post.
 6. Back every claim with a real project or result from the CV, and use its
-   numbers where they help. Every number must appear in `profile/cv.md`.
+   numbers where they help. Every number must appear in `profile/cv.md` or
+   `profile/projects.md`.
 7. Sign off with:
 
    Oluwatobi Melvyn Mayungbo
