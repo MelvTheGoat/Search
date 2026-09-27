@@ -39,9 +39,15 @@ def _probe(http, company):
     return "ok", len(jobs)
 
 
+ALTERNATES = ["greenhouse", "lever", "ashby"]
+
+
 def _check(clients, c):
     """Check one company: its own ATS first, then the others."""
-    order = [c["ats"]] + [a for a in ATS_NAMES if a != c["ats"]]
+    # Alternates are only tried on the big, fast boards. Workable, Personio
+    # and the rest rate-limit hard, so they are only checked for their own
+    # companies.
+    order = [c["ats"]] + [a for a in ALTERNATES if a != c["ats"]]
     outcomes = {}
     switched = None
     for ats in order:
@@ -59,7 +65,7 @@ def _check(clients, c):
         return "live", switched, f"{outcomes[switched][1]} jobs on {switched} (was {c['ats']})"
     if own_state == "ok":
         return "empty", None, "board exists but has no jobs today"
-    if len(outcomes) == len(ATS_NAMES) and all(o[0] == "missing" for o in outcomes.values()):
+    if all(o[0] == "missing" for o in outcomes.values()):
         return "dead", None, "not found on any supported ATS"
     errs = [o[1] for o in outcomes.values() if o[0] == "error"]
     return "error", None, (errs[0][:100] if errs else "unknown error")
