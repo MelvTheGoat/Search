@@ -1,0 +1,42 @@
+job_id: 4914
+company: NielsenIQ
+title: Junior Data, ML Analyst
+headline: data_ml
+summary: 'Data and machine learning analyst with a B.Sc. in Statistics and two Google data analytics certificates. Careful
+  about data quality: wrote automated leakage tests that fail a build when a feature reads past the forecast origin, and a
+  reconciliation pipeline that catches duplicate and mismatched records. Works in SQL and Python and teaches data analysis
+  to student cohorts.'
+skills:
+- group: data
+  lead:
+  - SQL
+  - Pandas
+  - Anomaly Detection
+- stats
+- ml
+- eng
+- domain
+- ai
+projects:
+- id: forecast
+  bullets:
+  - validation
+  - system
+- id: reckon
+  bullets:
+  - system
+  - pipeline
+- id: rag
+  bullets:
+  - system
+  - eval
+- id: fraud
+  bullets:
+  - bench
+experience:
+  sqi:
+  - tools
+  - teach
+  - projects
+  niser:
+  - audit

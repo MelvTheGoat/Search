@@ -31,3 +31,7 @@ Riskified guarantees merchants against chargebacks, so the quality of its detect
 - Built and deployed Reckon, a payment reconciliation system over multi-source transaction feeds that detects uncollected revenue, duplicate settlements and payout discrepancies, combining deterministic matching rules with ML-assisted discrepancy resolution.
 - Internal Auditor at NISER: analyzed financial and operational records to identify inconsistencies and irregularities, performing manual anomaly detection across complex transactional datasets.
 - Handled extreme class imbalance with focal loss and weighted sampling and isolated their failure modes: focal loss hurt calibration (ECE 0.0063) and weighted sampling cost 0.042 PR-AUC; temperature scaling and isotonic regression brought ECE down to 0.0005.
+
+## Tailored CV
+
+output/cvs/Oluwatobi_Mayungbo_CV_Riskified_Data_Analyst_Fraud_Intelligence_Team.pdf (and .docx)

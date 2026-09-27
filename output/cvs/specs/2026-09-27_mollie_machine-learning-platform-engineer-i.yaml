@@ -1,0 +1,50 @@
+job_id: 3837
+company: Mollie
+title: Machine Learning Platform Engineer I
+headline: mlops
+summary: ML engineer who ships models to production and keeps them healthy. Built a forecasting platform with Prefect orchestration,
+  MLflow tracking, Evidently drift monitoring and conditional retraining, and a fraud model served through ONNX Runtime at
+  5.1 ms p99. Has deployed services with Docker on GCP Cloud Run, AWS ECS Fargate and Railway, with CI on GitHub Actions.
+skills:
+- group: eng
+  lead:
+  - Python
+  - Docker
+  - MLflow
+  - Evidently
+  - CI/CD (GitHub Actions)
+  - GCP Cloud Run
+  - AWS ECS Fargate
+  - Prefect
+- group: ml
+  lead:
+  - XGBoost
+  - LightGBM
+  - Scikit-learn
+- ai
+- data
+- stats
+- domain
+projects:
+- id: forecast
+  bullets:
+  - system
+  - validation
+- id: fraud
+  bullets:
+  - deploy
+  - imbalance
+- id: churn
+  bullets:
+  - model
+  - deploy
+- id: rag
+  bullets:
+  - deploy
+  - system
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

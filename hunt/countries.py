@@ -100,7 +100,7 @@ US_STATE_NAMES = ["california", "new york state", "texas", "washington state", "
 CA_PROVINCES = "ON BC QC AB MB NS".split()
 
 # Words that mean a remote job is open to someone in Nigeria.
-OPEN_REGIONS = ["worldwide", "anywhere", "global", "globally", "all countries", "international", "emea", "africa",
+OPEN_REGIONS = ["worldwide", "anywhere", "everywhere", "global", "globally", "all countries", "international", "emea", "africa",
                 "west africa", "sub saharan", "middle east and africa", "europe middle east", "any location",
                 "any country", "work from anywhere"]
 # Multi-country regions that do not include Nigeria.

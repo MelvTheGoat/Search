@@ -1,0 +1,51 @@
+job_id: 4932
+company: NielsenIQ
+title: Software Engineer (AI)
+headline: llm
+summary: AI engineer who builds backend services and retrieval systems in Python. Built a RAG assistant with hybrid BM25 and
+  dense search that reached 0.96 recall@5, served with FastAPI and Docker on GCP Cloud Run, and an MCP server that gives AI
+  assistants tools with caching, rate limits and retries. Writes tested code with CI on GitHub Actions.
+skills:
+- group: ai
+  lead:
+  - Retrieval-Augmented Generation (RAG)
+  - Hybrid Search (BM25, Dense Embeddings, RRF)
+  - Prompt Engineering
+  - LLM Evaluation and Guardrails
+- group: eng
+  lead:
+  - Python
+  - FastAPI
+  - Docker
+  - Pytest
+  - CI/CD (GitHub Actions)
+  - Git
+  - PostgreSQL
+- ml
+- data
+- stats
+- domain
+projects:
+- id: rag
+  bullets:
+  - system
+  - chunking
+  - safety
+  - deploy
+- id: web3
+  bullets:
+  - system
+  - http
+- id: ledger
+  bullets:
+  - idem
+  - tests
+- id: fraud
+  bullets:
+  - deploy
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

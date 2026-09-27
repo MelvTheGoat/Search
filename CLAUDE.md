@@ -70,3 +70,24 @@ steps in order, so no change made on the page is lost:
    `if_version` to every write that targets a record that already exists.
    Drop `delete` writes for chunks that do not exist.
 6. Report the top new jobs in a few lines.
+
+## Tailored CVs
+
+Every job that gets a letter also gets a tailored CV.
+
+1. Write a spec in `output/cvs/specs/<date>_<company>_<role>.yaml`: `job_id`,
+   `company`, `title`, `headline` (a key from `headlines` in
+   `profile/cv_data.yaml`), `summary` (25 to 75 words, same writing rules as
+   letters), `skills` (group order, with `lead` items to put first),
+   `projects` (ids and bullet ids, best match first) and `experience`.
+   Bullets are never rewritten, only chosen. New facts go into
+   `profile/cv_data.yaml` first, copied from the CV or a project README.
+2. `python hunt.py cv` builds a Word file and a PDF for each spec in
+   `output/cvs/` (PDF needs LibreOffice Writer) and links them to the job.
+   It refuses unknown bullets, dashes, banned phrases, numbers not in the
+   CV, and the word Nigeria.
+3. Upload new PDFs to the tracker page (Artifact publish with `asset: true`
+   and `url` set to the page), add each returned URL to
+   `output/cvs/assets.json`, then run `python hunt.py page-export` and send
+   the batches. Word files go through the page database (`cvdocs`).
+4. In each letter, add a `## Tailored CV` section naming the CV file.

@@ -6,7 +6,7 @@ from pathlib import Path
 
 from .config import LETTERS_DIR, fact_texts, load_yaml
 
-NUM = re.compile(r"\d+(?:[.,]\d+)*")
+NUM = re.compile(r"(?<![A-Za-z])\d+(?:[.,]\d+)*")
 URL = re.compile(r"https?://\S+|www\.\S+|\S+@\S+")
 
 

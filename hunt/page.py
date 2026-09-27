@@ -9,6 +9,7 @@ The page keeps two kinds of records:
 page-export writes JSON files and a list of writes for Claude to send.
 page-import reads the edits you made on the page back into data/jobs.db,
 so the page and the tracker agree and a fresh start loses nothing."""
+import base64
 import json
 import shutil
 from collections import Counter
@@ -27,8 +28,15 @@ def now_utc():
     return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
-def _compact(j):
+def _assets():
+    """PDF CVs uploaded to the page: file name -> page URL (output/cvs/assets.json)."""
+    path = ROOT / "output" / "cvs" / "assets.json"
+    return json.loads(path.read_text()) if path.exists() else {}
+
+
+def _compact(j, assets=None):
     ev = loads(j["sponsorship_evidence"])
+    cv = Path(j["cv_file"]).stem if j.get("cv_file") else ""
     return {
         "k": j["key"], "id": j["id"], "co": j["company"], "t": j["title"], "lvl": j["level"],
         "st": bool(j["stretch"]), "ctry": j["country"] or "", "lab": j["location_label"],
@@ -38,6 +46,7 @@ def _compact(j):
         "df": j["date_found"] or "", "da": j["date_applied"] or "", "notes": j["notes"] or "",
         "su": j["user_updated_at"] or "", "rst": (j["restriction"] or "")[:300], "src": j["source"],
         "loc": (j["location"] or "")[:120], "posted": j["posted_at"] or "",
+        "cvn": cv, "cvp": (assets or {}).get(cv + ".pdf", "") if cv else "",
     }
 
 
@@ -66,6 +75,8 @@ def export_page(conn, top_open=300, top_restricted=60, out=PAGE_DIR):
         shutil.rmtree(out)
     (out / "chunks").mkdir(parents=True)
     (out / "letters").mkdir()
+    (out / "cvdocs").mkdir()
+    assets = _assets()
     run = now_utc()
     writes = []
     chunk_ids = []
@@ -73,7 +84,7 @@ def export_page(conn, top_open=300, top_restricted=60, out=PAGE_DIR):
         cid = f"c{n // CHUNK:02d}"
         chunk_ids.append(cid)
         p = out / "chunks" / f"{cid}.json"
-        p.write_text(json.dumps({"run": run, "jobs": [_compact(j) for j in chosen[n:n + CHUNK]]}, ensure_ascii=False))
+        p.write_text(json.dumps({"run": run, "jobs": [_compact(j, assets) for j in chosen[n:n + CHUNK]]}, ensure_ascii=False))
         writes.append({"op": "set", "collection": "chunks", "doc_id": cid, "file_path": str(p)})
     for n in range(len(chunk_ids), MAX_CHUNKS):
         writes.append({"op": "delete", "collection": "chunks", "doc_id": f"c{n:02d}"})
@@ -86,6 +97,11 @@ def export_page(conn, top_open=300, top_restricted=60, out=PAGE_DIR):
             p.write_text(json.dumps({"file": lf, "text": _letter_text(ROOT / lf), "run": run}, ensure_ascii=False))
             writes.append({"op": "set", "collection": "letters", "doc_id": j["key"], "file_path": str(p)})
             letters += 1
+        cvf = j.get("cv_file")
+        if cvf and (ROOT / cvf).exists():
+            p = out / "cvdocs" / f"{j['key']}.json"
+            p.write_text(json.dumps({"name": Path(cvf).name, "b64": base64.b64encode((ROOT / cvf).read_bytes()).decode()}))
+            writes.append({"op": "set", "collection": "cvdocs", "doc_id": j["key"], "file_path": str(p)})
 
     counts = {
         "status": dict(Counter(j["status"] for j in jobs)),

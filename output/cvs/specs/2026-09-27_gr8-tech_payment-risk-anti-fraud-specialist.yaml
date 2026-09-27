@@ -1,0 +1,44 @@
+job_id: 5880
+company: GR8 Tech
+title: Payment Risk and Anti-Fraud Specialist
+headline: analyst
+summary: Fraud and payment risk analyst with a B.Sc. in Statistics. Built a payment reconciliation system that flags duplicate
+  settlements and payout discrepancies across processor webhooks and bank files, a fraud detection system analysed by attack
+  type, and a crypto risk checker for wallets and tokens. Earlier did manual anomaly detection on financial records as an
+  internal auditor. Works in SQL and Python.
+skills:
+- group: domain
+  lead:
+  - Transaction Fraud Detection
+  - Payment Reconciliation
+  - Web3 Fraud Risk Scoring
+- group: data
+  lead:
+  - SQL
+  - Anomaly Detection
+- ml
+- stats
+- eng
+- ai
+projects:
+- id: reckon
+  bullets:
+  - system
+  - pipeline
+  - review
+- id: fraud
+  bullets:
+  - bench
+  - deploy
+- id: web3
+  bullets:
+  - detect
+  - scorer
+- id: credit
+  bullets:
+  - system
+experience:
+  niser:
+  - audit
+  sqi:
+  - teach

@@ -33,3 +33,7 @@ Put the ledger API (from GitHub) first. For this application it replaces Reckon.
 - Benchmarked pessimistic against optimistic locking: on a hot single account pessimistic reached 144.8 tps against 41.3 tps (3.5×) while optimistic shed 46% of writes as conflicts.
 - Developed a full credit decisioning system producing calibrated default probabilities, cost-optimal approve and decline cutoffs, adverse action reason codes and an append-only audit trail that lets any single decision be reconstructed months later.
 - Deployed real-time fraud scoring by exporting to ONNX Runtime (2.9× faster than eager PyTorch at batch size 1) and serving via FastAPI, reaching 5.1 ms p99 end-to-end latency against a 50 ms budget, with append-only per-decision audit logging.
+
+## Tailored CV
+
+output/cvs/Oluwatobi_Mayungbo_CV_Ramp_Software_Engineer_Credit.pdf (and .docx)

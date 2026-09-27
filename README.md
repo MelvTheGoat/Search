@@ -110,6 +110,16 @@ You can also change `status`, `notes` and `date applied` right in
 `tracker.xlsx`. The next run reads your edits back before it writes the
 file again, so they are kept. Close the file before a run.
 
+## Tailored CVs
+
+Each job with a letter also gets a tailored CV in `output/cvs/`, as a Word
+file and a PDF, named `Oluwatobi_Mayungbo_CV_<Company>_<Role>`. They are
+built from `profile/cv_data.yaml` with `python hunt.py cv`: same facts every
+time, with the headline, summary, project order and skill order chosen for
+the job. The layout is one column with standard headings, so applicant
+tracking systems read it cleanly. Both files can also be downloaded from
+the tracker page.
+
 ## The online tracker page
 
 Your tracker page is at https://claude.ai/artifact/DBCY7SWfExAuyaTUifxm4G.

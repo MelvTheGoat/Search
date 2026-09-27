@@ -1,0 +1,47 @@
+job_id: 3597
+company: Ramp
+title: Software Engineer, Credit
+headline: backend
+summary: Software engineer who builds payment and credit systems where correctness matters. Built a double-entry ledger API
+  with database-enforced invariants, idempotency keys and 138 tests against real PostgreSQL and Redis, a credit decisioning
+  system with an append-only audit trail, and a fraud scoring service at 5.1 ms p99. Works mainly in Python, FastAPI and PostgreSQL.
+skills:
+- group: eng
+  lead:
+  - Python
+  - FastAPI
+  - PostgreSQL
+  - Redis
+  - Docker
+  - Pytest
+- group: domain
+  lead:
+  - Double-Entry Ledgers and Idempotency
+  - Credit Risk Decisioning
+- ml
+- stats
+- ai
+- data
+projects:
+- id: ledger
+  bullets:
+  - system
+  - idem
+  - locking
+  - tests
+- id: credit
+  bullets:
+  - system
+  - calib
+- id: fraud
+  bullets:
+  - deploy
+- id: reckon
+  bullets:
+  - pipeline
+  - ops
+experience:
+  sqi:
+  - teach
+  niser:
+  - audit

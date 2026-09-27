@@ -262,7 +262,10 @@ def to_pdf(docx_paths, out_dir):
     if not exe or not docx_paths:
         return False
     subprocess.run([exe, "--headless", "--convert-to", "pdf", "--outdir", str(out_dir), *map(str, docx_paths)],
-                   check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=600)
+                   stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=900)
+    missing = [p for p in docx_paths if not (Path(out_dir) / (Path(p).stem + ".pdf")).exists()]
+    if missing:
+        raise RuntimeError(f"LibreOffice made no PDF for {len(missing)} files; is libreoffice-writer installed?")
     return True
 
 

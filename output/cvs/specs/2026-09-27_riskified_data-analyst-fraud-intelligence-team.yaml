@@ -1,0 +1,45 @@
+job_id: 3884
+company: Riskified
+title: Data Analyst, Fraud Intelligence Team
+headline: analyst
+summary: Data analyst and machine learning engineer with a B.Sc. in Statistics, focused on fraud and payments data. Built
+  a sequence-based fraud detection system analysed by attack type, and a reconciliation system that finds duplicate settlements
+  and payout discrepancies. Earlier did manual anomaly detection on transactional records as an internal auditor. Works mainly
+  in SQL and Python.
+skills:
+- group: domain
+  lead:
+  - Transaction Fraud Detection
+  - Payment Reconciliation
+- group: data
+  lead:
+  - SQL
+  - Anomaly Detection
+- ml
+- stats
+- eng
+- ai
+projects:
+- id: fraud
+  bullets:
+  - bench
+  - imbalance
+  - models
+- id: reckon
+  bullets:
+  - system
+  - pipeline
+  - review
+- id: credit
+  bullets:
+  - system
+  - calib
+- id: forecast
+  bullets:
+  - system
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

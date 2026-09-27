@@ -1,0 +1,50 @@
+job_id: 3799
+company: Lendable
+title: Data Scientist
+headline: risk
+summary: Data scientist with a B.Sc. in Statistics who builds credit and fraud risk models end to end, from calibrated probabilities
+  to deployed services. Built a credit decisioning system with cost-optimal cutoffs, reason codes and a fairness audit, choosing
+  models on calibration because pricing on expected loss needs true probabilities. Works in Python and SQL and deploys with
+  FastAPI and Docker.
+skills:
+- group: domain
+  lead:
+  - Credit Risk Decisioning
+  - Transaction Fraud Detection
+- group: stats
+  lead:
+  - WOE Scorecards
+  - Logistic Regression
+  - Experiment Design
+- group: ml
+  lead:
+  - LightGBM
+  - Model Calibration (Isotonic Regression, Temperature Scaling)
+  - SHAP
+- eng
+- data
+- ai
+projects:
+- id: credit
+  bullets:
+  - system
+  - calib
+  - fairness
+- id: fraud
+  bullets:
+  - imbalance
+  - bench
+- id: uplift
+  bullets:
+  - study
+  - experiment
+- id: forecast
+  bullets:
+  - system
+  - validation
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

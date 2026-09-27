@@ -1,0 +1,50 @@
+job_id: 3764
+company: Ebury
+title: Data Scientist, Fintech
+headline: ds
+summary: Data scientist with a B.Sc. in Statistics who builds predictive models and tests them properly before anyone relies
+  on them. Ran an uplift study to decide which of 64,000 customers to contact under a fixed budget, built a churn model served
+  on AWS, and chose credit models on calibration. Deploys on GCP Cloud Run and works in Python and SQL.
+skills:
+- group: ml
+  lead:
+  - XGBoost
+  - LightGBM
+  - Scikit-learn
+- group: stats
+  lead:
+  - Causal Inference (S/T/X-Learners, Causal Forests)
+  - Uplift Modeling
+  - Experiment Design
+- group: eng
+  lead:
+  - Python
+  - SQL
+  - GCP Cloud Run
+  - MLflow
+- ai
+- domain
+- data
+projects:
+- id: uplift
+  bullets:
+  - study
+  - findings
+  - eval
+- id: churn
+  bullets:
+  - model
+  - deploy
+- id: credit
+  bullets:
+  - system
+  - calib
+- id: rag
+  bullets:
+  - system
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

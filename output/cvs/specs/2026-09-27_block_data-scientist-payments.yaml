@@ -1,0 +1,54 @@
+job_id: 3669
+company: Block
+title: Data Scientist, Payments
+headline: ds
+summary: Early-career data scientist with a B.Sc. in Statistics, focused on payments data. Built a payment reconciliation
+  system over processor webhooks and bank settlement files, a fraud detection system judged on an explicit cost model, and
+  a double-entry ledger API. Builds ETL pipelines with Prefect, dbt and DuckDB, deploys to the cloud, and has built tools
+  for AI assistants.
+skills:
+- group: domain
+  lead:
+  - Payment Reconciliation
+  - Transaction Fraud Detection
+  - Double-Entry Ledgers and Idempotency
+- group: eng
+  lead:
+  - Python
+  - SQL
+  - DuckDB
+  - dbt-core
+  - Prefect
+- group: stats
+  lead:
+  - Experiment Design
+  - Power Analysis
+- ml
+- group: ai
+  lead:
+  - Model Context Protocol (MCP)
+- data
+projects:
+- id: reckon
+  bullets:
+  - system
+  - pipeline
+  - review
+- id: fraud
+  bullets:
+  - bench
+  - deploy
+- id: forecast
+  bullets:
+  - system
+  - cost
+- id: ledger
+  bullets:
+  - system
+  - locking
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

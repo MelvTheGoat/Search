@@ -1,0 +1,48 @@
+job_id: 4422
+company: Proton
+title: Machine Learning Engineer
+headline: fraud
+summary: Machine learning engineer focused on fraud and abuse detection. Built a sequence-based fraud model covering card
+  testing, account takeover and merchant compromise, served in real time at 5.1 ms p99 with per-decision attribution, and
+  an MCP server that lets AI assistants investigate crypto risk with explainable scores. Runs pipelines with drift monitoring
+  and automated retraining.
+skills:
+- group: ml
+  lead:
+  - PyTorch
+  - Sequence Models (GRU, TCN, Transformers)
+  - SHAP
+- group: domain
+  lead:
+  - Transaction Fraud Detection
+  - Web3 Fraud Risk Scoring
+- group: ai
+  lead:
+  - Model Context Protocol (MCP)
+  - LLM Evaluation and Guardrails
+- eng
+- stats
+- data
+projects:
+- id: fraud
+  bullets:
+  - models
+  - bench
+  - deploy
+- id: web3
+  bullets:
+  - system
+  - scorer
+  - http
+- id: forecast
+  bullets:
+  - system
+- id: rag
+  bullets:
+  - safety
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

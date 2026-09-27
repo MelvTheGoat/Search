@@ -31,3 +31,7 @@ Lendable builds its own underwriting and pricing models and runs them without a 
 - Benchmarked gradient boosting against a traditional WOE-binned logistic scorecard, choosing on calibration quality (Brier score, reliability diagrams, expected calibration error) because expected loss needs true probabilities rather than rankings.
 - Audited fairness across sex, age, education and marital status using demographic parity, equal opportunity differences and within-group calibration, and presented the accuracy and fairness tradeoff as a policy decision.
 - Validated forecasts with rolling-origin backtesting across 6 expanding-window folds, reporting MASE and pinball loss, with automated leakage tests that fail the build if any feature reads past the forecast origin.
+
+## Tailored CV
+
+output/cvs/Oluwatobi_Mayungbo_CV_Lendable_Data_Scientist.pdf (and .docx)
