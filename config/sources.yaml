@@ -30,6 +30,7 @@ http:
     recruitee.com: 2.0
     bamboohr.com: 1.0
     breezy.hr: 1.0
+    myworkdayjobs.com: 1.0
     amazon.jobs: 1.5
 
 # Company boards (the list is in companies.yaml)

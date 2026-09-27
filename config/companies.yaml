@@ -3,12 +3,14 @@
 # One company per line. To add one, copy a line and change it:
 #   name:   company name as you want it shown
 #   ats:    greenhouse, lever, ashby, smartrecruiters, workable, recruitee, personio,
-#           bamboohr or breezy
+#           bamboohr, breezy or workday
 #   token:  the board name in the job board URL, for example
 #           boards.greenhouse.io/TOKEN, jobs.lever.co/TOKEN, jobs.ashbyhq.com/TOKEN,
 #           jobs.smartrecruiters.com/TOKEN, apply.workable.com/TOKEN,
 #           TOKEN.recruitee.com, TOKEN.jobs.personio.de, TOKEN.bamboohr.com,
-#           TOKEN.breezy.hr
+#           TOKEN.breezy.hr. For workday the token is tenant/instance/site from
+#           TENANT.INSTANCE.myworkdayjobs.com/SITE, and `queries` (optional)
+#           lists the search words to use.
 #   country: where the head office is (for your reference)
 #   sector: ai-lab, ml-infra, fintech, africa, tech, quant, health, mobility, other
 #   known_sponsor: true (optional) if the company is known to sponsor visas
@@ -440,3 +442,18 @@ companies:
   - {name: Vivid Money, ats: personio, token: vivid, country: Germany, sector: fintech}
   - {name: Kontist, ats: personio, token: kontist, country: Germany, sector: fintech}
   - {name: Clark, ats: personio, token: clark, country: Germany, sector: fintech}
+
+  # --- Workday career sites (token: tenant/instance/site) ----------------
+  # Large employers with offices in Africa. Only jobs matching the search
+  # words (default: data, machine learning, AI, analytics, risk, fraud) are read.
+  - {name: Absa, ats: workday, token: absa/wd3/ABSAcareersite, country: South Africa, sector: africa}
+  - {name: FirstRand, ats: workday, token: firstrand/wd3/FRB, country: South Africa, sector: africa}
+  - {name: Old Mutual, ats: workday, token: oldmutual/wd3/Old_Mutual_Careers, country: South Africa, sector: africa}
+  - {name: Mastercard, ats: workday, token: mastercard/wd1/CorporateCareers, country: US, sector: fintech, known_sponsor: true}
+  - {name: Accenture, ats: workday, token: accenture/wd103/AccentureCareers, country: Ireland, sector: tech}
+  - {name: Cisco, ats: workday, token: cisco/wd5/Cisco_Careers, country: US, sector: tech, known_sponsor: true}
+  - {name: Diageo, ats: workday, token: diageo/wd3/Diageo_Careers, country: UK, sector: other}
+  - {name: Shell, ats: workday, token: shell/wd3/ShellCareers, country: UK, sector: other}
+  - {name: Chevron, ats: workday, token: chevron/wd5/jobs, country: US, sector: other}
+  - {name: Unilever, ats: workday, token: unilever/wd3/Unilever_Experienced_Professionals, country: UK, sector: other}
+  - {name: LSEG, ats: workday, token: lseg/wd3/Careers, country: UK, sector: fintech, known_sponsor: true}

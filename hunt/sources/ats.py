@@ -1,5 +1,5 @@
 """Company job boards: Greenhouse, Lever, Ashby, SmartRecruiters, Workable,
-Recruitee, Personio, BambooHR and Breezy. All are the companies' own public job feeds."""
+Recruitee, Personio, BambooHR, Breezy and Workday. All are the companies' own public job feeds."""
 import re
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
@@ -18,6 +18,9 @@ RECRUITEE = "https://{token}.recruitee.com/api/offers/"
 PERSONIO = "https://{token}.jobs.personio.de/xml?language=en"
 BAMBOOHR = "https://{token}.bamboohr.com/careers"
 BREEZY = "https://{token}.breezy.hr/json"
+# Workday token is "tenant/instance/site", from TENANT.INSTANCE.myworkdayjobs.com/SITE
+WORKDAY = "https://{tenant}.{instance}.myworkdayjobs.com/wday/cxs/{tenant}/{site}"
+WORKDAY_QUERIES = ["data", "machine learning", "AI", "analytics", "risk", "fraud"]
 _LD_JSON = re.compile(r'<script[^>]*application/ld\+json[^>]*>(.*?)</script>', re.S)
 
 
@@ -340,6 +343,62 @@ def fetch_breezy(http, company, keep_title=None):
     return jobs
 
 
+def fetch_workday(http, company, keep_title=None):
+    """A company's Workday career site, through the JSON search its own site
+    uses. Big employers list thousands of jobs, so we search a few words
+    (company `queries`, or WORKDAY_QUERIES) and fetch details only for
+    titles that pass keep_title."""
+    tenant, instance, site = company["token"].split("/")
+    base = WORKDAY.format(tenant=tenant, instance=instance, site=site)
+    items, first = {}, True
+    for q in company.get("queries") or WORKDAY_QUERIES:
+        for offset in range(0, 200, 20):
+            try:
+                data = http.post(f"{base}/jobs", json_body={"limit": 20, "offset": offset, "searchText": q, "appliedFacets": {}})
+            except Exception as e:  # noqa: BLE001
+                if first and re.search(r"HTTP (400|404|422)", str(e)):
+                    return None  # wrong tenant or site name
+                raise
+            first = False
+            batch = (data or {}).get("jobPostings") or []
+            for j in batch:
+                if j.get("externalPath"):
+                    items.setdefault(j["externalPath"], j)
+            if len(batch) < 20 or offset + 20 >= data.get("total", 0):
+                break
+    jobs = []
+    for path, j in items.items():
+        title = (j.get("title") or "").strip()
+        if keep_title and not keep_title(title):
+            continue
+        info = {}
+        try:
+            info = (http.get(base + path) or {}).get("jobPostingInfo") or {}
+        except Exception:  # noqa: BLE001
+            pass
+        country = (info.get("country") or {}).get("descriptor", "")
+        place = info.get("location") or j.get("locationsText") or ""
+        extra_places = info.get("additionalLocations") or []
+        loc = "; ".join([p for p in [place, *extra_places] if p])
+        if country and country.lower() not in loc.lower():
+            loc = f"{loc}, {country}" if loc else country
+        remote = (info.get("remoteType") or "").lower() == "remote"
+        jobs.append(Job(
+            source="workday",
+            company=company["name"],
+            title=title,
+            location=("Remote, " + loc) if remote else loc,
+            apply_url=info.get("externalUrl") or f"https://{tenant}.{instance}.myworkdayjobs.com/{site}{path}",
+            description=html_to_text(info.get("jobDescription", "")),
+            remote=remote,
+            country=country,
+            posted_at=(info.get("startDate") or "")[:10],
+            department="",
+            extra=_extra(company),
+        ))
+    return jobs
+
+
 FETCHERS = {
     "greenhouse": fetch_greenhouse,
     "lever": fetch_lever,
@@ -350,6 +409,7 @@ FETCHERS = {
     "personio": fetch_personio,
     "bamboohr": fetch_bamboohr,
     "breezy": fetch_breezy,
+    "workday": fetch_workday,
 }
 ATS_NAMES = list(FETCHERS)
 

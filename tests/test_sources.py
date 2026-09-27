@@ -1,5 +1,5 @@
 """Parsers for the extra sources, fed with small saved samples."""
-from hunt.sources.ats import fetch_bamboohr, fetch_breezy, fetch_personio, fetch_recruitee, fetch_smartrecruiters, fetch_workable
+from hunt.sources.ats import fetch_bamboohr, fetch_breezy, fetch_workday, fetch_personio, fetch_recruitee, fetch_smartrecruiters, fetch_workable
 from hunt.sources.boards import fetch_amazon, fetch_hn_whoishiring, fetch_jobicy, fetch_weworkremotely
 
 
@@ -149,3 +149,23 @@ def test_breezy_reads_job_page_data():
     assert len(jobs) == 1
     j = jobs[0]
     assert j.location == "Nairobi, Kenya" and j.country == "Kenya" and "SQL and Python" in j.description
+
+
+def test_workday_searches_and_reads_details():
+    class WD(RouteHttp):
+        def post(self, url, json_body=None, **kw):
+            if json_body["searchText"] == "data" and json_body["offset"] == 0:
+                return {"total": 2, "jobPostings": [
+                    {"title": "Data Scientist", "externalPath": "/job/Johannesburg/Data-Scientist_R-1"},
+                    {"title": "Universal Banker", "externalPath": "/job/Nairobi/Universal-Banker_R-2"}]}
+            return {"total": 0, "jobPostings": []}
+    http = WD({"/job/Johannesburg/Data-Scientist_R-1": {"jobPostingInfo": {
+        "title": "Data Scientist", "jobDescription": "<p>Credit models in Python.</p>", "location": "Johannesburg",
+        "country": {"descriptor": "South Africa"}, "startDate": "2026-09-01", "remoteType": "Hybrid",
+        "externalUrl": "https://absa.wd3.myworkdayjobs.com/site/job/Johannesburg/Data-Scientist_R-1"}}})
+    jobs = fetch_workday(http, {**CO, "ats": "workday", "token": "absa/wd3/site", "queries": ["data"]},
+                         keep_title=lambda t: "Data" in t)
+    assert len(jobs) == 1
+    j = jobs[0]
+    assert j.location == "Johannesburg, South Africa" and j.country == "South Africa"
+    assert "Credit models" in j.description and j.apply_url.endswith("Data-Scientist_R-1")
