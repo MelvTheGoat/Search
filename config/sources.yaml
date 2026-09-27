@@ -8,22 +8,26 @@ http:
   retries: 4
   backoff: 2.0
   timeout: 30
+  # Seconds between calls to one site. A site covers all its subdomains,
+  # so all Personio or Recruitee boards share one pace.
   per_host:
     remoteok.com: 3.0
     remotive.com: 3.0
     himalayas.app: 1.5
-    apply.workable.com: 4.0
-    www.arbeitnow.com: 1.5
-    api.adzuna.com: 1.5
+    arbeitnow.com: 1.5
+    adzuna.com: 1.5
     jobicy.com: 3.0
-    www.workingnomads.com: 3.0
+    workingnomads.com: 3.0
     weworkremotely.com: 3.0
-    hn.algolia.com: 1.0
-    www.themuse.com: 1.5
-    www.reed.co.uk: 1.5
+    algolia.com: 1.0
+    themuse.com: 1.5
+    reed.co.uk: 1.5
     jooble.org: 1.5
     findwork.dev: 1.5
-    api.smartrecruiters.com: 0.5
+    smartrecruiters.com: 0.5
+    workable.com: 4.0
+    personio.de: 3.0
+    recruitee.com: 2.0
 
 # Company boards (the list is in companies.yaml)
 greenhouse: {enabled: true}

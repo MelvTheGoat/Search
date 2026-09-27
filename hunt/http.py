@@ -18,6 +18,15 @@ class HttpError(Exception):
     pass
 
 
+def site_of(host):
+    """The site a host belongs to, so "acme.jobs.personio.de" and
+    "beta.jobs.personio.de" share one rate limit: "personio.de"."""
+    parts = host.lower().split(":")[0].split(".")
+    if len(parts) >= 3 and parts[-2] in {"co", "com", "gov", "org", "ac"}:
+        return ".".join(parts[-3:])
+    return ".".join(parts[-2:])
+
+
 class Http:
     def __init__(self, min_interval=1.0, per_host=None, retries=4, backoff=2.0, timeout=30):
         self.session = requests.Session()
@@ -32,6 +41,7 @@ class Http:
 
     def _wait(self, host):
         # The lock keeps the pace per site even when threads share a client.
+        host = site_of(host)
         with self._lock:
             gap = self.per_host.get(host, self.min_interval)
             wait = gap - (time.time() - self._last.get(host, 0))
