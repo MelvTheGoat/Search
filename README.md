@@ -145,14 +145,15 @@ date a job was first found.
 
 ## How the score works
 
-Each part is between 0 and 1, and the fit score is their weighted average
-times 100. Weights live in `config/scoring.yaml`.
+Each part is between 0 and 1. The fit score is their weighted average,
+times the level score, times 100. All numbers live in `config/scoring.yaml`.
 
 - CV match: cosine similarity between the job text and your whole CV.
 - Project match: the same, against your best matching project.
 - Skills: share of the skills named in the job that are also in your CV.
-- Level: intern, graduate, junior and entry score highest. Mid is marked
-  "stretch". Senior, staff, principal, lead and manager score low but are kept.
+- Level (a multiplier): intern, graduate, junior and entry keep the full
+  score. Mid keeps 80% and is marked "stretch". Senior, staff, principal,
+  lead and manager keep 35% to 45%, so they stay in the list but sink.
 - Role: target titles (ML, AI, data science, research, fraud and risk) score
   higher than related ones (data analyst, analytics engineer).
 - Domain: a small bonus for fraud, risk, credit and payments work.

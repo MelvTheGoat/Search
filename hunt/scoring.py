@@ -256,7 +256,8 @@ class Scorer:
         job_skills = self.skills.find(text)
         matched = [s for s in job_skills if s in self.cv_skills]
         gaps = [s for s in job_skills if s not in self.cv_skills]
-        skill_score = len(matched) / len(job_skills) if job_skills else 0.5
+        prior = self.cfg.get("skills_prior_weight", 2)
+        skill_score = (len(matched) + 0.5 * prior) / (len(job_skills) + prior)
 
         level, stretch = detect_level(job.title, job.description)
         level_score = self.cfg["level_scores"].get(level, 0.5)
@@ -272,12 +273,13 @@ class Scorer:
             "cv_similarity": self._scale(cv_sim),
             "project_similarity": self._scale(best_proj),
             "skills": skill_score,
-            "level": level_score,
             "role": role_score,
             "domain": domain_score,
         }
         total_w = sum(w.values()) or 1
-        fit = round(100 * sum(w[k] * parts[k] for k in w) / total_w, 1)
+        base = sum(w.get(k, 0) * parts[k] for k in parts) / total_w
+        parts["level"] = level_score
+        fit = round(100 * base * level_score, 1)
 
         top = [n for s, n in proj[:2] if s > 0]
         why = self._why(kind, level, stretch, top, matched, job_skills, domain_hits)

@@ -1,33 +1,38 @@
-# How the fit score (0 to 100) is built. Change the weights to tune it.
-# The score is the weighted average of these parts, each between 0 and 1.
+# How the fit score (0 to 100) is built. Change the numbers to tune it.
+# Step 1: a weighted average of these parts, each between 0 and 1.
 weights:
-  cv_similarity: 0.25       # job text vs your whole CV (embeddings)
-  project_similarity: 0.15  # job text vs your best matching project
+  cv_similarity: 0.30       # job text vs your whole CV (embeddings)
+  project_similarity: 0.20  # job text vs your best matching project
   skills: 0.20              # share of the job's skills that are in your CV
-  level: 0.20               # intern and junior high, senior low
-  role: 0.15                # target title high, related title lower
-  domain: 0.05              # fraud, risk, credit, payments, fintech
+  role: 0.22                # target title high, related title lower
+  domain: 0.08              # fraud, risk, credit, payments, fintech
+# Step 2: that average is multiplied by the level score below, so senior
+# roles stay in the list but sink to the bottom.
+
+# When a post names only a few skills, the skills score is pulled toward
+# 0.5 so one lucky match does not give 100%.
+skills_prior_weight: 2
 
 embedding:
   model: all-MiniLM-L6-v2
   # Raw cosine similarity is mapped to 0..1 between these two values.
-  floor: 0.10
-  ceiling: 0.60
+  floor: 0.30
+  ceiling: 0.70
   chunk_words: 180
   max_chunks: 4
 
-level_scores:
+level_scores:       # multiplier on the score
   intern: 1.0
   graduate: 1.0
   junior: 1.0
   entry: 1.0
-  unspecified: 0.7
-  mid: 0.5          # flagged as "stretch"
-  senior: 0.15
-  lead: 0.08
-  staff: 0.05
-  principal: 0.05
-  manager: 0.05
+  unspecified: 0.9
+  mid: 0.8          # flagged as "stretch"
+  senior: 0.45
+  lead: 0.4
+  staff: 0.35
+  principal: 0.35
+  manager: 0.35
 
 role_scores:
   target: 1.0
@@ -38,10 +43,8 @@ role_scores:
 target_titles:
   - "machine learning"
   - "\\bml\\b"
-  - "\\bai\\b"
-  - "artificial intelligence"
-  - "\\bllm"
-  - "gen(erative)? ?ai"
+  - "\\b(ai|artificial intelligence|gen ?ai|generative ai|llm)\\b.*(engineer|scien|research|developer)"
+  - "(engineer|scien|research|developer).*\\b(ai|artificial intelligence|gen ?ai|llm)\\b"
   - "applied scien"
   - "data scien"
   - "mlops|ml ops|ml platform|ml infra"
@@ -56,6 +59,7 @@ target_titles:
   - "decision scien"
   - "quantitative (research|analyst|developer)"
 related_titles:
+  - "\\bai\\b|\\bllm|artificial intelligence"
   - "data analy"
   - "analytics engineer"
   - "data engineer"
