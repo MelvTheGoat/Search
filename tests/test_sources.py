@@ -1,6 +1,6 @@
 """Parsers for the extra sources, fed with small saved samples."""
 from hunt.sources.ats import fetch_bamboohr, fetch_personio, fetch_recruitee, fetch_smartrecruiters, fetch_workable
-from hunt.sources.boards import fetch_hn_whoishiring, fetch_jobicy, fetch_weworkremotely
+from hunt.sources.boards import fetch_amazon, fetch_hn_whoishiring, fetch_jobicy, fetch_weworkremotely
 
 
 class RouteHttp:
@@ -120,3 +120,15 @@ def test_bamboohr_fetches_details_only_for_kept_titles():
 
 def test_bamboohr_missing_board_is_none():
     assert fetch_bamboohr(RouteHttp({}), {**CO, "ats": "bamboohr"}) is None
+
+
+def test_amazon_reads_country_search():
+    http = RouteHttp({"amazon.jobs": {"jobs": [{
+        "id_icims": "1", "title": "Data Scientist", "normalized_location": "Cape Town, Western Cape, ZAF",
+        "country_code": "ZAF", "job_path": "/en/jobs/1/data-scientist", "posted_date": "September 23, 2026",
+        "description": "<p>Build models.</p>", "basic_qualifications": "- Python", "job_category": "Data Science"}]}})
+    jobs = fetch_amazon(http, {"countries": ["ZAF"], "queries": ["data"]})
+    assert len(jobs) == 1
+    j = jobs[0]
+    assert j.country == "South Africa" and j.posted_at == "2026-09-23"
+    assert j.apply_url == "https://www.amazon.jobs/en/jobs/1/data-scientist" and "Python" in j.description

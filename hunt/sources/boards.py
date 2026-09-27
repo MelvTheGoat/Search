@@ -84,12 +84,17 @@ def fetch_arbeitnow(http, cfg, log=print):
 def fetch_himalayas(http, cfg, log=print):
     """Himalayas search API, one query at a time, 20 jobs a page."""
     jobs, seen = [], set()
-    for q in cfg.get("queries", ["machine learning"]):
+    # Each query runs once with no country, then once per country in
+    # `countries`, which finds remote jobs open to people living there.
+    runs = [(q, None) for q in cfg.get("queries", ["machine learning"])]
+    runs += [(q, c) for c in cfg.get("countries", []) for q in cfg.get("queries", ["machine learning"])]
+    for q, country in runs:
         for page in range(1, cfg.get("max_pages", 10) + 1):
+            params = {"q": q, "page": page, **({"country": country} if country else {})}
             try:
-                data = http.get("https://himalayas.app/jobs/api/search", params={"q": q, "page": page})
+                data = http.get("https://himalayas.app/jobs/api/search", params=params)
             except Exception as e:  # noqa: BLE001
-                log(f"  himalayas/{q}/page {page}: {e}")
+                log(f"  himalayas/{q}/{country or 'all'}/page {page}: {e}")
                 break
             batch = data.get("jobs", [])
             for j in batch:
@@ -385,6 +390,56 @@ def fetch_findwork(http, cfg, log=print):
 
 
 # Sources that need a key, and the .env names they need.
+AMAZON_COUNTRY = {"ZAF": "South Africa", "KEN": "Kenya", "NGA": "Nigeria", "EGY": "Egypt", "MAR": "Morocco",
+                  "GHA": "Ghana", "RWA": "Rwanda", "SEN": "Senegal", "TUN": "Tunisia"}
+
+
+def fetch_amazon(http, cfg, log=print):
+    """Amazon's own job search, one country and query at a time. Used for
+    African countries, where Amazon and AWS hire directly."""
+    jobs, seen = [], set()
+    for code in cfg.get("countries", ["ZAF"]):
+        for q in cfg.get("queries", ["machine learning"]):
+            offset = 0
+            while offset < cfg.get("max_results", 200):
+                params = {"base_query": q, "normalized_country_code[]": code, "result_limit": 100, "offset": offset}
+                try:
+                    data = http.get("https://www.amazon.jobs/en/search.json", params=params)
+                except Exception as e:  # noqa: BLE001
+                    log(f"  amazon/{code}/{q}: {e}")
+                    break
+                batch = data.get("jobs", [])
+                for j in batch:
+                    if j.get("id_icims") in seen:
+                        continue
+                    seen.add(j.get("id_icims"))
+                    desc = "\n\n".join(html_to_text(j.get(k) or "") for k in
+                                        ("description", "basic_qualifications", "preferred_qualifications"))
+                    jobs.append(Job(
+                        source="amazon",
+                        company="Amazon",
+                        title=(j.get("title") or "").strip(),
+                        location=j.get("normalized_location") or j.get("location", ""),
+                        apply_url="https://www.amazon.jobs" + (j.get("job_path") or ""),
+                        description=desc.strip(),
+                        country=AMAZON_COUNTRY.get(j.get("country_code"), ""),
+                        posted_at=_amazon_date(j.get("posted_date")),
+                        department=j.get("job_category") or "",
+                        extra={"known_sponsor": "Amazon hires internationally"},
+                    ))
+                offset += len(batch)
+                if len(batch) < 100:
+                    break
+    return jobs
+
+
+def _amazon_date(v):
+    try:
+        return datetime.strptime(v or "", "%B %d, %Y").date().isoformat()
+    except ValueError:
+        return ""
+
+
 NEEDS_KEY = {
     "adzuna": ["ADZUNA_APP_ID", "ADZUNA_APP_KEY"],
     "reed": ["REED_API_KEY"],
@@ -411,4 +466,5 @@ BOARDS = {
     "reed": fetch_reed,
     "jooble": fetch_jooble,
     "findwork": fetch_findwork,
+    "amazon": fetch_amazon,
 }
