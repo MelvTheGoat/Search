@@ -1,5 +1,5 @@
 """Parsers for the extra sources, fed with small saved samples."""
-from hunt.sources.ats import fetch_bamboohr, fetch_personio, fetch_recruitee, fetch_smartrecruiters, fetch_workable
+from hunt.sources.ats import fetch_bamboohr, fetch_breezy, fetch_personio, fetch_recruitee, fetch_smartrecruiters, fetch_workable
 from hunt.sources.boards import fetch_amazon, fetch_hn_whoishiring, fetch_jobicy, fetch_weworkremotely
 
 
@@ -132,3 +132,20 @@ def test_amazon_reads_country_search():
     j = jobs[0]
     assert j.country == "South Africa" and j.posted_at == "2026-09-23"
     assert j.apply_url == "https://www.amazon.jobs/en/jobs/1/data-scientist" and "Python" in j.description
+
+
+def test_breezy_reads_job_page_data():
+    page = ('<script type="application/ld+json">{"@type":"JobPosting","title":"Data Analyst",'
+            '"description":"<p>SQL and Python for fraud.</p>"}</script>')
+    http = RouteHttp({
+        "/p/1-data-analyst": page,
+        "breezy.hr/json": [
+            {"name": "Data Analyst", "url": "https://co.breezy.hr/p/1-data-analyst", "published_date": "2026-09-01T00:00:00Z",
+             "locations": [{"city": "Nairobi", "country": {"name": "Kenya", "id": "KE"}, "is_remote": False}]},
+            {"name": "Chef", "url": "https://co.breezy.hr/p/2-chef", "locations": []},
+        ],
+    })
+    jobs = fetch_breezy(http, {**CO, "ats": "breezy"}, keep_title=lambda t: "Data" in t)
+    assert len(jobs) == 1
+    j = jobs[0]
+    assert j.location == "Nairobi, Kenya" and j.country == "Kenya" and "SQL and Python" in j.description

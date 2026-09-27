@@ -2,11 +2,13 @@
 #
 # One company per line. To add one, copy a line and change it:
 #   name:   company name as you want it shown
-#   ats:    greenhouse, lever, ashby, smartrecruiters, workable, recruitee or personio
+#   ats:    greenhouse, lever, ashby, smartrecruiters, workable, recruitee, personio,
+#           bamboohr or breezy
 #   token:  the board name in the job board URL, for example
 #           boards.greenhouse.io/TOKEN, jobs.lever.co/TOKEN, jobs.ashbyhq.com/TOKEN,
 #           jobs.smartrecruiters.com/TOKEN, apply.workable.com/TOKEN,
-#           TOKEN.recruitee.com, TOKEN.jobs.personio.de
+#           TOKEN.recruitee.com, TOKEN.jobs.personio.de, TOKEN.bamboohr.com,
+#           TOKEN.breezy.hr
 #   country: where the head office is (for your reference)
 #   sector: ai-lab, ml-infra, fintech, africa, tech, quant, health, mobility, other
 #   known_sponsor: true (optional) if the company is known to sponsor visas

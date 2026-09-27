@@ -1,5 +1,5 @@
 """Company job boards: Greenhouse, Lever, Ashby, SmartRecruiters, Workable,
-Recruitee, Personio and BambooHR. All are the companies' own public job feeds."""
+Recruitee, Personio, BambooHR and Breezy. All are the companies' own public job feeds."""
 import re
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
@@ -17,6 +17,8 @@ WORKABLE = "https://apply.workable.com/api/v1/widget/accounts/{token}?details=tr
 RECRUITEE = "https://{token}.recruitee.com/api/offers/"
 PERSONIO = "https://{token}.jobs.personio.de/xml?language=en"
 BAMBOOHR = "https://{token}.bamboohr.com/careers"
+BREEZY = "https://{token}.breezy.hr/json"
+_LD_JSON = re.compile(r'<script[^>]*application/ld\+json[^>]*>(.*?)</script>', re.S)
 
 
 def _extra(company):
@@ -282,6 +284,57 @@ def fetch_bamboohr(http, company, keep_title=None):
     return jobs
 
 
+def _job_posting_ld(html):
+    """The schema.org JobPosting block a job page publishes for search engines."""
+    import json
+    for block in _LD_JSON.findall(html or ""):
+        try:
+            data = json.loads(block)
+        except ValueError:
+            continue
+        if isinstance(data, dict) and data.get("@type") == "JobPosting":
+            return data
+    return {}
+
+
+def fetch_breezy(http, company, keep_title=None):
+    """Breezy lists jobs without descriptions. For titles that pass
+    keep_title we read the JobPosting data on the job's own page."""
+    data = http.get(BREEZY.format(token=company["token"]), missing_ok=True, allow_redirects=False)
+    if not isinstance(data, list):
+        return None
+    jobs = []
+    for j in data:
+        title = (j.get("name") or "").strip()
+        if keep_title and not keep_title(title):
+            continue
+        locs = j.get("locations") or [j.get("location") or {}]
+        places = [", ".join(x for x in (l.get("city"), (l.get("country") or {}).get("name")) if x) for l in locs]
+        places = [p for p in places if p]
+        remote = any(l.get("is_remote") for l in locs)
+        loc = "; ".join(places) or ("Remote" if remote else "")
+        desc = ""
+        try:
+            desc = html_to_text(_job_posting_ld(http.get(j["url"], as_json=False)).get("description", ""))
+        except Exception:  # noqa: BLE001
+            pass
+        country = ((locs[0] if locs else {}).get("country") or {}).get("id", "")
+        jobs.append(Job(
+            source="breezy",
+            company=company["name"],
+            title=title,
+            location=("Remote, " + loc) if remote and "remote" not in loc.lower() else loc,
+            apply_url=j.get("url", ""),
+            description=desc,
+            remote=remote,
+            country=ISO_TO_COUNTRY.get(country.upper(), ""),
+            posted_at=(j.get("published_date") or "")[:10],
+            department=j.get("department") or "",
+            extra=_extra(company),
+        ))
+    return jobs
+
+
 FETCHERS = {
     "greenhouse": fetch_greenhouse,
     "lever": fetch_lever,
@@ -291,6 +344,7 @@ FETCHERS = {
     "recruitee": fetch_recruitee,
     "personio": fetch_personio,
     "bamboohr": fetch_bamboohr,
+    "breezy": fetch_breezy,
 }
 ATS_NAMES = list(FETCHERS)
 
