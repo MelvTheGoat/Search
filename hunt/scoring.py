@@ -42,6 +42,22 @@ _TITLE_LEVELS = [
 _YEARS = re.compile(r"(\d{1,2})\s*\+?\s*(?:(?:-|to|–)\s*\d{1,2}\s*\+?\s*)?(?:years|yrs)", re.I)
 
 
+def required_years(text):
+    """Years of experience the post asks for. Uses the bachelor's figure
+    when the post gives one per degree ("BS with 4-8 years"), else the
+    first figure in the first sentence about experience."""
+    for sent in re.split(r"(?<=[.!?])\s+|\n", text or ""):
+        if not re.search(r"experience|years of", sent, re.I):
+            continue
+        m = re.search(r"\b(bs|ba|b\.s\.|bachelor'?s?)\b[^.;]{0,25}?(\d{1,2})\s*\+?\s*(?:(?:-|to|–)\s*\d{1,2}\s*\+?\s*)?(?:years|yrs)", sent, re.I)
+        if m:
+            return int(m.group(2))
+        m = _YEARS.search(sent)
+        if m and int(m.group(1)) <= 20:
+            return int(m.group(1))
+    return None
+
+
 def detect_level(title, description=""):
     """Return (level, stretch). Title words win; else use years of experience."""
     t = title or ""
@@ -51,12 +67,8 @@ def detect_level(title, description=""):
     d = description or ""
     if re.search(r"new grad|recent graduate|entry[- ]level|graduate programme|graduate program|no experience required", d, re.I):
         return "entry", False
-    years = []
-    for sent in re.split(r"(?<=[.!?])\s+|\n", d):
-        if re.search(r"experience", sent, re.I):
-            years += [int(m.group(1)) for m in _YEARS.finditer(sent) if int(m.group(1)) <= 20]
-    if years:
-        y = min(years)
+    y = required_years(d)
+    if y is not None:
         if y >= 5:
             return "senior", False
         if y >= 3:
