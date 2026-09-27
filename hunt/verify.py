@@ -4,6 +4,7 @@ the same token on the other supported ATSs. Dead ones move to companies_removed.
 companies.yaml keeps one company per line, so this rewrite keeps your
 comments and order."""
 import re
+from concurrent.futures import ThreadPoolExecutor
 from datetime import date
 
 from .config import CONFIG_DIR, load_yaml
@@ -23,6 +24,10 @@ def _probe(http, company):
             # An unknown SmartRecruiters id returns an empty list, not a 404.
             found = int((data or {}).get("totalFound", 0))
             return ("ok", found) if found else ("missing", 0)
+        if company["ats"] == "greenhouse":
+            # Without content=true the list is small and fast.
+            data = http.get(f"https://boards-api.greenhouse.io/v1/boards/{company['token']}/jobs", missing_ok=True)
+            return ("missing", 0) if data is None else ("ok", len(data.get("jobs", [])))
         jobs = fetch_company(http, company)
     except HttpError as e:
         msg = str(e)
@@ -34,37 +39,54 @@ def _probe(http, company):
     return "ok", len(jobs)
 
 
+def _check(clients, c):
+    """Check one company: its own ATS first, then the others."""
+    order = [c["ats"]] + [a for a in ATS_NAMES if a != c["ats"]]
+    outcomes = {}
+    switched = None
+    for ats in order:
+        outcomes[ats] = _probe(clients[ats], {**c, "ats": ats})
+        state, value = outcomes[ats]
+        if state == "ok" and value > 0:
+            switched = None if ats == c["ats"] else ats
+            break
+        if ats == c["ats"] and state == "error":
+            break  # network trouble: do not guess, keep it as it is
+    own_state, own_value = outcomes[c["ats"]]
+    if own_state == "ok" and own_value > 0:
+        return "live", None, f"{own_value} jobs"
+    if switched:
+        return "live", switched, f"{outcomes[switched][1]} jobs on {switched} (was {c['ats']})"
+    if own_state == "ok":
+        return "empty", None, "board exists but has no jobs today"
+    if len(outcomes) == len(ATS_NAMES) and all(o[0] == "missing" for o in outcomes.values()):
+        return "dead", None, "not found on any supported ATS"
+    errs = [o[1] for o in outcomes.values() if o[0] == "error"]
+    return "error", None, (errs[0][:100] if errs else "unknown error")
+
+
 def verify_companies(write=True, log=print):
     cfg = load_yaml("sources.yaml")
-    http = make_http(cfg)
-    http.retries = 1
     companies = load_yaml("companies.yaml").get("companies", [])
+    # One HTTP client per ATS, so each site keeps its own polite pace.
+    # Companies are split by their ATS and checked side by side.
+    clients = {}
+    for ats in ATS_NAMES:
+        clients[ats] = make_http(cfg)
+        clients[ats].retries = 2
     results = {}
-    for i, c in enumerate(companies, start=1):
-        outcomes = {c["ats"]: _probe(http, c)}
-        state, value = outcomes[c["ats"]]
-        switched = None
-        if not (state == "ok" and value > 0):
-            for other in ATS_NAMES:
-                if other == c["ats"]:
-                    continue
-                outcomes[other] = _probe(http, {**c, "ats": other})
-                if outcomes[other][0] == "ok" and outcomes[other][1] > 0:
-                    switched = other
-                    break
-        if state == "ok" and value > 0:
-            verdict, note = "live", f"{value} jobs"
-        elif switched:
-            verdict, note = "live", f"{outcomes[switched][1]} jobs on {switched} (was {c['ats']})"
-        elif state == "ok":
-            verdict, note = "empty", "board exists but has no jobs today"
-        elif all(o[0] == "missing" for o in outcomes.values()):
-            verdict, note = "dead", "not found on any supported ATS"
-        else:
-            errs = [o[1] for o in outcomes.values() if o[0] == "error"]
-            verdict, note = "error", errs[0][:100] if errs else "unknown error"
-        results[(c["ats"], c["token"])] = (verdict, switched, note)
-        log(f"  [{i}/{len(companies)}] {c['name'][:28]:28} {c['ats']}/{c['token']}: {verdict}, {note}")
+    by_ats = {a: [c for c in companies if c["ats"] == a] for a in ATS_NAMES}
+    done = [0]
+
+    def work(ats):
+        for c in by_ats[ats]:
+            verdict, switched, note = _check(clients, c)
+            results[(c["ats"], c["token"])] = (verdict, switched, note)
+            done[0] += 1
+            log(f"  [{done[0]}/{len(companies)}] {c['name'][:28]:28} {c['ats']}/{c['token']}: {verdict}, {note}")
+
+    with ThreadPoolExecutor(max_workers=len(ATS_NAMES)) as pool:
+        list(pool.map(work, ATS_NAMES))
 
     count = {v: sum(1 for r in results.values() if r[0] == v) for v in ("live", "empty", "dead", "error")}
     log(f"\n{count['live']} live, {count['empty']} empty, {count['dead']} dead, {count['error']} errors.")

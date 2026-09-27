@@ -1,5 +1,6 @@
 """HTTP client with a clear User-Agent, polite rate limits and retries."""
 import random
+import threading
 import time
 from urllib.parse import urlparse
 
@@ -27,13 +28,16 @@ class Http:
         self.backoff = backoff
         self.timeout = timeout
         self._last = {}
+        self._lock = threading.Lock()
 
     def _wait(self, host):
-        gap = self.per_host.get(host, self.min_interval)
-        wait = gap - (time.time() - self._last.get(host, 0))
-        if wait > 0:
-            time.sleep(wait)
-        self._last[host] = time.time()
+        # The lock keeps the pace per site even when threads share a client.
+        with self._lock:
+            gap = self.per_host.get(host, self.min_interval)
+            wait = gap - (time.time() - self._last.get(host, 0))
+            if wait > 0:
+                time.sleep(wait)
+            self._last[host] = time.time()
 
     def get(self, url, params=None, as_json=True, missing_ok=False, headers=None, auth=None):
         """GET a URL. Returns None on 404 when missing_ok is set."""
