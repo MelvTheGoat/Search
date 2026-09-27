@@ -11,6 +11,7 @@ page-import reads the edits you made on the page back into data/jobs.db,
 so the page and the tracker agree and a fresh start loses nothing."""
 import base64
 import json
+import re
 import shutil
 from collections import Counter
 from datetime import datetime, timezone
@@ -60,6 +61,21 @@ def _letter_text(path):
     return "\n".join(lines).strip()
 
 
+def letter_parts(path):
+    """Split a letter file into the text to paste (letter body and sign-off)
+    and the "why this company" answer. Headings and file notes are left out."""
+    parts, cur = {}, "intro"
+    for line in _letter_text(path).splitlines():
+        m = re.match(r"^##\s+(.*)", line)
+        if m:
+            cur = m.group(1).strip().lower()
+            parts[cur] = []
+            continue
+        parts.setdefault(cur, []).append(line)
+    text = lambda k: "\n".join(parts.get(k, [])).strip()
+    return {"letter": text("cover letter") or text("intro"), "why": text("why this company")}
+
+
 def export_page(conn, top_open=300, top_restricted=60, out=PAGE_DIR):
     """Write the page records as JSON files plus writes.json, a list of
     batches (50 writes each) ready to send with the ArtifactData tool."""
@@ -95,7 +111,8 @@ def export_page(conn, top_open=300, top_restricted=60, out=PAGE_DIR):
         lf = j["letter_file"]
         if lf and (ROOT / lf).exists():
             p = out / "letters" / f"{j['key']}.json"
-            p.write_text(json.dumps({"file": lf, "text": _letter_text(ROOT / lf), "run": run}, ensure_ascii=False))
+            lp = letter_parts(ROOT / lf)
+            p.write_text(json.dumps({"file": lf, "text": lp["letter"], "why": lp["why"], "run": run}, ensure_ascii=False))
             writes.append({"op": "set", "collection": "letters", "doc_id": j["key"], "file_path": str(p)})
             letters += 1
         if lf or j.get("cv_file"):
@@ -103,7 +120,7 @@ def export_page(conn, top_open=300, top_restricted=60, out=PAGE_DIR):
             from .cv import html_for_job
             p = out / "packs" / f"{j['key']}.json"
             p.write_text(json.dumps({"desc": (j["description"] or "")[:20000], "cv_html": html_for_job(j["id"]),
-                                     "letter": _letter_text(ROOT / lf) if lf and (ROOT / lf).exists() else "",
+                                     **(letter_parts(ROOT / lf) if lf and (ROOT / lf).exists() else {"letter": "", "why": ""}),
                                      "run": run}, ensure_ascii=False))
             writes.append({"op": "set", "collection": "packs", "doc_id": j["key"], "file_path": str(p)})
         cvf = j.get("cv_file")

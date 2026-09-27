@@ -1,0 +1,50 @@
+job_id: 6051
+company: Balerion AI
+title: Software, FDE and AI Engineers
+headline: llm
+summary: AI engineer building LLM systems for regulated finance. Built a compliance assistant that refuses rather than guesses
+  and verifies every citation, a credit decisioning system with reason codes and an audit trail, and a PostgreSQL ledger API
+  built for retries and partial failure. Puts evaluation first.
+skills:
+- group: ai
+  lead:
+  - Retrieval-Augmented Generation (RAG)
+  - LLM Evaluation and Guardrails
+  - Citation Verification
+  - Prompt Engineering
+- group: eng
+  lead:
+  - Python
+  - FastAPI
+  - PostgreSQL
+  - Docker
+- group: domain
+  lead:
+  - Credit Risk Decisioning
+  - Double-Entry Ledgers and Idempotency
+- ml
+- stats
+- data
+projects:
+- id: rag
+  bullets:
+  - safety
+  - eval
+  - system
+- id: credit
+  bullets:
+  - system
+  - calib
+- id: ledger
+  bullets:
+  - system
+  - idem
+- id: web3
+  bullets:
+  - http
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

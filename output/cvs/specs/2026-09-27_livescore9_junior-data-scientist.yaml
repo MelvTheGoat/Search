@@ -1,0 +1,51 @@
+job_id: 5190
+company: Livescore9
+title: Junior Data Scientist
+headline: quant
+summary: Data scientist with a B.Sc. in Statistics, focused on measuring what actually works. Ran a causal uplift study on
+  a randomised e-mail campaign with 64,000 customers, with power, MDE and CUPED tools, and built time-series forecasting checked
+  by rolling backtests. Explains results as plain decisions for business owners.
+skills:
+- group: stats
+  lead:
+  - Experiment Design
+  - Power Analysis
+  - CUPED
+  - Uplift Modeling
+  - Causal Inference (S/T/X-Learners, Causal Forests)
+  - Time-Series Backtesting
+- group: eng
+  lead:
+  - Python
+  - SQL
+- group: data
+  lead:
+  - Pandas
+  - NumPy
+- ml
+- domain
+projects:
+- id: uplift
+  bullets:
+  - study
+  - findings
+  - eval
+  - experiment
+- id: forecast
+  bullets:
+  - system
+  - cost
+  - validation
+- id: epl
+  bullets:
+  - system
+  - backtest
+- id: credit
+  bullets:
+  - calib
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

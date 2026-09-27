@@ -1,0 +1,51 @@
+job_id: 2025
+company: Lyft
+title: Machine Learning Engineer, Lyft Business & Ads
+headline: ml_ai
+summary: Machine learning and AI engineer who works across problem types. Built a fraud detection system with sequence models
+  served at 5.1 ms p99, a forecasting platform that ships the cost-optimal quantile, an uplift study for campaign targeting
+  and a retrieval assistant with guardrails. Owns models from prototype to deployment.
+skills:
+- group: ml
+  lead:
+  - LightGBM
+  - PyTorch
+  - Feature Engineering
+- group: domain
+  lead:
+  - Transaction Fraud Detection
+  - Demand Forecasting
+- group: ai
+  lead:
+  - Retrieval-Augmented Generation (RAG)
+  - Prompt Engineering
+  - Model Context Protocol (MCP)
+- group: stats
+  lead:
+  - Causal Inference (S/T/X-Learners, Causal Forests)
+  - Experiment Design
+- eng
+- data
+projects:
+- id: fraud
+  bullets:
+  - bench
+  - deploy
+- id: forecast
+  bullets:
+  - system
+  - cost
+- id: uplift
+  bullets:
+  - study
+  - findings
+- id: rag
+  bullets:
+  - system
+  - safety
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

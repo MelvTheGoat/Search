@@ -1,0 +1,52 @@
+job_id: 5195
+company: Netcraft
+title: Software Engineer (Machine Learning)
+headline: fraud
+summary: Machine learning engineer working on adversarial problems. Built fraud models judged by precision at fixed review
+  capacity and per attack type, an MCP server that flags phishing and scam addresses with explainable rules, and a resilient
+  HTTP layer with caching, rate limits and retries. Serves models with FastAPI and ONNX Runtime.
+skills:
+- group: domain
+  lead:
+  - Transaction Fraud Detection
+  - Web3 Fraud Risk Scoring
+- group: ml
+  lead:
+  - PyTorch
+  - LightGBM
+  - Model Calibration (Isotonic Regression, Temperature Scaling)
+- group: ai
+  lead:
+  - LLM Evaluation and Guardrails
+  - ONNX Runtime
+  - Hugging Face
+- group: eng
+  lead:
+  - Python
+  - FastAPI
+  - Docker
+  - MLflow
+- stats
+- data
+projects:
+- id: web3
+  bullets:
+  - detect
+  - scorer
+  - http
+  - eval
+- id: fraud
+  bullets:
+  - bench
+  - imbalance
+  - deploy
+- id: rag
+  bullets:
+  - system
+  - eval
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

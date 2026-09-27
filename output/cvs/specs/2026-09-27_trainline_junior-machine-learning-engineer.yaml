@@ -1,0 +1,50 @@
+job_id: 4217
+company: Trainline
+title: Junior Machine Learning Engineer
+headline: ml
+summary: Machine learning engineer with a B.Sc. in Statistics who takes models from data exploration to production. Built
+  and deployed forecasting, fraud and retrieval systems in Python with scikit-learn, LightGBM and PyTorch, tracked experiments
+  in MLflow, and shipped with Docker and CI/CD. Teaches machine learning to student cohorts.
+skills:
+- group: ml
+  lead:
+  - Scikit-learn
+  - LightGBM
+  - PyTorch
+  - Feature Engineering
+- group: eng
+  lead:
+  - Python
+  - MLflow
+  - Docker
+  - CI/CD (GitHub Actions)
+- group: data
+  lead:
+  - Pandas
+  - NumPy
+- ai
+- stats
+- domain
+projects:
+- id: forecast
+  bullets:
+  - system
+  - cost
+  - validation
+- id: churn
+  bullets:
+  - model
+  - deploy
+- id: fraud
+  bullets:
+  - models
+  - deploy
+- id: rag
+  bullets:
+  - system
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

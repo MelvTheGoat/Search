@@ -1,0 +1,50 @@
+job_id: 3808
+company: Lendable
+title: Junior Data Engineer
+headline: data_eng
+summary: Data and machine learning engineer with a B.Sc. in Statistics. Builds data-intensive systems in Python and SQL, including
+  an orchestrated Prefect, dbt and DuckDB pipeline, a payment reconciliation pipeline over processor webhooks and bank settlement
+  files, and a PostgreSQL ledger API with 138 tests. Deploys with Docker, GitHub Actions and AWS.
+skills:
+- group: eng
+  lead:
+  - Python
+  - SQL
+  - dbt-core
+  - Prefect
+  - DuckDB
+  - PostgreSQL
+  - AWS ECS Fargate
+  - CI/CD (GitHub Actions)
+  - Docker
+- group: domain
+  lead:
+  - Payment Reconciliation
+  - Double-Entry Ledgers and Idempotency
+- data
+- ml
+- stats
+projects:
+- id: forecast
+  bullets:
+  - system
+  - validation
+- id: reckon
+  bullets:
+  - system
+  - pipeline
+  - ops
+- id: ledger
+  bullets:
+  - system
+  - idem
+  - tests
+- id: churn
+  bullets:
+  - deploy
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

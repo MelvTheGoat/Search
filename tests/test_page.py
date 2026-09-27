@@ -40,3 +40,14 @@ def test_page_edits_come_back_unless_older_than_a_local_mark(tmp_path):
     row = conn.execute("SELECT status, notes, date_applied FROM jobs WHERE key='k1'").fetchone()
     assert tuple(row) == ("applied", "sent", "2026-09-27")
     assert conn.execute("SELECT status FROM jobs WHERE key='k2'").fetchone()[0] == "interview"
+
+
+def test_letter_parts_leave_out_headings_and_file_notes(tmp_path):
+    from hunt.page import letter_parts
+    f = tmp_path / "l.md"
+    f.write_text("---\njob_id: 1\n---\n\n## Cover letter\n\nHello there.\n\nOluwatobi Melvyn Mayungbo\nmlvyn.t@gmail.com\n\n"
+                 "## Why this company\n\nGood team.\n\n## Tailored CV\n\noutput/cvs/x.pdf\n")
+    p = letter_parts(f)
+    assert p["letter"] == "Hello there.\n\nOluwatobi Melvyn Mayungbo\nmlvyn.t@gmail.com"
+    assert p["why"] == "Good team."
+    assert "##" not in p["letter"] and "output/" not in p["letter"]

@@ -287,7 +287,7 @@ function card(j){
       ${j.cvn ? `<div class="row2">${j.cvp ? `<a class="btn cv-pdf" href="${esc(j.cvp)}" target="_blank" rel="noopener">CV (PDF)</a>` : ""}<button class="btn cv-word">CV (Word)</button></div>` : ""}
     </div>
     ${(j.notes || state.open.has("n:"+j.k)) ? `<div class="note"><textarea aria-label="Notes" placeholder="Recruiter name, dates, next step" ${state.writable?"":"disabled"}>${esc(j.notes)}</textarea><div class="hint">Saved when you click away.</div></div>` : ""}
-    ${open ? `<div class="letter">${letter ? `<pre>${esc(letter.text)}</pre><div class="bar"><button class="btn copy">Copy letter</button><span class="hint" style="font-size:12px;color:var(--muted)">${esc(letter.file||"")}</span>${hasLetter && !j.notes && !state.open.has("n:"+j.k) ? '<button class="btn note-btn">Add note</button>' : ""}</div>` : "<p class='ev'>Loading letter…</p>"}</div>` : ""}
+    ${open ? `<div class="letter">${letter ? `<pre>${esc(splitLetter(letter.text).letter)}</pre>${letter.why ? `<p class="why-text"><b>Why this company</b> (for application forms): ${esc(letter.why)}</p>` : ""}<div class="bar"><button class="btn copy">Copy letter</button>${hasLetter && !j.notes && !state.open.has("n:"+j.k) ? '<button class="btn note-btn">Add note</button>' : ""}</div>` : "<p class='ev'>Loading letter…</p>"}</div>` : ""}
   </article>`;
 }
 
@@ -298,7 +298,7 @@ function splitLetter(text){
     if (m) { cur = m[1].trim().toLowerCase(); parts[cur] = ""; continue; }
     parts[cur] = (parts[cur] || "") + line + "\n";
   }
-  return {letter: (parts["cover letter"] || "").trim(), why: (parts["why this company"] || "").trim()};
+  return {letter: (parts["cover letter"] || parts["intro"] || "").trim(), why: (parts["why this company"] || "").trim()};
 }
 
 function packCard(j){
@@ -307,6 +307,7 @@ function packCard(j){
   const lvl = j.lvl === "unspecified" ? "Level not stated" : (j.lvl || "").replace(/^./, c => c.toUpperCase());
   const opts = STATUSES.map(s => `<option value="${s}" ${s===j.status?"selected":""}>${STATUS_TEXT[s]}</option>`).join("");
   const L = pk ? splitLetter(pk.letter) : {letter:"", why:""};
+  if (pk && pk.why) L.why = pk.why;
   const cvOpen = state.open.has("cv:" + j.k), clOpen = state.open.has("cl:" + j.k);
   const jpOpen = state.open.has("jp:" + j.k);
   return `<article class="pack job" data-k="${esc(j.k)}">
@@ -426,7 +427,7 @@ document.addEventListener("click", e => {
     return;
   }
   if (t.classList.contains("copy")) {
-    const text = (state.letters[k]||{}).text || "";
+    const text = splitLetter((state.letters[k]||{}).text).letter;
     navigator.clipboard.writeText(text).then(() => toast("Letter copied")).catch(() => {
       const pre = art.querySelector("pre"); const r = document.createRange(); r.selectNodeContents(pre); const s = getSelection(); s.removeAllRanges(); s.addRange(r); toast("Selected. Press copy.");
     });

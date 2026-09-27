@@ -1,0 +1,47 @@
+job_id: 621
+company: ElevenLabs
+title: Data Scientist, AI Safety
+headline: ds
+summary: Data scientist focused on evaluation and data quality for ML and AI systems. Built a labelled golden set for a retrieval
+  assistant, a hand-checked evaluation set for a crypto risk tool, and fraud and abuse models judged by attack type. Builds
+  Python and SQL pipelines and human review tools.
+skills:
+- group: ai
+  lead:
+  - LLM Evaluation and Guardrails
+  - Citation Verification
+  - Prompt Engineering
+- group: domain
+  lead:
+  - Transaction Fraud Detection
+  - Web3 Fraud Risk Scoring
+- group: eng
+  lead:
+  - Python
+  - SQL
+- data
+- ml
+- stats
+projects:
+- id: rag
+  bullets:
+  - eval
+  - system
+  - safety
+- id: web3
+  bullets:
+  - eval
+  - scorer
+- id: fraud
+  bullets:
+  - bench
+  - imbalance
+- id: reckon
+  bullets:
+  - review
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

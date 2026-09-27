@@ -1,0 +1,46 @@
+job_id: 2845
+company: Oscar Health
+title: Data Scientist I
+headline: ds
+summary: Early-career data scientist with a B.Sc. in Statistics. Builds data pipelines with Prefect, dbt and DuckDB, validates
+  models with backtesting and calibration checks, and writes tested, documented Python and SQL. Has audited financial records
+  for anomalies and built risk models where audit trails matter.
+skills:
+- group: eng
+  lead:
+  - Python
+  - SQL
+  - dbt-core
+  - DuckDB
+  - Prefect
+- group: stats
+  lead:
+  - Statistical Inference
+  - Logistic Regression
+  - Time-Series Backtesting
+- ml
+- data
+- domain
+projects:
+- id: forecast
+  bullets:
+  - system
+  - validation
+- id: credit
+  bullets:
+  - system
+  - calib
+- id: uplift
+  bullets:
+  - study
+  - eval
+- id: reckon
+  bullets:
+  - system
+  - pipeline
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

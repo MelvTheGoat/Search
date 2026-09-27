@@ -23,6 +23,7 @@ headlines:
   mlops: ML Engineer, MLOps and Production Systems
   quant: Data Scientist, Statistics and Forecasting
   data_ml: Data and Machine Learning Analyst
+  data_eng: Data and Machine Learning Engineer
 
 skills:
   ai: {label: "AI and LLM Systems", items: ["Retrieval-Augmented Generation (RAG)", "Hybrid Search (BM25, Dense Embeddings, RRF)", "LLM Evaluation and Guardrails", "Prompt Engineering", "Citation Verification", "Model Context Protocol (MCP)", "Hugging Face", "ONNX Runtime"]}

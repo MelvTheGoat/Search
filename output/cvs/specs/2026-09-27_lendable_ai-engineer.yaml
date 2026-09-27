@@ -1,0 +1,50 @@
+job_id: 3807
+company: Lendable
+title: AI Engineer
+headline: llm
+summary: AI engineer who builds LLM systems that are checked, not just demoed. Built a hybrid retrieval assistant with 0.96
+  recall@5 and citation verification, an MCP server that gives AI assistants risk tools, and credit and fraud models with
+  audit trails. Deploys with FastAPI and Docker on GCP Cloud Run.
+skills:
+- group: ai
+  lead:
+  - Retrieval-Augmented Generation (RAG)
+  - LLM Evaluation and Guardrails
+  - Prompt Engineering
+  - Citation Verification
+  - Model Context Protocol (MCP)
+- group: eng
+  lead:
+  - Python
+  - FastAPI
+  - Docker
+  - GCP Cloud Run
+- group: domain
+  lead:
+  - Credit Risk Decisioning
+- ml
+- stats
+- data
+projects:
+- id: rag
+  bullets:
+  - system
+  - safety
+  - eval
+  - deploy
+- id: web3
+  bullets:
+  - system
+  - scorer
+- id: credit
+  bullets:
+  - system
+- id: reckon
+  bullets:
+  - review
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

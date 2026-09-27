@@ -1,0 +1,50 @@
+job_id: 4398
+company: Wallapop
+title: MLOps Engineer
+headline: mlops
+summary: ML engineer focused on MLOps and production systems. Built an orchestrated pipeline with drift monitoring and conditional
+  retraining, deployed models on AWS ECS Fargate with MLflow tracking and GitHub Actions CI/CD, served a fraud model at 5.1
+  ms p99 with ONNX Runtime, and built hybrid semantic search.
+skills:
+- group: eng
+  lead:
+  - MLflow
+  - Evidently
+  - Prefect
+  - Docker
+  - CI/CD (GitHub Actions)
+  - AWS ECS Fargate
+  - FastAPI
+  - Python
+  - Git
+- group: ai
+  lead:
+  - Hybrid Search (BM25, Dense Embeddings, RRF)
+  - ONNX Runtime
+  - Retrieval-Augmented Generation (RAG)
+- ml
+- stats
+- data
+- domain
+projects:
+- id: forecast
+  bullets:
+  - system
+  - validation
+- id: churn
+  bullets:
+  - model
+  - deploy
+- id: fraud
+  bullets:
+  - deploy
+- id: rag
+  bullets:
+  - system
+  - deploy
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit
