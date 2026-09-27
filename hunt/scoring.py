@@ -4,7 +4,7 @@ import sqlite3
 
 import numpy as np
 
-from .config import CV_PATH, DATA_DIR, load_yaml
+from .config import DATA_DIR, fact_texts, load_yaml
 from .text import sha
 
 # ---------------------------------------------------------------- filter
@@ -187,7 +187,7 @@ def parse_cv(text):
 
 
 def short_project(name):
-    for sep in (" — ", " – ", " - "):
+    for sep in (" — ", " – ", " - ", ": "):
         if sep in name:
             return name.split(sep)[0].strip()
     return re.sub(r"\s+(System|Platform|Assistant)$", "", name).strip()
@@ -202,7 +202,7 @@ class Scorer:
         e = self.cfg["embedding"]
         self.embedder = embedder or Embedder(e["model"], log=log)
         self.skills = skills or Skills()
-        cv_text = cv_text if cv_text is not None else CV_PATH.read_text(encoding="utf-8")
+        cv_text = cv_text if cv_text is not None else fact_texts()
         self.cv_text, self.projects = parse_cv(cv_text)
         self.cv_skills = set(self.skills.find(self.cv_text))
         self._cv_vec = None

@@ -4,7 +4,7 @@ import re
 from dataclasses import dataclass
 from pathlib import Path
 
-from .config import CV_PATH, LETTERS_DIR, load_yaml
+from .config import LETTERS_DIR, fact_texts, load_yaml
 
 NUM = re.compile(r"\d+(?:[.,]\d+)*")
 URL = re.compile(r"https?://\S+|www\.\S+|\S+@\S+")
@@ -77,7 +77,7 @@ def check_file(path, cv_numbers, rules):
         for num in sorted(_numbers(line)):
             if num not in cv_numbers:
                 shown = int(num) if num == int(num) else num
-                problems.append(Problem(name, n, "number", f"number {shown} is not in profile/cv.md"))
+                problems.append(Problem(name, n, "number", f"number {shown} is not in profile/cv.md or profile/projects.md"))
 
     start, end = letter_section(lines, body_start)
     if start is None:
@@ -94,9 +94,10 @@ def check_file(path, cv_numbers, rules):
     return problems
 
 
-def check_all(paths=None, cv_path=CV_PATH, rules=None):
+def check_all(paths=None, cv_path=None, rules=None):
     rules = rules or load_yaml("writing.yaml")
-    cv_numbers = _numbers(Path(cv_path).read_text(encoding="utf-8"))
+    facts = Path(cv_path).read_text(encoding="utf-8") if cv_path else fact_texts()
+    cv_numbers = _numbers(facts)
     paths = paths if paths is not None else sorted(LETTERS_DIR.glob("*.md"))
     problems = []
     for p in paths:

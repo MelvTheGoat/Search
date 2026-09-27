@@ -12,6 +12,7 @@ QUEUE_DIR = ROOT / "queue"
 LETTERS_DIR = ROOT / "output" / "letters"
 DB_PATH = DATA_DIR / "jobs.db"
 CV_PATH = PROFILE_DIR / "cv.md"
+PROJECTS_PATH = PROFILE_DIR / "projects.md"   # extra GitHub projects, same rules as the CV
 TRACKER_XLSX = ROOT / "tracker.xlsx"
 TRACKER_CSV = ROOT / "tracker.csv"
 
@@ -38,3 +39,11 @@ def load_env():
 
 def label_rank(label):
     return LABEL_ORDER.index(label) if label in LABEL_ORDER else len(LABEL_ORDER)
+
+
+def fact_texts():
+    """The CV plus the extra projects file: everything letters may use."""
+    texts = [CV_PATH.read_text(encoding="utf-8")]
+    if PROJECTS_PATH.exists():
+        texts.append(PROJECTS_PATH.read_text(encoding="utf-8"))
+    return "\n\n".join(texts)
