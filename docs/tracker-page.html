@@ -170,8 +170,6 @@ label.fit output{font:600 13px var(--mono);color:var(--ink);min-width:2ch}
       <option value="africa">Elsewhere in Africa</option>
       <option value="sponsor_yes">Abroad, sponsors</option>
       <option value="sponsor_likely">Abroad, known sponsor</option>
-      <option value="sponsor_unknown">Abroad, not stated</option>
-      <option value="restricted">Restricted</option>
     </select>
     <select id="level" aria-label="Level">
       <option value="">Any level</option>
@@ -199,7 +197,6 @@ const TABS = [
   {id:"ready", text:"Ready to apply"},
   {id:"review", text:"To review"},
   {id:"mine", text:"My applications"},
-  {id:"restricted", text:"Restricted"},
   {id:"all", text:"All"},
 ];
 
@@ -306,7 +303,7 @@ function card(j){
         <a class="btn primary" href="${esc(j.url)}" target="_blank" rel="noopener">Open post ↗</a>
         ${hasLetter ? `<button class="btn letter-btn" aria-expanded="${open}">${open?"Hide":"Letter"}</button>` : `<button class="btn note-btn">Note</button>`}
       </div>
-      ${j.cvn ? `<div class="row2">${j.cvp ? `<a class="btn cv-pdf" href="${esc(j.cvp)}" target="_blank" rel="noopener">CV (PDF)</a>` : ""}<button class="btn cv-word">CV (Word)</button></div>` : ""}
+      ${j.cvn ? `<div class="row2">${(j.cvp || j.cvn) ? `<a class="btn cv-pdf" href="${esc(j.cvp || "#")}" target="_blank" rel="noopener">CV (PDF)</a>` : ""}<button class="btn cv-word">CV (Word)</button></div>` : ""}
     </div>
     ${(j.notes || state.open.has("n:"+j.k)) ? `<div class="note"><textarea aria-label="Notes" placeholder="Recruiter name, dates, next step" ${state.writable?"":"disabled"}>${esc(j.notes)}</textarea><div class="hint">Saved when you click away.</div></div>` : ""}
     ${open ? `<div class="letter">${letter ? `<pre>${esc(splitLetter(letter.text).letter)}</pre>${letter.why ? `<p class="why-text"><b>Why this company</b> (for application forms): ${esc(letter.why)}</p>` : ""}<div class="bar"><button class="btn copy">Copy letter</button>${hasLetter && !j.notes && !state.open.has("n:"+j.k) ? '<button class="btn note-btn">Add note</button>' : ""}</div>` : "<p class='ev'>Loading letter…</p>"}</div>` : ""}
@@ -348,7 +345,7 @@ function packCard(j){
       </div>
     </div>
     <section class="pack-sec"><h3><span class="step">1</span>Job posting<span class="tools">${pk ? `<button class="btn toggle" data-open="jp:${esc(j.k)}" aria-expanded="${jpOpen}">${jpOpen ? "Hide posting" : "Show posting"}</button>` : ""}<a class="btn" href="${esc(j.url)}" target="_blank" rel="noopener">Open original ↗</a></span></h3>
-      ${pk ? (jpOpen ? `<pre class="posting">${esc(pk.desc)}</pre>` : "") : "<p class='ev'>Loading…</p>"}</section>
+      ${pk ? (jpOpen ? `<pre class="posting">${esc(pk.desc)}</pre>` : "") : (packFailed.has(j.k) ? `<p class='ev'>Could not load this pack. <button class="btn retry-pack">Try again</button></p>` : "<p class='ev'>Loading…</p>")}</section>
     <section class="pack-sec"><h3><span class="step">2</span>Tailored CV<span class="tools">${pk && pk.cv_html ? `<button class="btn toggle" data-open="cv:${esc(j.k)}" aria-expanded="${cvOpen}">${cvOpen ? "Hide CV" : "Show CV"}</button>` : ""}${(j.cvp || j.cvn) ? `<a class="btn cv-pdf" href="${esc(j.cvp || "#")}" target="_blank" rel="noopener">Download PDF</a>` : ""}${j.cvn ? `<button class="btn cv-word">Download Word</button>` : ""}</span></h3>
       ${pk && pk.cv_html ? (cvOpen ? `<div class="cvdoc">${pk.cv_html}</div>` : "") : "<p class='ev'>No CV yet.</p>"}</section>
     <section class="pack-sec"><h3><span class="step">3</span>Cover letter<span class="tools">${L.letter ? `<button class="btn toggle" data-open="cl:${esc(j.k)}" aria-expanded="${clOpen}">${clOpen ? "Hide letter" : "Show letter"}</button><button class="btn copy-pack">Copy letter</button>` : ""}</span></h3>
@@ -367,13 +364,14 @@ function render(){
   renderHeader(all); renderPipe(all); renderTabs(all);
   const list = filtered(all);
   const shown = list.slice(0, state.limit);
-  let html = shown.map(j => state.tab === "ready" ? packCard(j) : card(j)).join("");
+  let html = shown.map(j => (state.tab === "ready" || j.lf) ? packCard(j) : card(j)).join("");
   if (!list.length) {
     html = `<div class="empty">${state.meta ? (state.tab==="mine" ? "No applications yet. Set a job to Applied and it shows up here." : state.tab==="ready" ? "No letters ready yet. Letters and tailored CVs appear here as they are written." : "No jobs match these filters.") : "No jobs yet. They appear here after the first run."}</div>`;
   } else if (list.length > shown.length) {
     html += `<button class="btn more" id="more">Show ${Math.min(60, list.length - shown.length)} more of ${list.length - shown.length}</button>`;
   }
   $("#list").innerHTML = html;
+  for (const j of shown) if ((state.tab === "ready" || j.lf) && !state.packs[j.k]) queuePack(j.k);
   $("#legend").innerHTML = state.meta ? `<span>${list.length} jobs in this view</span><span>Fit: CV and project match, skills, role and level</span><span>Jobs with a letter also have a tailored CV to download</span><span>Status changes save for you and sync into the tracker on the next run</span>` : "";
 }
 
@@ -441,6 +439,23 @@ document.addEventListener("click", e => {
   e.preventDefault(); const art = a.closest(".job"); savePdf(art.dataset.k, a);
 });
 
+// Packs (posting, CV and letter) are read one job at a time as cards
+// show, never all at once, so a large collection cannot break the page.
+const packQueue = [], packAsked = new Set(), packFailed = new Set();
+let packBusy = 0;
+function queuePack(k){
+  if (!state.db || packAsked.has(k)) return;
+  packAsked.add(k); packQueue.push(k); pumpPacks();
+}
+function pumpPacks(){
+  while (packBusy < 4 && packQueue.length) {
+    const k = packQueue.shift(); packBusy++;
+    state.db.doc("packs/" + k).get()
+      .then(s => { if (s.exists) state.packs[k] = s.data(); else packFailed.add(k); })
+      .catch(() => packFailed.add(k))
+      .finally(() => { packBusy--; render(); pumpPacks(); });
+  }
+}
 async function loadLetter(k){
   if (state.letters[k] || !state.db) return;
   try { const s = await state.db.doc("letters/" + k).get(); state.letters[k] = s.exists ? s.data() : {text:"No letter saved yet. It appears after the next sync.", file:""}; }
@@ -460,6 +475,7 @@ document.addEventListener("click", e => {
   if (t.classList.contains("note-btn")) { state.open.add("n:"+k); render(); const ta = document.querySelector(`.job[data-k="${CSS.escape(k)}"] textarea`); ta && ta.focus(); }
   if (t.classList.contains("toggle")) { const id = t.dataset.open; state.open.has(id) ? state.open.delete(id) : state.open.add(id); render(); return; }
   if (t.classList.contains("cv-word")) { saveWord(k); return; }
+  if (t.classList.contains("retry-pack")) { packFailed.delete(k); packAsked.delete(k); render(); return; }
   if (t.classList.contains("copy-pack")) {
     const text = splitLetter((state.packs[k]||{}).letter).letter;
     navigator.clipboard.writeText(text).then(() => toast("Letter copied")).catch(() => {
@@ -503,7 +519,6 @@ render();
   const onErr = e => { if (e && e.code === "revoked") { state.db = null; render(); } };
   db.doc("meta/run").onSnapshot(s => { state.meta = s.exists ? s.data() : null; render(); }, onErr);
   db.collection("chunks").onSnapshot(s => { state.chunks = Object.fromEntries(s.docs.map(d => [d.id, d.data()])); render(); }, onErr);
-  db.collection("packs").onSnapshot(s => { state.packs = Object.fromEntries(s.docs.map(d => [d.id, d.data()])); render(); }, onErr);
   db.collection("edits").onSnapshot(s => { state.edits = Object.fromEntries(s.docs.map(d => [d.id, d.data()])); render(); }, onErr);
 })();
 </script>

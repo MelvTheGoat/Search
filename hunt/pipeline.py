@@ -10,6 +10,7 @@ from .dedupe import dedupe
 from .export import export, sync_from_xlsx
 from .http import Http
 from .labels import Labeller
+from .h1b import H1B
 from .registers import load_registers
 from .scoring import Scorer, is_relevant
 from .sources import cached
@@ -120,7 +121,7 @@ def run(log=print, only=None, skip_fetch=False):
         jobs, counts, errors = fetch_all(http, cfg, log=log, only=only)
     log("Loading sponsor registers...")
     registers = load_registers(http, log=log)
-    labeller = Labeller(registers=registers)
+    labeller = Labeller(registers=registers, h1b=H1B(http, log=log))
     scorer = Scorer(log=log)
     stats = process(conn, jobs, labeller, scorer, log=log)
     sync_from_xlsx(conn, log=log)
@@ -137,7 +138,7 @@ def rescore(log=print):
     load_env()
     conn = db.connect()
     http = make_http(load_yaml("sources.yaml"))
-    labeller = Labeller(registers=load_registers(http, log=log))
+    labeller = Labeller(registers=load_registers(http, log=log), h1b=H1B(http, log=log))
     scorer = Scorer(log=log)
     companies = {c["name"]: c for c in load_companies()}
     jobs = []

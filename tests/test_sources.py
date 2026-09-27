@@ -169,3 +169,12 @@ def test_workday_searches_and_reads_details():
     j = jobs[0]
     assert j.location == "Johannesburg, South Africa" and j.country == "South Africa"
     assert "Credit models" in j.description and j.apply_url.endswith("Data-Scientist_R-1")
+
+
+def test_h1b_parse_counts_only_the_same_company():
+    from hunt.h1b import parse
+    row = ("<tr><td><a href='x'>{e}</a></td><td><a>DATA SCIENTIST</a></td><td><a>1</a></td>"
+           "<td><a>SF, CA</a></td><td class='d-sm-none'>06/08/{y}</td><td class='d-sm-none'>10/01/{y}</td></tr>")
+    html = (row.format(e="GLEAN TECHNOLOGIES INC", y=2025) + row.format(e="GLEAN ANALYTICS INC", y=2022)
+            + row.format(e="GLEAN TECHNOLOGIES INC", y=2023))
+    assert parse(html, "Glean") == (2, 2025)

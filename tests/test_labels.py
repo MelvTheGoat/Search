@@ -160,3 +160,21 @@ def test_african_citizens_only_is_restricted(labeller):
     r = labeller.label(job("Cape Town, South Africa", "Must be a South African citizen. This is an EE position."))
     assert r.label == "restricted"
     assert labeller.label(job("Johannesburg", "We serve South African citizens and businesses.")).label == "africa"
+
+
+class FakeH1B:
+    def lookup(self, company):
+        return ["US H-1B filings: 109 under this name (latest 2026)"] if company == "Glean" else []
+
+
+def test_us_company_with_h1b_history_is_likely_sponsor():
+    lab = Labeller(h1b=FakeH1B())
+    assert lab.label(job("San Francisco, CA", company="Glean")).label == "sponsor_likely"
+    assert lab.label(job("San Francisco, CA", company="Tiny Startup")).label == "sponsor_unknown"
+    # The US check is only used for jobs in the US.
+    assert lab.label(job("Berlin, Germany", company="Glean")).label == "sponsor_unknown"
+
+
+def test_post_that_welcomes_global_applicants_is_open(labeller):
+    r = labeller.label(job("Remote (South Africa)", "Location: Remote, global applications welcome.", remote=True))
+    assert r.label == "remote_open"

@@ -23,7 +23,9 @@ def unique_roles(jobs):
 
 
 def pick(conn, top):
+    from .reach import within_reach
     jobs = rows(conn, "status = 'new' AND location_label != 'restricted' AND (letter_file IS NULL OR letter_file = '')")
+    jobs = [j for j in jobs if within_reach(j)]
     jobs.sort(key=lambda j: (-round(j["fit_score"] or 0), label_rank(j["location_label"]), -(j["fit_score"] or 0)))
     return unique_roles(jobs)[:top]
 

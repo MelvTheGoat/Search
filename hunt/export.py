@@ -104,9 +104,11 @@ def sync_from_xlsx(conn, path=TRACKER_XLSX, log=print):
 
 
 def export(conn, xlsx=TRACKER_XLSX, csv_path=TRACKER_CSV, log=print):
-    jobs = sorted_jobs(conn)
-    open_jobs = [j for j in jobs if j["location_label"] != "restricted"]
-    restricted = [j for j in jobs if j["location_label"] == "restricted"]
+    from .reach import within_reach
+    # Only jobs within reach, plus every job you are tracking. The rest
+    # stay in the database but are left out (see hunt/reach.py).
+    jobs = [j for j in sorted_jobs(conn) if j["status"] != "new" or within_reach(j)]
+    open_jobs = jobs
 
     with open(csv_path, "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
@@ -120,8 +122,7 @@ def export(conn, xlsx=TRACKER_XLSX, csv_path=TRACKER_CSV, log=print):
     from openpyxl.worksheet.datavalidation import DataValidation
 
     wb = Workbook()
-    for i, (name, items, cols) in enumerate((("Open", open_jobs, COLUMNS),
-                                             ("Restricted", restricted, COLUMNS + RESTRICTED_EXTRA))):
+    for i, (name, items, cols) in enumerate((("Open", open_jobs, COLUMNS),)):
         ws = wb.active if i == 0 else wb.create_sheet()
         ws.title = name
         ws.append([c for c, _ in cols])
@@ -155,4 +156,4 @@ def export(conn, xlsx=TRACKER_XLSX, csv_path=TRACKER_CSV, log=print):
         out = xlsx.with_name(f"tracker-{datetime.now():%Y%m%d-%H%M}.xlsx")
         wb.save(out)
         log(f"  {xlsx.name} is open in another program, saved to {out.name} instead")
-    return out, len(open_jobs), len(restricted)
+    return out, len(open_jobs), 0

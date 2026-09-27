@@ -17,10 +17,11 @@ def test_export_writes_chunks_meta_last(tmp_path):
     seed(conn)
     r = export_page(conn, out=tmp_path / "page")
     batches = json.loads((tmp_path / "page" / "writes.json").read_text())
-    assert r["jobs"] == 3 and len(batches) == 1
+    # The restricted job (k0) is left out of the page.
+    assert r["jobs"] == 2 and len(batches) == 1
     assert batches[-1][-1]["collection"] == "meta"
     chunk = json.loads((tmp_path / "page" / "chunks" / "c00.json").read_text())
-    assert {j["k"] for j in chunk["jobs"]} == {"k0", "k1", "k2"}
+    assert {j["k"] for j in chunk["jobs"]} == {"k1", "k2"}
     assert all(len(b) <= 50 for b in batches)
 
 
@@ -51,3 +52,16 @@ def test_letter_parts_leave_out_headings_and_file_notes(tmp_path):
     assert p["letter"] == "Hello there.\n\nOluwatobi Melvyn Mayungbo\nmlvyn.t@gmail.com"
     assert p["why"] == "Good team."
     assert "##" not in p["letter"] and "output/" not in p["letter"]
+
+
+def test_out_of_reach_rules():
+    from hunt.reach import out_of_reach
+    base = {"location_label": "remote_open", "level": "junior", "description": "Python and SQL."}
+    assert out_of_reach(base) is None
+    assert out_of_reach({**base, "location_label": "restricted", "restriction": "US only"}).startswith("restricted")
+    assert "sponsors" in out_of_reach({**base, "location_label": "sponsor_unknown"})
+    assert out_of_reach({**base, "level": "senior"}) == "senior role"
+    assert "students" in out_of_reach({**base, "description": "You are currently pursuing a degree in CS."})
+    assert "Master" in out_of_reach({**base, "description": "A Master's degree in Computer Science is required."})
+    assert out_of_reach({**base, "description": "Bachelor's or Master's degree in Statistics."}) is None
+    assert out_of_reach({**base, "description": "A PhD is a plus."}) is None

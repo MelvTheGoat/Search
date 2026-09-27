@@ -74,4 +74,5 @@ def test_full_process_queue_and_export(tmp_path, monkeypatch):
     assert "job_id:" in text and "Full description" in text and "top matching projects" in text
 
     out, n_open, n_restricted = export(conn, xlsx=tmp_path / "t.xlsx", csv_path=tmp_path / "t.csv", log=lambda *_: None)
-    assert (n_open, n_restricted) == (4, 1)
+    # Restricted and senior jobs are left out of the tracker.
+    assert (n_open, n_restricted) == (3, 0)

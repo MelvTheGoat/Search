@@ -79,19 +79,21 @@ def letter_parts(path):
     return {"letter": text("cover letter") or text("intro"), "why": text("why this company")}
 
 
-def export_page(conn, top_open=300, top_restricted=60, top_near=150, out=PAGE_DIR):
+def export_page(conn, top_open=300, top_restricted=0, top_near=150, out=PAGE_DIR):
     """Write the page records as JSON files plus writes.json, a list of
     batches (50 writes each) ready to send with the ArtifactData tool."""
     jobs = rows(conn)
     jobs.sort(key=lambda j: (-(j["fit_score"] or 0), label_rank(j["location_label"])))
     tracked = [j for j in jobs if j["status"] != "new"]
     from .queue import unique_roles
-    fresh_open = unique_roles([j for j in jobs if j["status"] == "new" and j["location_label"] != "restricted"])[:top_open]
+    from .reach import within_reach
+    reachable = [j for j in jobs if j["status"] == "new" and within_reach(j)]
+    fresh_open = unique_roles(reachable)[:top_open]
     fresh_rest = unique_roles([j for j in jobs if j["status"] == "new" and j["location_label"] == "restricted"])[:top_restricted]
     # Jobs in Africa, or remote and open to Nigeria, need no or little visa
     # help, so the best of them are always shown even below the top list.
     shown = {j["id"] for j in fresh_open}
-    near = unique_roles([j for j in jobs if j["status"] == "new" and j["id"] not in shown
+    near = unique_roles([j for j in reachable if j["id"] not in shown
                          and j["location_label"] in ("remote_open", "nigeria", "africa")])[:top_near]
     chosen = tracked + fresh_open + near + fresh_rest
 

@@ -29,6 +29,7 @@ GENERIC = {
     "digital", "financial", "finance", "systems", "solutions", "operations", "global", "international",
     "netherlands", "nederland", "uk", "gb", "europe", "emea", "research", "data", "ireland", "platforms",
     "online", "trading", "capital", "markets", "securities", "investments", "engineering", "health",
+    "usa", "us", "america", "americas",
 }
 
 

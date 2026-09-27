@@ -38,6 +38,13 @@ applies for you. You read each job and apply yourself.
    - `restricted`: no sponsorship, needs existing right to work, remote for
      one country only, or needs citizenship or clearance. These go on their
      own tab with the exact sentence that restricts them. Nothing is deleted.
+
+   Jobs out of your reach are kept in the database but left out of the page,
+   the tracker and the letter queue (`hunt/reach.py`): restricted jobs, jobs
+   abroad with no sign of visa sponsorship (not in the post, not on the UK
+   or NL sponsor registers, and no recent US H-1B filings), senior roles or
+   5+ years, current students only, and a required Master's or PhD. Use
+   `python hunt.py list --all` to see everything.
 5. Scores each job from 0 to 100 on your computer (no AI calls):
    embedding match to your CV and projects, skills overlap, level and role.
    It also writes a one-line `why`, the `gaps` and the top matching projects.

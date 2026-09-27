@@ -51,7 +51,8 @@ def cmd_run(args):
     print()
     print("Top 10 jobs:")
     from .queue import unique_roles
-    jobs = [j for j in db.rows(conn, "location_label != 'restricted'")]
+    from .reach import within_reach
+    jobs = [j for j in db.rows(conn, "location_label != 'restricted'") if within_reach(j)]
     jobs.sort(key=lambda j: (-round(j["fit_score"] or 0), label_rank(j["location_label"])))
     print_jobs(unique_roles(jobs)[:10])
 
@@ -76,6 +77,9 @@ def cmd_list(args):
     elif not args.all:
         where.append("location_label != 'restricted'")
     jobs = db.rows(conn, " AND ".join(where), params)
+    if not args.all and not args.label:
+        from .reach import within_reach
+        jobs = [j for j in jobs if j["status"] != "new" or within_reach(j)]
     jobs.sort(key=lambda j: (-round(j["fit_score"] or 0), label_rank(j["location_label"])))
     if not jobs:
         print("No jobs match." + (" Nothing new today; try `python hunt.py list`." if args.new else ""))
@@ -265,7 +269,7 @@ def main(argv=None):
     s.add_argument("--top", type=int, default=20)
     s.add_argument("--status", choices=STATUSES)
     s.add_argument("--label", help="only this location label")
-    s.add_argument("--all", action="store_true", help="include restricted jobs")
+    s.add_argument("--all", action="store_true", help="include restricted and out-of-reach jobs")
     s.set_defaults(fn=cmd_list)
 
     s = sub.add_parser("show", help="all details of one job")
@@ -304,7 +308,7 @@ def main(argv=None):
 
     s = sub.add_parser("page-export", help="write files for the online tracker page")
     s.add_argument("--open", type=int, default=300, help="how many new open jobs to show")
-    s.add_argument("--restricted", type=int, default=60, help="how many new restricted jobs to show")
+    s.add_argument("--restricted", type=int, default=0, help="how many new restricted jobs to show (default none)")
     s.set_defaults(fn=cmd_page_export)
 
     s = sub.add_parser("page-import", help="apply status and notes changed on the online page")

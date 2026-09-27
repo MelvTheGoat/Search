@@ -19,6 +19,11 @@ from .countries import _HOURS_RE, AFRICA, ECOWAS, OPEN_REGIONS, OTHER_REGIONS, f
 from .text import sentences
 
 HOME = "Nigeria"
+# Post text that opens a remote job to everyone, whatever the location line says.
+OPEN_TO_ALL = re.compile(
+    r"(global|worldwide|international) applica(nts|tions) (are )?welcome|apply from anywhere"
+    r"|open to (candidates|applicants|people|talent) (from )?(anywhere|worldwide|all countries|around the world)"
+    r"|we hire (from )?anywhere|remote[^.]{0,20}global applications", re.I)
 
 
 @dataclass
@@ -31,13 +36,14 @@ class LabelResult:
 
 
 class Labeller:
-    def __init__(self, phrases=None, registers=None):
+    def __init__(self, phrases=None, registers=None, h1b=None):
         phrases = phrases or load_yaml("sponsorship.yaml")
         self.patterns = {
             kind: [re.compile(p, re.I) for p in phrases.get(kind, [])]
             for kind in ("no_sponsorship", "right_to_work", "citizenship", "clearance", "location_only", "positive")
         }
         self.registers = registers  # object with .lookup(names) -> list of evidence strings
+        self.h1b = h1b  # US H-1B history, object with .lookup(company) -> list of evidence strings
 
     # --- text scanning -------------------------------------------------
     def scan(self, text):
@@ -81,7 +87,7 @@ class Labeller:
 
         # 2. Remote jobs.
         if is_remote:
-            open_scope = in_nigeria or has_region(where, OPEN_REGIONS)
+            open_scope = in_nigeria or has_region(where, OPEN_REGIONS) or bool(OPEN_TO_ALL.search(job.description or ""))
             other_region = has_region(where, OTHER_REGIONS)
             if hard:
                 return self._restricted(country, hard[0])
@@ -128,7 +134,7 @@ class Labeller:
                                evidence=evidence or [f"job is in {country}: a work permit is needed"])
         if positive:
             return LabelResult("sponsor_yes", country, sponsorship="yes", evidence=evidence)
-        register_hits = self._known_sponsor(job)
+        register_hits = self._known_sponsor(job, country)
         if register_hits:
             return LabelResult("sponsor_likely", country, sponsorship="likely", evidence=register_hits)
         return LabelResult("sponsor_unknown", country, sponsorship="unknown",
@@ -138,7 +144,7 @@ class Labeller:
         ev = [f"restricts: \"{sentence}\""] + ([note] if note else [])
         return LabelResult("restricted", country, restriction=sentence, sponsorship="no", evidence=ev)
 
-    def _known_sponsor(self, job):
+    def _known_sponsor(self, job, country=""):
         hits = []
         known = job.extra.get("known_sponsor")
         if known:
@@ -146,4 +152,6 @@ class Labeller:
         if self.registers is not None:
             names = [job.company, *job.extra.get("aliases", [])]
             hits += self.registers.lookup(names)
+        if not hits and country == "United States" and self.h1b is not None:
+            hits += self.h1b.lookup(job.company)
         return hits
