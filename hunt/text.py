@@ -33,6 +33,16 @@ def html_to_text(raw):
     return "\n".join(out).strip()
 
 
+def fix_mojibake(s):
+    """Repair UTF-8 text that was decoded as Latin-1, like "MecÃ¡nico"."""
+    if s and ("Ã" in s or "â€" in s):
+        try:
+            return s.encode("latin-1").decode("utf-8")
+        except (UnicodeEncodeError, UnicodeDecodeError):
+            return s
+    return s
+
+
 def norm(s):
     """Lowercase, strip accents and punctuation, squeeze spaces."""
     s = unicodedata.normalize("NFKD", s or "").encode("ascii", "ignore").decode()

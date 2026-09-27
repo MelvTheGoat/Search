@@ -7,7 +7,7 @@ from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
 
 from ..models import Job
-from ..text import html_to_text
+from ..text import fix_mojibake, html_to_text
 
 
 def fetch_remoteok(http, cfg, log=print):
@@ -18,14 +18,14 @@ def fetch_remoteok(http, cfg, log=print):
     for j in data:
         if not isinstance(j, dict) or "position" not in j:
             continue  # the first item is their legal notice
-        loc = j.get("location") or "Remote"
+        loc = fix_mojibake(j.get("location") or "Remote")
         jobs.append(Job(
             source="remoteok",
-            company=j.get("company", ""),
-            title=j.get("position", ""),
+            company=fix_mojibake(j.get("company", "")),
+            title=fix_mojibake(j.get("position", "")),
             location=loc if "remote" in loc.lower() else f"Remote ({loc})",
             apply_url=j.get("url") or j.get("apply_url", ""),
-            description=html_to_text(j.get("description", "")) + ("\nTags: " + ", ".join(j.get("tags") or [])),
+            description=fix_mojibake(html_to_text(j.get("description", ""))) + ("\nTags: " + ", ".join(j.get("tags") or [])),
             remote=True,
             posted_at=(j.get("date") or "")[:10],
         ))
@@ -273,7 +273,9 @@ def fetch_hn_whoishiring(http, cfg, log=print):
         rest = parts[1:]
         loc_parts = [p for p in rest if re.search(r"remote|on-?site|hybrid|relocat", p, re.I)
                      or re.search(r"[A-Z][a-z]+,\s*[A-Z]{2}\b|\b(US|UK|EU|USA|Canada|Europe|London|Berlin|NYC|SF)\b", p)]
-        role_parts = [p for p in rest if p not in loc_parts]
+        # Skip salary, links and job type bits so the title is just the role.
+        role_parts = [p for p in rest if p not in loc_parts and not re.search(
+            r"https?://|www\.|[$€£]|\d+\s*[kK]\b|full[- ]?time|part[- ]?time|contract|equity|intern(ship)? only|visa", p, re.I)]
         jobs.append(Job(
             source="hn_whoishiring",
             company=company,
