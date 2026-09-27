@@ -1,0 +1,52 @@
+job_id: 1014
+company: Databricks
+title: Applied AI Engineer
+headline: ml_ai
+summary: Machine learning and AI engineer who builds classical ML and agent tools together. Built fraud detection, demand
+  forecasting and cost-based decision models, and an MCP server of tools for AI assistants. Ships with testing, CI and monitoring,
+  including drift detection and automated retraining.
+skills:
+- group: ml
+  lead:
+  - LightGBM
+  - PyTorch
+  - Feature Engineering
+- group: domain
+  lead:
+  - Demand Forecasting
+  - Transaction Fraud Detection
+- group: ai
+  lead:
+  - Model Context Protocol (MCP)
+  - LLM Evaluation and Guardrails
+- group: eng
+  lead:
+  - Python
+  - MLflow
+  - Evidently
+  - CI/CD (GitHub Actions)
+- stats
+- data
+projects:
+- id: forecast
+  bullets:
+  - system
+  - cost
+  - validation
+- id: fraud
+  bullets:
+  - bench
+  - deploy
+- id: web3
+  bullets:
+  - system
+  - http
+- id: uplift
+  bullets:
+  - study
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

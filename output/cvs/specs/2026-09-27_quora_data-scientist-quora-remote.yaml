@@ -1,0 +1,49 @@
+job_id: 2819
+company: Quora
+title: Data Scientist, Quora (Remote)
+headline: ds
+summary: Data scientist with a B.Sc. in Statistics focused on experiments and root-cause analysis. Evaluated targeting on
+  a randomised campaign trial with 64,000 customers, built power, MDE and CUPED tools, and forecasts demand with rolling backtests.
+  Explains results as decisions for product and business partners.
+skills:
+- group: stats
+  lead:
+  - Experiment Design
+  - Power Analysis
+  - CUPED
+  - Causal Inference (S/T/X-Learners, Causal Forests)
+  - Statistical Inference
+  - Uplift Modeling
+- group: eng
+  lead:
+  - SQL
+  - Python
+- group: data
+  lead:
+  - Pandas
+- ml
+- ai
+- domain
+projects:
+- id: uplift
+  bullets:
+  - study
+  - findings
+  - eval
+  - experiment
+- id: forecast
+  bullets:
+  - system
+  - validation
+- id: churn
+  bullets:
+  - model
+- id: epl
+  bullets:
+  - backtest
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

@@ -1,0 +1,46 @@
+job_id: 806
+company: Glean
+title: Machine Learning Engineer, Search Quality
+headline: llm
+summary: ML engineer focused on search and ranking quality. Built hybrid retrieval with BM25 and dense embeddings fused by
+  reciprocal rank fusion at 0.96 recall@5 and 0.842 MRR, structure-aware chunking, and ranking-style models judged on precision
+  at fixed capacity. Ships models in production with FastAPI.
+skills:
+- group: ai
+  lead:
+  - Hybrid Search (BM25, Dense Embeddings, RRF)
+  - Retrieval-Augmented Generation (RAG)
+  - LLM Evaluation and Guardrails
+  - Hugging Face
+- group: ml
+  lead:
+  - LightGBM
+  - PyTorch
+  - Feature Engineering
+- group: eng
+  lead:
+  - Python
+  - FastAPI
+  - Docker
+- stats
+- data
+projects:
+- id: rag
+  bullets:
+  - system
+  - chunking
+  - eval
+- id: fraud
+  bullets:
+  - bench
+  - deploy
+- id: epl
+  bullets:
+  - model
+  - backtest
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

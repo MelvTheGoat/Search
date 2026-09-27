@@ -1,0 +1,47 @@
+job_id: 1190
+company: Baseten
+title: AI Inference Engineer
+headline: ml_ai
+summary: Machine learning and AI engineer who takes models from idea to monitored production. Served a fraud model at 5.1
+  ms p99 with ONNX Runtime and FastAPI, deployed ML and LLM services in Docker on AWS, GCP and Railway, and built evaluation
+  for LLM systems. Explains technical trade-offs clearly as a teacher.
+skills:
+- group: ai
+  lead:
+  - ONNX Runtime
+  - Retrieval-Augmented Generation (RAG)
+  - LLM Evaluation and Guardrails
+  - Hugging Face
+- group: eng
+  lead:
+  - Python
+  - FastAPI
+  - Docker
+  - AWS ECS Fargate
+  - GCP Cloud Run
+  - Railway
+- ml
+- stats
+- data
+projects:
+- id: fraud
+  bullets:
+  - deploy
+  - models
+- id: rag
+  bullets:
+  - deploy
+  - eval
+  - system
+- id: churn
+  bullets:
+  - deploy
+- id: reckon
+  bullets:
+  - ops
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

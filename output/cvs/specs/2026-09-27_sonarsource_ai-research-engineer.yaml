@@ -1,0 +1,50 @@
+job_id: 5206
+company: Sonarsource
+title: AI Research Engineer
+headline: llm
+summary: AI engineer who turns LLM research ideas into measured prototypes. Built a retrieval assistant with hybrid search,
+  guardrails and a labelled benchmark, an MCP server for AI assistants with a replay evaluation harness, and ML models benchmarked
+  against strong baselines. Writes clean, tested Python.
+skills:
+- group: ai
+  lead:
+  - Retrieval-Augmented Generation (RAG)
+  - Hybrid Search (BM25, Dense Embeddings, RRF)
+  - LLM Evaluation and Guardrails
+  - Prompt Engineering
+  - Model Context Protocol (MCP)
+  - Hugging Face
+- group: eng
+  lead:
+  - Python
+  - Pytest
+  - Docker
+- group: ml
+  lead:
+  - PyTorch
+- stats
+- data
+projects:
+- id: rag
+  bullets:
+  - system
+  - chunking
+  - eval
+  - safety
+- id: web3
+  bullets:
+  - system
+  - eval
+- id: fraud
+  bullets:
+  - models
+  - bench
+- id: forecast
+  bullets:
+  - validation
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

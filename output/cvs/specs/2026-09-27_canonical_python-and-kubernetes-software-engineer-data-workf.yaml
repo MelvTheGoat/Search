@@ -1,0 +1,44 @@
+job_id: 6015
+company: Canonical
+title: Python and Kubernetes Software Engineer, Data, Workflows, AI/ML and Analytics
+headline: mlops
+summary: Python engineer working on MLOps and data tooling. Built an orchestrated Prefect, dbt and DuckDB pipeline with MLflow
+  tracking, Evidently drift monitoring and CI, deployed services with Docker on AWS, GCP and Railway, and writes well-tested
+  open code on GitHub. B.Sc. in Statistics.
+skills:
+- group: eng
+  lead:
+  - Python
+  - MLflow
+  - Prefect
+  - dbt-core
+  - DuckDB
+  - Docker
+  - CI/CD (GitHub Actions)
+  - Git
+  - Pytest
+- ml
+- ai
+- stats
+- data
+projects:
+- id: forecast
+  bullets:
+  - system
+  - validation
+- id: fpl
+  bullets:
+  - system
+  - engine
+- id: churn
+  bullets:
+  - deploy
+- id: ledger
+  bullets:
+  - tests
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

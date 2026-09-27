@@ -1,0 +1,49 @@
+job_id: 1860
+company: Stripe
+title: Software Engineer, Payments and Risk
+headline: backend
+summary: Software engineer building payments and risk systems. Built a double-entry ledger API with idempotency keys, a transactional
+  outbox and 138 tests, a payment reconciliation service, and real-time fraud scoring at 5.1 ms p99. Works in Python, PostgreSQL,
+  Redis and FastAPI.
+skills:
+- group: eng
+  lead:
+  - Python
+  - PostgreSQL
+  - Redis
+  - FastAPI
+  - Docker
+  - Pytest
+- group: domain
+  lead:
+  - Double-Entry Ledgers and Idempotency
+  - Payment Reconciliation
+  - Transaction Fraud Detection
+- ml
+- ai
+- stats
+projects:
+- id: ledger
+  bullets:
+  - system
+  - idem
+  - locking
+  - load
+  - tests
+- id: fraud
+  bullets:
+  - deploy
+  - bench
+- id: reckon
+  bullets:
+  - system
+  - pipeline
+- id: credit
+  bullets:
+  - system
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

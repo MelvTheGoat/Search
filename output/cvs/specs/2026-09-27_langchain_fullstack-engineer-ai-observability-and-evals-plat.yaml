@@ -1,0 +1,47 @@
+job_id: 1227
+company: LangChain
+title: FullStack Engineer, AI Observability and Evals Platform (LangSmith)
+headline: llm
+summary: Full-stack engineer building AI evaluation and developer tools. Built React review interfaces, FastAPI and PostgreSQL
+  services with Redis, an LLM evaluation harness that separates retrieval from generation, and an MCP server for AI assistants.
+  Ships tested code with Docker and CI.
+skills:
+- group: eng
+  lead:
+  - Python
+  - React
+  - PostgreSQL
+  - Redis
+  - FastAPI
+  - Docker
+  - CI/CD (GitHub Actions)
+- group: ai
+  lead:
+  - LLM Evaluation and Guardrails
+  - Model Context Protocol (MCP)
+  - Retrieval-Augmented Generation (RAG)
+- ml
+- data
+projects:
+- id: reckon
+  bullets:
+  - review
+  - system
+- id: fpl
+  bullets:
+  - system
+  - engine
+- id: ledger
+  bullets:
+  - system
+  - idem
+  - tests
+- id: rag
+  bullets:
+  - eval
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

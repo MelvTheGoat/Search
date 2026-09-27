@@ -1,0 +1,43 @@
+job_id: 3823
+company: Adyen
+title: Merchant Fraud Analyst
+headline: analyst
+summary: Data analyst focused on fraud. Built transaction fraud detection covering card testing, account takeover and merchant
+  compromise, a crypto scam and rug pull detection tool, and a reconciliation system that flags payout discrepancies for review.
+  Uses data to make decisions and explains them clearly.
+skills:
+- group: domain
+  lead:
+  - Transaction Fraud Detection
+  - Web3 Fraud Risk Scoring
+  - Payment Reconciliation
+- group: data
+  lead:
+  - SQL
+  - Anomaly Detection
+  - Pandas
+- group: eng
+  lead:
+  - Python
+- ml
+- stats
+projects:
+- id: fraud
+  bullets:
+  - bench
+  - models
+  - imbalance
+- id: web3
+  bullets:
+  - detect
+  - system
+- id: reckon
+  bullets:
+  - system
+  - review
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

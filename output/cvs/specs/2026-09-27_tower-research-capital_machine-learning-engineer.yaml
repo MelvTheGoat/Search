@@ -1,0 +1,50 @@
+job_id: 3066
+company: Tower Research Capital
+title: Machine Learning Engineer
+headline: mlops
+summary: ML engineer focused on reproducible experimentation. Built a pipeline with MLflow tracking, rolling-origin backtesting
+  and leakage tests, benchmarked deep sequence models across seeds against strong baselines, and served a model at 5.1 ms
+  p99 with ONNX Runtime. Writes clean, tested Python.
+skills:
+- group: eng
+  lead:
+  - Python
+  - MLflow
+  - Prefect
+  - Docker
+  - Pytest
+  - Git
+- group: ml
+  lead:
+  - PyTorch
+  - LightGBM
+- group: stats
+  lead:
+  - Time-Series Backtesting
+- group: ai
+  lead:
+  - ONNX Runtime
+- data
+- domain
+projects:
+- id: forecast
+  bullets:
+  - system
+  - validation
+- id: fraud
+  bullets:
+  - models
+  - bench
+  - deploy
+- id: epl
+  bullets:
+  - backtest
+- id: ledger
+  bullets:
+  - load
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit
