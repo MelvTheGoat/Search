@@ -109,3 +109,28 @@ def test_drafted_status_survives_an_older_tracker_sheet(tmp_path):
     db.set_letter(conn, jid, "output/letters/x.md")
     sync_from_xlsx(conn, path=xlsx, log=lambda *_: None)
     assert conn.execute("SELECT status FROM jobs WHERE id = ?", (jid,)).fetchone()[0] == "drafted"
+
+
+def test_an_old_sheet_does_not_undo_page_edits(tmp_path):
+    import os
+    import time
+
+    from hunt.export import export, sync_from_xlsx
+
+    conn = db.connect(tmp_path / "jobs.db")
+    jid, _ = db.upsert(conn, row())
+    conn.commit()
+    db.set_letter(conn, jid, "output/letters/x.md")
+    xlsx, csv_path = tmp_path / "tracker.xlsx", tmp_path / "tracker.csv"
+    export(conn, xlsx=xlsx, csv_path=csv_path, log=lambda *_: None)  # sheet says drafted
+    # You marked the job applied on the page before that export, and the
+    # edit is imported afterwards with its own, older time.
+    earlier = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime(time.time() - 600))
+    conn.execute("UPDATE jobs SET status = 'applied', user_updated_at = ? WHERE id = ?", (earlier, jid))
+    conn.commit()
+    sync_from_xlsx(conn, path=xlsx, log=lambda *_: None)
+    assert conn.execute("SELECT status FROM jobs WHERE id = ?", (jid,)).fetchone()[0] == "applied"
+    # Once you save the sheet yourself, its edits are read again.
+    os.utime(xlsx, (time.time() + 5, time.time() + 5))
+    sync_from_xlsx(conn, path=xlsx, log=lambda *_: None)
+    assert conn.execute("SELECT status FROM jobs WHERE id = ?", (jid,)).fetchone()[0] == "drafted"

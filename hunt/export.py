@@ -52,11 +52,26 @@ def sorted_jobs(conn):
     return jobs
 
 
+def _stamp(path):
+    """Where we note the file time of the sheet this tool last wrote."""
+    return path.with_name("." + path.name + ".written")
+
+
+def _unchanged_since_export(path):
+    """True if tracker.xlsx is exactly as this tool wrote it, so there are
+    no edits of yours in it to copy back."""
+    try:
+        return _stamp(path).read_text().strip() == str(os.stat(path).st_mtime_ns)
+    except OSError:
+        return False
+
+
 def sync_from_xlsx(conn, path=TRACKER_XLSX, log=print):
     """Copy your edits in tracker.xlsx back into the database. An edit in
     the sheet wins unless you changed that job with `mark` after the sheet
-    was last saved."""
-    if not path.exists():
+    was last saved. A sheet you have not saved since the last export is
+    skipped, so an old copy can never undo changes made on the page."""
+    if not path.exists() or _unchanged_since_export(path):
         return 0
     try:
         from openpyxl import load_workbook
@@ -152,6 +167,7 @@ def export(conn, xlsx=TRACKER_XLSX, csv_path=TRACKER_CSV, log=print):
     try:
         wb.save(xlsx)
         out = xlsx
+        _stamp(xlsx).write_text(str(os.stat(xlsx).st_mtime_ns))
     except PermissionError:
         out = xlsx.with_name(f"tracker-{datetime.now():%Y%m%d-%H%M}.xlsx")
         wb.save(out)

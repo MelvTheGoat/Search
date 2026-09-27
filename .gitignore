@@ -11,3 +11,4 @@ tracker.xlsx
 tracker.csv
 tracker-*.xlsx
 queue/
+.tracker.xlsx.written
