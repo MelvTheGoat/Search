@@ -47,7 +47,7 @@ def required_years(text):
     when the post gives one per degree ("BS with 4-8 years"), else the
     first figure in the first sentence about experience."""
     for sent in re.split(r"(?<=[.!?])\s+|\n", text or ""):
-        if not re.search(r"experience|years of", sent, re.I):
+        if not re.search(r"experience|years (of|in)\b", sent, re.I):
             continue
         m = re.search(r"\b(bs|ba|b\.s\.|bachelor'?s?)\b[^.;]{0,25}?(\d{1,2})\s*\+?\s*(?:(?:-|to|–)\s*\d{1,2}\s*\+?\s*)?(?:years|yrs)", sent, re.I)
         if m:

@@ -19,3 +19,7 @@ def test_bachelors_figure_is_used():
 def test_new_grad_text_and_no_years():
     assert detect_level("Data Scientist", "Open to new grads.")[0] == "entry"
     assert detect_level("Data Scientist", "Build models.")[0] == "unspecified"
+
+
+def test_years_in_a_role():
+    assert detect_level("Data Scientist", "5+ years in a quantitative role")[0] == "senior"
