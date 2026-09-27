@@ -1,4 +1,7 @@
-"""Company job boards on Greenhouse, Lever and Ashby."""
+"""Company job boards: Greenhouse, Lever, Ashby, SmartRecruiters, Workable,
+Recruitee and Personio. All are the companies' own public job feeds."""
+import re
+import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 
 from ..countries import ISO_TO_COUNTRY
@@ -9,13 +12,17 @@ GREENHOUSE = "https://boards-api.greenhouse.io/v1/boards/{token}/jobs?content=tr
 LEVER = "https://api.lever.co/v0/postings/{token}?mode=json"
 LEVER_EU = "https://api.eu.lever.co/v0/postings/{token}?mode=json"
 ASHBY = "https://api.ashbyhq.com/posting-api/job-board/{token}?includeCompensation=false"
+SMARTRECRUITERS = "https://api.smartrecruiters.com/v1/companies/{token}/postings"
+WORKABLE = "https://apply.workable.com/api/v1/widget/accounts/{token}?details=true"
+RECRUITEE = "https://{token}.recruitee.com/api/offers/"
+PERSONIO = "https://{token}.jobs.personio.de/xml?language=en"
 
 
 def _extra(company):
     return {k: company[k] for k in ("known_sponsor", "aliases", "sector") if company.get(k)}
 
 
-def fetch_greenhouse(http, company):
+def fetch_greenhouse(http, company, keep_title=None):
     data = http.get(GREENHOUSE.format(token=company["token"]), missing_ok=True)
     if data is None:
         return None
@@ -41,7 +48,7 @@ def fetch_greenhouse(http, company):
     return jobs
 
 
-def fetch_lever(http, company):
+def fetch_lever(http, company, keep_title=None):
     url = (LEVER_EU if company.get("region") == "eu" else LEVER).format(token=company["token"])
     data = http.get(url, missing_ok=True)
     if data is None or isinstance(data, dict):
@@ -76,7 +83,7 @@ def fetch_lever(http, company):
     return jobs
 
 
-def fetch_ashby(http, company):
+def fetch_ashby(http, company, keep_title=None):
     data = http.get(ASHBY.format(token=company["token"]), missing_ok=True)
     if data is None:
         return None
@@ -107,9 +114,147 @@ def fetch_ashby(http, company):
     return jobs
 
 
-FETCHERS = {"greenhouse": fetch_greenhouse, "lever": fetch_lever, "ashby": fetch_ashby}
+def fetch_smartrecruiters(http, company, keep_title=None):
+    """The list has no descriptions, so we fetch details only for titles
+    that pass keep_title, to keep the number of calls low."""
+    token = company["token"]
+    items, offset = [], 0
+    while True:
+        data = http.get(SMARTRECRUITERS.format(token=token), params={"limit": 100, "offset": offset}, missing_ok=True)
+        if data is None:
+            return None if offset == 0 else items
+        batch = data.get("content", [])
+        items += batch
+        offset += len(batch)
+        if not batch or offset >= data.get("totalFound", 0) or offset >= 1000:
+            break
+    jobs = []
+    for j in items:
+        title = (j.get("name") or "").strip()
+        if keep_title and not keep_title(title):
+            continue
+        loc = j.get("location") or {}
+        place = loc.get("fullLocation") or ", ".join(x for x in (loc.get("city"), loc.get("region"), (loc.get("country") or "").upper()) if x)
+        desc = ""
+        try:
+            detail = http.get(f"{SMARTRECRUITERS.format(token=token)}/{j['id']}")
+            sections = ((detail or {}).get("jobAd") or {}).get("sections") or {}
+            desc = "\n\n".join(html_to_text((sections.get(k) or {}).get("text", ""))
+                               for k in ("jobDescription", "qualifications", "additionalInformation", "companyDescription"))
+        except Exception:  # noqa: BLE001
+            pass
+        jobs.append(Job(
+            source="smartrecruiters",
+            company=company["name"],
+            title=title,
+            location=("Remote, " + place) if loc.get("remote") else place,
+            apply_url=f"https://jobs.smartrecruiters.com/{token}/{j['id']}",
+            description=desc.strip() + (f"\nExperience level: {(j.get('experienceLevel') or {}).get('label', '')}"),
+            remote=bool(loc.get("remote")),
+            country=ISO_TO_COUNTRY.get((loc.get("country") or "").upper(), ""),
+            posted_at=(j.get("releasedDate") or "")[:10],
+            department=(j.get("department") or {}).get("label", "") or "",
+            extra=_extra(company),
+        ))
+    return jobs
 
 
-def fetch_company(http, company):
+def fetch_workable(http, company, keep_title=None):
+    data = http.get(WORKABLE.format(token=company["token"]), missing_ok=True)
+    if data is None or "jobs" not in data:
+        return None
+    jobs = []
+    for j in data["jobs"]:
+        locs = j.get("locations") or [{"city": j.get("city"), "region": j.get("state"), "country": j.get("country")}]
+        places = [", ".join(x for x in (l.get("city"), l.get("region"), l.get("country")) if x) for l in locs if not l.get("hidden")]
+        places = [p for p in places if p]
+        remote = bool(j.get("telecommuting"))
+        loc = "; ".join(places) or ("Remote" if remote else "")
+        extra = _extra(company)
+        jobs.append(Job(
+            source="workable",
+            company=company["name"],
+            title=(j.get("title") or "").strip(),
+            location=("Remote, " + loc) if remote and "remote" not in loc.lower() else loc,
+            apply_url=j.get("url") or j.get("shortlink") or j.get("application_url", ""),
+            description=html_to_text(j.get("description", "")) + (f"\nExperience: {j['experience']}" if j.get("experience") else ""),
+            remote=remote,
+            posted_at=(j.get("published_on") or j.get("created_at") or "")[:10],
+            department=j.get("department", "") or "",
+            extra=extra,
+        ))
+    return jobs
+
+
+def fetch_recruitee(http, company, keep_title=None):
+    data = http.get(RECRUITEE.format(token=company["token"]), missing_ok=True)
+    if data is None or "offers" not in data:
+        return None
+    jobs = []
+    for j in data["offers"]:
+        loc = j.get("location") or ", ".join(x for x in (j.get("city"), j.get("country")) if x)
+        remote = bool(j.get("remote"))
+        jobs.append(Job(
+            source="recruitee",
+            company=company["name"],
+            title=(j.get("title") or "").strip(),
+            location=("Remote, " + loc) if remote and "remote" not in loc.lower() else loc,
+            apply_url=j.get("careers_url", ""),
+            description=(html_to_text(j.get("description", "")) + "\n\n" + html_to_text(j.get("requirements", ""))).strip(),
+            remote=remote,
+            country=ISO_TO_COUNTRY.get((j.get("country_code") or "").upper(), ""),
+            posted_at=(j.get("published_at") or "")[:10],
+            department=j.get("department", "") or "",
+            extra=_extra(company),
+        ))
+    return jobs
+
+
+def fetch_personio(http, company, keep_title=None):
+    text = http.get(PERSONIO.format(token=company["token"]), as_json=False, missing_ok=True)
+    if text is None or "<workzag-jobs" not in text:
+        return None
+    root = ET.fromstring(text.encode("utf-8"))
+    jobs = []
+    for pos in root.findall("position"):
+        def t(tag):
+            el = pos.find(tag)
+            return (el.text or "").strip() if el is not None and el.text else ""
+        offices = [t("office")] + [(o.text or "").strip() for o in pos.findall("additionalOffices/office")]
+        offices = [o for o in offices if o]
+        parts = []
+        for d in pos.findall("jobDescriptions/jobDescription"):
+            name = (d.findtext("name") or "").strip()
+            parts.append(f"{name}\n{html_to_text(d.findtext('value') or '')}")
+        seniority = t("seniority")
+        loc = "; ".join(offices)
+        jobs.append(Job(
+            source="personio",
+            company=company["name"],
+            title=t("name"),
+            location=loc,
+            apply_url=f"https://{company['token']}.jobs.personio.de/job/{t('id')}",
+            description="\n\n".join(parts) + (f"\nSeniority: {seniority}" if seniority else ""),
+            remote=bool(re.search(r"remote", loc, re.I)),
+            posted_at=t("createdAt")[:10],
+            department=t("department"),
+            extra=_extra(company),
+        ))
+    return jobs
+
+
+FETCHERS = {
+    "greenhouse": fetch_greenhouse,
+    "lever": fetch_lever,
+    "ashby": fetch_ashby,
+    "smartrecruiters": fetch_smartrecruiters,
+    "workable": fetch_workable,
+    "recruitee": fetch_recruitee,
+    "personio": fetch_personio,
+}
+ATS_NAMES = list(FETCHERS)
+
+
+def fetch_company(http, company, keep_title=None):
     """Jobs for one companies.yaml entry. None means the board was not found."""
-    return FETCHERS[company["ats"]](http, company)
+    return FETCHERS[company["ats"]](http, company, keep_title=keep_title)

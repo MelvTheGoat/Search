@@ -35,14 +35,23 @@ class Http:
             time.sleep(wait)
         self._last[host] = time.time()
 
-    def get(self, url, params=None, as_json=True, missing_ok=False):
+    def get(self, url, params=None, as_json=True, missing_ok=False, headers=None, auth=None):
         """GET a URL. Returns None on 404 when missing_ok is set."""
+        return self.request("GET", url, params=params, as_json=as_json, missing_ok=missing_ok,
+                            headers=headers, auth=auth)
+
+    def post(self, url, json_body=None, as_json=True, headers=None):
+        return self.request("POST", url, json_body=json_body, as_json=as_json, headers=headers)
+
+    def request(self, method, url, params=None, json_body=None, as_json=True, missing_ok=False,
+                headers=None, auth=None):
         host = urlparse(url).netloc
         error = None
         for attempt in range(self.retries + 1):
             self._wait(host)
             try:
-                r = self.session.get(url, params=params, timeout=self.timeout)
+                r = self.session.request(method, url, params=params, json=json_body, headers=headers,
+                                         auth=auth, timeout=self.timeout)
             except requests.RequestException as e:
                 error = HttpError(f"{url}: {e}")
             else:
