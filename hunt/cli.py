@@ -217,6 +217,22 @@ def cmd_stats(args):
     show_stats(db.connect())
 
 
+def cmd_page_export(args):
+    from .page import export_page
+    r = export_page(db.connect(), top_open=args.open, top_restricted=args.restricted)
+    print(f"Page files ready: {r['jobs']} jobs in {r['chunks']} chunks, {r['letters']} letters, "
+          f"{r['batches']} write batches in {r['writes_file']}")
+
+
+def cmd_page_import(args):
+    from .page import import_edits
+    conn = db.connect()
+    r = import_edits(conn, args.folder)
+    print(f"Page edits: {r['applied']} applied, {r['already_current']} already current, "
+          f"{r['not_in_database']} for jobs not in the database yet")
+    _quiet_export(conn)
+
+
 def cmd_verify(args):
     from .verify import verify_companies
     verify_companies(write=not args.dry_run)
@@ -272,6 +288,15 @@ def main(argv=None):
 
     s = sub.add_parser("stats", help="counts by status, source, country and label")
     s.set_defaults(fn=cmd_stats)
+
+    s = sub.add_parser("page-export", help="write files for the online tracker page")
+    s.add_argument("--open", type=int, default=300, help="how many new open jobs to show")
+    s.add_argument("--restricted", type=int, default=60, help="how many new restricted jobs to show")
+    s.set_defaults(fn=cmd_page_export)
+
+    s = sub.add_parser("page-import", help="apply status and notes changed on the online page")
+    s.add_argument("folder", help="folder of edits/<key>.json files")
+    s.set_defaults(fn=cmd_page_import)
 
     s = sub.add_parser("verify-companies", help="check every board in companies.yaml and remove dead ones")
     s.add_argument("--dry-run", action="store_true", help="report only, do not change companies.yaml")

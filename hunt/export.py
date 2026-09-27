@@ -2,7 +2,7 @@
 notes or date applied you typed into tracker.xlsx, so your edits are kept."""
 import csv
 import os
-from datetime import datetime
+from datetime import datetime, timezone
 
 from .config import STATUSES, TRACKER_CSV, TRACKER_XLSX, label_rank
 from .db import loads, rows
@@ -63,7 +63,7 @@ def sync_from_xlsx(conn, path=TRACKER_XLSX, log=print):
     except Exception as e:  # noqa: BLE001
         log(f"  could not read {path.name} to keep your edits: {e}")
         return 0
-    saved_at = datetime.fromtimestamp(os.path.getmtime(path)).isoformat(timespec="seconds")
+    saved_at = datetime.fromtimestamp(os.path.getmtime(path), timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     changed = 0
     for ws in wb.worksheets:
         it = ws.iter_rows(values_only=True)

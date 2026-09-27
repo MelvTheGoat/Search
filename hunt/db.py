@@ -2,7 +2,7 @@
 fields you own: status, notes, date applied, letter file and date found."""
 import json
 import sqlite3
-from datetime import date, datetime
+from datetime import date, datetime, timezone
 
 from .config import DB_PATH, STATUSES
 
@@ -54,6 +54,10 @@ MACHINE_FIELDS = [
 USER_FIELDS = ["date_found", "status", "date_applied", "notes", "letter_file", "user_updated_at"]
 
 
+def utc_now():
+    return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
 def connect(path=None):
     path = path or DB_PATH
     if str(path) != ":memory:":
@@ -98,7 +102,7 @@ def set_status(conn, job_id, status, note=None):
     row = conn.execute("SELECT id, date_applied FROM jobs WHERE id = ?", (job_id,)).fetchone()
     if not row:
         raise KeyError(f"no job with id {job_id}")
-    now = datetime.now().isoformat(timespec="seconds")
+    now = utc_now()
     applied = row["date_applied"]
     if status == "applied" and not applied:
         applied = date.today().isoformat()
@@ -115,7 +119,7 @@ def add_note(conn, job_id, note):
         raise KeyError(f"no job with id {job_id}")
     notes = f"{row['notes']}\n{note}" if row["notes"] else note
     conn.execute("UPDATE jobs SET notes = ?, user_updated_at = ? WHERE id = ?",
-                 (notes, datetime.now().isoformat(timespec="seconds"), job_id))
+                 (notes, utc_now(), job_id))
     conn.commit()
 
 
