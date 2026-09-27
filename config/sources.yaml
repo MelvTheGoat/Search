@@ -61,7 +61,7 @@ arbeitnow:
 himalayas:
   enabled: true
   refetch_hours: 6
-  queries: ["machine learning", "data scientist", "AI engineer", "LLM", "MLOps", "data analyst", "fraud", "research engineer"]
+  queries: ["machine learning", "data scientist", "AI engineer", "LLM", "MLOps", "data analyst", "fraud", "research engineer", "intern", "internship", "graduate program"]
   max_pages: 10             # 20 jobs a page, per query
   countries: [Nigeria]      # also search remote jobs open to people in these countries
 

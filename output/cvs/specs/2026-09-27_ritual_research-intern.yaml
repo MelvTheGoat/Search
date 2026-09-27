@@ -1,0 +1,51 @@
+job_id: 6609
+company: Ritual
+title: Research Intern
+headline: llm
+summary: AI engineer working where machine learning meets crypto. Built an open-source MCP server that gives AI assistants
+  on-chain risk tools across five chains, a retrieval assistant with evaluated guardrails, and statistical models taken from
+  idea to tested prototype. B.Sc. in Statistics.
+skills:
+- group: ai
+  lead:
+  - Model Context Protocol (MCP)
+  - LLM Evaluation and Guardrails
+  - Retrieval-Augmented Generation (RAG)
+- group: domain
+  lead:
+  - Web3 Fraud Risk Scoring
+- group: stats
+  lead:
+  - Causal Inference (S/T/X-Learners, Causal Forests)
+  - Statistical Inference
+- group: ml
+  lead:
+  - PyTorch
+  - Sequence Models (GRU, TCN, Transformers)
+- eng
+- data
+projects:
+- id: web3
+  bullets:
+  - system
+  - detect
+  - scorer
+  - eval
+- id: uplift
+  bullets:
+  - learners
+  - study
+- id: fraud
+  bullets:
+  - models
+  - bench
+- id: rag
+  bullets:
+  - system
+  - eval
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

@@ -349,7 +349,7 @@ function packCard(j){
     </div>
     <section class="pack-sec"><h3><span class="step">1</span>Job posting<span class="tools">${pk ? `<button class="btn toggle" data-open="jp:${esc(j.k)}" aria-expanded="${jpOpen}">${jpOpen ? "Hide posting" : "Show posting"}</button>` : ""}<a class="btn" href="${esc(j.url)}" target="_blank" rel="noopener">Open original ↗</a></span></h3>
       ${pk ? (jpOpen ? `<pre class="posting">${esc(pk.desc)}</pre>` : "") : "<p class='ev'>Loading…</p>"}</section>
-    <section class="pack-sec"><h3><span class="step">2</span>Tailored CV<span class="tools">${pk && pk.cv_html ? `<button class="btn toggle" data-open="cv:${esc(j.k)}" aria-expanded="${cvOpen}">${cvOpen ? "Hide CV" : "Show CV"}</button>` : ""}${j.cvp ? `<a class="btn cv-pdf" href="${esc(j.cvp)}" target="_blank" rel="noopener">Download PDF</a>` : ""}${j.cvn ? `<button class="btn cv-word">Download Word</button>` : ""}</span></h3>
+    <section class="pack-sec"><h3><span class="step">2</span>Tailored CV<span class="tools">${pk && pk.cv_html ? `<button class="btn toggle" data-open="cv:${esc(j.k)}" aria-expanded="${cvOpen}">${cvOpen ? "Hide CV" : "Show CV"}</button>` : ""}${(j.cvp || j.cvn) ? `<a class="btn cv-pdf" href="${esc(j.cvp || "#")}" target="_blank" rel="noopener">Download PDF</a>` : ""}${j.cvn ? `<button class="btn cv-word">Download Word</button>` : ""}</span></h3>
       ${pk && pk.cv_html ? (cvOpen ? `<div class="cvdoc">${pk.cv_html}</div>` : "") : "<p class='ev'>No CV yet.</p>"}</section>
     <section class="pack-sec"><h3><span class="step">3</span>Cover letter<span class="tools">${L.letter ? `<button class="btn toggle" data-open="cl:${esc(j.k)}" aria-expanded="${clOpen}">${clOpen ? "Hide letter" : "Show letter"}</button><button class="btn copy-pack">Copy letter</button>` : ""}</span></h3>
       ${L.letter ? (clOpen ? `<pre class="letter-text">${esc(L.letter)}</pre>` : "") : "<p class='ev'>No letter yet.</p>"}
@@ -421,6 +421,7 @@ async function savePdf(k, a){
       if (snap.exists) data = b64bytes(snap.data().b64);
     }
     if (!data) {
+      if (!j.cvp) throw new Error("no pdf");
       const r = await fetch(j.cvp);
       const blob = await r.blob();
       // Only accept a real PDF, never a short error page.

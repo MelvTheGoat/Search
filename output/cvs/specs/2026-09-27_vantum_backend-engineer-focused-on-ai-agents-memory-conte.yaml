@@ -1,0 +1,47 @@
+job_id: 6527
+company: Vantum
+title: Backend Engineer focused on AI Agents, Memory & Context
+headline: llm
+summary: AI engineer who builds LLM systems and can tell a prompt problem from a retrieval or tool problem. Built a retrieval
+  assistant with component-level evaluation and guardrails, an MCP server of validated tools, and a PostgreSQL ledger API
+  with idempotent writes and 138 tests.
+skills:
+- group: ai
+  lead:
+  - Prompt Engineering
+  - LLM Evaluation and Guardrails
+  - Retrieval-Augmented Generation (RAG)
+  - Model Context Protocol (MCP)
+  - Citation Verification
+- group: eng
+  lead:
+  - Python
+  - FastAPI
+  - PostgreSQL
+  - Redis
+  - Docker
+  - Pytest
+- ml
+- data
+projects:
+- id: rag
+  bullets:
+  - system
+  - safety
+  - eval
+- id: web3
+  bullets:
+  - system
+  - http
+  - scorer
+- id: ledger
+  bullets:
+  - system
+  - idem
+  - tests
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit
