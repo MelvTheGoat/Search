@@ -112,6 +112,41 @@ def check_content(cv, where="cv"):
     return problems
 
 
+# ------------------------------------------------------------------ HTML
+
+def render_html(cv):
+    """The same CV as simple HTML, for showing it on the tracker page."""
+    from html import escape as e
+    links = " | ".join(f'<a href="{e(l["url"])}" target="_blank" rel="noopener">{e(l["text"])}</a>' for l in cv["links"])
+    out = [f'<h3 class="cv-name">{e(cv["name"])}</h3>', f'<p class="cv-head">{e(cv["headline"])}</p>',
+           f'<p class="cv-contact">{e(cv["email"])} | {links}</p>',
+           "<h4>Summary</h4>", f"<p>{e(cv['summary'])}</p>", "<h4>Skills</h4>"]
+    out += [f"<p><b>{e(label)}:</b> {e(', '.join(items))}</p>" for label, items in cv["skills"]]
+    out.append("<h4>Projects</h4>")
+    for proj in cv["projects"]:
+        pl = "".join(f' | <a href="{e(l["url"])}" target="_blank" rel="noopener">{e(l["text"])}</a>' for l in proj.get("links", []))
+        out.append(f'<p class="cv-item"><b>{e(proj["name"])}</b>{pl}</p><p class="cv-tech">Tech: {e(proj["stack"])}</p>')
+        out.append("<ul>" + "".join(f"<li>{e(b)}</li>" for b in proj["bullets"]) + "</ul>")
+    out.append("<h4>Experience</h4>")
+    for x in cv["experience"]:
+        out.append(f'<p class="cv-item"><b>{e(x["role"])}, {e(x["org"])}</b><span>{e(x["dates"])}</span></p>')
+        out.append("<ul>" + "".join(f"<li>{e(b)}</li>" for b in x["bullets"]) + "</ul>")
+    out.append("<h4>Education</h4>")
+    out += [f'<p class="cv-item"><b>{e(d["degree"])}, {e(d["school"])}</b><span>{e(d["dates"])}</span></p>' for d in cv["education"]]
+    out.append("<h4>Certifications</h4><ul>" + "".join(f"<li>{e(c)}</li>" for c in cv["certificates"]) + "</ul>")
+    return "\n".join(out)
+
+
+def html_for_job(job_id):
+    """Rendered CV for a job, from its spec, or "" if there is none."""
+    data = load_data()
+    for sp in sorted(SPEC_DIR.glob("*.yaml")):
+        spec = yaml.safe_load(sp.read_text(encoding="utf-8"))
+        if spec.get("job_id") == job_id:
+            return render_html(resolve(spec, data))
+    return ""
+
+
 # ------------------------------------------------------------------ Word
 
 def _hyperlink(paragraph, text, url, size):

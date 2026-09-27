@@ -76,6 +76,7 @@ def export_page(conn, top_open=300, top_restricted=60, out=PAGE_DIR):
     (out / "chunks").mkdir(parents=True)
     (out / "letters").mkdir()
     (out / "cvdocs").mkdir()
+    (out / "packs").mkdir()
     assets = _assets()
     run = now_utc()
     writes = []
@@ -97,6 +98,14 @@ def export_page(conn, top_open=300, top_restricted=60, out=PAGE_DIR):
             p.write_text(json.dumps({"file": lf, "text": _letter_text(ROOT / lf), "run": run}, ensure_ascii=False))
             writes.append({"op": "set", "collection": "letters", "doc_id": j["key"], "file_path": str(p)})
             letters += 1
+        if lf or j.get("cv_file"):
+            # The full application pack shown on the page: posting, CV, letter.
+            from .cv import html_for_job
+            p = out / "packs" / f"{j['key']}.json"
+            p.write_text(json.dumps({"desc": (j["description"] or "")[:20000], "cv_html": html_for_job(j["id"]),
+                                     "letter": _letter_text(ROOT / lf) if lf and (ROOT / lf).exists() else "",
+                                     "run": run}, ensure_ascii=False))
+            writes.append({"op": "set", "collection": "packs", "doc_id": j["key"], "file_path": str(p)})
         cvf = j.get("cv_file")
         if cvf and (ROOT / cvf).exists():
             p = out / "cvdocs" / f"{j['key']}.json"
