@@ -13,7 +13,7 @@ import re
 from dataclasses import dataclass, field
 
 from .config import load_yaml
-from .countries import OPEN_REGIONS, OTHER_REGIONS, find_countries, has_region
+from .countries import OPEN_REGIONS, OTHER_REGIONS, find_countries, has_city, has_region
 from .text import sentences
 
 HOME = "Nigeria"
@@ -86,16 +86,17 @@ class Labeller:
             if open_scope:
                 return LabelResult("remote_open", country, sponsorship="not needed",
                                    evidence=[f"remote, location: \"{where.strip(' ;')}\""])
-            if len(abroad) == 1 and not other_region:
+            onsite_option = has_city(loc) or re.search(r"hybrid|on-?site|office", loc, re.I)
+            if len(abroad) == 1 and not other_region and not onsite_option:
                 return self._restricted(country, f"Location: {loc or hints}", note="remote for one country only")
-            if not abroad and not other_region:
+            if not abroad and not other_region and not onsite_option:
                 # Plain "Remote" with no country named.
                 if no_sponsor:
                     return self._restricted(country, no_sponsor[0])
                 return LabelResult("remote_open", country, sponsorship="not needed",
                                    evidence=["remote, no country limit named in the post"])
-            # Remote for a group of countries that does not include Nigeria:
-            # treat it like a job abroad.
+            # Remote for a group of countries that does not include Nigeria,
+            # or remote with an office option abroad: treat it like a job abroad.
 
         # 3. Jobs abroad.
         if hard or no_sponsor:

@@ -104,3 +104,17 @@ def test_plain_remote_with_no_sponsorship_is_restricted(labeller):
 
 def test_remote_europe_is_treated_as_abroad(labeller):
     assert labeller.label(job("Remote - Europe")).label == "sponsor_unknown"
+
+
+def test_remote_with_an_office_city_is_treated_as_abroad(labeller):
+    assert labeller.label(job("Chicago, IL / Remote")).label == "sponsor_unknown"
+
+
+def test_time_zone_notes_are_not_countries(labeller):
+    assert labeller.label(job("REMOTE (2h overlap with US Pacific)")).label == "remote_open"
+    assert labeller.label(job("Remote, PT/ET hours preferred")).label == "remote_open"
+
+
+def test_country_code_next_to_foreign_city(labeller):
+    r = labeller.label(job("Berlin, DE"))
+    assert r.country == "Germany"

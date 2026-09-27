@@ -107,21 +107,28 @@ AMBIGUOUS_CITIES = {"cambridge", "london", "birmingham", "reading", "waterloo", 
 
 ISO_TO_COUNTRY = {v[0]: k for k, v in COUNTRIES.items()}
 ISO_TO_COUNTRY["UK"] = "United Kingdom"
+# Two-letter codes that are usually something else in a location line:
+# time zones (PT, ET, MT), "IT", "IN", "ID", "IS", "AT", "CO", "SE" and so on.
+ISO_SKIP = {"PT", "ET", "MT", "IT", "IN", "ID", "IS", "AT", "CO", "SE", "NO", "DE", "ES", "HR", "PE", "MA", "SA",
+            "CI", "OM", "BD", "PH", "TH", "LT", "CL", "AR", "BE"}
 
 
 def _build_patterns():
     pats = []
     for country, (iso, aliases, cities) in COUNTRIES.items():
-        words = [country.lower().replace("'", ""), *aliases, *cities]
-        for w in words:
-            pats.append((re.compile(r"(?<![a-z])" + re.escape(w) + r"(?![a-z])"), country, w in AMBIGUOUS_CITIES))
+        for w in [country.lower().replace("'", ""), *aliases]:
+            pats.append((re.compile(r"(?<![a-z])" + re.escape(w) + r"(?![a-z])"), country, False, "country"))
+        for w in cities:
+            pats.append((re.compile(r"(?<![a-z])" + re.escape(w) + r"(?![a-z])"), country, w in AMBIGUOUS_CITIES, "city"))
     return pats
 
 
 _PATTERNS = _build_patterns()
 _STATE_RE = re.compile(r"(?:,|\s-|\()\s*(" + "|".join(US_STATES) + r")\b(?!\.)")
 _PROV_RE = re.compile(r"(?:,|\()\s*(" + "|".join(CA_PROVINCES) + r")\b")
-_ISO_RE = re.compile(r"(?:^|[,(/\s-])(" + "|".join(sorted(ISO_TO_COUNTRY)) + r")(?:$|[,)/\s-])")
+_ISO_RE = re.compile(r"(?:^|[,(\s-])(" + "|".join(sorted(set(ISO_TO_COUNTRY) - ISO_SKIP)) + r")(?:$|[,)\s-])(?!\s*(?:hours|time|/))")
+# Parts of a location line about working hours, not places.
+_HOURS_RE = re.compile(r"\([^)]*\b(overlap|hours|time ?zones?|tz)\b[^)]*\)|\b(overlap with|hours in|working hours|time ?zones?)\b.*", re.I)
 
 
 def _clean(s):
@@ -129,37 +136,56 @@ def _clean(s):
     return " " + norm(s.replace("'", "")) + " "
 
 
-def find_countries(location):
-    """Return countries named in a location string, in the order found."""
+def find_places(location):
+    """Return [(country, kind)] in the order found. kind is "country" when
+    the country itself is named, or "city" when only a city or state is."""
     if not location:
         return []
-    found = []
+    location = _HOURS_RE.sub(" ", location)
     text = _clean(location)
     hits = []
     state_hit = bool(_STATE_RE.search(location) or _PROV_RE.search(location))
-    for pat, country, ambiguous in _PATTERNS:
+    for pat, country, ambiguous, kind in _PATTERNS:
         if ambiguous and state_hit:
             continue
         m = pat.search(text)
         if m:
-            hits.append((m.start(), country))
+            hits.append((m.start(), country, kind))
+    other = any(c != "United States" for _, c, _ in hits)
     for m in _STATE_RE.finditer(location):
-        hits.append((m.start() + 1000, "United States"))
+        # "Berlin, DE" is Germany, not Delaware.
+        if other and m.group(1) in {"DE", "IN", "ID", "CO", "AR", "PA", "MA", "GA", "SC", "AL", "IL", "NE", "ME", "MT", "SD"}:
+            continue
+        hits.append((m.start() + 1000, "United States", "city"))
     for name in US_STATE_NAMES:
         i = text.find(" " + name + " ")
         if i >= 0:
-            hits.append((i, "United States"))
+            hits.append((i, "United States", "city"))
     for m in _PROV_RE.finditer(location):
-        hits.append((m.start() + 1000, "Canada"))
+        hits.append((m.start() + 1000, "Canada", "city"))
     for m in _ISO_RE.finditer(location):
         code = m.group(1)
         if state_hit and (code in US_STATES or code in CA_PROVINCES):
             continue
-        hits.append((m.start() + 2000, ISO_TO_COUNTRY[code]))
-    for _, country in sorted(hits):
+        hits.append((m.start() + 2000, ISO_TO_COUNTRY[code], "country"))
+    out = []
+    for _, country, kind in sorted(hits):
+        if (country, kind) not in out:
+            out.append((country, kind))
+    return out
+
+
+def find_countries(location):
+    """Return countries named in a location string, in the order found."""
+    found = []
+    for country, _ in find_places(location):
         if country not in found:
             found.append(country)
     return found
+
+
+def has_city(location):
+    return any(kind == "city" for _, kind in find_places(location))
 
 
 def has_region(location, regions):
