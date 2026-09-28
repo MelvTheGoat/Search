@@ -1,0 +1,46 @@
+job_id: 6772
+company: Fivetran
+title: Analyst, GTM Analytics
+headline: data_ml
+summary: Analyst with a B.Sc. in Statistics who answers business questions with SQL and explains them simply. Wrote a two-page
+  decision memo for a marketing director from a causal study on 64,000 customers, and built dbt and DuckDB pipelines. Uses
+  Claude Code every day and teaches data analysis.
+skills:
+- group: data
+  lead:
+  - SQL
+  - Pandas
+  - NumPy
+- group: eng
+  lead:
+  - dbt-core
+  - DuckDB
+  - Python
+  - Git
+  - Streamlit
+- group: stats
+  lead:
+  - Statistical Inference
+  - Experiment Design
+  - Uplift Modeling
+- ai
+- ml
+- domain
+projects:
+- id: uplift
+  bullets:
+  - study
+  - findings
+  - eval
+- id: forecast
+  bullets:
+  - system
+- id: reckon
+  bullets:
+  - pipeline
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

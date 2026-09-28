@@ -1,0 +1,48 @@
+job_id: 6745
+company: RELX
+title: Fraud Data Analyst
+headline: analyst
+summary: Data analyst focused on fraud with a B.Sc. in Statistics. Built fraud detection judged per attack type, including
+  account takeover, a credit decisioning system with reason codes, and an explainable risk scorer. Internal audit experience
+  reviewing financial records for irregularities, and teaches technical topics to mixed audiences.
+skills:
+- group: domain
+  lead:
+  - Transaction Fraud Detection
+  - Credit Risk Decisioning
+  - Web3 Fraud Risk Scoring
+- group: data
+  lead:
+  - SQL
+  - Pandas
+  - Anomaly Detection
+- group: ml
+  lead:
+  - Scikit-learn
+  - LightGBM
+  - Feature Engineering
+  - SHAP
+- group: eng
+  lead:
+  - Python
+- stats
+- ai
+projects:
+- id: fraud
+  bullets:
+  - bench
+  - models
+  - deploy
+- id: web3
+  bullets:
+  - scorer
+  - detect
+- id: credit
+  bullets:
+  - system
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

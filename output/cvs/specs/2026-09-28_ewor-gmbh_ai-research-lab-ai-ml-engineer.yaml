@@ -1,0 +1,50 @@
+job_id: 6746
+company: EWOR GmbH
+title: AI Research Lab AI/ML Engineer
+headline: ml_ai
+summary: Machine learning and AI engineer who builds from zero to production alone. Built sequence-based fraud detection served
+  at 5.1 ms p99, a retrieval assistant with guardrails and golden-set evaluation, and an MCP server for AI assistants. Deploys
+  with FastAPI and Docker on GCP Cloud Run, Railway and AWS.
+skills:
+- group: ml
+  lead:
+  - PyTorch
+  - Deep Learning
+  - Sequence Models (GRU, TCN, Transformers)
+  - LightGBM
+- group: ai
+  lead:
+  - Retrieval-Augmented Generation (RAG)
+  - LLM Evaluation and Guardrails
+  - Model Context Protocol (MCP)
+- group: eng
+  lead:
+  - Python
+  - FastAPI
+  - Docker
+  - GCP Cloud Run
+  - Railway
+- stats
+- data
+- domain
+projects:
+- id: fraud
+  bullets:
+  - models
+  - deploy
+  - imbalance
+- id: rag
+  bullets:
+  - system
+  - eval
+  - deploy
+- id: web3
+  bullets:
+  - system
+  - http
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

@@ -1,0 +1,51 @@
+job_id: 6612
+company: Databricks
+title: AI Engineer, FDE (Forward Deployed Engineer)
+headline: llm
+summary: AI engineer who builds and deploys GenAI applications end to end. Built a retrieval assistant with hybrid search,
+  guardrails and golden-set evaluation on GCP Cloud Run, an MCP server for AI assistants, and ML services on AWS ECS Fargate.
+  Teaches machine learning to student cohorts.
+skills:
+- group: ai
+  lead:
+  - Retrieval-Augmented Generation (RAG)
+  - LLM Evaluation and Guardrails
+  - Hybrid Search (BM25, Dense Embeddings, RRF)
+  - Model Context Protocol (MCP)
+  - Hugging Face
+- group: ml
+  lead:
+  - PyTorch
+  - Scikit-learn
+- group: eng
+  lead:
+  - Python
+  - FastAPI
+  - Docker
+  - GCP Cloud Run
+  - AWS ECS Fargate
+- stats
+- data
+- domain
+projects:
+- id: rag
+  bullets:
+  - system
+  - eval
+  - safety
+  - deploy
+- id: web3
+  bullets:
+  - system
+- id: churn
+  bullets:
+  - deploy
+- id: fraud
+  bullets:
+  - deploy
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit
