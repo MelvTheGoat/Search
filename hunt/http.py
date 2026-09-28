@@ -12,6 +12,7 @@ USER_AGENT = (
 )
 
 RETRY_CODES = {429, 500, 502, 503, 504}
+LIMITED_AFTER = 2  # requests that still got 429 after every retry
 
 
 class HttpError(Exception):
@@ -38,6 +39,9 @@ class Http:
         self.timeout = timeout
         self._last = {}
         self._lock = threading.Lock()
+        # Sites that kept answering "too many requests"; skipped for the rest
+        # of the run so one busy site cannot stall every board after it.
+        self._limited = {}
 
     def _wait(self, host):
         # The lock keeps the pace per site even when threads share a client.
@@ -62,6 +66,8 @@ class Http:
     def request(self, method, url, params=None, json_body=None, as_json=True, missing_ok=False,
                 headers=None, auth=None, allow_redirects=True):
         host = urlparse(url).netloc
+        if self._limited.get(site_of(host), 0) >= LIMITED_AFTER:
+            raise HttpError(f"{url}: skipped, {site_of(host)} is rate-limiting this run")
         error = None
         for attempt in range(self.retries + 1):
             self._wait(host)
@@ -76,6 +82,9 @@ class Http:
                 if r.status_code in RETRY_CODES:
                     error = HttpError(f"{url}: HTTP {r.status_code}")
                     retry_after = r.headers.get("Retry-After", "")
+                    if r.status_code == 429 and attempt == self.retries:
+                        with self._lock:
+                            self._limited[site_of(host)] = self._limited.get(site_of(host), 0) + 1
                     if retry_after.isdigit() and attempt < self.retries:
                         time.sleep(min(int(retry_after), 120))
                         continue
