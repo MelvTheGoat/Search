@@ -1,0 +1,51 @@
+job_id: 3985
+company: Nubank
+title: Credit Risk Specialist
+headline: mlops
+summary: Machine learning engineer with a B.Sc. in Statistics who builds risk pipelines that run on their own. Built a self-operating
+  forecasting platform with backtesting, drift monitoring and conditional retraining, and a credit decisioning system with
+  calibrated default probabilities and an audit trail that can rebuild any decision.
+skills:
+- group: eng
+  lead:
+  - Python
+  - SQL
+  - Prefect
+  - dbt-core
+  - DuckDB
+  - MLflow
+  - Evidently
+  - CI/CD (GitHub Actions)
+- group: domain
+  lead:
+  - Credit Risk Decisioning
+- group: ml
+  lead:
+  - LightGBM
+  - Model Calibration (Isotonic Regression, Temperature Scaling)
+- stats
+- data
+- ai
+projects:
+- id: forecast
+  bullets:
+  - system
+  - validation
+  - cost
+- id: credit
+  bullets:
+  - system
+  - calib
+- id: reckon
+  bullets:
+  - pipeline
+  - ops
+- id: fraud
+  bullets:
+  - deploy
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

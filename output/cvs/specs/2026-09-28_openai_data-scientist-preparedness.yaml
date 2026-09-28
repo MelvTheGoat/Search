@@ -1,0 +1,53 @@
+job_id: 253
+company: OpenAI
+title: Data Scientist, Preparedness
+headline: fraud
+summary: Machine learning engineer focused on detection systems and honest measurement. Built fraud detection judged by precision
+  at fixed review capacity, with calibration error brought to 0.0005, a retrieval assistant with guardrails and separate retrieval
+  and generation evaluation, and a causal study with a CUPED demo. B.Sc. in Statistics.
+skills:
+- group: ml
+  lead:
+  - Model Calibration (Isotonic Regression, Temperature Scaling)
+  - PyTorch
+  - LightGBM
+- group: stats
+  lead:
+  - Causal Inference (S/T/X-Learners, Causal Forests)
+  - Experiment Design
+  - Power Analysis
+  - CUPED
+- group: ai
+  lead:
+  - LLM Evaluation and Guardrails
+  - Retrieval-Augmented Generation (RAG)
+- group: eng
+  lead:
+  - Python
+  - SQL
+- domain
+- data
+projects:
+- id: fraud
+  bullets:
+  - bench
+  - imbalance
+  - deploy
+- id: rag
+  bullets:
+  - safety
+  - eval
+- id: uplift
+  bullets:
+  - study
+  - findings
+  - experiment
+- id: web3
+  bullets:
+  - eval
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

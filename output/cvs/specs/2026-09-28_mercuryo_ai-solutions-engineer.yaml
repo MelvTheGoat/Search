@@ -1,0 +1,52 @@
+job_id: 6752
+company: Mercuryo
+title: AI Solutions Engineer
+headline: llm
+summary: AI engineer who ships working LLM tools end to end. Built an MCP server that gives Claude Desktop and Cursor six
+  risk tools, and a retrieval assistant with hybrid search, guardrails, citation checks and a golden-set evaluation. Deploys
+  with FastAPI and Docker on GCP Cloud Run and Railway.
+skills:
+- group: ai
+  lead:
+  - Model Context Protocol (MCP)
+  - Retrieval-Augmented Generation (RAG)
+  - LLM Evaluation and Guardrails
+  - Prompt Engineering
+- group: eng
+  lead:
+  - Python
+  - SQL
+  - FastAPI
+  - Docker
+  - GCP Cloud Run
+  - Railway
+  - Git
+- group: domain
+  lead:
+  - Web3 Fraud Risk Scoring
+  - Payment Reconciliation
+- ml
+- data
+- stats
+projects:
+- id: web3
+  bullets:
+  - system
+  - http
+  - scorer
+- id: rag
+  bullets:
+  - system
+  - safety
+  - eval
+  - deploy
+- id: reckon
+  bullets:
+  - system
+  - review
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

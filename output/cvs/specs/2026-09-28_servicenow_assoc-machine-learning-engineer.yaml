@@ -1,0 +1,49 @@
+job_id: 6628
+company: ServiceNow
+title: Assoc Machine Learning Engineer
+headline: ml_ai
+summary: Machine learning and AI engineer who writes tested, production Python. Built sequence models served at 5.1 ms p99
+  with ONNX Runtime, a retrieval assistant with guardrails and a golden-set evaluation, and an MCP server that gives AI assistants
+  risk tools. Teaches machine learning to student cohorts.
+skills:
+- group: ml
+  lead:
+  - PyTorch
+  - Scikit-learn
+  - Deep Learning
+  - Sequence Models (GRU, TCN, Transformers)
+- group: ai
+  lead:
+  - Retrieval-Augmented Generation (RAG)
+  - LLM Evaluation and Guardrails
+  - Model Context Protocol (MCP)
+- group: eng
+  lead:
+  - Python
+  - Pytest
+  - FastAPI
+  - Docker
+  - CI/CD (GitHub Actions)
+- stats
+- data
+- domain
+projects:
+- id: fraud
+  bullets:
+  - models
+  - deploy
+  - imbalance
+- id: rag
+  bullets:
+  - system
+  - eval
+- id: web3
+  bullets:
+  - system
+  - scorer
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit
