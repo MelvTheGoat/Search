@@ -26,7 +26,7 @@ _STUDENT = re.compile(
     r"currently (enrolled|pursuing)|current(ly)? (a )?(full-time )?(university )?student|enrolled (full-time )?in a"
     r"|returning to (school|university)|graduating (in|between|by|before)|expected graduation|penultimate year"
     r"|must be (a )?(current )?student|pursuing a (bachelor|master|phd|degree)", re.I)
-_HIGH_DEGREE = re.compile(r"\b(ph\.?\s?d|doctorate|master'?s|m\.?sc?\b|m\.s\.|advanced degree|graduate degree)", re.I)
+_HIGH_DEGREE = re.compile(r"\b(ph\.?\s?d|doctorate|master'?s|master degree|m\.?sc?\b|m\.s\.|advanced degree|graduate degree)", re.I)
 _LOW_DEGREE = re.compile(r"\b(bachelor|b\.?sc?\b|b\.s\.|b\.a\.|undergraduate|or equivalent)", re.I)
 _SOFT = re.compile(r"prefer|plus\b|bonus|nice to have|ideally|advantage|desirable|not required|welcome", re.I)
 _NEED = re.compile(r"require|must|minimum|you have|you hold|hold a|degree in|in (computer|machine|statistics|math|a related|a quantitative)", re.I)

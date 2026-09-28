@@ -178,3 +178,9 @@ def test_us_company_with_h1b_history_is_likely_sponsor():
 def test_post_that_welcomes_global_applicants_is_open(labeller):
     r = labeller.label(job("Remote (South Africa)", "Location: Remote, global applications welcome.", remote=True))
     assert r.label == "remote_open"
+
+
+def test_master_degree_wording_is_out_of_reach():
+    from hunt.reach import needs_high_degree
+
+    assert needs_high_degree("Minimum Qualifications: Master Degree in Computer Science, plus 2+ years.")
