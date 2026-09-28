@@ -39,14 +39,18 @@ _TITLE_LEVELS = [
     ("mid", r"\bmid[- ]?level\b|\bmid\b|\bintermediate\b|\b(engineer|scientist|analyst|developer)\s+(ii|2)\b|\bl4\b"),
 ]
 
-_YEARS = re.compile(r"(\d{1,2})\s*\+?\s*(?:(?:-|to|–)\s*\d{1,2}\s*\+?\s*)?(?:years|yrs)", re.I)
+_YEARS = re.compile(r"(\d{1,2})\s*\+?\s*(?:(?:-|to|–)\s*\d{1,2}\s*\+?\s*|or more\s+)?(?:years|yrs)", re.I)
+_WORDS = {"one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6, "seven": 7, "eight": 8, "nine": 9, "ten": 10}
 
 
 def required_years(text):
     """Years of experience the post asks for. Uses the bachelor's figure
     when the post gives one per degree ("BS with 4-8 years"), else the
     first figure in the first sentence about experience."""
-    for sent in re.split(r"(?<=[.!?])\s+|\n", text or ""):
+    text = re.sub(r"\b[a-z]+\s*\((\d{1,2})\)", r"\1", text or "", flags=re.I)  # "five (5)"
+    text = re.sub(r"\b(" + "|".join(_WORDS) + r")\b(?=\s*\+?\s*(?:or more\s+)?(?:years|yrs))",
+                  lambda m: str(_WORDS[m.group(1).lower()]), text, flags=re.I)
+    for sent in re.split(r"(?<=[.!?])\s+|\n", text):
         if not re.search(r"experience|years (of|in)\b", sent, re.I):
             continue
         m = re.search(r"\b(bs|ba|b\.s\.|bachelor'?s?)\b[^.;]{0,25}?(\d{1,2})\s*\+?\s*(?:(?:-|to|–)\s*\d{1,2}\s*\+?\s*)?(?:years|yrs)", sent, re.I)
