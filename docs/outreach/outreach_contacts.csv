@@ -1,0 +1,74 @@
+track,tier,rank,company,what_they_do,location,company_x,contact_name,contact_x,contact_role,channel,template,funding_stage,hiring_signal,verify_note
+Web3,1,1,Allora Network,Decentralized self-improving ML inference and forecasting network,Remote/global,@AlloraNetwork,Nick Emmons,@nickemmons,Founder & CEO,X,web3_forecasting,~$35M raised; mainnet live,Unclear,Also try Kenny Peluso (CTO) on LinkedIn
+Web3,1,2,Trusta Labs,GNN/RNN Sybil detection and on-chain reputation scoring,Remote/global,@TrustaLabs,Peet Chan,@0xpeet,Co-Founder & CEO,X,web3_fraud,Seed $3M + strategic 2025,Unclear,Also Simon Chen (CTO) on LinkedIn
+Web3,1,3,Polysights,AI analytics and wallet tracking terminal for Polymarket/Kalshi,Remote,@Polysights,Tre Upshaw,@tre_poh,Founder & CTO,X,web3_forecasting,Pre-seed ~$1.5M (2026) + Polymarket grant,Unclear,
+Web3,1,4,Baselayer,Know-Your-Agent identity verification and fraud risk for AI agents,Remote/US,,Jonathan Awad,,CEO,LinkedIn,web3_fraud,Series A $35M (2026),Yes (post-raise),Also Timothy Hyde (CTO); no X handles found
+Web3,1,5,Cred Protocol,On-chain behavioral scoring and Sybil detection API,Remote,,Julian Gay,,Founder,LinkedIn,web3_fraud,Early,Unclear,
+Web3,2,6,Kaito AI,AI research terminal and mindshare analytics; Attention Markets with Polymarket,Remote/global,@KaitoAI,Data/ML engineer (find on LinkedIn),,Data/ML team,LinkedIn,web3_forecasting,Token live; Dragonfly/Sequoia backed,Unclear,Founder Yu Hu is hard to reach; aim at the team
+Web3,2,7,Polymarket,Leading prediction market with data team and Polymarket Institute,Remote/US,@Polymarket,Data team / Polymarket Institute,,Data/research,LinkedIn + apply,web3_forecasting,Large private,Yes (Institute + data roles),Skip the CEO. 'Kai Brusch (Head of Data)' is unconfirmed; verify on LinkedIn
+Web3,2,8,Kalshi,Regulated prediction market with a $2M builders grant program,Remote/US,@Kalshi,Builders program,,Grants,Apply,web3_forecasting,Large private,Yes (builders program),A grant to build a tool can turn into a job
+Web3,2,9,Polyfactual,AI sentiment and risk intelligence for prediction markets,Remote,@polyfactual,Team,@polyfactual,Team account,X,web3_forecasting,Early + Polymarket grant,Unclear,
+Web3,2,10,Billy Bets,ML platform for sports prediction markets,Remote,,Founders,,Founders,LinkedIn,web3_forecasting,Pre-seed ~$1M (Coinbase Ventures),Unclear,
+Web3,2,11,Valence,Trading platform aggregating Kalshi and Polymarket with AI automation,Remote/US,,Co-founders,,Founders,LinkedIn,web3_forecasting,Seed (YC),Unclear,
+Web3,2,12,Self,ZK proof-of-humanity identity for Sybil resistance,Remote,,Team,,Team,LinkedIn,web3_fraud,Seed $9M (2025),Unclear,
+Web3,2,13,Wayfinder,Autonomous crypto agents for execution and prediction strategies,Remote,,Wayfinder Foundation team,,Team,LinkedIn,web3_forecasting,Token live (PROMPT),Unclear,Company handle unconfirmed (@wayfinder_ai?)
+Web3,2,14,RNWY,Sybil detection and trust scoring for AI agents and wallets,Remote,,Team,,Team,LinkedIn,web3_fraud,Early,Unclear,
+Web3,2,15,SentientAGI,Decentralized AI models and attribution layer,Remote,,Team,,Team,LinkedIn,web3_forecasting,Early,Unclear,
+Web3,Established,16,TRM Labs,Blockchain intelligence for crypto fraud and AML,Remote/US,@trmlabs,Data science team,,Data science,LinkedIn + apply,web3_fraud,Late stage,Yes (data/ML roles),CEO Esteban Castano (@estebancastano) is too senior; target DS leads
+Web3,Established,17,Chainalysis,Blockchain data for investigations and compliance,Remote/US,@chainalysis,Data science team,,Data science,LinkedIn + apply,web3_fraud,Late stage,Yes (DS/ML roles),
+Web3,Established,18,Elliptic,Crypto compliance and illicit-flow detection,London/remote,@elliptic,Data science team,,Data science,LinkedIn + apply,web3_fraud,Late stage,Yes,
+Web3,Established,19,Merkle Science,Predictive blockchain risk and transaction monitoring,Remote/Singapore/NY,@MerkleScience,Mriganka Pattnaik,@MrigankPattnaik,CEO,X,web3_fraud,Growth,Yes (DS roles),
+Web3,Established,20,AnChain.AI,AI platform for crypto AML and fraud investigations,US/remote,@AnChainAI,Victor Fang,,Founder & CEO,LinkedIn,web3_fraud,Growth,Unclear,
+Web3,Established,21,ChainAware.ai,Behavioral ML for wallet fraud and rug-pull risk,Remote/Switzerland,@ChainAware,Tarmo Ploom,,Co-Founder & CTO,LinkedIn,web3_fraud,Early/growth,Unclear,Also Martin Ploom (CEO)
+Web3,Established,22,Nansen,AI on-chain analytics and wallet labeling,Remote/Singapore,@nansen_ai,Alex Svanevik,@ASvanevik,CEO,X,web3_forecasting,Growth,Unclear,
+Web3,Established,23,Coinbase,Exchange with a dedicated Risk AI/ML team,Remote/US,@coinbase,Risk AI/ML team,,ML engineers,LinkedIn + apply,web3_fraud,Public,Yes (Risk ML roles),
+Web3,Established,24,Binance,Exchange with large in-house AI risk systems,Remote/global,@binance,Risk AI team,,ML engineers,LinkedIn + apply,web3_fraud,Private,Yes,
+Web3,Established,25,OKX,Exchange with compliance data science and AI team,Remote/Singapore,@okx,Compliance DS & AI team,,Data science,LinkedIn + apply,web3_fraud,Private,Yes (ML Engineer Compliance),
+Web3,Established,26,Unit21,AI fraud and AML platform serving crypto clients,Remote/US,,Crypto/fintech leads,,Team,LinkedIn,web3_fraud,Growth,Unclear,
+Web3,Established,27,BVNK,Crypto payments infrastructure with financial-crime roles,Remote/Europe,,Financial crime team,,Team,LinkedIn + apply,web3_fraud,Growth,Yes (fincrime roles),
+Web3,3,28,PolyAgent,AI trading agents for Polymarket,Remote,,Team,,Team,LinkedIn,web3_forecasting,Early,Unclear,Low odds; message last
+Web3,3,29,Alphascope,LLM forecasting pipeline for prediction-market mispricing,Remote,,Team,,Team,LinkedIn,web3_forecasting,Early,Unclear,Low odds
+Web3,3,30,Predly,Mispricing detection across Polymarket/Kalshi,Remote,,Team,,Team,LinkedIn,web3_forecasting,Early,Unclear,Low odds
+Web3,3,31,PolyRadar,Multi-model analysis and confidence scoring for prediction events,Remote,,Team,,Team,LinkedIn,web3_forecasting,Early,Unclear,Low odds
+Web3,3,32,Dome,APIs for prediction-market data,Remote,,Team,,Team,LinkedIn,web3_forecasting,Seed,Unclear,
+Web3,3,33,Sibyl Labs,Autonomous research agent and memory infra on Base,Remote,,Team,,Team,LinkedIn,web3_forecasting,Early,Unclear,
+Web3,3,34,ThoughtProof,Verifies AI-agent reasoning before on-chain execution,Remote,,Team,,Team,LinkedIn,web3_fraud,Grant stage,Unclear,
+Web3,3,35,Outerlimit,Security and authorization layer for agentic AI,Remote,,Tony Pepper,,Founder,LinkedIn,web3_fraud,Pre-seed $16M (2026),Unclear,Also Neil Larkins
+Web3,3,36,Zama,FHE infrastructure for private on-chain computation,Remote/Paris,@zama_fhe,Team,,Team,LinkedIn,web3_forecasting,Growth,Unclear,More cryptography than ML
+Web3,3,37,SybilShield,Open-source Sybil detection for airdrops/DAOs,Remote,,Open-source team,,Maintainers,GitHub,web3_fraud,Open source,No,Contribute a PR instead of messaging
+Nigeria,1,1,Pastel,AI for fraud AML and credit decisioning at African banks,Lagos,,Olamide Oladeji,,Co-founder,LinkedIn,ng_linkedin,Funded,Unclear,Also Izunna Okonkwo (co-founder) and Abuzar Royesh (CEO)
+Nigeria,1,2,Scrub,ML fraud prevention and credit intelligence for African transactions,Lagos,,Precious Ajayi,,Founder,LinkedIn,ng_linkedin,Early,Unclear,
+Nigeria,1,3,Periculum,ML credit risk scoring for lenders,Lagos,@Periculumdotio,Michael Temitope Collins,,Founder & CEO,LinkedIn,ng_linkedin,Growth,Unclear,
+Nigeria,1,4,Mida,AI debt collection and credit infrastructure,Lagos,,Oke Egbi,,Co-founder & CRO,LinkedIn,ng_linkedin,Funded,Unclear,Also Mayowa Anibaba (CEO)
+Nigeria,1,5,Curacel,AI claims automation and insurance fraud detection,Lagos,@curacel,Henry Mascot,@iAmHenryMascot,Founder & CEO,X,ng_linkedin,YC-backed,Unclear,
+Nigeria,1,6,Dojah,Fraud and risk infrastructure and KYC APIs,Lagos,@DojahInc,Tobi Ololade,,Co-founder,LinkedIn,ng_linkedin,Growth,Unclear,Also Ayomide Oso
+Nigeria,1,7,Youverify,AI KYC/KYB AML and fraud detection,Lagos,@YoucheckOnline,Data/engineering lead (People tab),,Data/engineering,LinkedIn,ng_linkedin,Growth,Unclear,Confirm @YoucheckOnline is still their handle
+Nigeria,1,8,Autogon,No-code ML platform for fraud and risk models,Lagos,,Obi Ebuka David,,Founder & CEO,LinkedIn,ng_linkedin,Early,Unclear,
+Nigeria,2,9,Prembly,KYC AML and fraud prevention,Lagos,@prembly,Engineering/data lead (People tab),,Engineering/data,LinkedIn,ng_linkedin,Growth,Unclear,
+Nigeria,2,10,Smile ID,Biometric identity verification and fraud,Lagos,@usesmileid,ML/data team (People tab),,ML/data,LinkedIn,ng_linkedin,Growth,Unclear,Aim below CEO Mark Straub
+Nigeria,2,11,Mono,Open banking data and risk decisioning,Lagos,@mono_hq,Abdulhamid Hassan,,Founder & CEO,LinkedIn,ng_linkedin,Growth,Unclear,Also try data/engineering leads
+Nigeria,2,12,Awarri,Local LLMs for African languages,Lagos,,Silas Adekunle,,Co-founder & CEO,LinkedIn,ng_linkedin,Funded,Unclear,Also Eniola Edun (COO); lead with RAG project
+Nigeria,2,13,Intron Health,Clinical speech AI for African accents,Lagos,,Tobi Olatunji,@tobiolatunji_,Founder & CEO,X,ng_linkedin,Funded,Unclear,Lead with RAG project
+Nigeria,2,14,Bujeti,AI agents for spend control and transaction monitoring,Lagos,@BujetiHQ,Cossi Achille Arouko,,Co-founder & CEO,LinkedIn,ng_linkedin,Funded,Unclear,
+Nigeria,2,15,DataLens Africa,Data annotation and LLM evaluation infrastructure,Lagos,,Founder (name unconfirmed),,Founder,LinkedIn,ng_linkedin,Early,Unclear,Grok gave 'Olaoye/Alaoye Anthony Somide'; confirm spelling
+Nigeria,3,16,FairMoney,Credit-led digital bank,Lagos,@fairmoney_ng,Senior data scientist (credit/risk),,Data science,Apply + LinkedIn,ng_linkedin,Large,Unclear,CTO is Matthieu Gendreau
+Nigeria,3,17,Moniepoint,Business banking and payments,Lagos,@moniepoint,Senior data scientist (fraud/credit),,Data science,Apply + LinkedIn,ng_linkedin,Large,Yes (has posted fraud/credit DS roles),
+Nigeria,3,18,Nomba,Payments and business tools,Lagos,,Pelumi Aboluwarin,,Co-founder & CTO,LinkedIn,ng_linkedin,Funded,Unclear,
+Nigeria,3,19,Helium Health,Digital health SaaS,Lagos,@HeliumHealth,Data team (People tab),,Data,LinkedIn,ng_linkedin,YC-backed,Unclear,
+Nigeria,3,20,Kobo360,Logistics platform with route and demand optimization,Lagos,@kobo_360,Data team,,Data,LinkedIn,ng_linkedin,Unclear,Unclear,Check they are still operating first
+Nigeria,Connector,21,Recruiter (fintech),Fintech tech recruiter; shares fraud/credit DS roles,Lagos,,Darlington Anyanwu,@official_cumi,Tech recruiter,X,ng_linkedin,,Posts roles often,Best-odds contact in Nigeria list
+Nigeria,Connector,22,Skill Afrika,Talent community; shares Flutterwave roles,Lagos,,Omoalhaja,@omoalhajaabiola,Talent community,X,ng_linkedin,,Posts roles,
+Nigeria,Connector,23,Talent partner,Posts fintech and data roles,Lagos,,Ibukun Amosu,@amosuibk,Talent partner,X,ng_linkedin,,Posts roles,
+Nigeria,Connector,24,AI Saturdays Lagos,AI community and cohorts,Lagos,@AISaturdayLagos,Tejumade Afonja,@tejuafonja,Co-founder,X,ng_linkedin,,Community,Networking not direct hiring
+Nigeria,Connector,25,Data Science Nigeria,AI talent community,Lagos,@dsn_ai_network,Anthony Soronnadi,,Research & Innovation Lead,LinkedIn,ng_linkedin,,Community,Confirm handle
+Nigeria,Backlog,,Xara,Conversational AI payments agent,Lagos,,,,,,ng_linkedin,,,Next Grok batch
+Nigeria,Backlog,,grace ai lab,AI agents for banks (fraud/AML),Lagos,,,,,,ng_linkedin,,,Next Grok batch
+Nigeria,Backlog,,Decide,AI agent for spreadsheet analysis,Lagos,,,,,,ng_linkedin,,,Next Grok batch
+Nigeria,Backlog,,CDIAL AI / Indigenius AI,Language AI for African languages,Lagos,,,,,,ng_linkedin,,,Next Grok batch
+Nigeria,Backlog,,BetaLife Health,AI blood demand forecasting,Nigeria,,,,,,ng_linkedin,,,Forecasting fit
+Nigeria,Backlog,,RxAll,AI medicine authentication,Lagos,,,,,,ng_linkedin,,,
+Nigeria,Backlog,,Flutterwave,Payments infrastructure,Lagos,,,,,,ng_linkedin,,Has posted Data Scientist Risk,Apply via careers page
+Nigeria,Backlog,,Paystack,Payment infrastructure,Lagos,,,,,,ng_linkedin,,,
+Nigeria,Backlog,,Kuda,Digital bank,Lagos,,,,,,ng_linkedin,,,
+Nigeria,Backlog,,Carbon,Digital lending,Lagos,,,,,,ng_linkedin,,,
+Nigeria,Backlog,,Interswitch,Payments processing,Lagos,,,,,,ng_linkedin,,,

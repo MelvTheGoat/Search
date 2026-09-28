@@ -148,6 +148,71 @@ label.fit output{font:600 13px var(--mono);color:var(--ink);min-width:2ch}
   .stage .l{font-size:10px;letter-spacing:.02em;overflow-wrap:anywhere}
 }
 </style>
+<style>
+/* Jobs / Outreach switch and the Outreach view */
+.view{display:grid;gap:20px}
+[hidden]{display:none!important}
+.switch{justify-self:start}
+.switch .tab{font-size:14px;padding:10px 16px}
+.switch .c.due{color:var(--bad);font-weight:600}
+.counters{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+.stage.static{cursor:default}
+.stage.static:hover{border-color:var(--line)}
+.stage.due .n{color:var(--bad)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:0}
+.panel>summary{cursor:pointer;padding:12px 14px;font:600 14px var(--body);list-style:none;display:flex;align-items:center;gap:8px}
+.panel>summary::-webkit-details-marker{display:none}
+.panel>summary::before{content:"▸";color:var(--muted);transition:transform .15s}
+.panel[open]>summary::before{transform:rotate(90deg)}
+.panel>summary .hint{font-weight:400;color:var(--muted);font-size:13px}
+.plan{padding:0 16px 16px;display:grid;gap:8px;font-size:14px;max-height:70vh;overflow:auto}
+.plan h3{font:700 18px/1.3 var(--display);margin:6px 0 0}
+.plan h4{font:600 12px/1.2 var(--body);text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:10px 0 0}
+.plan h5{font:600 14px var(--body);margin:10px 0 0;color:var(--accent)}
+.plan p{margin:0;white-space:pre-wrap}
+.plan ul,.plan ol{margin:0;padding-left:20px;display:grid;gap:3px}
+.plan .tpl{background:var(--sunk);border-radius:8px;padding:12px;white-space:pre-wrap;font-size:14px}
+#addForm{padding:0 14px 14px;display:grid;gap:10px}
+#addForm .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+#addForm label{display:grid;gap:4px;font-size:12px;color:var(--muted);font-weight:600}
+#addForm .wide{grid-column:1 / -1}
+#outView input[type=text],#outView input[type=number],#outView input[type=date],#outView textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;width:100%;min-width:0}
+#outView textarea{min-height:56px;resize:vertical;font-size:14px}
+.oc{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;display:grid;gap:10px}
+.oc.is-due{border-color:var(--bad)}
+.oc-head{display:grid;grid-template-columns:minmax(0,1fr) 190px;gap:12px;align-items:start}
+.oc-head h2{font:600 17px/1.3 var(--body);margin:0 0 4px}
+.p-web3{background:var(--info-soft);color:var(--info)}
+.p-nigeria-track{background:var(--accent-soft);color:var(--accent)}
+.p-tier{background:var(--sunk);color:var(--ink)}
+.p-due{background:var(--bad-soft);color:var(--bad)}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px 16px;font-size:14px;margin:0}
+.fact{min-width:0;overflow-wrap:anywhere}
+.fact dt{font:600 11px/1.4 var(--body);text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.fact dd{margin:0}
+.fact .h{color:var(--muted);font:500 12px var(--mono)}
+.verify{background:var(--warn-soft);color:var(--warn);border-radius:8px;padding:8px 12px;margin:0;font-size:14px}
+.oc-tools{display:flex;flex-wrap:wrap;gap:6px}
+.odates{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;align-items:end}
+.odates label{display:grid;gap:4px;font-size:12px;color:var(--muted);font-weight:600}
+.odates .hint{font-size:12px;color:var(--muted)}
+.ostatus{width:100%}
+.os-messaged,.os-replied,.os-call,.os-connected{border-color:var(--accent);color:var(--accent);font-weight:600}
+.os-verify{border-color:var(--warn);color:var(--warn)}
+.os-noreply,.os-notfit{color:var(--muted)}
+@media (max-width:760px){
+  .counters{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .counters .stage .l{overflow-wrap:normal;letter-spacing:0;font-size:9.5px}
+  .panel>summary .hint{display:none}
+  .oc-head{grid-template-columns:minmax(0,1fr)}
+  .ostatus{min-height:44px}
+  .oc-tools .btn{flex:1 1 calc(50% - 6px);min-height:44px;white-space:normal;text-align:center;line-height:1.25}
+  #outView textarea,#outView input{font-size:16px}
+  .switch{justify-self:stretch}
+  .switch .tab{flex:1}
+}
+</style>
+
 
 <div class="wrap">
   <header>
@@ -157,6 +222,10 @@ label.fit output{font:600 13px var(--mono);color:var(--ink);min-width:2ch}
     </div>
     <div class="run" id="run">Connecting…</div>
   </header>
+
+  <div class="tabs switch" role="tablist" id="viewSwitch" aria-label="Section"><button class="tab" role="tab" data-view="jobs" aria-selected="true">Jobs</button><button class="tab" role="tab" data-view="out" aria-selected="false">Outreach<span class="c" id="dueBadge"></span></button></div>
+
+  <div class="view" id="jobsView">
 
   <nav class="pipe" id="pipe" aria-label="Applications by status"></nav>
 
@@ -183,6 +252,49 @@ label.fit output{font:600 13px var(--mono);color:var(--ink);min-width:2ch}
 
   <div class="legend" id="legend"></div>
   <section class="list" id="list" aria-live="polite"></section>
+  </div>
+
+  <div class="view" id="outView" hidden>
+    <div class="counters" id="oCount" aria-label="Outreach totals"></div>
+
+    <details class="panel" id="planPanel"><summary>Plan and message templates <span class="hint">Weekly plan, what to verify, all four templates</span></summary><div class="plan" id="planBody"></div></details>
+
+    <div class="bar">
+      <div class="tabs" role="tablist" id="oTabs"></div>
+      <div class="grow"><input type="search" id="oq" placeholder="Search company, person, what they do" aria-label="Search contacts"></div>
+      <select id="oTrack" aria-label="Track"></select>
+      <select id="oTier" aria-label="Tier"></select>
+      <select id="oStatus" aria-label="Status"></select>
+    </div>
+
+    <details class="panel" id="addPanel"><summary>Add a contact <span class="hint">For new batches</span></summary>
+      <form id="addForm" autocomplete="off">
+        <div class="grid">
+          <label>Track<input type="text" name="track" list="dlTrack" value="Web3" required></label>
+          <label>Tier<input type="text" name="tier" list="dlTier" placeholder="1, 2, 3, Established, Connector, Backlog"></label>
+          <label>Rank<input type="number" name="rank" min="1" placeholder="Optional"></label>
+          <label>Company<input type="text" name="company" required></label>
+          <label class="wide">What they do<input type="text" name="what_they_do"></label>
+          <label>Location<input type="text" name="location" placeholder="Remote, Lagos"></label>
+          <label>Company X handle<input type="text" name="company_x" placeholder="@handle"></label>
+          <label>Contact name<input type="text" name="contact_name" placeholder="Leave empty if not known"></label>
+          <label>Contact X handle<input type="text" name="contact_x" placeholder="@handle"></label>
+          <label>Contact role<input type="text" name="contact_role"></label>
+          <label>Channel<input type="text" name="channel" list="dlChannel" placeholder="X, LinkedIn, Apply"></label>
+          <label>Template<select name="template"><option value="web3_forecasting">web3_forecasting (X DM)</option><option value="web3_fraud">web3_fraud (X DM)</option><option value="ng_linkedin">ng_linkedin (LinkedIn)</option><option value="">None</option></select></label>
+          <label>Funding<input type="text" name="funding_stage"></label>
+          <label>Hiring signal<input type="text" name="hiring_signal"></label>
+          <label class="wide">Verify note<input type="text" name="verify_note" placeholder="Anything to check before messaging"></label>
+        </div>
+        <div class="bar"><button class="btn primary" type="submit">Add contact</button><span class="hint" style="font-size:13px;color:var(--muted)">It starts as To verify if it has a verify note or no named person, otherwise Ready.</span></div>
+        <datalist id="dlTrack"><option value="Web3"><option value="Nigeria"></datalist>
+        <datalist id="dlTier"><option value="1"><option value="2"><option value="3"><option value="Established"><option value="Connector"><option value="Backlog"></datalist>
+        <datalist id="dlChannel"><option value="X"><option value="LinkedIn"><option value="LinkedIn + apply"><option value="Apply"><option value="GitHub"></datalist>
+      </form>
+    </details>
+
+    <section class="list" id="oList" aria-live="polite"></section>
+  </div>
 </div>
 <div class="toast" id="toast" hidden></div>
 
@@ -520,5 +632,242 @@ render();
   db.doc("meta/run").onSnapshot(s => { state.meta = s.exists ? s.data() : null; render(); }, onErr);
   db.collection("chunks").onSnapshot(s => { state.chunks = Object.fromEntries(s.docs.map(d => [d.id, d.data()])); render(); }, onErr);
   db.collection("edits").onSnapshot(s => { state.edits = Object.fromEntries(s.docs.map(d => [d.id, d.data()])); render(); }, onErr);
+})();
+</script>
+
+<script>
+// Outreach: contacts live in the page database ("contacts"), one record
+// per company. The jobs code above is untouched; this only adds a view.
+const PLAN_MD = "# Outreach plan and message templates\n\nOwner: Oluwatobi Mayungbo, ML/AI Engineer (fraud, credit risk, forecasting, RAG). GitHub: github.com/MelvTheGoat\n\n## Two tracks\n- **Web3 (priority, remote only, no Nigeria-based companies).** Short casual X DMs that lead with something built. Before DMing, reply thoughtfully to 1-2 of the person's recent posts.\n- **Nigeria fintech/AI.** LinkedIn connection note, then the follow-up once they accept. For small startups message the CTO/technical co-founder; for big companies message a senior data scientist on the fraud/credit team, not the CEO.\n\n## Weekly plan\n1. Setup: LinkedIn headline \"ML Engineer | Fraud, Credit Risk & RAG Systems\", pin fraud + credit projects, fix CV cut-off lines (SQI bullet ends mid-sentence; fraud project runs into RAG title).\n2. Build the Polymarket calibration project (measure how well-calibrated Polymarket prices are on resolved markets, write up with a chart). It becomes the opening line for every Web3 forecasting message and a possible Kalshi builders grant.\n3. Week 1: Web3 Tier 1 + Nigeria Tier 1. 3-4 new contacts a day.\n4. Week 2: Tier 2 of both tracks; send follow-ups to anyone who accepted.\n5. Week 3: Established/Tier 3: apply on careers pages, then message someone on the relevant team saying you applied.\n6. Follow up once after ~7 days of no reply, then move on.\n7. Refill from the Backlog with another Grok batch when a tier runs dry.\nSuccess check: 3-5 real conversations per 20 contacts.\n\n## Verify before messaging\nAnything with a verify_note, \"(People tab)\", \"name unconfirmed\", or no handle: confirm name, spelling and role on LinkedIn/X first.\n\n## Templates (fill [Name], [Company], [focus])\n\n### web3_forecasting (X DM)\nHey [Name], big fan of what you're building with [Company].\n\nI'm an ML engineer focused on forecasting and calibration. I recently [built X, e.g. analyzed how well-calibrated Polymarket prices are across resolved markets: link]. Before that I built quantile forecasting and fraud models where getting probabilities right actually mattered (took calibration error from 0.0063 to 0.0005).\n\nWould love to help on the ML side at [Company], full-time, contract, or a trial task. Open to a quick chat?\n\nGitHub: github.com/MelvTheGoat\n\n### web3_fraud (X DM)\nHey [Name], been following [Company]'s work on [focus, e.g. Sybil detection / wallet scoring].\n\nI'm an ML engineer who builds fraud and risk models. Most relevant: a sequence-based fraud system (GRU, TCN, Transformer) over transaction histories that beat a strong LightGBM baseline, served at 5ms p99. Also built calibrated credit scoring with reason codes.\n\nOn-chain behavior is the same problem with better data, and I'd love to work on it with you. Full-time, contract, or a trial task, whatever works. Open to a quick chat?\n\nGitHub: github.com/MelvTheGoat\n\n### ng_linkedin — connection note (under 300 characters)\nHi [Name], I'm an ML engineer in Lagos building fraud and credit risk systems (sequence fraud models, calibrated credit decisioning). [Company]'s work on [focus] is exactly what I want to work on. Would love to connect.\n\n### ng_linkedin — follow-up after they accept\nThanks for connecting, [Name].\n\nI've been following [Company]'s work on [specific thing], and it lines up closely with what I've been building.\n\nMost relevant to you:\n- A sequence-based fraud detection system (GRU, TCN, Transformer) that beat a LightGBM baseline and cut expected cost per transaction by 27%, served via ONNX at 5 ms p99 latency\n- A credit decisioning system with calibrated default probabilities, adverse action reason codes, and a fairness audit\n- A RAG assistant over CBN circulars and the NDPA, deployed on GCP Cloud Run\n\nI have a Statistics degree from UI and currently teach ML at SQI College of ICT. GitHub: github.com/MelvTheGoat\n\nI'd really like to contribute to [Company]'s ML work, whether that's a full-time role, a contract, or a trial project. Would you be open to a 15-minute call, or could you point me to the right person on your team?\n\nThanks,\nOluwatobi\n\nBullet order: compliance companies (Youverify, Prembly, Pastel) lead with the RAG assistant; credit companies (Mida, Periculum, FairMoney) lead with credit decisioning; language AI (Awarri, Intron) lead with RAG.\n";
+const TEMPLATES = {"web3_forecasting": "Hey [Name], big fan of what you're building with [Company].\n\nI'm an ML engineer focused on forecasting and calibration. I recently [built X, e.g. analyzed how well-calibrated Polymarket prices are across resolved markets: link]. Before that I built quantile forecasting and fraud models where getting probabilities right actually mattered (took calibration error from 0.0063 to 0.0005).\n\nWould love to help on the ML side at [Company], full-time, contract, or a trial task. Open to a quick chat?\n\nGitHub: github.com/MelvTheGoat", "web3_fraud": "Hey [Name], been following [Company]'s work on [focus, e.g. Sybil detection / wallet scoring].\n\nI'm an ML engineer who builds fraud and risk models. Most relevant: a sequence-based fraud system (GRU, TCN, Transformer) over transaction histories that beat a strong LightGBM baseline, served at 5ms p99. Also built calibrated credit scoring with reason codes.\n\nOn-chain behavior is the same problem with better data, and I'd love to work on it with you. Full-time, contract, or a trial task, whatever works. Open to a quick chat?\n\nGitHub: github.com/MelvTheGoat", "ng_note": "Hi [Name], I'm an ML engineer in Lagos building fraud and credit risk systems (sequence fraud models, calibrated credit decisioning). [Company]'s work on [focus] is exactly what I want to work on. Would love to connect.", "ng_follow": "Thanks for connecting, [Name].\n\nI've been following [Company]'s work on [specific thing], and it lines up closely with what I've been building.\n\nMost relevant to you:\n- A sequence-based fraud detection system (GRU, TCN, Transformer) that beat a LightGBM baseline and cut expected cost per transaction by 27%, served via ONNX at 5 ms p99 latency\n- A credit decisioning system with calibrated default probabilities, adverse action reason codes, and a fairness audit\n- A RAG assistant over CBN circulars and the NDPA, deployed on GCP Cloud Run\n\nI have a Statistics degree from UI and currently teach ML at SQI College of ICT. GitHub: github.com/MelvTheGoat\n\nI'd really like to contribute to [Company]'s ML work, whether that's a full-time role, a contract, or a trial project. Would you be open to a 15-minute call, or could you point me to the right person on your team?\n\nThanks,\nOluwatobi"};
+const OST = [["verify","To verify"],["ready","Ready"],["warmed","Warmed up"],["requested","Request sent"],["connected","Connected"],["messaged","Messaged"],["replied","Replied"],["call","Call booked"],["noreply","No reply"],["notfit","Not a fit"]];
+const OST_TEXT = Object.fromEntries(OST);
+const CONTACTED = new Set(["requested","connected","messaged","replied","call","noreply"]);
+const CLOSED = new Set(["replied","call","noreply","notfit"]);
+const TRACK_ORDER = {Web3:0, Nigeria:1};
+const TIER_ORDER = {"1":1,"2":2,"Established":3,"3":4,"Connector":5,"Backlog":6};
+const GENERIC = /team|founders?\b|co-founders|program|\(|\blead\b|scientist|engineer|recruiter|partner|institute|\//i;
+const O = {contacts:{}, loaded:false, db:null, view:"jobs", tab:"all", q:"", track:"", tier:"", status:"", preview:{}, pending:false};
+
+const named = n => !!(n || "").trim() && !GENERIC.test(n);
+const addDays = (d, n) => { const t = new Date(d + "T00:00:00Z"); t.setUTCDate(t.getUTCDate() + n); return t.toISOString().slice(0,10); };
+const handle = h => (h || "").trim().replace(/^@/, "").replace(/[^A-Za-z0-9_]/g, "");
+const isDue = c => !!c.follow_up && c.follow_up <= today() && !CLOSED.has(c.status);
+const firstName = c => named(c.contact_name) ? c.contact_name.trim().split(/\s+/)[0] : "there";
+
+function sortKey(a, b){
+  return (TRACK_ORDER[a.track] ?? 9) - (TRACK_ORDER[b.track] ?? 9) || String(a.track).localeCompare(String(b.track)) ||
+    (TIER_ORDER[a.tier] ?? 9) - (TIER_ORDER[b.tier] ?? 9) ||
+    (a.rank ?? 999) - (b.rank ?? 999) || String(a.company).localeCompare(String(b.company));
+}
+
+function mdToHtml(md){
+  const out = []; let list = null, para = [], tpl = false;
+  const inline = s => esc(s).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>");
+  const flushP = () => { while (para.length && !para[0]) para.shift(); while (para.length && !para[para.length-1]) para.pop(); if (para.length) { out.push(`<p${tpl ? ' class="tpl"' : ""}>${para.map(inline).join("\n")}</p>`); para = []; } };
+  const flushL = () => { if (list) { out.push(`<${list.t}>${list.items.map(i => `<li>${inline(i)}</li>`).join("")}</${list.t}>`); list = null; } };
+  for (const line of md.split("\n")) {
+    let m;
+    if ((m = line.match(/^(#{1,3})\s+(.*)/))) { flushP(); flushL(); const h = {1:"h3",2:"h4",3:"h5"}[m[1].length]; out.push(`<${h}>${inline(m[2])}</${h}>`); tpl = m[1].length === 3; continue; }
+    if (!tpl && (m = line.match(/^\s*(-|\d+\.)\s+(.*)/))) { flushP(); const t = m[1] === "-" ? "ul" : "ol"; if (!list || list.t !== t) { flushL(); list = {t, items:[]}; } list.items.push(m[2]); continue; }
+    if (!line.trim()) { if (!tpl) { flushP(); flushL(); } else para.push(""); continue; }
+    if (tpl && /^Bullet order:/.test(line)) { while (para.length && !para[para.length-1]) para.pop(); flushP(); tpl = false; }
+    flushL(); para.push(line);
+  }
+  flushP(); flushL();
+  return out.join("");
+}
+
+function fill(key, c){
+  const t = TEMPLATES[key] || "";
+  return t.replaceAll("[Name]", firstName(c)).replaceAll("[Company]", c.company || "");
+}
+
+function oList(){
+  const q = O.q.trim().toLowerCase();
+  return Object.values(O.contacts).filter(c =>
+    (O.tab !== "due" || isDue(c)) &&
+    (!O.track || c.track === O.track) &&
+    (!O.tier || String(c.tier) === O.tier) &&
+    (!O.status || c.status === O.status) &&
+    (!q || `${c.company} ${c.contact_name} ${c.contact_role} ${c.what_they_do} ${c.contact_x} ${c.company_x} ${c.location}`.toLowerCase().includes(q))
+  ).sort(sortKey);
+}
+
+function oCard(c){
+  const id = c.id, due = isDue(c);
+  const person = named(c.contact_name) ? c.contact_name : "";
+  const opts = OST.map(([v,t]) => `<option value="${v}" ${v===c.status?"selected":""}>${t}</option>`).join("");
+  const xh = handle(c.contact_x) || handle(c.company_x);
+  const li = "https://www.linkedin.com/search/results/people/?keywords=" + encodeURIComponent(person ? `${person} ${c.company}` : `${c.company} data science`);
+  const late = due ? Math.round((new Date(today()) - new Date(c.follow_up)) / 864e5) : 0;
+  const trackCls = c.track === "Web3" ? "p-web3" : c.track === "Nigeria" ? "p-nigeria-track" : "p-tier";
+  let copy = "";
+  if (c.template === "ng_linkedin") copy = `<button class="btn ocopy" data-t="ng_note">Copy connection note</button><button class="btn ocopy" data-t="ng_follow">Copy follow-up</button>`;
+  else if (TEMPLATES[c.template]) copy = `<button class="btn ocopy" data-t="${esc(c.template)}">Copy message</button>`;
+  const pv = O.preview[id];
+  return `<article class="oc${due ? " is-due" : ""}" data-id="${esc(id)}">
+    <div class="oc-head">
+      <div>
+        <h2>${esc(c.company)}</h2>
+        <div class="meta"><span class="pill ${trackCls}">${esc(c.track)}</span>${c.tier ? `<span class="pill p-tier">${/^\d+$/.test(c.tier) ? "Tier " : ""}${esc(c.tier)}</span>` : ""}${c.rank ? `<span>#${esc(c.rank)}</span>` : ""}${c.location ? `<span>${esc(c.location)}</span>` : ""}${due ? `<span class="pill p-due">${late ? `Follow up ${late} day${late>1?"s":""} late` : "Follow up today"}</span>` : ""}</div>
+      </div>
+      <select class="ostatus os-${esc(c.status)}" aria-label="Status for ${esc(c.company)}">${opts}</select>
+    </div>
+    ${c.what_they_do ? `<p class="why">${esc(c.what_they_do)}</p>` : ""}
+    <dl class="facts">
+      <div class="fact"><dt>Contact</dt><dd>${esc(c.contact_name || "No one named yet")}${c.contact_role ? ` · ${esc(c.contact_role)}` : ""}${c.contact_x ? ` <span class="h">${esc(c.contact_x)}</span>` : ""}</dd></div>
+      <div class="fact"><dt>Channel</dt><dd>${esc(c.channel || "Not set")}${c.template ? ` <span class="h">${esc(c.template)}</span>` : ""}</dd></div>
+      <div class="fact"><dt>Funding</dt><dd>${esc(c.funding_stage || "Not known")}</dd></div>
+      <div class="fact"><dt>Hiring signal</dt><dd>${esc(c.hiring_signal || "Not known")}</dd></div>
+    </dl>
+    ${c.verify_note ? `<p class="verify"><b>Verify:</b> ${esc(c.verify_note)}</p>` : ""}
+    <div class="oc-tools">
+      ${xh ? `<a class="btn" href="https://x.com/${esc(xh)}" target="_blank" rel="noopener">Open X${c.contact_x ? "" : " (company)"} ↗</a>` : ""}
+      <a class="btn" href="${esc(li)}" target="_blank" rel="noopener">Find on LinkedIn ↗</a>
+      ${copy}
+    </div>
+    ${pv ? `<pre class="letter-text opv">${esc(pv)}</pre>` : ""}
+    <div class="odates">
+      <label>Messaged on<input type="date" class="odate" data-f="messaged_at" value="${esc(c.messaged_at || "")}"></label>
+      <label>Follow up on<input type="date" class="odate" data-f="follow_up" value="${esc(c.follow_up || "")}"></label>
+      ${c.status_at ? `<span class="hint">Status set ${esc(c.status_at)}</span>` : ""}
+    </div>
+    <textarea class="onote" aria-label="Notes for ${esc(c.company)}" placeholder="Notes: what you sent, what they said, next step">${esc(c.notes || "")}</textarea>
+  </article>`;
+}
+
+function selectOpts(el, first, values, cur, label = v => v){
+  el.innerHTML = `<option value="">${first}</option>` + values.map(v => `<option value="${esc(v)}" ${v===cur?"selected":""}>${esc(label(v))}</option>`).join("");
+}
+
+function renderOut(){
+  const all = Object.values(O.contacts);
+  const dueN = all.filter(isDue).length;
+  const b = document.getElementById("dueBadge");
+  if (b) { b.textContent = dueN ? `${dueN} due` : (all.length || ""); b.className = "c" + (dueN ? " due" : ""); }
+  if (O.view !== "out") return;
+  const a = document.activeElement;
+  if (a && a.tagName === "TEXTAREA" && a.closest("#oList")) { O.pending = true; return; }
+  O.pending = false;
+  const n = s => all.filter(c => s(c)).length;
+  const tiles = [
+    ["Contacts", all.length], ["To verify", n(c => c.status === "verify")], ["Ready", n(c => c.status === "ready")],
+    ["Contacted", n(c => CONTACTED.has(c.status))], ["Replied", n(c => c.status === "replied" || c.status === "call")],
+    ["Calls booked", n(c => c.status === "call")], ["Follow up due", dueN, "due"],
+  ];
+  document.getElementById("oCount").innerHTML = tiles.map(([l, v, k]) => k
+    ? `<button class="stage ${v ? "due" : ""}" data-otab="due"><span class="n">${v}</span><span class="l">${l}</span></button>`
+    : `<div class="stage static"><span class="n">${v}</span><span class="l">${l}</span></div>`).join("");
+  document.getElementById("oTabs").innerHTML = [["all","All contacts",all.length],["due","Follow up due",dueN]]
+    .map(([id,t,c]) => `<button class="tab" role="tab" data-otab="${id}" aria-selected="${O.tab===id}">${t}<span class="c">${c}</span></button>`).join("");
+  const tracks = [...new Set(all.map(c => c.track).filter(Boolean))].sort((x,y) => (TRACK_ORDER[x] ?? 9) - (TRACK_ORDER[y] ?? 9) || x.localeCompare(y));
+  const tiers = [...new Set(all.filter(c => !O.track || c.track === O.track).map(c => String(c.tier || "")).filter(Boolean))].sort((x,y) => (TIER_ORDER[x] ?? 9) - (TIER_ORDER[y] ?? 9) || x.localeCompare(y));
+  if (O.tier && !tiers.includes(O.tier)) O.tier = "";
+  selectOpts(document.getElementById("oTrack"), "Both tracks", tracks, O.track);
+  selectOpts(document.getElementById("oTier"), "Any tier", tiers, O.tier, v => /^\d+$/.test(v) ? "Tier " + v : v);
+  selectOpts(document.getElementById("oStatus"), "Any status", OST.map(s => s[0]), O.status, v => OST_TEXT[v]);
+  const list = oList();
+  document.getElementById("oList").innerHTML = list.length ? list.map(oCard).join("")
+    : `<div class="empty">${O.noDb ? "Open this page on claude.ai to load your contacts." : !O.loaded ? "Loading contacts…" : O.tab === "due" ? "Nothing due. Contacts show here 7 days after you mark them Messaged." : "No contacts match these filters."}</div>`;
+}
+
+function setView(v){
+  O.view = v; try { localStorage.setItem("view", v); } catch(_) {}
+  document.getElementById("jobsView").hidden = v !== "jobs";
+  document.getElementById("outView").hidden = v !== "out";
+  document.getElementById("run").hidden = v !== "jobs";
+  document.querySelector("header .sub").textContent = v === "jobs"
+    ? "ML and AI roles from company boards and job sites, scored against your CV. You apply yourself."
+    : "People to reach at Web3 and Nigerian fintech and AI companies. Verify, warm up, message, follow up once.";
+  for (const t of document.querySelectorAll("#viewSwitch .tab")) t.setAttribute("aria-selected", t.dataset.view === v);
+  renderOut();
+}
+
+async function saveContact(id, patch){
+  const c = O.contacts[id]; if (!c) return;
+  if (!O.db) { toast("Open this page on claude.ai to save"); return; }
+  patch.updated_at = stamp();
+  O.contacts[id] = {...c, ...patch};
+  renderOut();
+  try { await O.db.doc("contacts/" + id).update(patch); toast("Saved"); }
+  catch(e){ toast(e && e.code === "invalid_argument" ? "You can view this page but not change it" : "Could not save. Try again in a moment."); }
+}
+
+function copyText(id, text){
+  const left = text.match(/\[[^\]]+\]/g);
+  const msg = left ? `Copied. Fill in ${[...new Set(left)].join(", ")} before sending` : "Message copied";
+  navigator.clipboard.writeText(text).then(() => { delete O.preview[id]; renderOut(); toast(msg); }).catch(() => {
+    O.preview[id] = text; renderOut();
+    const pre = document.querySelector(`.oc[data-id="${CSS.escape(id)}"] .opv`);
+    if (pre) { const r = document.createRange(); r.selectNodeContents(pre); const s = getSelection(); s.removeAllRanges(); s.addRange(r); }
+    toast("Selected. Press copy.");
+  });
+}
+
+document.addEventListener("click", e => {
+  const t = e.target.closest("button"); if (!t) return;
+  if (t.dataset.view) { setView(t.dataset.view); return; }
+  if (t.dataset.otab) { O.tab = t.dataset.otab; renderOut(); return; }
+  const card = t.closest(".oc"); if (!card) return;
+  const c = O.contacts[card.dataset.id]; if (!c) return;
+  if (t.classList.contains("ocopy")) copyText(c.id, fill(t.dataset.t, c));
+});
+document.addEventListener("change", e => {
+  const el = e.target;
+  if (el.id === "oTrack") { O.track = el.value; renderOut(); return; }
+  if (el.id === "oTier") { O.tier = el.value; renderOut(); return; }
+  if (el.id === "oStatus") { O.status = el.value; renderOut(); return; }
+  const card = el.closest(".oc"); if (!card) return;
+  const id = card.dataset.id;
+  if (el.classList.contains("ostatus")) {
+    const patch = {status: el.value, status_at: today()};
+    if (el.value === "messaged") { patch.messaged_at = today(); patch.follow_up = addDays(today(), 7); }
+    saveContact(id, patch);
+  }
+  if (el.classList.contains("odate")) saveContact(id, {[el.dataset.f]: el.value});
+});
+document.addEventListener("focusout", e => {
+  const el = e.target; if (!el.classList || !el.classList.contains("onote")) return;
+  const id = el.closest(".oc").dataset.id;
+  if (el.value !== (O.contacts[id].notes || "")) saveContact(id, {notes: el.value});
+  else if (O.pending) setTimeout(renderOut, 0);
+});
+document.getElementById("oq").addEventListener("input", e => { O.q = e.target.value; renderOut(); });
+
+document.getElementById("addForm").addEventListener("submit", async e => {
+  e.preventDefault();
+  if (!O.db) { toast("Open this page on claude.ai to save"); return; }
+  const f = Object.fromEntries(new FormData(e.target).entries());
+  for (const k in f) f[k] = String(f[k]).trim();
+  if (!f.company) return;
+  const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 50);
+  const id = `${slug(f.track || "other")}-${slug(f.company)}-${Date.now().toString(36)}`;
+  const doc = {track: f.track || "Other", tier: f.tier || "", rank: f.rank ? +f.rank : null, company: f.company,
+    what_they_do: f.what_they_do || "", location: f.location || "", company_x: f.company_x || "", contact_name: f.contact_name || "",
+    contact_x: f.contact_x || "", contact_role: f.contact_role || "", channel: f.channel || "", template: f.template || "",
+    funding_stage: f.funding_stage || "", hiring_signal: f.hiring_signal || "", verify_note: f.verify_note || "",
+    status: (f.verify_note || !named(f.contact_name)) ? "verify" : "ready", notes: "", messaged_at: "", follow_up: "", status_at: "",
+    source: "form", created_at: stamp(), updated_at: stamp()};
+  try {
+    await O.db.doc("contacts/" + id).set(doc);
+    O.contacts[id] = {id, ...doc};
+    e.target.reset(); e.target.track.value = doc.track;
+    renderOut(); toast(`Added ${doc.company}`);
+  } catch(err) { toast(err && err.code === "quota_exceeded" ? "The page database is full" : "Could not add. Try again in a moment."); }
+});
+
+document.getElementById("planBody").innerHTML = mdToHtml(PLAN_MD);
+let startView = "jobs"; try { startView = localStorage.getItem("view") === "out" ? "out" : "jobs"; } catch(_) {}
+setView(startView);
+
+(async () => {
+  const db = window.claude && await window.claude.use("db");
+  if (!db) { O.noDb = true; renderOut(); return; }
+  O.db = db;
+  db.collection("contacts").onSnapshot(s => {
+    O.contacts = Object.fromEntries(s.docs.map(d => [d.id, {id: d.id, ...d.data()}]));
+    O.loaded = true; renderOut();
+  }, err => { if (err && err.code === "revoked") { O.db = null; O.noDb = true; renderOut(); } });
 })();
 </script>
