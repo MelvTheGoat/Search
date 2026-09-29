@@ -176,7 +176,7 @@ label.fit output{font:600 13px var(--mono);color:var(--ink);min-width:2ch}
 #addForm .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
 #addForm label{display:grid;gap:4px;font-size:12px;color:var(--muted);font-weight:600}
 #addForm .wide{grid-column:1 / -1}
-#outView input[type=text],#outView input[type=number],#outView input[type=date],#outView textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;width:100%;min-width:0}
+#outView input[type=text],#outView input[type=number],#outView input[type=date],#outView input[type=email],#outView textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;width:100%;min-width:0}
 #outView textarea{min-height:56px;resize:vertical;font-size:14px}
 .oc{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;display:grid;gap:10px}
 .oc.is-due{border-color:var(--bad)}
@@ -200,6 +200,13 @@ label.fit output{font:600 13px var(--mono);color:var(--ink);min-width:2ch}
 .os-messaged,.os-replied,.os-call,.os-connected{border-color:var(--accent);color:var(--accent);font-weight:600}
 .os-verify{border-color:var(--warn);color:var(--warn)}
 .os-noreply,.os-notfit{color:var(--muted)}
+.p-batch{background:var(--warn-soft);color:var(--warn)}
+.email-box{display:grid;gap:8px;border-top:1px solid var(--line);padding-top:10px}
+.email-box .subj{font:600 14px var(--body);margin:0;overflow-wrap:anywhere}
+.email-box .subj span{font:600 11px var(--body);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-right:6px}
+.email-box pre{white-space:pre-wrap;overflow-wrap:anywhere;font:14px/1.55 var(--body);background:var(--sunk);padding:12px;border-radius:8px;margin:0;max-height:340px;overflow:auto}
+.email-row{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:6px;align-items:end}
+.email-row label{display:grid;gap:4px;font-size:12px;color:var(--muted);font-weight:600}
 @media (max-width:760px){
   .counters{grid-template-columns:repeat(4,minmax(0,1fr))}
   .counters .stage .l{overflow-wrap:normal;letter-spacing:0;font-size:9.5px}
@@ -210,6 +217,9 @@ label.fit output{font:600 13px var(--mono);color:var(--ink);min-width:2ch}
   #outView textarea,#outView input{font-size:16px}
   .switch{justify-self:stretch}
   .switch .tab{flex:1}
+  .email-row{grid-template-columns:1fr 1fr}
+  .email-row label{grid-column:1 / -1}
+  .email-row .btn{min-height:44px}
 }
 </style>
 
@@ -257,7 +267,7 @@ label.fit output{font:600 13px var(--mono);color:var(--ink);min-width:2ch}
   <div class="view" id="outView" hidden>
     <div class="counters" id="oCount" aria-label="Outreach totals"></div>
 
-    <details class="panel" id="planPanel"><summary>Plan and message templates <span class="hint">Weekly plan, what to verify, all four templates</span></summary><div class="plan" id="planBody"></div></details>
+    <details class="panel" id="planPanel"><summary>Plan and message templates <span class="hint">Weekly plan, what to verify, all templates, cold email send rules</span></summary><div class="plan" id="planBody"></div></details>
 
     <div class="bar">
       <div class="tabs" role="tablist" id="oTabs"></div>
@@ -284,12 +294,14 @@ label.fit output{font:600 13px var(--mono);color:var(--ink);min-width:2ch}
           <label>Template<select name="template"><option value="web3_forecasting">web3_forecasting (X DM)</option><option value="web3_fraud">web3_fraud (X DM)</option><option value="ng_linkedin">ng_linkedin (LinkedIn)</option><option value="">None</option></select></label>
           <label>Funding<input type="text" name="funding_stage"></label>
           <label>Hiring signal<input type="text" name="hiring_signal"></label>
+          <label>Email address<input type="email" name="email" placeholder="Optional"></label>
+          <label>Send batch<input type="text" name="batch" placeholder="Optional, e.g. 4"></label>
           <label class="wide">Verify note<input type="text" name="verify_note" placeholder="Anything to check before messaging"></label>
         </div>
         <div class="bar"><button class="btn primary" type="submit">Add contact</button><span class="hint" style="font-size:13px;color:var(--muted)">It starts as To verify if it has a verify note or no named person, otherwise Ready.</span></div>
         <datalist id="dlTrack"><option value="Web3"><option value="Nigeria"></datalist>
-        <datalist id="dlTier"><option value="1"><option value="2"><option value="3"><option value="Established"><option value="Connector"><option value="Backlog"></datalist>
-        <datalist id="dlChannel"><option value="X"><option value="LinkedIn"><option value="LinkedIn + apply"><option value="Apply"><option value="GitHub"></datalist>
+        <datalist id="dlTier"><option value="Cold email"><option value="1"><option value="2"><option value="3"><option value="Established"><option value="Connector"><option value="Backlog"></datalist>
+        <datalist id="dlChannel"><option value="Email"><option value="X"><option value="LinkedIn"><option value="LinkedIn + apply"><option value="Apply"><option value="GitHub"></datalist>
       </form>
     </details>
 
@@ -638,14 +650,14 @@ render();
 <script>
 // Outreach: contacts live in the page database ("contacts"), one record
 // per company. The jobs code above is untouched; this only adds a view.
-const PLAN_MD = "# Outreach plan and message templates\n\nOwner: Oluwatobi Mayungbo, ML/AI Engineer (fraud, credit risk, forecasting, RAG). GitHub: github.com/MelvTheGoat\n\n## Two tracks\n- **Web3 (priority, remote only, no Nigeria-based companies).** Short casual X DMs that lead with something built. Before DMing, reply thoughtfully to 1-2 of the person's recent posts.\n- **Nigeria fintech/AI.** LinkedIn connection note, then the follow-up once they accept. For small startups message the CTO/technical co-founder; for big companies message a senior data scientist on the fraud/credit team, not the CEO.\n\n## Weekly plan\n1. Setup: LinkedIn headline \"ML Engineer | Fraud, Credit Risk & RAG Systems\", pin fraud + credit projects, fix CV cut-off lines (SQI bullet ends mid-sentence; fraud project runs into RAG title).\n2. Build the Polymarket calibration project (measure how well-calibrated Polymarket prices are on resolved markets, write up with a chart). It becomes the opening line for every Web3 forecasting message and a possible Kalshi builders grant.\n3. Week 1: Web3 Tier 1 + Nigeria Tier 1. 3-4 new contacts a day.\n4. Week 2: Tier 2 of both tracks; send follow-ups to anyone who accepted.\n5. Week 3: Established/Tier 3: apply on careers pages, then message someone on the relevant team saying you applied.\n6. Follow up once after ~7 days of no reply, then move on.\n7. Refill from the Backlog with another Grok batch when a tier runs dry.\nSuccess check: 3-5 real conversations per 20 contacts.\n\n## Verify before messaging\nAnything with a verify_note, \"(People tab)\", \"name unconfirmed\", or no handle: confirm name, spelling and role on LinkedIn/X first.\n\n## Templates (fill [Name], [Company], [focus])\n\n### web3_forecasting (X DM)\nHey [Name], big fan of what you're building with [Company].\n\nI'm an ML engineer focused on forecasting and calibration. I recently [built X, e.g. analyzed how well-calibrated Polymarket prices are across resolved markets: link]. Before that I built quantile forecasting and fraud models where getting probabilities right actually mattered (took calibration error from 0.0063 to 0.0005).\n\nWould love to help on the ML side at [Company], full-time, contract, or a trial task. Open to a quick chat?\n\nGitHub: github.com/MelvTheGoat\n\n### web3_fraud (X DM)\nHey [Name], been following [Company]'s work on [focus, e.g. Sybil detection / wallet scoring].\n\nI'm an ML engineer who builds fraud and risk models. Most relevant: a sequence-based fraud system (GRU, TCN, Transformer) over transaction histories that beat a strong LightGBM baseline, served at 5ms p99. Also built calibrated credit scoring with reason codes.\n\nOn-chain behavior is the same problem with better data, and I'd love to work on it with you. Full-time, contract, or a trial task, whatever works. Open to a quick chat?\n\nGitHub: github.com/MelvTheGoat\n\n### ng_linkedin — connection note (under 300 characters)\nHi [Name], I'm an ML engineer in Lagos building fraud and credit risk systems (sequence fraud models, calibrated credit decisioning). [Company]'s work on [focus] is exactly what I want to work on. Would love to connect.\n\n### ng_linkedin — follow-up after they accept\nThanks for connecting, [Name].\n\nI've been following [Company]'s work on [specific thing], and it lines up closely with what I've been building.\n\nMost relevant to you:\n- A sequence-based fraud detection system (GRU, TCN, Transformer) that beat a LightGBM baseline and cut expected cost per transaction by 27%, served via ONNX at 5 ms p99 latency\n- A credit decisioning system with calibrated default probabilities, adverse action reason codes, and a fairness audit\n- A RAG assistant over CBN circulars and the NDPA, deployed on GCP Cloud Run\n\nI have a Statistics degree from UI and currently teach ML at SQI College of ICT. GitHub: github.com/MelvTheGoat\n\nI'd really like to contribute to [Company]'s ML work, whether that's a full-time role, a contract, or a trial project. Would you be open to a 15-minute call, or could you point me to the right person on your team?\n\nThanks,\nOluwatobi\n\nBullet order: compliance companies (Youverify, Prembly, Pastel) lead with the RAG assistant; credit companies (Mida, Periculum, FairMoney) lead with credit decisioning; language AI (Awarri, Intron) lead with RAG.\n";
+const PLAN_MD = "# Outreach plan and message templates\n\nOwner: Oluwatobi Mayungbo, ML/AI Engineer (fraud, credit risk, forecasting, RAG). GitHub: github.com/MelvTheGoat\n\n## Two tracks\n- **Web3 (priority, remote only, no Nigeria-based companies).** Short casual X DMs that lead with something built. Before DMing, reply thoughtfully to 1-2 of the person's recent posts.\n- **Nigeria fintech/AI.** LinkedIn connection note, then the follow-up once they accept. For small startups message the CTO/technical co-founder; for big companies message a senior data scientist on the fraud/credit team, not the CEO.\n\n## Weekly plan\n1. Setup: LinkedIn headline \"ML Engineer | Fraud, Credit Risk & RAG Systems\", pin fraud + credit projects, fix CV cut-off lines (SQI bullet ends mid-sentence; fraud project runs into RAG title).\n2. Build the Polymarket calibration project (measure how well-calibrated Polymarket prices are on resolved markets, write up with a chart). It becomes the opening line for every Web3 forecasting message and a possible Kalshi builders grant.\n3. Week 1: Web3 Tier 1 + Nigeria Tier 1. 3-4 new contacts a day.\n4. Week 2: Tier 2 of both tracks; send follow-ups to anyone who accepted.\n5. Week 3: Established/Tier 3: apply on careers pages, then message someone on the relevant team saying you applied.\n6. Follow up once after ~7 days of no reply, then move on.\n7. Refill from the Backlog with another Grok batch when a tier runs dry.\nSuccess check: 3-5 real conversations per 20 contacts.\n\n## Verify before messaging\nAnything with a verify_note, \"(People tab)\", \"name unconfirmed\", or no handle: confirm name, spelling and role on LinkedIn/X first.\n\n## Templates (fill [Name], [Company], [focus])\n\n### web3_forecasting (X DM)\nHey [Name], big fan of what you're building with [Company].\n\nI'm an ML engineer focused on forecasting and calibration. I recently [built X, e.g. analyzed how well-calibrated Polymarket prices are across resolved markets: link]. Before that I built quantile forecasting and fraud models where getting probabilities right actually mattered (took calibration error from 0.0063 to 0.0005).\n\nWould love to help on the ML side at [Company], full-time, contract, or a trial task. Open to a quick chat?\n\nGitHub: github.com/MelvTheGoat\n\n### web3_fraud (X DM)\nHey [Name], been following [Company]'s work on [focus, e.g. Sybil detection / wallet scoring].\n\nI'm an ML engineer who builds fraud and risk models. Most relevant: a sequence-based fraud system (GRU, TCN, Transformer) over transaction histories that beat a strong LightGBM baseline, served at 5ms p99. Also built calibrated credit scoring with reason codes.\n\nOn-chain behavior is the same problem with better data, and I'd love to work on it with you. Full-time, contract, or a trial task, whatever works. Open to a quick chat?\n\nGitHub: github.com/MelvTheGoat\n\n### ng_linkedin — connection note (under 300 characters)\nHi [Name], I'm an ML engineer in Lagos building fraud and credit risk systems (sequence fraud models, calibrated credit decisioning). [Company]'s work on [focus] is exactly what I want to work on. Would love to connect.\n\n### ng_linkedin — follow-up after they accept\nThanks for connecting, [Name].\n\nI've been following [Company]'s work on [specific thing], and it lines up closely with what I've been building.\n\nMost relevant to you:\n- A sequence-based fraud detection system (GRU, TCN, Transformer) that beat a LightGBM baseline and cut expected cost per transaction by 27%, served via ONNX at 5 ms p99 latency\n- A credit decisioning system with calibrated default probabilities, adverse action reason codes, and a fairness audit\n- A RAG assistant over CBN circulars and the NDPA, deployed on GCP Cloud Run\n\nI have a Statistics degree from UI and currently teach ML at SQI College of ICT. GitHub: github.com/MelvTheGoat\n\nI'd really like to contribute to [Company]'s ML work, whether that's a full-time role, a contract, or a trial project. Would you be open to a 15-minute call, or could you point me to the right person on your team?\n\nThanks,\nOluwatobi\n\nBullet order: compliance companies (Youverify, Prembly, Pastel) lead with the RAG assistant; credit companies (Mida, Periculum, FairMoney) lead with credit decisioning; language AI (Awarri, Intron) lead with RAG.\n\n## Cold email (Nigeria)\nPersonal emails asking for advice, sent from Gmail. Contacts with a written email start as Ready; the 3 PENDING ones stay To verify until their LinkedIn profile is recorded. Mark a contact Messaged when sent and the follow-up date is set 7 days later.\n\n### cold_email (Email)\nSubject: Learning about your experience at {company}\n\nHi {first_name},\n\nI hope you're well. My name is Oluwatobi Mayungbo, and {opening}. {hook}\n\nI'm early in my career, and I'd love any insights on {question}\n\nFor a bit of background, I'm a machine learning engineer looking for a role in {field}, and I'd really value your advice as I go through that search.\n\nWould you be open to a quick 15-minute virtual call? Any day next week works for me, and I'm happy to fit around your schedule. I'd love to learn more about {company}'s culture.\n\nThank you, and have a great rest of your day.\n\nBest,\nOluwatobi Mayungbo\nlinkedin.com/in/oluwatobi-mayungbo-3a567026b\n\n## Opening options\n- A = \"I recently sent you a connection request on LinkedIn\"\n- B = \"I came across your profile on LinkedIn\"\n\n## Send batches\n- Batch 1: Wednesday 30 Sep, 8-10am\n- Batch 2: Tuesday 6 Oct, 8-10am\n- Batch 3: Wednesday 7 Oct, 8-10am\n\n## Send rules\n- Send each email on its own from Gmail, a few minutes apart.\n- Only use Apollo \"Verified\" emails.\n- No attachments.\n- No tracking.\n- Paste as plain text.\n- Follow up once in the same thread after 5 working days.\n";
 const TEMPLATES = {"web3_forecasting": "Hey [Name], big fan of what you're building with [Company].\n\nI'm an ML engineer focused on forecasting and calibration. I recently [built X, e.g. analyzed how well-calibrated Polymarket prices are across resolved markets: link]. Before that I built quantile forecasting and fraud models where getting probabilities right actually mattered (took calibration error from 0.0063 to 0.0005).\n\nWould love to help on the ML side at [Company], full-time, contract, or a trial task. Open to a quick chat?\n\nGitHub: github.com/MelvTheGoat", "web3_fraud": "Hey [Name], been following [Company]'s work on [focus, e.g. Sybil detection / wallet scoring].\n\nI'm an ML engineer who builds fraud and risk models. Most relevant: a sequence-based fraud system (GRU, TCN, Transformer) over transaction histories that beat a strong LightGBM baseline, served at 5ms p99. Also built calibrated credit scoring with reason codes.\n\nOn-chain behavior is the same problem with better data, and I'd love to work on it with you. Full-time, contract, or a trial task, whatever works. Open to a quick chat?\n\nGitHub: github.com/MelvTheGoat", "ng_note": "Hi [Name], I'm an ML engineer in Lagos building fraud and credit risk systems (sequence fraud models, calibrated credit decisioning). [Company]'s work on [focus] is exactly what I want to work on. Would love to connect.", "ng_follow": "Thanks for connecting, [Name].\n\nI've been following [Company]'s work on [specific thing], and it lines up closely with what I've been building.\n\nMost relevant to you:\n- A sequence-based fraud detection system (GRU, TCN, Transformer) that beat a LightGBM baseline and cut expected cost per transaction by 27%, served via ONNX at 5 ms p99 latency\n- A credit decisioning system with calibrated default probabilities, adverse action reason codes, and a fairness audit\n- A RAG assistant over CBN circulars and the NDPA, deployed on GCP Cloud Run\n\nI have a Statistics degree from UI and currently teach ML at SQI College of ICT. GitHub: github.com/MelvTheGoat\n\nI'd really like to contribute to [Company]'s ML work, whether that's a full-time role, a contract, or a trial project. Would you be open to a 15-minute call, or could you point me to the right person on your team?\n\nThanks,\nOluwatobi"};
 const OST = [["verify","To verify"],["ready","Ready"],["warmed","Warmed up"],["requested","Request sent"],["connected","Connected"],["messaged","Messaged"],["replied","Replied"],["call","Call booked"],["noreply","No reply"],["notfit","Not a fit"]];
 const OST_TEXT = Object.fromEntries(OST);
 const CONTACTED = new Set(["requested","connected","messaged","replied","call","noreply"]);
 const CLOSED = new Set(["replied","call","noreply","notfit"]);
 const TRACK_ORDER = {Web3:0, Nigeria:1};
-const TIER_ORDER = {"1":1,"2":2,"Established":3,"3":4,"Connector":5,"Backlog":6};
+const TIER_ORDER = {"Cold email":0,"1":1,"2":2,"Established":3,"3":4,"Connector":5,"Backlog":6};
 const GENERIC = /team|founders?\b|co-founders|program|\(|\blead\b|scientist|engineer|recruiter|partner|institute|\//i;
 const O = {contacts:{}, loaded:false, db:null, view:"jobs", tab:"all", q:"", track:"", tier:"", status:"", preview:{}, pending:false};
 
@@ -653,6 +665,7 @@ const named = n => !!(n || "").trim() && !GENERIC.test(n);
 const addDays = (d, n) => { const t = new Date(d + "T00:00:00Z"); t.setUTCDate(t.getUTCDate() + n); return t.toISOString().slice(0,10); };
 const handle = h => (h || "").trim().replace(/^@/, "").replace(/[^A-Za-z0-9_]/g, "");
 const isDue = c => !!c.follow_up && c.follow_up <= today() && !CLOSED.has(c.status);
+const EMAIL_OK = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const firstName = c => named(c.contact_name) ? c.contact_name.trim().split(/\s+/)[0] : "there";
 
 function sortKey(a, b){
@@ -690,7 +703,7 @@ function oList(){
     (!O.track || c.track === O.track) &&
     (!O.tier || String(c.tier) === O.tier) &&
     (!O.status || c.status === O.status) &&
-    (!q || `${c.company} ${c.contact_name} ${c.contact_role} ${c.what_they_do} ${c.contact_x} ${c.company_x} ${c.location}`.toLowerCase().includes(q))
+    (!q || `${c.company} ${c.contact_name} ${c.contact_role} ${c.what_they_do} ${c.contact_x} ${c.company_x} ${c.location} ${c.email || ""}`.toLowerCase().includes(q))
   ).sort(sortKey);
 }
 
@@ -706,11 +719,22 @@ function oCard(c){
   if (c.template === "ng_linkedin") copy = `<button class="btn ocopy" data-t="ng_note">Copy connection note</button><button class="btn ocopy" data-t="ng_follow">Copy follow-up</button>`;
   else if (TEMPLATES[c.template]) copy = `<button class="btn ocopy" data-t="${esc(c.template)}">Copy message</button>`;
   const pv = O.preview[id];
+  const cold = c.template === "cold_email";
+  if (cold) copy = "";
+  const addr = EMAIL_OK.test(c.email || "") ? c.email.trim() : "";
+  const mail = cold && c.email_body ? `mailto:${addr}?subject=${encodeURIComponent(c.email_subject || "")}&body=${encodeURIComponent(c.email_body)}` : "";
+  const coldBox = !cold ? "" : `<div class="email-box">
+      <div class="email-row">
+        <label>Email address<input type="email" class="oemail" value="${esc(c.email || "")}" placeholder="Add from Apollo (Verified only)" autocomplete="off"></label>
+        ${c.email_body ? `<button class="btn ecopy">Copy email</button><a class="btn primary" href="${esc(mail)}">Open in Gmail ↗</a>` : ""}
+      </div>
+      ${c.email_body ? `<p class="subj"><span>Subject</span>${esc(c.email_subject)}</p><pre>${esc(c.email_body)}</pre>` : `<p class="ev">No email written yet. Record the LinkedIn profile first.</p>`}
+    </div>`;
   return `<article class="oc${due ? " is-due" : ""}" data-id="${esc(id)}">
     <div class="oc-head">
       <div>
         <h2>${esc(c.company)}</h2>
-        <div class="meta"><span class="pill ${trackCls}">${esc(c.track)}</span>${c.tier ? `<span class="pill p-tier">${/^\d+$/.test(c.tier) ? "Tier " : ""}${esc(c.tier)}</span>` : ""}${c.rank ? `<span>#${esc(c.rank)}</span>` : ""}${c.location ? `<span>${esc(c.location)}</span>` : ""}${due ? `<span class="pill p-due">${late ? `Follow up ${late} day${late>1?"s":""} late` : "Follow up today"}</span>` : ""}</div>
+        <div class="meta"><span class="pill ${trackCls}">${esc(c.track)}</span>${c.tier ? `<span class="pill p-tier">${/^\d+$/.test(c.tier) ? "Tier " : ""}${esc(c.tier)}</span>` : ""}${c.rank ? `<span>#${esc(c.rank)}</span>` : ""}${c.batch ? `<span class="pill p-batch">Batch ${esc(c.batch)}${c.batch_send ? ` · ${esc(c.batch_send)}` : ""}</span>` : ""}${c.location ? `<span>${esc(c.location)}</span>` : ""}${due ? `<span class="pill p-due">${late ? `Follow up ${late} day${late>1?"s":""} late` : "Follow up today"}</span>` : ""}</div>
       </div>
       <select class="ostatus os-${esc(c.status)}" aria-label="Status for ${esc(c.company)}">${opts}</select>
     </div>
@@ -727,6 +751,7 @@ function oCard(c){
       <a class="btn" href="${esc(li)}" target="_blank" rel="noopener">Find on LinkedIn ↗</a>
       ${copy}
     </div>
+    ${coldBox}
     ${pv ? `<pre class="letter-text opv">${esc(pv)}</pre>` : ""}
     <div class="odates">
       <label>Messaged on<input type="date" class="odate" data-f="messaged_at" value="${esc(c.messaged_at || "")}"></label>
@@ -812,6 +837,7 @@ document.addEventListener("click", e => {
   const card = t.closest(".oc"); if (!card) return;
   const c = O.contacts[card.dataset.id]; if (!c) return;
   if (t.classList.contains("ocopy")) copyText(c.id, fill(t.dataset.t, c));
+  if (t.classList.contains("ecopy")) copyText(c.id, `Subject: ${c.email_subject}\n\n${c.email_body}`);
 });
 document.addEventListener("change", e => {
   const el = e.target;
@@ -826,6 +852,11 @@ document.addEventListener("change", e => {
     saveContact(id, patch);
   }
   if (el.classList.contains("odate")) saveContact(id, {[el.dataset.f]: el.value});
+  if (el.classList.contains("oemail")) {
+    const v = el.value.trim();
+    if (v && !EMAIL_OK.test(v)) { toast("That does not look like an email address"); return; }
+    saveContact(id, {email: v});
+  }
 });
 document.addEventListener("focusout", e => {
   const el = e.target; if (!el.classList || !el.classList.contains("onote")) return;
@@ -846,7 +877,7 @@ document.getElementById("addForm").addEventListener("submit", async e => {
   const doc = {track: f.track || "Other", tier: f.tier || "", rank: f.rank ? +f.rank : null, company: f.company,
     what_they_do: f.what_they_do || "", location: f.location || "", company_x: f.company_x || "", contact_name: f.contact_name || "",
     contact_x: f.contact_x || "", contact_role: f.contact_role || "", channel: f.channel || "", template: f.template || "",
-    funding_stage: f.funding_stage || "", hiring_signal: f.hiring_signal || "", verify_note: f.verify_note || "",
+    funding_stage: f.funding_stage || "", hiring_signal: f.hiring_signal || "", verify_note: f.verify_note || "", email: f.email || "", batch: f.batch || "",
     status: (f.verify_note || !named(f.contact_name)) ? "verify" : "ready", notes: "", messaged_at: "", follow_up: "", status_at: "",
     source: "form", created_at: stamp(), updated_at: stamp()};
   try {
