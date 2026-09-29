@@ -1,0 +1,52 @@
+job_id: 6921
+company: Imc
+title: Graduate Quant Researcher, Digital Assets
+headline: quant
+summary: Statistics graduate who builds and tests data-driven models in Python. Built sequence models over transaction histories
+  judged across 3 seeds, a crypto risk scorer across five chains, a causal study with bootstrap intervals, and rolling-origin
+  backtests with leakage tests that fail the build.
+skills:
+- group: stats
+  lead:
+  - Statistical Inference
+  - Time-Series Backtesting
+  - Experiment Design
+  - Causal Inference (S/T/X-Learners, Causal Forests)
+- group: ml
+  lead:
+  - PyTorch
+  - LightGBM
+  - Sequence Models (GRU, TCN, Transformers)
+- group: domain
+  lead:
+  - Web3 Fraud Risk Scoring
+- group: eng
+  lead:
+  - Python
+  - SQL
+  - DuckDB
+- data
+- ai
+projects:
+- id: forecast
+  bullets:
+  - validation
+  - cost
+  - system
+- id: web3
+  bullets:
+  - system
+  - detect
+- id: fraud
+  bullets:
+  - models
+  - bench
+- id: uplift
+  bullets:
+  - eval
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

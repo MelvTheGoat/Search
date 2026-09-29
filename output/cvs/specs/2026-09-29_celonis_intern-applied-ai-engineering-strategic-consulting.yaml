@@ -1,0 +1,53 @@
+job_id: 6828
+company: Celonis
+title: Intern Applied AI Engineering, Strategic Consulting (CoE Tiger Team)
+headline: llm
+summary: AI engineer who builds LLM integrations and automation in Python. Built a retrieval assistant with hybrid search,
+  guardrails and golden-set evaluation, an MCP server that gives AI assistants six tools, and pipelines with Prefect, dbt
+  and DuckDB. Teaches technical topics to mixed audiences. Available full time for 6 months or more.
+skills:
+- group: ai
+  lead:
+  - Retrieval-Augmented Generation (RAG)
+  - Model Context Protocol (MCP)
+  - LLM Evaluation and Guardrails
+  - Prompt Engineering
+- group: eng
+  lead:
+  - Python
+  - SQL
+  - FastAPI
+  - Docker
+  - Prefect
+  - dbt-core
+  - DuckDB
+- group: domain
+  lead:
+  - Payment Reconciliation
+- ml
+- data
+- stats
+projects:
+- id: rag
+  bullets:
+  - system
+  - safety
+  - eval
+  - deploy
+- id: web3
+  bullets:
+  - system
+  - http
+- id: reckon
+  bullets:
+  - system
+  - pipeline
+- id: forecast
+  bullets:
+  - system
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

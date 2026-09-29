@@ -1,0 +1,48 @@
+job_id: 6896
+company: Lovable
+title: Data Scientist, Growth
+headline: ds
+summary: Data scientist with a B.Sc. in Statistics focused on experiments and causal decisions. Ran an uplift study on 64,000
+  customers with S, T and X learners and a causal forest, built a power, MDE and CUPED toolkit, and delivered results as a
+  two-page decision memo. Writes SQL and Python.
+skills:
+- group: stats
+  lead:
+  - Experiment Design
+  - Power Analysis
+  - CUPED
+  - Uplift Modeling
+  - Causal Inference (S/T/X-Learners, Causal Forests)
+  - Qini and AUUC
+- group: data
+  lead:
+  - SQL
+  - Pandas
+- group: eng
+  lead:
+  - Python
+  - Pytest
+  - CI/CD (GitHub Actions)
+- ml
+- ai
+- domain
+projects:
+- id: uplift
+  bullets:
+  - study
+  - findings
+  - eval
+  - experiment
+  - learners
+- id: rag
+  bullets:
+  - system
+- id: churn
+  bullets:
+  - model
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

@@ -1,0 +1,54 @@
+job_id: 6789
+company: Stripe
+title: Machine Learning Engineer, Growth Platform
+headline: ml
+summary: Machine learning engineer who owns models from problem definition to monitoring. Built sequence models served at
+  5.1 ms p99, a causal targeting study that decides who to contact under a budget, and a self-operating forecasting pipeline
+  with drift monitoring and retraining. B.Sc. in Statistics.
+skills:
+- group: ml
+  lead:
+  - PyTorch
+  - LightGBM
+  - XGBoost
+  - Feature Engineering
+  - Sequence Models (GRU, TCN, Transformers)
+- group: stats
+  lead:
+  - Uplift Modeling
+  - Causal Inference (S/T/X-Learners, Causal Forests)
+  - Experiment Design
+- group: eng
+  lead:
+  - Python
+  - SQL
+  - FastAPI
+  - Docker
+  - MLflow
+  - Evidently
+  - Prefect
+- ai
+- data
+- domain
+projects:
+- id: uplift
+  bullets:
+  - study
+  - findings
+  - eval
+- id: fraud
+  bullets:
+  - models
+  - deploy
+- id: forecast
+  bullets:
+  - system
+- id: churn
+  bullets:
+  - deploy
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit
