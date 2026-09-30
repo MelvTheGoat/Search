@@ -1,0 +1,47 @@
+job_id: 7130
+company: FirstRand (RMB)
+title: Portfolio Credit Analyst
+headline: risk
+summary: Credit risk data scientist with a B.Sc. in Statistics. Built a credit decisioning system with calibrated default
+  probabilities, expected-loss based cutoffs, reason codes and an audit trail that can rebuild any decision. Internal audit
+  experience reviewing financial records, and clear reporting for non-specialist audiences.
+skills:
+- group: domain
+  lead:
+  - Credit Risk Decisioning
+  - Regulatory Compliance (CBN/NDPA)
+- group: stats
+  lead:
+  - Statistical Inference
+  - Logistic Regression
+  - WOE Scorecards
+  - Time-Series Backtesting
+- group: data
+  lead:
+  - SQL
+  - Pandas
+- group: eng
+  lead:
+  - Python
+  - Streamlit
+- ml
+- ai
+projects:
+- id: credit
+  bullets:
+  - system
+  - calib
+  - fairness
+- id: forecast
+  bullets:
+  - validation
+  - cost
+- id: rag
+  bullets:
+  - system
+experience:
+  niser:
+  - audit
+  sqi:
+  - teach
+  - tools

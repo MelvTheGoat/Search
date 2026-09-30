@@ -1,0 +1,51 @@
+job_id: 7028
+company: Qube Research & Technologies
+title: Data Scientist, Market Data
+headline: data_eng
+summary: Data and machine learning engineer who builds automated data pipelines in Python. Built a forecasting platform with
+  Prefect, dbt and DuckDB covering ingestion, validation, backtesting and drift monitoring, a reconciliation pipeline that
+  matches multi-source feeds, and a crypto risk tool reading live on-chain market data.
+skills:
+- group: eng
+  lead:
+  - Python
+  - SQL
+  - DuckDB
+  - dbt-core
+  - Prefect
+  - Pytest
+  - CI/CD (GitHub Actions)
+  - Docker
+- group: data
+  lead:
+  - Pandas
+  - NumPy
+  - SQL
+  - Anomaly Detection
+- group: domain
+  lead:
+  - Payment Reconciliation
+  - Web3 Fraud Risk Scoring
+- stats
+- ml
+- ai
+projects:
+- id: forecast
+  bullets:
+  - system
+  - validation
+- id: reckon
+  bullets:
+  - pipeline
+  - system
+  - ops
+- id: web3
+  bullets:
+  - http
+  - detect
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

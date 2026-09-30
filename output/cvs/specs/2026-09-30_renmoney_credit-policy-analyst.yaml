@@ -1,0 +1,49 @@
+job_id: 7117
+company: Renmoney
+title: Credit Policy Analyst
+headline: risk
+summary: Credit risk data scientist with a B.Sc. in Statistics. Built a credit decisioning system with calibrated default
+  probabilities, cost-optimal cutoffs, reason codes and a fairness audit, and compared a WOE-binned logistic scorecard with
+  gradient boosting. Runs policy trade-offs as explicit cost models.
+skills:
+- group: domain
+  lead:
+  - Credit Risk Decisioning
+- group: stats
+  lead:
+  - WOE Scorecards
+  - Logistic Regression
+  - Experiment Design
+  - Statistical Inference
+- group: ml
+  lead:
+  - LightGBM
+  - Model Calibration (Isotonic Regression, Temperature Scaling)
+  - SHAP
+- group: data
+  lead:
+  - SQL
+  - Pandas
+- group: eng
+  lead:
+  - Python
+- ai
+projects:
+- id: credit
+  bullets:
+  - system
+  - calib
+  - fairness
+- id: uplift
+  bullets:
+  - findings
+  - eval
+- id: forecast
+  bullets:
+  - cost
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

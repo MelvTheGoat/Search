@@ -1,0 +1,49 @@
+job_id: 7112
+company: Kuda
+title: Data Analyst, Credit
+headline: risk
+summary: Data scientist with a B.Sc. in Statistics focused on credit decisions. Built a credit decisioning system with calibrated
+  default probabilities, cost-optimal approve and decline cutoffs and reason codes, and an uplift study with experiment design,
+  power analysis and CUPED. Writes SQL and Python.
+skills:
+- group: domain
+  lead:
+  - Credit Risk Decisioning
+  - Transaction Fraud Detection
+- group: stats
+  lead:
+  - Experiment Design
+  - Power Analysis
+  - CUPED
+  - Logistic Regression
+  - WOE Scorecards
+  - Statistical Inference
+- group: data
+  lead:
+  - SQL
+  - Pandas
+- group: eng
+  lead:
+  - Python
+- ml
+- ai
+projects:
+- id: credit
+  bullets:
+  - system
+  - calib
+  - fairness
+- id: uplift
+  bullets:
+  - study
+  - eval
+  - experiment
+- id: forecast
+  bullets:
+  - cost
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit
