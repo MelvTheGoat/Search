@@ -1,0 +1,55 @@
+job_id: 7382
+company: Cisco
+title: Software Engineer, Backend & AI Integration
+headline: backend
+summary: Backend and AI engineer who builds Python APIs that stay correct under load. Built a payments ledger API with FastAPI,
+  PostgreSQL, Redis and Alembic, idempotency keys and a transactional outbox, a hybrid retrieval assistant with guardrails,
+  and an MCP server with caching, rate limits and retries. Deploys with Docker and GitHub Actions.
+skills:
+- group: eng
+  lead:
+  - Python
+  - FastAPI
+  - PostgreSQL
+  - Redis
+  - Docker
+  - CI/CD (GitHub Actions)
+  - Pytest
+  - GCP Cloud Run
+  - AWS ECS Fargate
+- group: ai
+  lead:
+  - Retrieval-Augmented Generation (RAG)
+  - Hybrid Search (BM25, Dense Embeddings, RRF)
+  - LLM Evaluation and Guardrails
+  - Model Context Protocol (MCP)
+- group: domain
+  lead:
+  - Double-Entry Ledgers and Idempotency
+- ml
+- stats
+projects:
+- id: ledger
+  bullets:
+  - system
+  - idem
+  - load
+  - tests
+- id: rag
+  bullets:
+  - system
+  - safety
+  - deploy
+- id: web3
+  bullets:
+  - system
+  - http
+- id: churn
+  bullets:
+  - deploy
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

@@ -1,0 +1,53 @@
+job_id: 7396
+company: Wheely
+title: Data Scientist
+headline: ds
+summary: Data scientist with a B.Sc. in Statistics who takes models to production. Built an hourly demand forecasting system
+  for city taxi zones with quantile forecasts, cost-optimal decisions and drift monitoring, an optimiser that picks the best
+  legal squad under budget rules, and a fraud model served in milliseconds.
+skills:
+- group: domain
+  lead:
+  - Demand Forecasting
+- group: stats
+  lead:
+  - Time-Series Backtesting
+  - Statistical Inference
+  - Experiment Design
+- group: ml
+  lead:
+  - LightGBM
+  - PyTorch
+  - Feature Engineering
+- group: eng
+  lead:
+  - Python
+  - SQL
+  - Prefect
+  - dbt-core
+  - DuckDB
+  - MLflow
+  - Evidently
+  - FastAPI
+  - Docker
+- ai
+projects:
+- id: forecast
+  bullets:
+  - system
+  - cost
+  - validation
+- id: fpl
+  bullets:
+  - system
+  - engine
+- id: fraud
+  bullets:
+  - deploy
+  - models
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

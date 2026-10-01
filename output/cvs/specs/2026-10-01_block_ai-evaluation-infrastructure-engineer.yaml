@@ -1,0 +1,54 @@
+job_id: 7314
+company: Block
+title: AI Evaluation Infrastructure Engineer
+headline: llm
+summary: AI engineer with a B.Sc. in Statistics focused on evaluation. Built a retrieval assistant scored on a labelled golden
+  set with retrieval and generation measured separately, and traced a weak judge result to the judge itself. Runs experiments
+  with bootstrap intervals, power analysis and CUPED, and ships services with Docker and CI.
+skills:
+- group: ai
+  lead:
+  - LLM Evaluation and Guardrails
+  - Retrieval-Augmented Generation (RAG)
+  - Citation Verification
+  - Model Context Protocol (MCP)
+- group: stats
+  lead:
+  - Experiment Design
+  - Power Analysis
+  - CUPED
+  - Statistical Inference
+- group: eng
+  lead:
+  - Python
+  - Prefect
+  - FastAPI
+  - Docker
+  - CI/CD (GitHub Actions)
+  - Pytest
+- ml
+- domain
+projects:
+- id: rag
+  bullets:
+  - eval
+  - safety
+  - system
+- id: uplift
+  bullets:
+  - experiment
+  - eval
+- id: forecast
+  bullets:
+  - system
+  - validation
+- id: fraud
+  bullets:
+  - bench
+  - deploy
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

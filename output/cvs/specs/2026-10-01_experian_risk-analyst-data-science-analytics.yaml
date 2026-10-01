@@ -1,0 +1,51 @@
+job_id: 7357
+company: Experian
+title: Risk Analyst, Data Science & Analytics
+headline: risk
+summary: Credit risk data scientist with a B.Sc. in Statistics. Built a credit decisioning system that compares a WOE-binned
+  logistic scorecard with gradient boosting, chooses on calibration, sets cost-optimal cutoffs and gives reason codes. Validates
+  with backtesting and leakage tests and explains methods clearly as a machine learning instructor.
+skills:
+- group: domain
+  lead:
+  - Credit Risk Decisioning
+  - Transaction Fraud Detection
+- group: stats
+  lead:
+  - WOE Scorecards
+  - Logistic Regression
+  - Time-Series Backtesting
+  - Statistical Inference
+- group: ml
+  lead:
+  - LightGBM
+  - Model Calibration (Isotonic Regression, Temperature Scaling)
+  - SHAP
+  - Feature Engineering
+- group: data
+  lead:
+  - SQL
+  - Pandas
+- group: eng
+  lead:
+  - Python
+- ai
+projects:
+- id: credit
+  bullets:
+  - system
+  - calib
+  - fairness
+- id: forecast
+  bullets:
+  - validation
+- id: fraud
+  bullets:
+  - imbalance
+  - bench
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

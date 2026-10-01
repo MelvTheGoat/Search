@@ -1,0 +1,48 @@
+job_id: 7306
+company: Flow Traders
+title: AI Engineer
+headline: llm
+summary: AI engineer who builds tools for AI assistants with clear controls. Built an MCP server with six read-only tools
+  and an explainable risk score, a retrieval assistant with refusal guardrails and citation checks, and a reconciliation system
+  with a human-in-the-loop review screen and audit trails. Deploys with Docker, FastAPI and GitHub Actions.
+skills:
+- group: ai
+  lead:
+  - Model Context Protocol (MCP)
+  - Retrieval-Augmented Generation (RAG)
+  - Hybrid Search (BM25, Dense Embeddings, RRF)
+  - LLM Evaluation and Guardrails
+  - Prompt Engineering
+- group: eng
+  lead:
+  - Python
+  - FastAPI
+  - Docker
+  - GCP Cloud Run
+  - AWS ECS Fargate
+  - CI/CD (GitHub Actions)
+- domain
+- ml
+- stats
+projects:
+- id: web3
+  bullets:
+  - system
+  - http
+  - scorer
+  - eval
+- id: rag
+  bullets:
+  - system
+  - safety
+  - eval
+- id: reckon
+  bullets:
+  - system
+  - review
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit
