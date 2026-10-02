@@ -1,0 +1,51 @@
+job_id: 7644
+company: GitLab
+title: Backend Engineer (Python), AI Engineering, Agent Foundations
+headline: backend
+summary: Backend engineer who builds Python services and tools for AI agents. Built an MCP server that gives AI assistants
+  six read-only tools with caching, rate limits and retries, evaluated with a record and replay harness, and a payments ledger
+  API with idempotency keys, a transactional outbox and tests against real PostgreSQL and Redis.
+skills:
+- group: eng
+  lead:
+  - Python
+  - FastAPI
+  - PostgreSQL
+  - Redis
+  - Pytest
+  - Docker
+  - CI/CD (GitHub Actions)
+  - Git
+- group: ai
+  lead:
+  - Model Context Protocol (MCP)
+  - LLM Evaluation and Guardrails
+  - Retrieval-Augmented Generation (RAG)
+  - Prompt Engineering
+- group: domain
+  lead:
+  - Double-Entry Ledgers and Idempotency
+- ml
+- stats
+projects:
+- id: web3
+  bullets:
+  - system
+  - http
+  - eval
+- id: ledger
+  bullets:
+  - system
+  - idem
+  - load
+  - tests
+- id: rag
+  bullets:
+  - safety
+  - eval
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

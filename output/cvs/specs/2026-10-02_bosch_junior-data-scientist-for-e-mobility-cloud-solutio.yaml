@@ -1,0 +1,59 @@
+job_id: 7690
+company: Bosch
+title: Junior Data Scientist for (e-)Mobility Cloud Solutions
+headline: ds
+summary: Data scientist with a B.Sc. in Statistics who builds models and the pipelines behind them. Built a forecasting platform
+  with Prefect, dbt and DuckDB covering ingestion, backtesting, drift monitoring and retraining, a sequence model for transaction
+  events served through ONNX Runtime, and a pipeline that matches late or out of order feeds.
+skills:
+- group: eng
+  lead:
+  - Python
+  - SQL
+  - Prefect
+  - dbt-core
+  - DuckDB
+  - MLflow
+  - Evidently
+  - FastAPI
+  - Docker
+  - Git
+  - CI/CD (GitHub Actions)
+- group: ml
+  lead:
+  - PyTorch
+  - LightGBM
+  - Sequence Models (GRU, TCN, Transformers)
+  - Feature Engineering
+- group: stats
+  lead:
+  - Time-Series Backtesting
+  - Statistical Inference
+  - Experiment Design
+- group: data
+  lead:
+  - SQL
+  - Pandas
+  - Anomaly Detection
+- domain
+- ai
+projects:
+- id: forecast
+  bullets:
+  - system
+  - validation
+  - cost
+- id: fraud
+  bullets:
+  - models
+  - deploy
+- id: reckon
+  bullets:
+  - pipeline
+  - system
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

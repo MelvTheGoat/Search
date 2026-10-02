@@ -1,0 +1,42 @@
+job_id: 7710
+company: Old Mutual
+title: Junior Data Quality Analyst
+headline: data_ml
+summary: Data analyst with a B.Sc. in Statistics and internal audit experience. Built a reconciliation system that detects
+  duplicate settlements and payout discrepancies with an audit trail, and a forecasting pipeline with automated data checks
+  and drift monitoring. Reviewed financial records for inconsistencies as an internal auditor.
+skills:
+- group: data
+  lead:
+  - SQL
+  - Pandas
+  - Anomaly Detection
+- group: domain
+  lead:
+  - Payment Reconciliation
+- group: eng
+  lead:
+  - Python
+  - DuckDB
+  - dbt-core
+  - Evidently
+  - Pytest
+- stats
+- ml
+- ai
+projects:
+- id: reckon
+  bullets:
+  - system
+  - review
+  - ops
+- id: forecast
+  bullets:
+  - system
+  - validation
+experience:
+  niser:
+  - audit
+  sqi:
+  - teach
+  - tools

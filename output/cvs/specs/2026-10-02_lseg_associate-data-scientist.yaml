@@ -1,0 +1,55 @@
+job_id: 7728
+company: LSEG
+title: Associate Data Scientist
+headline: ds
+summary: Data scientist with a B.Sc. in Statistics who builds pipelines, analysis and models people can check. Built a reconciliation
+  system that matches multi-source feeds with confidence scores and an exception review screen, a credit scorecard with a
+  fairness audit, and an uplift study delivered as a decision memo for a non-technical reader.
+skills:
+- group: data
+  lead:
+  - Pandas
+  - NumPy
+  - SQL
+  - Anomaly Detection
+- group: ml
+  lead:
+  - Scikit-learn
+  - LightGBM
+  - XGBoost
+  - Feature Engineering
+- group: stats
+  lead:
+  - Statistical Inference
+  - Logistic Regression
+  - WOE Scorecards
+  - Uplift Modeling
+- group: eng
+  lead:
+  - Python
+  - DuckDB
+  - FastAPI
+  - Streamlit
+  - Git
+- domain
+- ai
+projects:
+- id: reckon
+  bullets:
+  - system
+  - pipeline
+  - review
+- id: credit
+  bullets:
+  - system
+  - fairness
+- id: uplift
+  bullets:
+  - study
+  - findings
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

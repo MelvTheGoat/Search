@@ -1,0 +1,48 @@
+job_id: 3502
+company: Brex
+title: Fraud Operations Associate
+headline: fraud
+summary: Fraud data scientist with a B.Sc. in Statistics and internal audit experience. Built fraud detection that breaks
+  results down by card testing, account takeover and merchant compromise and ranks alerts for limited review capacity, an
+  explainable risk scorer with a reason for every point, and a reconciliation system with audit trails.
+skills:
+- group: domain
+  lead:
+  - Transaction Fraud Detection
+  - Web3 Fraud Risk Scoring
+  - Payment Reconciliation
+- group: data
+  lead:
+  - SQL
+  - Pandas
+  - Anomaly Detection
+- group: ml
+  lead:
+  - LightGBM
+  - Sequence Models (GRU, TCN, Transformers)
+  - SHAP
+- group: eng
+  lead:
+  - Python
+  - FastAPI
+- stats
+- ai
+projects:
+- id: fraud
+  bullets:
+  - bench
+  - models
+- id: web3
+  bullets:
+  - scorer
+  - detect
+- id: reckon
+  bullets:
+  - system
+  - review
+experience:
+  niser:
+  - audit
+  sqi:
+  - teach
+  - tools
