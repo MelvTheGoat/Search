@@ -1,0 +1,47 @@
+job_id: 8013
+company: Lendable
+title: Data Scientist (AI)
+headline: llm
+summary: AI engineer with a B.Sc. in Statistics who builds LLM systems that can be measured. Built a hybrid retrieval assistant
+  with refusal guardrails, citation checks and separate retrieval and generation evaluation, an MCP server that gives AI assistants
+  read-only tools, and a credit decisioning system with calibrated default probabilities and reason codes.
+skills:
+- group: ai
+  lead:
+  - Retrieval-Augmented Generation (RAG)
+  - Hybrid Search (BM25, Dense Embeddings, RRF)
+  - LLM Evaluation and Guardrails
+  - Prompt Engineering
+  - Citation Verification
+  - Model Context Protocol (MCP)
+- group: eng
+  lead:
+  - Python
+  - FastAPI
+  - Docker
+  - GCP Cloud Run
+  - Pytest
+- group: domain
+  lead:
+  - Credit Risk Decisioning
+- ml
+- stats
+projects:
+- id: rag
+  bullets:
+  - system
+  - safety
+  - eval
+- id: web3
+  bullets:
+  - system
+  - http
+- id: credit
+  bullets:
+  - system
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

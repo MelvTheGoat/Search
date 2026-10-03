@@ -1,0 +1,43 @@
+job_id: 8260
+company: Tripledot Studios
+title: Fraud Analyst
+headline: fraud
+summary: Fraud data scientist with a B.Sc. in Statistics who designs and tests fraud signals. Built an explainable rule-based
+  risk scorer with stable finding IDs and a public rule table, measured on hand-checked cases, and a fraud detection system
+  that breaks results down by attack type and ranks alerts for a review queue.
+skills:
+- group: domain
+  lead:
+  - Web3 Fraud Risk Scoring
+  - Transaction Fraud Detection
+- group: data
+  lead:
+  - SQL
+  - Pandas
+  - Anomaly Detection
+- group: ml
+  lead:
+  - LightGBM
+  - SHAP
+  - Feature Engineering
+- group: eng
+  lead:
+  - Python
+- stats
+- ai
+projects:
+- id: web3
+  bullets:
+  - scorer
+  - eval
+  - detect
+- id: fraud
+  bullets:
+  - bench
+  - models
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

@@ -1,0 +1,52 @@
+job_id: 7959
+company: Faculty
+title: Machine Learning Engineer (Safety)
+headline: ml_ai
+summary: Machine learning and AI engineer with a B.Sc. in Statistics focused on evaluation and safe deployment. Built an evaluation
+  harness that scores retrieval and generation separately with refusal guardrails, an MCP server limited to read-only tools,
+  and a fraud model served through ONNX Runtime, deployed with Docker on GCP and AWS.
+skills:
+- group: ai
+  lead:
+  - LLM Evaluation and Guardrails
+  - Retrieval-Augmented Generation (RAG)
+  - Model Context Protocol (MCP)
+  - Prompt Engineering
+- group: eng
+  lead:
+  - Python
+  - Docker
+  - GCP Cloud Run
+  - AWS ECS Fargate
+  - FastAPI
+  - CI/CD (GitHub Actions)
+  - Pytest
+- group: ml
+  lead:
+  - PyTorch
+  - Scikit-learn
+  - LightGBM
+- stats
+- domain
+projects:
+- id: rag
+  bullets:
+  - eval
+  - safety
+  - deploy
+- id: web3
+  bullets:
+  - system
+  - eval
+- id: fraud
+  bullets:
+  - deploy
+- id: churn
+  bullets:
+  - deploy
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit
