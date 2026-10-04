@@ -1,0 +1,46 @@
+job_id: 8328
+company: Mastercard
+title: Analyst, Big Data Analytics and Engineering
+headline: data_ml
+summary: Data and machine learning analyst with a B.Sc. in Statistics who puts a value on business decisions. Built an uplift
+  study on a randomised trial of 64,000 customers delivered as a decision memo, a forecasting platform that ships the cost-optimal
+  forecast, and a reconciliation system that finds uncollected revenue.
+skills:
+- group: stats
+  lead:
+  - Uplift Modeling
+  - Experiment Design
+  - Causal Inference (S/T/X-Learners, Causal Forests)
+  - Statistical Inference
+- group: data
+  lead:
+  - SQL
+  - Pandas
+  - NumPy
+- group: eng
+  lead:
+  - Python
+  - SQL
+  - DuckDB
+- ml
+- ai
+- domain
+projects:
+- id: uplift
+  bullets:
+  - study
+  - findings
+  - eval
+- id: forecast
+  bullets:
+  - system
+  - cost
+- id: reckon
+  bullets:
+  - system
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

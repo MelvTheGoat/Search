@@ -1,0 +1,50 @@
+job_id: 8371
+company: ClaimSorted
+title: Product Engineer, AI
+headline: ml_ai
+summary: Machine learning and AI engineer with a B.Sc. in Statistics who builds full-stack systems with a person in the loop.
+  Built a deployed payment reconciliation system with a React review screen, a retrieval assistant that refuses rather than
+  guesses, and an MCP server limited to read-only tools.
+skills:
+- group: eng
+  lead:
+  - Python
+  - FastAPI
+  - React
+  - Docker
+  - PostgreSQL
+  - GCP Cloud Run
+  - Railway
+- group: ai
+  lead:
+  - Model Context Protocol (MCP)
+  - LLM Evaluation and Guardrails
+  - Retrieval-Augmented Generation (RAG)
+- group: domain
+  lead:
+  - Payment Reconciliation
+- ml
+- stats
+projects:
+- id: reckon
+  bullets:
+  - system
+  - review
+  - ops
+- id: rag
+  bullets:
+  - system
+  - safety
+- id: web3
+  bullets:
+  - system
+- id: ledger
+  bullets:
+  - system
+  - idem
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

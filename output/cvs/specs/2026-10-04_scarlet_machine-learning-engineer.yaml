@@ -1,0 +1,44 @@
+job_id: 8370
+company: Scarlet
+title: Machine Learning Engineer
+headline: llm
+summary: AI engineer with a B.Sc. in Statistics who builds retrieval systems that show their evidence. Built a hybrid retrieval
+  assistant with clause-level citations, citation checks, refusal guardrails and separate retrieval and generation evaluation,
+  deployed on GCP Cloud Run, and an MCP server limited to read-only tools.
+skills:
+- group: ai
+  lead:
+  - Retrieval-Augmented Generation (RAG)
+  - Hybrid Search (BM25, Dense Embeddings, RRF)
+  - Citation Verification
+  - LLM Evaluation and Guardrails
+  - Model Context Protocol (MCP)
+- group: eng
+  lead:
+  - Python
+  - FastAPI
+  - Docker
+  - GCP Cloud Run
+- stats
+- ml
+- domain
+projects:
+- id: rag
+  bullets:
+  - system
+  - chunking
+  - eval
+  - safety
+  - deploy
+- id: web3
+  bullets:
+  - system
+- id: credit
+  bullets:
+  - system
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

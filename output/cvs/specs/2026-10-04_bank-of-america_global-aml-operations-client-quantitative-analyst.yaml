@@ -1,0 +1,44 @@
+job_id: 8410
+company: Bank of America
+title: Global AML Operations, Client Quantitative Analyst I
+headline: risk
+summary: Risk data scientist with a B.Sc. in Statistics and internal audit experience. Built fraud detection that reports
+  precision at fixed review capacity by attack type, a reconciliation system that finds duplicate settlements and payout discrepancies,
+  and a credit decisioning system with reason codes and an audit trail.
+skills:
+- group: domain
+  lead:
+  - Transaction Fraud Detection
+  - Payment Reconciliation
+  - Credit Risk Decisioning
+- group: data
+  lead:
+  - SQL
+  - Pandas
+  - Anomaly Detection
+- group: eng
+  lead:
+  - Python
+  - SQL
+- stats
+- ml
+- ai
+projects:
+- id: fraud
+  bullets:
+  - bench
+  - models
+- id: reckon
+  bullets:
+  - system
+  - pipeline
+- id: credit
+  bullets:
+  - system
+  - fairness
+experience:
+  niser:
+  - audit
+  sqi:
+  - teach
+  - tools

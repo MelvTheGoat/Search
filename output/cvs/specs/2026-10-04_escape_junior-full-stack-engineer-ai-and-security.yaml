@@ -1,0 +1,46 @@
+job_id: 8360
+company: Escape
+title: Junior Full Stack Engineer, AI and Security
+headline: backend
+summary: Software engineer with a B.Sc. in Statistics who builds safe tools for AI and payments. Built an MCP server that
+  checks crypto wallets and contracts for risk using only read-only calls, a double-entry ledger API on PostgreSQL with 138
+  tests, and a reconciliation system with a React review screen.
+skills:
+- group: eng
+  lead:
+  - Python
+  - FastAPI
+  - PostgreSQL
+  - React
+  - Docker
+  - Pytest
+  - CI/CD (GitHub Actions)
+- group: domain
+  lead:
+  - Web3 Fraud Risk Scoring
+  - Double-Entry Ledgers and Idempotency
+- group: ai
+  lead:
+  - Model Context Protocol (MCP)
+- ml
+- stats
+projects:
+- id: web3
+  bullets:
+  - system
+  - detect
+  - http
+- id: ledger
+  bullets:
+  - system
+  - tests
+- id: reckon
+  bullets:
+  - system
+  - review
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit
