@@ -1,0 +1,46 @@
+job_id: 6076
+company: AiMi
+title: Full Stack AI Engineer
+headline: llm
+summary: AI engineer with a B.Sc. in Statistics who builds tools for agents and makes them reliable. Built an MCP server with
+  six read-only tools and a resilient HTTP layer with caching, rate limits and retries, a retrieval assistant with refusal
+  guardrails and a separate evaluation harness, and a React review screen for a deployed reconciliation system.
+skills:
+- group: ai
+  lead:
+  - Model Context Protocol (MCP)
+  - LLM Evaluation and Guardrails
+  - Retrieval-Augmented Generation (RAG)
+  - Prompt Engineering
+- group: eng
+  lead:
+  - Python
+  - FastAPI
+  - React
+  - Docker
+  - Pytest
+  - CI/CD (GitHub Actions)
+- ml
+- stats
+- domain
+projects:
+- id: web3
+  bullets:
+  - system
+  - http
+  - eval
+- id: rag
+  bullets:
+  - safety
+  - eval
+  - deploy
+- id: reckon
+  bullets:
+  - system
+  - review
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

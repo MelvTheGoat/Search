@@ -1,0 +1,51 @@
+job_id: 3522
+company: Chime
+title: AI/ML Engineer
+headline: fraud
+summary: Machine learning engineer with a B.Sc. in Statistics who takes models from problem framing to production. Built sequence
+  fraud models that beat a strong LightGBM baseline and serve at 5.1 ms p99, a credit decisioning system with calibrated probabilities
+  and a fairness audit, and an uplift study that proved campaign impact.
+skills:
+- group: ml
+  lead:
+  - PyTorch
+  - LightGBM
+  - Sequence Models (GRU, TCN, Transformers)
+  - Model Calibration (Isotonic Regression, Temperature Scaling)
+  - SHAP
+  - Feature Engineering
+- group: domain
+  lead:
+  - Transaction Fraud Detection
+  - Credit Risk Decisioning
+- group: eng
+  lead:
+  - Python
+  - SQL
+  - FastAPI
+  - Docker
+  - Redis
+- stats
+- ai
+projects:
+- id: fraud
+  bullets:
+  - models
+  - bench
+  - imbalance
+  - deploy
+- id: credit
+  bullets:
+  - system
+  - calib
+  - fairness
+- id: uplift
+  bullets:
+  - study
+  - findings
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

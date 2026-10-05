@@ -1,0 +1,51 @@
+job_id: 8448
+company: Harmonic Security Inc
+title: AI/ML Product Engineer
+headline: ml
+summary: Machine learning engineer with a B.Sc. in Statistics who reports precision, recall and baselines before trusting
+  a model. Built fraud classifiers benchmarked across 3 seeds with a per-attack-type breakdown, an explainable risk scorer
+  measured on hand-checked cases, and a reconciliation system with human-in-the-loop review.
+skills:
+- group: ml
+  lead:
+  - Scikit-learn
+  - LightGBM
+  - PyTorch
+  - SHAP
+  - Feature Engineering
+  - Model Calibration (Isotonic Regression, Temperature Scaling)
+- group: eng
+  lead:
+  - Python
+  - FastAPI
+  - Docker
+  - Pytest
+  - CI/CD (GitHub Actions)
+- group: ai
+  lead:
+  - LLM Evaluation and Guardrails
+  - Retrieval-Augmented Generation (RAG)
+- stats
+- domain
+projects:
+- id: fraud
+  bullets:
+  - bench
+  - imbalance
+  - deploy
+- id: web3
+  bullets:
+  - scorer
+  - eval
+- id: reckon
+  bullets:
+  - review
+- id: rag
+  bullets:
+  - eval
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

@@ -1,0 +1,45 @@
+job_id: 7116
+company: Renmoney
+title: Credit Monitoring Analyst
+headline: risk
+summary: Credit risk analyst with a B.Sc. in Statistics and internal audit experience. Built a credit decisioning system with
+  calibrated default probabilities, reason codes and an append-only audit trail, and a reconciliation system that flags payout
+  discrepancies. Reviewed financial records for irregularities as an internal auditor.
+skills:
+- group: domain
+  lead:
+  - Credit Risk Decisioning
+  - Payment Reconciliation
+  - Transaction Fraud Detection
+- group: data
+  lead:
+  - SQL
+  - Pandas
+  - Anomaly Detection
+- group: stats
+  lead:
+  - WOE Scorecards
+  - Logistic Regression
+  - Statistical Inference
+- group: eng
+  lead:
+  - Python
+- ml
+- ai
+projects:
+- id: credit
+  bullets:
+  - system
+  - calib
+- id: reckon
+  bullets:
+  - system
+- id: fraud
+  bullets:
+  - bench
+experience:
+  niser:
+  - audit
+  sqi:
+  - teach
+  - tools
