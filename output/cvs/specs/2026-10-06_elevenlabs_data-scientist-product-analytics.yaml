@@ -1,0 +1,47 @@
+job_id: 8679
+company: Elevenlabs
+title: Data Scientist, Product Analytics
+headline: ds
+summary: Data scientist with a B.Sc. in Statistics focused on experiments and measuring product impact. Built an uplift study
+  on a randomised trial of 64,000 customers with Qini curves and bootstrap intervals, a power and MDE calculator with a CUPED
+  demo, and a dbt and DuckDB pipeline with automated data tests.
+skills:
+- group: stats
+  lead:
+  - Experiment Design
+  - Power Analysis
+  - CUPED
+  - Uplift Modeling
+  - Causal Inference (S/T/X-Learners, Causal Forests)
+  - Statistical Inference
+- group: data
+  lead:
+  - SQL
+  - Pandas
+- group: eng
+  lead:
+  - Python
+  - SQL
+  - dbt-core
+  - DuckDB
+- ml
+- ai
+projects:
+- id: uplift
+  bullets:
+  - study
+  - findings
+  - eval
+  - experiment
+- id: forecast
+  bullets:
+  - system
+- id: churn
+  bullets:
+  - model
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

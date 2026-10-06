@@ -1,0 +1,47 @@
+job_id: 8719
+company: DRW
+title: Quantitative Researcher, Prediction Markets
+headline: quant
+summary: Data scientist with a B.Sc. in Statistics who builds probabilistic forecasts and tests them honestly. Built a football
+  predictor backtested gameweek by gameweek over 1,050 matches with calibrated probabilities, quantile demand forecasts validated
+  with rolling-origin backtesting, and fraud models whose calibration error fell from 0.0063 to 0.0005.
+skills:
+- group: stats
+  lead:
+  - Time-Series Backtesting
+  - Statistical Inference
+  - Logistic Regression
+  - Experiment Design
+- group: ml
+  lead:
+  - LightGBM
+  - Model Calibration (Isotonic Regression, Temperature Scaling)
+  - Feature Engineering
+  - Scikit-learn
+- group: eng
+  lead:
+  - Python
+  - SQL
+  - DuckDB
+- data
+- ai
+projects:
+- id: epl
+  bullets:
+  - system
+  - model
+  - backtest
+- id: forecast
+  bullets:
+  - system
+  - cost
+  - validation
+- id: fraud
+  bullets:
+  - imbalance
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

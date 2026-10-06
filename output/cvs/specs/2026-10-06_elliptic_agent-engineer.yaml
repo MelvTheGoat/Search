@@ -1,0 +1,49 @@
+job_id: 8741
+company: Elliptic
+title: Agent Engineer
+headline: llm
+summary: AI engineer with a B.Sc. in Statistics who builds tools for agents and measures them. Built an MCP server that checks
+  crypto wallets and contracts for fraud risk with six read-only tools, a retrieval assistant with a separate evaluation harness
+  and refusal guardrails, and a deployed reconciliation system with human review.
+skills:
+- group: ai
+  lead:
+  - Model Context Protocol (MCP)
+  - LLM Evaluation and Guardrails
+  - Retrieval-Augmented Generation (RAG)
+  - Prompt Engineering
+- group: domain
+  lead:
+  - Web3 Fraud Risk Scoring
+  - Payment Reconciliation
+- group: eng
+  lead:
+  - Python
+  - FastAPI
+  - PostgreSQL
+  - Docker
+  - AWS ECS Fargate
+  - CI/CD (GitHub Actions)
+- ml
+- stats
+projects:
+- id: web3
+  bullets:
+  - system
+  - detect
+  - eval
+- id: rag
+  bullets:
+  - safety
+  - eval
+  - deploy
+- id: reckon
+  bullets:
+  - system
+  - review
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

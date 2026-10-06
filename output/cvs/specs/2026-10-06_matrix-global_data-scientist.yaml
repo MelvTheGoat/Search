@@ -1,0 +1,51 @@
+job_id: 8870
+company: Matrix Global
+title: Data Scientist
+headline: risk
+summary: Data scientist with a B.Sc. in Statistics and a background in fraud and risk analytics. Built sequence fraud models
+  with a per-attack-type breakdown, a churn model tracked in MLflow and deployed on AWS, and a reconciliation system that
+  finds anomalies in transaction feeds. Teaches machine learning to student cohorts.
+skills:
+- group: domain
+  lead:
+  - Transaction Fraud Detection
+  - Credit Risk Decisioning
+  - Payment Reconciliation
+- group: ml
+  lead:
+  - LightGBM
+  - XGBoost
+  - PyTorch
+  - Feature Engineering
+  - SHAP
+- group: eng
+  lead:
+  - Python
+  - SQL
+  - MLflow
+  - Docker
+  - AWS ECS Fargate
+  - FastAPI
+- data
+- stats
+- ai
+projects:
+- id: fraud
+  bullets:
+  - bench
+  - imbalance
+  - deploy
+- id: churn
+  bullets:
+  - model
+  - deploy
+- id: reckon
+  bullets:
+  - system
+experience:
+  sqi:
+  - teach
+  - tools
+  - projects
+  niser:
+  - audit

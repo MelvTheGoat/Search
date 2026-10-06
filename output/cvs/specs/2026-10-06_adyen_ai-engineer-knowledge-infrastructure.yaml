@@ -1,0 +1,49 @@
+job_id: 8735
+company: Adyen
+title: AI Engineer, Knowledge Infrastructure
+headline: llm
+summary: AI engineer with a B.Sc. in Statistics who turns documents into knowledge that people and AI agents can query. Built
+  a hybrid retrieval assistant with section-aware chunking and clause-level citations, an MCP server that gives AI assistants
+  read-only tools, and a ledger API with idempotent writes.
+skills:
+- group: ai
+  lead:
+  - Retrieval-Augmented Generation (RAG)
+  - Hybrid Search (BM25, Dense Embeddings, RRF)
+  - Citation Verification
+  - Model Context Protocol (MCP)
+  - LLM Evaluation and Guardrails
+- group: eng
+  lead:
+  - Python
+  - FastAPI
+  - PostgreSQL
+  - Docker
+  - AWS ECS Fargate
+  - GCP Cloud Run
+- group: domain
+  lead:
+  - Double-Entry Ledgers and Idempotency
+- ml
+- stats
+projects:
+- id: rag
+  bullets:
+  - system
+  - chunking
+  - eval
+  - deploy
+- id: web3
+  bullets:
+  - system
+  - http
+- id: ledger
+  bullets:
+  - system
+  - idem
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit
