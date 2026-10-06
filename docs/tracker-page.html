@@ -74,6 +74,7 @@ label.fit output{font:600 13px var(--mono);color:var(--ink);min-width:2ch}
 .p-sponsor_unknown{background:var(--sunk);color:var(--muted)}
 .p-restricted{background:var(--bad-soft);color:var(--bad)}
 .p-stretch{background:var(--warn-soft);color:var(--warn)}
+.p-startup{background:var(--surface);color:var(--ink);border:1px solid var(--line)}
 .why{margin:0;font-size:14px}
 .ev{margin:0;font-size:13px;color:var(--muted);overflow-wrap:anywhere}
 .ev.bad{color:var(--bad)}
@@ -320,12 +321,14 @@ const SENIOR = new Set(["senior","lead","staff","principal","manager"]);
 const TABS = [
   {id:"ready", text:"Ready to apply"},
   {id:"review", text:"To review"},
+  {id:"startups", text:"Startups"},
   {id:"mine", text:"My applications"},
   {id:"all", text:"All"},
 ];
 
 const state = {meta:null, chunks:{}, edits:{}, letters:{}, packs:{}, open:new Set(), tab:"review", status:"", q:"", label:"", level:"", minfit:0, limit:60, db:null, writable:true};
 state.tab = "ready";
+try { const t = localStorage.getItem("tab"); if (t && TABS.some(x => x.id === t)) state.tab = t; } catch(_) {}
 
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -366,6 +369,7 @@ function inTab(j, tab){
   if (tab === "ready") return j.status === "drafted";
   if (tab === "mine") return !["new","skipped","drafted"].includes(j.status);
   if (tab === "restricted") return j.lab === "restricted";
+  if (tab === "startups") return !!j.sup && j.lab !== "restricted" && !["skipped","rejected"].includes(j.status);
   return true;
 }
 
@@ -377,7 +381,7 @@ function filtered(all){
     (!state.label || j.lab === state.label) &&
     (!state.level || levelGroup(j.lvl) === state.level) &&
     (j.fit || 0) >= state.minfit &&
-    (!q || `${j.co} ${j.t} ${j.ctry} ${j.loc}`.toLowerCase().includes(q))
+    (!q || `${j.co} ${j.t} ${j.ctry} ${j.loc} ${j.sup || ""}`.toLowerCase().includes(q))
   ).sort((a,b) => Math.round(b.fit||0) - Math.round(a.fit||0) || (LABEL_RANK[a.lab]??9) - (LABEL_RANK[b.lab]??9) || (b.fit||0)-(a.fit||0));
 }
 
@@ -399,6 +403,8 @@ function renderTabs(all){
   $("#tabs").innerHTML = TABS.map(t => `<button class="tab" role="tab" data-tab="${t.id}" aria-selected="${state.tab===t.id}">${t.text}<span class="c">${all.filter(j=>inTab(j,t.id)).length}</span></button>`).join("");
 }
 
+function startupPill(j){ return j.sup ? `<span class="pill p-startup" title="Startup, found through ${esc(j.sup)}">Startup · ${esc(j.sup)}</span>` : ""; }
+
 function fitColor(f){ return f >= 55 ? "var(--fit-hi)" : f >= 40 ? "var(--fit-mid)" : "var(--fit-lo)"; }
 
 function card(j){
@@ -414,7 +420,7 @@ function card(j){
       <h2 class="title"><a href="${esc(j.url)}" target="_blank" rel="noopener">${esc(j.t)}</a></h2>
       <div class="meta"><span class="co">${esc(j.co)}</span><span>${esc(j.ctry || j.loc || "")}</span>
         <span class="pill p-${esc(j.lab)}">${esc(LABEL_TEXT[j.lab] || j.lab)}</span>
-        <span>${esc(lvl)}</span>${j.st ? '<span class="pill p-stretch">Stretch</span>' : ""}
+        <span>${esc(lvl)}</span>${j.st ? '<span class="pill p-stretch">Stretch</span>' : ""}${startupPill(j)}
         ${j.df ? `<span>Found ${esc(j.df)}</span>` : ""}${j.da ? `<span>Applied ${esc(j.da)}</span>` : ""}
         ${j.gone ? "<span>Posting no longer listed</span>" : ""}</div>
       ${j.why ? `<p class="why">${esc(j.why)}</p>` : ""}
@@ -459,7 +465,7 @@ function packCard(j){
       <div class="main">
         <h2 class="title"><a href="${esc(j.url)}" target="_blank" rel="noopener">${esc(j.t)}</a></h2>
         <div class="meta"><span class="co">${esc(j.co)}</span><span>${esc(j.ctry || j.loc || "")}</span>
-          <span class="pill p-${esc(j.lab)}">${esc(LABEL_TEXT[j.lab] || j.lab)}</span><span>${esc(lvl)}</span>${j.st ? '<span class="pill p-stretch">Stretch</span>' : ""}</div>
+          <span class="pill p-${esc(j.lab)}">${esc(LABEL_TEXT[j.lab] || j.lab)}</span><span>${esc(lvl)}</span>${j.st ? '<span class="pill p-stretch">Stretch</span>' : ""}${startupPill(j)}</div>
         ${j.why ? `<p class="why">${esc(j.why)}</p>` : ""}
         ${j.gaps && j.gaps.length ? `<div class="gaps">Gaps ${j.gaps.map(g=>`<span class="gap">${esc(g)}</span>`).join("")}</div>` : ""}
       </div>
@@ -496,7 +502,7 @@ function render(){
   }
   $("#list").innerHTML = html;
   for (const j of shown) if ((state.tab === "ready" || j.lf) && !state.packs[j.k]) queuePack(j.k);
-  $("#legend").innerHTML = state.meta ? `<span>${list.length} jobs in this view</span><span>Fit: CV and project match, skills, role and level</span><span>Jobs with a letter also have a tailored CV to download</span><span>Status changes save for you and sync into the tracker on the next run</span>` : "";
+  $("#legend").innerHTML = state.meta ? `<span>${list.length} jobs in this view</span>${state.tab === "startups" ? "<span>Startups from the YC job board, the a16z portfolio, the Breakout List, Next Play, Ramp's vendor data and HN Who's Hiring</span>" : ""}<span>Fit: CV and project match, skills, role and level</span><span>Jobs with a letter also have a tailored CV to download</span><span>Status changes save for you and sync into the tracker on the next run</span>` : "";
 }
 
 async function saveEdit(j, patch){

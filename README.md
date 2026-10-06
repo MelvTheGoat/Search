@@ -20,6 +20,9 @@ applies for you. You read each job and apply yourself.
      "Who is hiring?" thread
    - Adzuna, Reed (UK), Jooble and Findwork, only if you add their free
      keys to `.env`
+   - startups: the Y Combinator job board, plus the job boards of startups
+     named on the a16z portfolio jobs board, the Breakout List, Next Play
+     and Ramp's vendor directory (see "Startups" below)
 
    LinkedIn and Indeed are not used. They do not allow scraping.
 2. Puts them in one format and removes duplicates (same apply link, or same
@@ -146,6 +149,24 @@ A daily run in Claude Code on the web fetches new jobs and refreshes the
 page (steps in `CLAUDE.md`). On your own computer, `python hunt.py
 page-export` writes the files for the page; ask Claude Code to send them.
 
+## Startups
+
+Jobs at startups get a "Startup" tag and their own Startups tab on the
+tracker page. They come from:
+
+- the Y Combinator job board (ycombinator.com/jobs), read directly. Each YC
+  post states its visa rule and minimum years, and both are used.
+- the a16z portfolio jobs board (AI, fintech, crypto and enterprise
+  companies), the Breakout List, Next Play and Ramp's vendor directory.
+  `python hunt.py startups` collects these startups, finds each one's job
+  board (Greenhouse, Ashby, Lever or Workable) and writes them to
+  `config/startups.yaml`. The daily run does this by itself once a week and
+  then reads those boards with the others.
+- the Hacker News "Who is hiring?" thread.
+
+Lenny's Jobs and Founders You Should Know are not read, because the network
+of the online environment blocks them. Cosign needs a login.
+
 ## All commands
 
 | Command | What it does |
@@ -163,6 +184,8 @@ page-export` writes the files for the page; ask Claude Code to send them.
 | `python hunt.py stats` | Counts by status, source, country and label |
 | `python hunt.py rescore` | Score stored jobs again after you change the config |
 | `python hunt.py verify-companies` | Test all company boards and remove dead ones |
+| `python hunt.py startups` | Find startups and their job boards again (the run does this weekly) |
+| `python hunt.py list --startups` | Only startup jobs |
 | `python hunt.py page-export` | Write the files that refresh the online page |
 | `python hunt.py page-import <folder>` | Apply status and notes changed on the page |
 
@@ -174,6 +197,8 @@ date a job was first found.
 - `profile/cv.md`: your CV. Letters may only use facts from here.
 - `profile/profile.yaml`: contact details, level and target roles.
 - `config/companies.yaml`: company boards, one per line. Add more any time.
+- `config/startups.yaml`: made by `python hunt.py startups`; do not edit, it
+  is rebuilt every week. Put a startup in `companies.yaml` to keep it.
 - `config/scoring.yaml`: score weights, level scores, title patterns and the
   keyword filter. Run `python hunt.py rescore` after a change.
 - `config/skills.yaml`: skills to look for. Missing ones show up as `gaps`.
