@@ -71,6 +71,8 @@ def cmd_list(args):
     if args.status:
         where.append("status = ?")
         params.append(args.status)
+    if args.startups:
+        where.append("startup IS NOT NULL AND startup != ''")
     if args.label:
         where.append("location_label = ?")
         params.append(args.label)
@@ -252,6 +254,14 @@ def cmd_verify(args):
     verify_companies(write=not args.dry_run)
 
 
+def cmd_startups(args):
+    from .config import load_env, load_yaml
+    from .pipeline import make_http
+    from .sources.startups import discover
+    load_env()
+    discover(make_http(load_yaml("sources.yaml")))
+
+
 def main(argv=None):
     p = argparse.ArgumentParser(prog="hunt.py", description="Find, score and track ML/AI jobs.")
     sub = p.add_subparsers(dest="cmd", required=True)
@@ -270,6 +280,7 @@ def main(argv=None):
     s.add_argument("--status", choices=STATUSES)
     s.add_argument("--label", help="only this location label")
     s.add_argument("--all", action="store_true", help="include restricted and out-of-reach jobs")
+    s.add_argument("--startups", action="store_true", help="only startup jobs (YC, a16z, Breakout List, Next Play, Ramp, HN)")
     s.set_defaults(fn=cmd_list)
 
     s = sub.add_parser("show", help="all details of one job")
@@ -318,6 +329,9 @@ def main(argv=None):
     s = sub.add_parser("verify-companies", help="check every board in companies.yaml and remove dead ones")
     s.add_argument("--dry-run", action="store_true", help="report only, do not change companies.yaml")
     s.set_defaults(fn=cmd_verify)
+
+    s = sub.add_parser("startups", help="rebuild config/startups.yaml from the startup lists (the run does this weekly)")
+    s.set_defaults(fn=cmd_startups)
 
     args = p.parse_args(argv)
     args.fn(args)

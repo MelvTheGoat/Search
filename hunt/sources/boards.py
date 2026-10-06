@@ -8,6 +8,7 @@ from email.utils import parsedate_to_datetime
 
 from ..models import Job
 from ..text import fix_mojibake, html_to_text
+from .startups import fetch_yc
 
 
 def fetch_remoteok(http, cfg, log=print):
@@ -467,4 +468,5 @@ BOARDS = {
     "jooble": fetch_jooble,
     "findwork": fetch_findwork,
     "amazon": fetch_amazon,
+    "yc": fetch_yc,
 }

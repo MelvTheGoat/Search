@@ -24,14 +24,32 @@ def make_http(cfg):
                 retries=h.get("retries", 4), backoff=h.get("backoff", 2.0), timeout=h.get("timeout", 30))
 
 
-def load_companies():
+def load_companies(startups=True):
+    """Boards to read: companies.yaml, plus the startups found by
+    `python hunt.py startups` that are not in it already."""
     data = load_yaml("companies.yaml")
-    return [c for c in data.get("companies", []) if c.get("token") and c.get("ats")]
+    out = [c for c in data.get("companies", []) if c.get("token") and c.get("ats")]
+    if startups:
+        from .sources.startups import load_startups
+        have = {(c["ats"], c["token"].lower()) for c in out}
+        for s in load_startups().get("startups", []):
+            if s.get("ats") and s.get("token") and (s["ats"], s["token"].lower()) not in have:
+                have.add((s["ats"], s["token"].lower()))
+                out.append({"name": s["name"], "ats": s["ats"], "token": s["token"], "sector": "startup",
+                            "startup": ", ".join(s.get("sources", []))})
+    return out
 
 
 def fetch_all(http, cfg, log=print, only=None):
     """Fetch every enabled source. One broken source never stops the run."""
     jobs, counts, errors = [], Counter(), []
+    from .sources import startups
+    if not only and cfg.get("startups", {}).get("enabled", True) and startups.stale():
+        log("Finding startups and their job boards (once a week)...")
+        try:
+            startups.discover(http, log=log)
+        except Exception as e:  # noqa: BLE001
+            errors.append(f"startups: {e}")
     companies = load_companies()
     ats_on = [a for a in ATS_NAMES if cfg.get(a, {}).get("enabled", True)]
     if only:
@@ -86,6 +104,9 @@ def process(conn, jobs, labeller, scorer, log=print, today=None):
     deduped = len(jobs)
     cfg = scorer.cfg
     jobs = [j for j in jobs if j.title and is_relevant(j.title, j.description, cfg)]
+    from .sources.startups import startup_names
+    from .text import norm
+    startup_of = startup_names()
     log(f"{raw} fetched, {deduped} after dedupe, {len(jobs)} related to data, ML or AI")
     t0 = time.time()
     scorer.prepare(jobs)
@@ -102,6 +123,9 @@ def process(conn, jobs, labeller, scorer, log=print, today=None):
             "posted_at": j.posted_at, "department": j.department,
             "location_label": lab.label, "restriction": lab.restriction,
             "sponsorship": lab.sponsorship, "sponsorship_evidence": lab.evidence,
+            # Where a startup job came from: YC, a startup list, or HN.
+            "startup": (j.extra.get("startup") or startup_of.get(norm(j.company))
+                        or ("HN Who's Hiring" if j.source == "hn_whoishiring" else None)),
             **sc,
         }
         _, is_new = db.upsert(conn, row, today=today)

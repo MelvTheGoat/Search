@@ -40,7 +40,8 @@ CREATE TABLE IF NOT EXISTS jobs (
     notes TEXT,
     letter_file TEXT,
     user_updated_at TEXT,
-    cv_file TEXT
+    cv_file TEXT,
+    startup TEXT
 );
 CREATE INDEX IF NOT EXISTS idx_jobs_url ON jobs(url_key);
 CREATE INDEX IF NOT EXISTS idx_jobs_status ON jobs(status);
@@ -50,7 +51,7 @@ CREATE INDEX IF NOT EXISTS idx_jobs_status ON jobs(status);
 MACHINE_FIELDS = [
     "url_key", "apply_url", "source", "company", "title", "location", "country", "remote", "description",
     "posted_at", "department", "level", "stretch", "location_label", "restriction", "sponsorship",
-    "sponsorship_evidence", "fit_score", "why", "gaps", "top_projects", "score_parts", "last_seen",
+    "sponsorship_evidence", "fit_score", "why", "gaps", "top_projects", "score_parts", "last_seen", "startup",
 ]
 USER_FIELDS = ["date_found", "status", "date_applied", "notes", "letter_file", "user_updated_at"]
 
@@ -69,6 +70,8 @@ def connect(path=None):
     cols = {r[1] for r in conn.execute("PRAGMA table_info(jobs)")}
     if "cv_file" not in cols:  # databases made before tailored CVs
         conn.execute("ALTER TABLE jobs ADD COLUMN cv_file TEXT")
+    if "startup" not in cols:  # databases made before the startups list
+        conn.execute("ALTER TABLE jobs ADD COLUMN startup TEXT")
     return conn
 
 

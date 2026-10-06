@@ -51,6 +51,7 @@ def _compact(j, assets=None):
         "su": j["user_updated_at"] or "", "rst": (j["restriction"] or "")[:300], "src": j["source"],
         "loc": (j["location"] or "")[:120], "posted": j["posted_at"] or "",
         "cvn": cv, "cvp": (assets or {}).get(cv + ".pdf", "") if cv else "",
+        "sup": j.get("startup") or "",
     }
 
 
@@ -79,7 +80,7 @@ def letter_parts(path):
     return {"letter": text("cover letter") or text("intro"), "why": text("why this company")}
 
 
-def export_page(conn, top_open=300, top_restricted=0, top_near=150, out=PAGE_DIR):
+def export_page(conn, top_open=300, top_restricted=0, top_near=150, top_startup=150, out=PAGE_DIR):
     """Write the page records as JSON files plus writes.json, a list of
     batches (50 writes each) ready to send with the ArtifactData tool."""
     jobs = rows(conn)
@@ -95,7 +96,11 @@ def export_page(conn, top_open=300, top_restricted=0, top_near=150, out=PAGE_DIR
     shown = {j["id"] for j in fresh_open}
     near = unique_roles([j for j in reachable if j["id"] not in shown
                          and j["location_label"] in ("remote_open", "nigeria", "africa")])[:top_near]
-    chosen = tracked + fresh_open + near + fresh_rest
+    # Startup jobs (YC, a16z, Breakout List, Next Play, Ramp, HN) get their
+    # own tab, so the best of them are shown even below the top list.
+    shown |= {j["id"] for j in near}
+    startups = unique_roles([j for j in reachable if j["id"] not in shown and j.get("startup")])[:top_startup]
+    chosen = tracked + fresh_open + near + startups + fresh_rest
 
     if out.exists():
         shutil.rmtree(out)
@@ -151,6 +156,7 @@ def export_page(conn, top_open=300, top_restricted=0, top_near=150, out=PAGE_DIR
         "source": dict(Counter(j["source"] for j in jobs)),
         "total": len(jobs),
         "new_today": sum(1 for j in jobs if j["date_found"] == datetime.now().date().isoformat()),
+        "startups": sum(1 for j in chosen if j.get("startup")),
     }
     meta = {"run": run, "chunks": chunk_ids, "counts": counts, "shown": len(chosen), "letters": letters}
     mp = out / "meta.json"

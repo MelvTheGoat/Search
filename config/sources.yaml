@@ -33,6 +33,11 @@ http:
     myworkdayjobs.com: 1.0
     h1bdata.info: 1.5
     amazon.jobs: 1.5
+    ycombinator.com: 1.0
+    a16z.com: 1.0
+    nextplay.so: 2.0
+    ramp.com: 2.0
+    breakoutlist.com: 2.0
 
 # Company boards (the list is in companies.yaml)
 greenhouse: {enabled: true}
@@ -129,3 +134,15 @@ amazon:
   countries: [ZAF, KEN, NGA, EGY, MAR, GHA, RWA]
   queries: ["machine learning", "data scientist", "data engineer", "applied scientist", "business intelligence", "fraud", "risk", "AI"]
   max_results: 200
+
+# Startups. `yc` reads the Y Combinator job board. `startups` rebuilds
+# config/startups.yaml once a week from the a16z jobs board, the Breakout
+# List, Next Play and the Ramp vendor directory, and the run then reads
+# those startups' job boards too. Jobs from these, and from HN Who's
+# Hiring, show in the Startups tab of the tracker page.
+yc:
+  enabled: true
+  refetch_hours: 12
+
+startups:
+  enabled: true

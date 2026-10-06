@@ -25,7 +25,7 @@ _LD_JSON = re.compile(r'<script[^>]*application/ld\+json[^>]*>(.*?)</script>', r
 
 
 def _extra(company):
-    return {k: company[k] for k in ("known_sponsor", "aliases", "sector") if company.get(k)}
+    return {k: company[k] for k in ("known_sponsor", "aliases", "sector", "startup") if company.get(k)}
 
 
 def fetch_greenhouse(http, company, keep_title=None):
