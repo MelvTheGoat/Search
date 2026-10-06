@@ -1,0 +1,2299 @@
+# Startups found by `python hunt.py startups` from the a16z jobs board,
+# the Breakout List, Next Play and the Ramp vendor directory.
+# Made by the tool; it is rebuilt every week, so edit companies.yaml instead.
+updated: '2026-10-06'
+startups:
+- name: Skydio
+  sources:
+  - a16z
+  domain: skydio.com
+  ats: ashby
+  token: skydio
+- name: Decagon
+  sources:
+  - a16z
+  - Ramp
+  domain: decagon.ai
+  in_companies: true
+- name: ElevenLabs
+  sources:
+  - a16z
+  - Breakout List
+  - Next Play
+  domain: elevenlabs.io
+  in_companies: true
+- name: EliseAI
+  sources:
+  - a16z
+  - Next Play
+  domain: eliseai.com
+  ats: ashby
+  token: eliseai
+- name: Cursor
+  sources:
+  - a16z
+  domain: cursor.com
+  ats: ashby
+  token: cursor
+- name: Headway
+  sources:
+  - a16z
+  domain: headway.co
+  ats: ashby
+  token: headway
+- name: Cresta
+  sources:
+  - a16z
+  domain: cresta.com
+  in_companies: true
+- name: HappyRobot
+  sources:
+  - a16z
+  domain: happyrobot.ai
+  ats: ashby
+  token: happyrobot.ai
+- name: Northwood Space
+  sources:
+  - a16z
+  domain: northwoodspace.io
+  ats: ashby
+  token: northwoodspace
+- name: Replit
+  sources:
+  - a16z
+  domain: replit.com
+  ats: ashby
+  token: replit
+- name: Jeeves
+  sources:
+  - a16z
+  domain: tryjeeves.com
+  ats: lever
+  token: tryjeeves
+- name: Illumio
+  sources:
+  - a16z
+  domain: illumio.com
+  ats: ashby
+  token: illumio
+- name: Temporal
+  sources:
+  - a16z
+  domain: temporal.io
+  ats: ashby
+  token: temporal
+- name: Exa
+  sources:
+  - a16z
+  - Breakout List
+  domain: exa.ai
+  ats: ashby
+  token: exa
+- name: Mixpanel
+  sources:
+  - a16z
+  domain: mixpanel.com
+  ats: greenhouse
+  token: mixpanel
+- name: Thinking Machines Lab
+  sources:
+  - a16z
+  domain: thinkingmachines.ai
+  ats: ashby
+  token: ThinkingMachines
+- name: Benchling
+  sources:
+  - a16z
+  domain: benchling.com
+  in_companies: true
+- name: SentiLink
+  sources:
+  - a16z
+  domain: sentilink.com
+  ats: ashby
+  token: sentilink
+- name: Abridge
+  sources:
+  - a16z
+  domain: abridge.com
+  in_companies: true
+- name: Volta
+  sources:
+  - a16z
+  domain: volta.com
+  ats: ashby
+  token: volta
+- name: Hippocratic AI
+  sources:
+  - a16z
+  domain: hippocraticai.com
+  ats: ashby
+  token: Hippocratic AI
+- name: Wonderschool
+  sources:
+  - a16z
+  domain: wonderschool.com
+  ats: greenhouse
+  token: wonderschool
+- name: Reducto
+  sources:
+  - a16z
+  domain: reducto.ai
+  ats: ashby
+  token: reducto
+- name: Everlaw
+  sources:
+  - a16z
+  domain: everlaw.com
+  ats: greenhouse
+  token: everlaw
+- name: Heron Power
+  sources:
+  - a16z
+  domain: heronpower.com
+  ats: ashby
+  token: heron-power
+- name: Rillet
+  sources:
+  - a16z
+  domain: rillet.com
+  ats: ashby
+  token: rillet
+- name: fal
+  sources:
+  - a16z
+  - Breakout List
+  domain: fal.ai
+  ats: ashby
+  token: fal-ai
+- name: Hex
+  sources:
+  - a16z
+  domain: hex.tech
+  in_companies: true
+- name: Sardine
+  sources:
+  - a16z
+  domain: sardine.ai
+  in_companies: true
+- name: Yuno
+  sources:
+  - a16z
+  domain: y.uno
+  ats: lever
+  token: yuno
+- name: KoBold Metals
+  sources:
+  - a16z
+  domain: koboldmetals.com
+  ats: greenhouse
+  token: koboldmetals
+- name: Inferact
+  sources:
+  - a16z
+  domain: inferact.ai
+  ats: ashby
+  token: inferact
+- name: Periodic Labs
+  sources:
+  - a16z
+  - Breakout List
+  domain: periodiclabs.ai
+  ats: ashby
+  token: periodic-labs
+- name: Mind Robotics
+  sources:
+  - a16z
+  domain: mindrobotics.com
+  ats: ashby
+  token: mindrobotics
+- name: Thatch Health
+  sources:
+  - a16z
+  domain: thatch.ai
+  ats: greenhouse
+  token: thatch
+- name: hyperexponential
+  sources:
+  - a16z
+  domain: hyperexponential.com
+  ats: ashby
+  token: hyperexponential
+- name: Luma AI
+  sources:
+  - a16z
+  domain: lumalabs.ai
+  ats: ashby
+  token: lumaai
+- name: Starburst
+  sources:
+  - a16z
+  domain: starburst.io
+  in_companies: true
+- name: Air Space Intelligence
+  sources:
+  - a16z
+  domain: airspace-intelligence.com
+  ats: ashby
+  token: airspace-intelligence.com
+- name: Komodo Health
+  sources:
+  - a16z
+  domain: komodohealth.com
+  ats: greenhouse
+  token: komodohealth
+- name: Braintrust
+  sources:
+  - a16z
+  - Breakout List
+  domain: braintrust.dev
+  ats: ashby
+  token: Braintrust
+- name: Tennr
+  sources:
+  - a16z
+  domain: tennr.com
+  ats: ashby
+  token: tennr
+- name: Cape
+  sources:
+  - a16z
+  domain: cape.co
+  ats: ashby
+  token: cape
+- name: Neo
+  sources:
+  - a16z
+  domain: neo.ai
+  ats: greenhouse
+  token: neosecurityinc
+- name: Valon
+  sources:
+  - a16z
+  - Next Play
+  domain: valon.ai
+  ats: ashby
+  token: valon
+- name: Ambient.ai
+  sources:
+  - a16z
+  domain: ambient.ai
+  ats: ashby
+  token: ambient.ai
+- name: Eve
+  sources:
+  - a16z
+  domain: eve.legal
+  ats: greenhouse
+  token: eve
+- name: Gamma.app
+  sources:
+  - a16z
+  domain: gamma.app
+  ats: ashby
+  token: gamma
+- name: Formation Bio
+  sources:
+  - a16z
+  domain: formation.bio
+  ats: greenhouse
+  token: formationbio
+- name: Freenome
+  sources:
+  - a16z
+  domain: freenome.com
+  ats: greenhouse
+  token: freenome
+- name: Doppel
+  sources:
+  - a16z
+  domain: doppel.com
+  ats: ashby
+  token: doppel
+- name: Anchorage
+  sources:
+  - a16z
+  domain: anchorage.com
+  ats: lever
+  token: anchorage
+  in_companies: true
+- name: Current
+  sources:
+  - a16z
+  domain: current.com
+  in_companies: true
+- name: Hebbia
+  sources:
+  - a16z
+  domain: hebbia.com
+  ats: ashby
+  token: hebbia-ai
+- name: Stuut
+  sources:
+  - a16z
+  domain: stuut.co
+  ats: ashby
+  token: stuut-ai
+- name: Tessera Labs
+  sources:
+  - a16z
+  domain: tesseralabs.ai
+  ats: ashby
+  token: tessera-labs
+- name: Kaizen Labs
+  sources:
+  - a16z
+  domain: kaizenlabs.co
+  ats: ashby
+  token: kaizenlabs
+- name: Waymark
+  sources:
+  - a16z
+  domain: waymarkcare.com
+  ats: greenhouse
+  token: waymark
+- name: Ambience Healthcare
+  sources:
+  - a16z
+  domain: ambiencehealthcare.com
+  ats: ashby
+  token: ambiencehealthcare
+- name: Lightfield
+  sources:
+  - a16z
+  - Next Play
+  domain: lightfield.app
+  ats: ashby
+  token: Lightfield
+- name: Protege
+  sources:
+  - a16z
+  domain: withprotege.ai
+  ats: ashby
+  token: protege
+- name: Town
+  sources:
+  - a16z
+  domain: town.com
+  ats: ashby
+  token: town
+- name: Very Good Security
+  sources:
+  - a16z
+  domain: verygoodsecurity.com
+  ats: lever
+  token: verygoodsecurity
+- name: Arena
+  sources:
+  - a16z
+  domain: arena.ai
+  ats: ashby
+  token: arena
+- name: Pylon
+  sources:
+  - a16z
+  domain: usepylon.com
+  ats: ashby
+  token: pylon
+- name: Pave
+  sources:
+  - a16z
+  domain: pave.com
+  ats: greenhouse
+  token: paveakatroveinformationtechnologies
+- name: Salient
+  sources:
+  - a16z
+  domain: trysalient.com
+  ats: ashby
+  token: salient
+- name: Forward
+  sources:
+  - a16z
+  domain: forwardnetworks.com
+  ats: greenhouse
+  token: forwardnetworks
+- name: Lassie
+  sources:
+  - a16z
+  domain: lassie.ai
+  ats: ashby
+  token: lassie
+- name: Rune Technologies
+  sources:
+  - a16z
+  domain: runetech.co
+  ats: ashby
+  token: runetech
+- name: Telepatia AI
+  sources:
+  - a16z
+  domain: telepatia.ai
+  ats: ashby
+  token: telepatia
+- name: Camber
+  sources:
+  - a16z
+  domain: camber.health
+  ats: ashby
+  token: camber
+- name: Lio
+  sources:
+  - a16z
+  domain: lio.ai
+  ats: ashby
+  token: lio
+- name: Ultima Genomics
+  sources:
+  - a16z
+  domain: ultimagenomics.com
+  ats: greenhouse
+  token: ultimagenomics
+- name: Clutch
+  sources:
+  - a16z
+  domain: withclutch.com
+  ats: ashby
+  token: withclutch
+- name: Counsel Health
+  sources:
+  - a16z
+  domain: counselhealth.com
+  ats: ashby
+  token: counsel
+- name: Endra
+  sources:
+  - a16z
+  domain: endra.ai
+  ats: ashby
+  token: endra
+- name: Gimlet Labs
+  sources:
+  - a16z
+  domain: gimletlabs.ai
+  ats: ashby
+  token: gimlet
+- name: Wrapbook
+  sources:
+  - a16z
+  domain: wrapbook.com
+  ats: ashby
+  token: wrapbook
+- name: Character.AI
+  sources:
+  - a16z
+  domain: character.ai
+  in_companies: true
+- name: Convex
+  sources:
+  - a16z
+  domain: convex.dev
+  ats: ashby
+  token: convex-dev
+- name: Hilbert
+  sources:
+  - a16z
+  domain: hilberts.ai
+  ats: ashby
+  token: hilberts
+- name: Insitro
+  sources:
+  - a16z
+  domain: insitro.com
+  in_companies: true
+- name: Mintlify
+  sources:
+  - a16z
+  domain: mintlify.com
+  ats: ashby
+  token: Mintlify
+- name: Mirage
+  sources:
+  - a16z
+  domain: mirage.app
+  ats: ashby
+  token: mirage
+- name: Mirendil
+  sources:
+  - a16z
+  domain: mirendil.com
+  ats: ashby
+  token: mirendil
+- name: PlanetScale
+  sources:
+  - a16z
+  domain: planetscale.com
+  ats: greenhouse
+  token: planetscale
+- name: AKASA
+  sources:
+  - a16z
+  domain: akasa.com
+  ats: ashby
+  token: AKASA
+- name: Bayesian Health
+  sources:
+  - a16z
+  domain: bayesianhealth.com
+  ats: ashby
+  token: bayesianhealth
+- name: Cedar
+  sources:
+  - a16z
+  domain: cedar.com
+  ats: ashby
+  token: cedar
+- name: Ease Health
+  sources:
+  - a16z
+  domain: easehealth.com
+  ats: ashby
+  token: ease-health
+- name: Krea
+  sources:
+  - a16z
+  domain: krea.ai
+  ats: ashby
+  token: krea
+- name: Prosper AI
+  sources:
+  - a16z
+  domain: getprosper.ai
+  ats: ashby
+  token: prosper-ai
+- name: Vesta
+  sources:
+  - a16z
+  domain: usevesta.com
+  ats: ashby
+  token: vesta
+- name: 11x
+  sources:
+  - a16z
+  - Ramp
+  domain: 11x.ai
+  ats: ashby
+  token: 11x
+- name: Adaptive
+  sources:
+  - a16z
+  domain: adaptive.build
+  ats: ashby
+  token: Adaptive
+- name: Descript
+  sources:
+  - a16z
+  domain: descript.com
+  ats: greenhouse
+  token: descript
+- name: FurtherAI
+  sources:
+  - a16z
+  domain: furtherai.com
+  ats: ashby
+  token: furtherai
+- name: Inceptive
+  sources:
+  - a16z
+  domain: inceptive.life
+  ats: greenhouse
+  token: inceptive
+- name: Probook
+  sources:
+  - a16z
+  domain: probook.ai
+  ats: ashby
+  token: probook
+- name: Raspberry AI
+  sources:
+  - a16z
+  domain: raspberry.ai
+  ats: ashby
+  token: raspberry
+- name: Sequence
+  sources:
+  - a16z
+  domain: sequencehq.com
+  ats: ashby
+  token: sequence
+- name: World Labs
+  sources:
+  - a16z
+  domain: worldlabs.ai
+  ats: ashby
+  token: worldlabs
+- name: Adaptive Security
+  sources:
+  - a16z
+  domain: adaptivesecurity.com
+  ats: ashby
+  token: adaptivesecurity
+- name: Method
+  sources:
+  - a16z
+  domain: methodfi.com
+  ats: ashby
+  token: method
+- name: Resend
+  sources:
+  - a16z
+  domain: resend.com
+  ats: ashby
+  token: resend
+- name: SnapLogic
+  sources:
+  - a16z
+  domain: snaplogic.com
+  ats: lever
+  token: snaplogic
+- name: Sourcegraph
+  sources:
+  - a16z
+  domain: sourcegraph.com
+  ats: greenhouse
+  token: sourcegraph91
+- name: ZeroMark
+  sources:
+  - a16z
+  domain: zeromark.com
+  ats: ashby
+  token: Zeromark
+- name: Alluxio
+  sources:
+  - a16z
+  domain: alluxio.io
+  ats: lever
+  token: alluxio
+- name: Boku
+  sources:
+  - a16z
+  domain: boku.com
+  ats: greenhouse
+  token: boku
+- name: Chariot Defense
+  sources:
+  - a16z
+  domain: chariotdefense.com
+  ats: greenhouse
+  token: chariotdefense
+- name: Glimpse
+  sources:
+  - a16z
+  domain: tryglimpse.com
+  ats: ashby
+  token: glimpse
+- name: Labelbox
+  sources:
+  - a16z
+  domain: labelbox.com
+  in_companies: true
+- name: Method Security
+  sources:
+  - a16z
+  domain: method.security
+  ats: ashby
+  token: method.security
+- name: OpenEvidence
+  sources:
+  - a16z
+  - Breakout List
+  domain: openevidence.com
+  ats: ashby
+  token: openevidence
+- name: The Horowitz Andreessen Academy (HAA)
+  sources:
+  - a16z
+  domain: theacademysf.com
+  ats: ashby
+  token: theacademysf
+- name: Truemed
+  sources:
+  - a16z
+  domain: truemed.com
+  ats: ashby
+  token: truemed
+- name: Unlimited Industries
+  sources:
+  - a16z
+  domain: unlimitedindustries.com
+  ats: ashby
+  token: unlimitedindustries
+- name: Backstory
+  sources:
+  - a16z
+  domain: backstory.ai
+  ats: lever
+  token: people-ai
+- name: Hedra
+  sources:
+  - a16z
+  domain: hedra.com
+  ats: ashby
+  token: hedra
+- name: Inductive Bio
+  sources:
+  - a16z
+  domain: inductive.bio
+  ats: ashby
+  token: inductive-bio
+- name: Mirelo AI
+  sources:
+  - a16z
+  domain: mirelo.ai
+  ats: ashby
+  token: mirelo
+- name: Compound
+  sources:
+  - a16z
+  domain: compound.finance
+  ats: ashby
+  token: compound
+- name: Concourse
+  sources:
+  - a16z
+  domain: concourse.co
+  ats: ashby
+  token: concourse
+- name: Infinitus
+  sources:
+  - a16z
+  domain: infinitus.ai
+  ats: ashby
+  token: infinitus
+- name: Midstream Health
+  sources:
+  - a16z
+  domain: midstream.health
+  ats: ashby
+  token: midstream
+- name: Odyssey
+  sources:
+  - a16z
+  domain: withodyssey.com
+  ats: ashby
+  token: odyssey
+- name: OfferUp
+  sources:
+  - a16z
+  domain: offerup.com
+  ats: greenhouse
+  token: offerup
+- name: Sprig
+  sources:
+  - a16z
+  domain: sprig.com
+  ats: ashby
+  token: sprig
+- name: Vals AI
+  sources:
+  - a16z
+  domain: vals.ai
+  ats: ashby
+  token: vals-ai
+- name: ekarobotics
+  sources:
+  - a16z
+  domain: ekarobotics.com
+  ats: ashby
+  token: ekarobotics
+- name: Alleviate Health
+  sources:
+  - a16z
+  domain: alleviatehealth.care
+  ats: ashby
+  token: alleviatehealth
+- name: Apollo
+  sources:
+  - a16z
+  domain: apollographql.com
+  ats: ashby
+  token: apollo-graphql
+- name: Black Ore Technologies
+  sources:
+  - a16z
+  domain: blackore.ai
+  ats: greenhouse
+  token: blackoretechnologiesinc
+- name: Keycard
+  sources:
+  - a16z
+  domain: keycard.ai
+  ats: ashby
+  token: keycard-labs
+- name: Netlify
+  sources:
+  - a16z
+  domain: netlify.com
+  ats: greenhouse
+  token: netlify
+- name: Pryzm
+  sources:
+  - a16z
+  domain: pryzm.io
+  ats: ashby
+  token: pryzm
+- name: Relace
+  sources:
+  - a16z
+  domain: relace.ai
+  ats: ashby
+  token: relace
+- name: Rigup
+  sources:
+  - a16z
+  domain: rigup.com
+  ats: greenhouse
+  token: rigup
+- name: Sky Mavis
+  sources:
+  - a16z
+  domain: skymavis.com
+  ats: ashby
+  token: skymavis
+- name: Zuma
+  sources:
+  - a16z
+  domain: getzuma.com
+  ats: lever
+  token: getzuma
+- name: Asimov
+  sources:
+  - a16z
+  domain: asimov.com
+  ats: ashby
+  token: asimov
+- name: Belong
+  sources:
+  - a16z
+  domain: belonghome.com
+  ats: workable
+  token: belong-6
+- name: CX2
+  sources:
+  - a16z
+  domain: cx2.com
+  ats: lever
+  token: cx2
+- name: Petual
+  sources:
+  - a16z
+  domain: petual.ai
+  ats: ashby
+  token: petual
+- name: Pinecone
+  sources:
+  - a16z
+  domain: pinecone.io
+  in_companies: true
+- name: Quora
+  sources:
+  - a16z
+  domain: quora.com
+  in_companies: true
+- name: Rasa
+  sources:
+  - a16z
+  domain: rasa.com
+  ats: ashby
+  token: rasa
+- name: Uniswap
+  sources:
+  - a16z
+  domain: uniswap.org
+  ats: ashby
+  token: uniswap
+- name: Vantage
+  sources:
+  - a16z
+  domain: vantage.sh
+  ats: ashby
+  token: vantage
+- name: Branch.co
+  sources:
+  - a16z
+  domain: branch.co
+  ats: greenhouse
+  token: branch
+- name: Chestnut
+  sources:
+  - a16z
+  domain: chestnutfi.com
+  ats: ashby
+  token: Chestnut
+- name: Cluely
+  sources:
+  - a16z
+  domain: cluely.com
+  ats: ashby
+  token: cluely
+- name: End Game
+  sources:
+  - a16z
+  domain: end.gg
+  ats: ashby
+  token: endgame
+- name: Improbable
+  sources:
+  - a16z
+  domain: improbable.io
+  in_companies: true
+- name: Magic Leap
+  sources:
+  - a16z
+  domain: magicleap.com
+  ats: greenhouse
+  token: magicleap
+- name: Octant Bio
+  sources:
+  - a16z
+  domain: octant.bio
+  ats: greenhouse
+  token: octantbio
+- name: Roebling
+  sources:
+  - a16z
+  domain: roebling.co
+  ats: ashby
+  token: roebling
+- name: Sola
+  sources:
+  - a16z
+  domain: sola.ai
+  ats: ashby
+  token: sola
+- name: gooddata.ai
+  sources:
+  - a16z
+  domain: gooddata.ai
+  ats: ashby
+  token: gooddata
+- name: Backbone Systems
+  sources:
+  - a16z
+  domain: backbonesystems.ai
+  ats: ashby
+  token: backbone
+- name: CFO.ai
+  sources:
+  - a16z
+  domain: runway.cfo.ai
+  ats: ashby
+  token: Runway
+- name: Dyno Therapeutics
+  sources:
+  - a16z
+  domain: dynotx.com
+  ats: greenhouse
+  token: dynotherapeutics
+- name: Leona Health
+  sources:
+  - a16z
+  domain: leona.health
+  ats: ashby
+  token: leona
+- name: Maven
+  sources:
+  - a16z
+  domain: maven.com
+  ats: ashby
+  token: maven
+- name: Motherduck
+  sources:
+  - a16z
+  domain: motherduck.com
+  in_companies: true
+- name: Promise
+  sources:
+  - a16z
+  domain: promisestudios.com
+  ats: ashby
+  token: promise-studios
+- name: Runta
+  sources:
+  - a16z
+  domain: runta.com
+  ats: ashby
+  token: runta
+- name: Slingshot AI
+  sources:
+  - a16z
+  domain: slingshot.xyz
+  ats: ashby
+  token: SlingshotAI
+- name: SuperApp
+  sources:
+  - a16z
+  domain: instabase.com
+  ats: greenhouse
+  token: instabase
+- name: UpSmith
+  sources:
+  - a16z
+  domain: upsmith.com
+  ats: workable
+  token: upsmith-1
+- name: Wingspan
+  sources:
+  - a16z
+  domain: wingspan.app
+  ats: greenhouse
+  token: wingspan
+- name: Charthop
+  sources:
+  - a16z
+  domain: charthop.com
+  ats: ashby
+  token: ChartHop
+- name: Ferry Health
+  sources:
+  - a16z
+  domain: ferry.health
+  ats: ashby
+  token: ferryhealth
+- name: Material Security
+  sources:
+  - a16z
+  domain: material.security
+  ats: ashby
+  token: materialsecurity
+- name: Mem
+  sources:
+  - a16z
+  domain: mem.ai
+  ats: ashby
+  token: mem.ai
+- name: OpenSea
+  sources:
+  - a16z
+  domain: opensea.io
+  ats: ashby
+  token: OpenSea
+- name: Payrails
+  sources:
+  - a16z
+  domain: payrails.com
+  ats: ashby
+  token: payrails
+- name: Universal
+  sources:
+  - a16z
+  domain: universal.xyz
+  ats: greenhouse
+  token: universal
+- name: WorkBoard
+  sources:
+  - a16z
+  domain: workboard.com
+  ats: greenhouse
+  token: workboard
+- name: Azra Games
+  sources:
+  - a16z
+  domain: azragames.com
+  ats: greenhouse
+  token: azragames
+- name: Backflip AI
+  sources:
+  - a16z
+  domain: backflip.ai
+  ats: ashby
+  token: backflip.ai
+- name: Carry1st
+  sources:
+  - a16z
+  domain: carry1st.com
+  ats: workable
+  token: carry1st
+- name: Formation
+  sources:
+  - a16z
+  domain: formation.dev
+  ats: ashby
+  token: formation
+- name: Kinter
+  sources:
+  - a16z
+  domain: kinter.ai
+  ats: lever
+  token: kinter
+- name: Mux
+  sources:
+  - a16z
+  domain: mux.com
+  ats: ashby
+  token: mux
+- name: Pahdo Labs
+  sources:
+  - a16z
+  domain: pahdolabs.com
+  ats: ashby
+  token: pahdo
+- name: Rezo Therapeutics
+  sources:
+  - a16z
+  domain: rezotx.com
+  ats: lever
+  token: rezotx
+- name: Rutter
+  sources:
+  - a16z
+  domain: rutterapi.com
+  ats: ashby
+  token: rutter
+- name: Uplift
+  sources:
+  - a16z
+  domain: uplift.us
+  ats: greenhouse
+  token: uplift
+- name: Vitally
+  sources:
+  - a16z
+  domain: vitally.io
+  ats: ashby
+  token: vitally
+- name: Aaru
+  sources:
+  - Breakout List
+  domain: aaru.com
+  ats: ashby
+  token: aaru
+- name: American Terawatt
+  sources:
+  - Breakout List
+  domain: americanterawatt.com
+  ats: ashby
+  token: American Terawatt
+- name: Antares Nuclear
+  sources:
+  - Breakout List
+  domain: antaresindustries.com
+  ats: ashby
+  token: Antares
+- name: Aven
+  sources:
+  - Breakout List
+  domain: aven.com
+  ats: ashby
+  token: aven
+- name: Cognition
+  sources:
+  - Breakout List
+  domain: cognition.ai
+  in_companies: true
+- name: Conduit
+  sources:
+  - Breakout List
+  domain: condu.it
+  ats: ashby
+  token: conduit
+- name: Etched
+  sources:
+  - Breakout List
+  domain: etched.com
+  in_companies: true
+- name: Fireworks AI
+  sources:
+  - Breakout List
+  domain: fireworks.ai
+  ats: ashby
+  token: fireworks
+- name: Handshake
+  sources:
+  - Breakout List
+  domain: joinhandshake.com
+  ats: ashby
+  token: handshake
+- name: Harvey
+  sources:
+  - Breakout List
+  domain: harvey.ai
+  in_companies: true
+- name: Kalshi
+  sources:
+  - Breakout List
+  domain: kalshi.com
+  ats: ashby
+  token: kalshi
+- name: Saronic
+  sources:
+  - Breakout List
+  domain: saronic.com
+  ats: ashby
+  token: saronic
+- name: Watney Robotics
+  sources:
+  - Breakout List
+  domain: watney.com
+  ats: ashby
+  token: watney
+- name: Amca
+  sources:
+  - Breakout List
+  domain: amca.com
+  ats: greenhouse
+  token: amca
+- name: Arcana
+  sources:
+  - Breakout List
+  domain: arcana.io
+  ats: greenhouse
+  token: arcanaanalytics
+- name: Baseten
+  sources:
+  - Breakout List
+  - Next Play
+  domain: baseten.co
+  in_companies: true
+- name: Beacon Software
+  sources:
+  - Breakout List
+  domain: beaconsoftware.com
+  ats: ashby
+  token: beaconsoftware
+- name: Brain Co.
+  sources:
+  - Breakout List
+  domain: brain.co
+  ats: ashby
+  token: brainco
+- name: Engram
+  sources:
+  - Breakout List
+  domain: engram.com
+  ats: ashby
+  token: engram
+- name: Enter
+  sources:
+  - Breakout List
+  domain: getenter.ai
+  ats: ashby
+  token: enter-ai
+- name: Fab2
+  sources:
+  - Breakout List
+  domain: fab2.com
+  ats: ashby
+  token: fab2
+- name: Factory
+  sources:
+  - Breakout List
+  - Next Play
+  domain: factory.com
+  ats: ashby
+  token: factory
+- name: Fluidstack
+  sources:
+  - Breakout List
+  - Next Play
+  domain: fluidstack.io
+  ats: ashby
+  token: fluidstack
+- name: Fractile
+  sources:
+  - Breakout List
+  domain: fractile.ai
+  ats: greenhouse
+  token: fractile
+- name: General Matter
+  sources:
+  - Breakout List
+  domain: generalmatter.com
+  ats: greenhouse
+  token: generalmatter
+- name: Higgsfield
+  sources:
+  - Breakout List
+  domain: higgsfield.ai
+  ats: ashby
+  token: higgsfieldai
+- name: Hone
+  sources:
+  - Breakout List
+  domain: hone.com
+  ats: greenhouse
+  token: hone
+- name: Infisical
+  sources:
+  - Breakout List
+  domain: infisical.com
+  ats: ashby
+  token: infisical
+- name: Keenable
+  sources:
+  - Breakout List
+  domain: keenable.ai
+  ats: ashby
+  token: keenable
+- name: Kraken
+  sources:
+  - Breakout List
+  domain: kraken.com
+  in_companies: true
+- name: Listen Labs
+  sources:
+  - Breakout List
+  domain: listenlabs.com
+  ats: ashby
+  token: listenlabs
+- name: Long Lake
+  sources:
+  - Breakout List
+  domain: llmh.com
+  ats: ashby
+  token: long-lake
+- name: Lovable
+  sources:
+  - Breakout List
+  domain: lovable.dev
+  ats: ashby
+  token: lovable
+- name: Mach Industries
+  sources:
+  - Breakout List
+  domain: machindustries.com
+  ats: greenhouse
+  token: machindustries
+- name: Medra
+  sources:
+  - Breakout List
+  domain: medra.ai
+  ats: ashby
+  token: medraai
+- name: Mercor
+  sources:
+  - Breakout List
+  domain: mercor.com
+  ats: ashby
+  token: mercor
+- name: Mithril
+  sources:
+  - Breakout List
+  domain: mithril.ai
+  ats: greenhouse
+  token: mithril
+- name: Modal
+  sources:
+  - Breakout List
+  domain: modal.com
+  in_companies: true
+- name: Neros
+  sources:
+  - Breakout List
+  domain: neros.tech
+  ats: greenhouse
+  token: nerostechnologies
+- name: OLIX
+  sources:
+  - Breakout List
+  domain: olix.com
+  ats: ashby
+  token: olix
+- name: Owner
+  sources:
+  - Breakout List
+  - Next Play
+  domain: owner.com
+  ats: ashby
+  token: owner
+- name: Pallet
+  sources:
+  - Breakout List
+  domain: pallet.com
+  ats: greenhouse
+  token: pallet
+- name: Pangram Labs
+  sources:
+  - Breakout List
+  - Next Play
+  domain: pangram.com
+  ats: ashby
+  token: pangramlabs
+- name: Physical Intelligence
+  sources:
+  - Breakout List
+  domain: physicalintelligence.company
+  in_companies: true
+- name: Quadrillion
+  sources:
+  - Breakout List
+  domain: quadrillion.ai
+  ats: ashby
+  token: quadrillion-labs
+- name: Radiant
+  sources:
+  - Breakout List
+  - Next Play
+  domain: radiantnuclear.com
+  ats: ashby
+  token: radiant
+- name: Ramp
+  sources:
+  - Breakout List
+  - Next Play
+  domain: ramp.com
+  in_companies: true
+- name: Revel
+  sources:
+  - Breakout List
+  domain: revel.io
+  ats: ashby
+  token: revel
+- name: Ricursive
+  sources:
+  - Breakout List
+  domain: ricursive.com
+  ats: ashby
+  token: Ricursive Intelligence
+- name: Rogo
+  sources:
+  - Breakout List
+  domain: rogo.ai
+  ats: ashby
+  token: Rogo
+- name: Rox
+  sources:
+  - Breakout List
+  - Ramp
+  domain: rox.com
+  ats: ashby
+  token: Rox-Data-Corp
+- name: Serval
+  sources:
+  - Breakout List
+  domain: serval.com
+  ats: ashby
+  token: serval
+- name: SF Compute
+  sources:
+  - Breakout List
+  domain: sfcompute.com
+  ats: ashby
+  token: sfcompute
+- name: Simile
+  sources:
+  - Breakout List
+  domain: simile.com
+  ats: ashby
+  token: simile
+- name: Socket
+  sources:
+  - Breakout List
+  domain: socket.dev
+  ats: ashby
+  token: socket
+- name: Specter
+  sources:
+  - Breakout List
+  domain: specter.co
+  ats: ashby
+  token: specter
+- name: State Affairs
+  sources:
+  - Breakout List
+  domain: stateaffairs.com
+  ats: greenhouse
+  token: stateaffairs
+- name: Trajectory
+  sources:
+  - Breakout List
+  domain: trajectory.ai
+  ats: ashby
+  token: trajectory
+- name: Turbopuffer
+  sources:
+  - Breakout List
+  domain: turbopuffer.com
+  ats: ashby
+  token: turbopuffer
+- name: Twenty
+  sources:
+  - Breakout List
+  domain: twenty.io
+  ats: ashby
+  token: twenty
+- name: Valar Atomics
+  sources:
+  - Breakout List
+  domain: valaratomics.com
+  ats: greenhouse
+  token: valaratomics
+- name: Vapi
+  sources:
+  - Breakout List
+  domain: vapi.ai
+  ats: ashby
+  token: vapi
+- name: Verkada
+  sources:
+  - Breakout List
+  domain: verkada.com
+  in_companies: true
+- name: Verse Medical
+  sources:
+  - Breakout List
+  domain: versemedical.com
+  ats: ashby
+  token: versemedical
+- name: Whop
+  sources:
+  - Breakout List
+  domain: whop.com
+  ats: ashby
+  token: whop
+- name: WorkOS
+  sources:
+  - Breakout List
+  domain: workos.com
+  ats: ashby
+  token: workos
+- name: XBOW
+  sources:
+  - Breakout List
+  domain: xbow.com
+  ats: ashby
+  token: xbowcareers
+- name: XDOF
+  sources:
+  - Breakout List
+  domain: xdof.ai
+  ats: ashby
+  token: XDOF
+- name: Namespace
+  sources:
+  - Next Play
+  domain: namespace.so
+  ats: ashby
+  token: namespace
+- name: TypeSafe AI
+  sources:
+  - Next Play
+  domain: typesafe-ai.github.io
+  ats: ashby
+  token: typesafe-ai
+- name: Miter
+  sources:
+  - Next Play
+  domain: miter.com
+  ats: ashby
+  token: miter
+- name: Relay
+  sources:
+  - Next Play
+  domain: relaypro.com
+  ats: greenhouse
+  token: relaypro
+- name: Profound
+  sources:
+  - Next Play
+  domain: profoundnorth.com
+  ats: ashby
+  token: profound
+- name: Ambrook
+  sources:
+  - Next Play
+  domain: ambrook.com
+  ats: ashby
+  token: ambrook
+- name: Conduct
+  sources:
+  - Next Play
+  domain: conduct.ai
+  ats: ashby
+  token: conduct
+- name: Monumental
+  sources:
+  - Next Play
+  domain: monumentalsports.com
+  ats: ashby
+  token: monumental
+- name: Proxima
+  sources:
+  - Next Play
+  domain: proximafusion.com
+  ats: ashby
+  token: proxima
+- name: Poseidon Aerospace
+  sources:
+  - Next Play
+  domain: poseidonaero.com
+  ats: ashby
+  token: poseidonaero
+- name: Chamelio
+  sources:
+  - Next Play
+  domain: chamelio.ai
+  ats: ashby
+  token: chamelio
+- name: Scribe
+  sources:
+  - Next Play
+  domain: scribehow.com
+  ats: ashby
+  token: scribe
+- name: Supabase Inc.
+  sources:
+  - Next Play
+  domain: supabase.com
+  ats: ashby
+  token: supabase
+  in_companies: true
+- name: Code Metal
+  sources:
+  - Next Play
+  domain: codemetal.ai
+  ats: ashby
+  token: code-metal
+- name: Higgsfield AI
+  sources:
+  - Next Play
+  domain: higgsfield.ai
+  ats: ashby
+  token: higgsfieldai
+- name: TAR
+  sources:
+  - Next Play
+  domain: tar.com
+  ats: ashby
+  token: tar
+- name: Solstice
+  sources:
+  - Next Play
+  domain: solsticehealth.co
+  ats: ashby
+  token: solstice
+- name: Stepful
+  sources:
+  - Next Play
+  domain: fiercehealthcare.com
+  ats: ashby
+  token: stepful
+- name: Cohere
+  sources:
+  - Next Play
+  domain: cohere.com
+  in_companies: true
+- name: OpenAI
+  sources:
+  - Next Play
+  domain: openai.com
+  in_companies: true
+- name: Sierra
+  sources:
+  - Next Play
+  domain: sierra.ai
+  in_companies: true
+- name: 1Password
+  sources:
+  - Next Play
+  domain: 1password.com
+  in_companies: true
+- name: Swarm Aero
+  sources:
+  - Next Play
+  domain: swarm.aero
+  ats: ashby
+  token: swarmaero
+- name: Traba
+  sources:
+  - Next Play
+  domain: trabalhosfeitos.com
+  ats: ashby
+  token: traba
+- name: Island
+  sources:
+  - Next Play
+  domain: island.io
+  ats: greenhouse
+  token: island
+- name: Broccoli
+  sources:
+  - Next Play
+  domain: broccoli.com
+  ats: ashby
+  token: broccoli
+- name: Halluminate
+  sources:
+  - Next Play
+  domain: halluminate.ai
+  ats: ashby
+  token: halluminate
+- name: Rho
+  sources:
+  - Next Play
+  domain: rhombuspower.com
+  ats: greenhouse
+  token: rhombuspower
+- name: Also.
+  sources:
+  - Next Play
+  domain: ridealso.com
+  ats: ashby
+  token: Ridealso
+- name: Sesame
+  sources:
+  - Next Play
+  domain: sesameplace.com
+  ats: ashby
+  token: sesame
+- name: Efficient Computer
+  sources:
+  - Next Play
+  domain: efficient.computer
+  ats: greenhouse
+  token: efficientcomputer
+- name: Pilgrim
+  sources:
+  - Next Play
+  domain: pilgrimlabs.com
+  ats: ashby
+  token: pilgrim
+- name: Firecrawl Inc.
+  sources:
+  - Next Play
+  domain: firecrawl.dev
+  ats: ashby
+  token: firecrawl
+- name: Ande
+  sources:
+  - Next Play
+  domain: ande.ai
+  ats: ashby
+  token: ande
+- name: Raindrop
+  sources:
+  - Next Play
+  domain: raindrop.ai
+  ats: ashby
+  token: Raindrop
+- name: Delos Data
+  sources:
+  - Next Play
+  domain: delosdata.com
+  ats: ashby
+  token: delos-data
+- name: Perry Weather
+  sources:
+  - Next Play
+  domain: perryweather.com
+  ats: ashby
+  token: perryweather
+- name: Antioch
+  sources:
+  - Next Play
+  domain: antioch.com
+  ats: ashby
+  token: antioch
+- name: Luminary
+  sources:
+  - Next Play
+  domain: withluminary.com
+  ats: ashby
+  token: Luminary
+- name: Cognition AI Inc.
+  sources:
+  - Next Play
+  domain: cognition.com
+  ats: ashby
+  token: cognition
+  in_companies: true
+- name: Nuance Labs
+  sources:
+  - Next Play
+  domain: nuancelabs.ai
+  ats: greenhouse
+  token: nuancelabs
+- name: Xapien
+  sources:
+  - Next Play
+  domain: xapien.com
+  ats: ashby
+  token: xapien
+- name: Latitude
+  sources:
+  - Next Play
+  domain: latitude.xyz
+  ats: ashby
+  token: latitude-global
+- name: Armadin
+  sources:
+  - Next Play
+  domain: trust.armadin.com
+  ats: ashby
+  token: armadin
+- name: Baselayer
+  sources:
+  - Next Play
+  domain: baselayer.com
+  ats: greenhouse
+  token: baselayer
+- name: Caddi
+  sources:
+  - Next Play
+  domain: caddi.com
+  ats: workable
+  token: caddi
+- name: General Intuition
+  sources:
+  - Next Play
+  domain: generalintuition.com
+  ats: ashby
+  token: generalintuition-medal
+- name: Maven Robotics
+  sources:
+  - Next Play
+  domain: mavenrobotics.ai
+  ats: greenhouse
+  token: mavenrobotics
+- name: Heidi
+  sources:
+  - Next Play
+  domain: heidihealth.com
+  ats: ashby
+  token: heidihealth.com.au
+- name: Corridor
+  sources:
+  - Next Play
+  domain: corridoradvisors.com
+  ats: ashby
+  token: corridor
+- name: Outmarket AI
+  sources:
+  - Next Play
+  domain: outmarket.ai
+  ats: ashby
+  token: outmarket
+- name: Flow Engineering
+  sources:
+  - Next Play
+  domain: flowengineering.com
+  ats: ashby
+  token: flowengineering
+- name: Epsilon Health
+  sources:
+  - Next Play
+  domain: epsilon.health
+  ats: ashby
+  token: epsilon-health
+- name: Basecamp Research
+  sources:
+  - Next Play
+  domain: basecamp-research.com
+  ats: ashby
+  token: basecamp-research
+- name: Confido
+  sources:
+  - Next Play
+  domain: confidotech.com
+  ats: ashby
+  token: confido
+- name: Quartermaster
+  sources:
+  - Next Play
+  domain: quartermaster.us
+  ats: ashby
+  token: quartermaster
+- name: Restate
+  sources:
+  - Next Play
+  domain: restate.dev
+  ats: ashby
+  token: restate
+- name: Blee
+  sources:
+  - Next Play
+  domain: blee.com
+  ats: ashby
+  token: Blee
+- name: Enveda
+  sources:
+  - Next Play
+  domain: enveda.com
+  ats: lever
+  token: enveda
+- name: Metaview
+  sources:
+  - Next Play
+  domain: metaview.ai
+  ats: ashby
+  token: metaview
+- name: Attention
+  sources:
+  - Ramp
+  ats: ashby
+  token: attention
+- name: 1Mind
+  sources:
+  - Ramp
+  ats: ashby
+  token: 1mind
+- name: Granola
+  sources:
+  - Ramp
+  ats: ashby
+  token: granola
+- name: Intercom
+  sources:
+  - Ramp
+  in_companies: true
+- name: Gorgias
+  sources:
+  - Ramp
+  ats: ashby
+  token: gorgias
+- name: Polyai
+  sources:
+  - Ramp
+  in_companies: true
+no_board_found:
+- name: Nexthop
+  sources:
+  - a16z
+  domain: nexthop.ai
+- name: Netris
+  sources:
+  - a16z
+  domain: netris.io
+- name: Unconventional AI
+  sources:
+  - a16z
+  domain: unconv.ai
+- name: Boltz
+  sources:
+  - a16z
+  domain: boltz.bio
+- name: Cyngn
+  sources:
+  - a16z
+  domain: cyngn.com
+- name: BigHat Biosciences
+  sources:
+  - a16z
+  domain: bighatbio.com
+- name: Pindrop
+  sources:
+  - a16z
+  domain: pindrop.com
+- name: Point
+  sources:
+  - a16z
+  domain: point.com
+- name: Stoik
+  sources:
+  - a16z
+  domain: stoik.io
+- name: Comma.ai
+  sources:
+  - a16z
+  domain: comma.ai
+- name: Eclypsium
+  sources:
+  - a16z
+  domain: eclypsium.com
+- name: Protocol Labs
+  sources:
+  - a16z
+  domain: protocol.ai
+- name: Supersonik
+  sources:
+  - a16z
+  domain: supersonik.ai
+- name: Fenris Games
+  sources:
+  - a16z
+  domain: eveonline.com
+- name: NG.CASH
+  sources:
+  - a16z
+  domain: ng.cash
+- name: Peepal.co
+  sources:
+  - a16z
+  domain: coinswitch.co
+- name: Treeline
+  sources:
+  - a16z
+  domain: treeline.ai
+- name: Aleph Surgical
+  sources:
+  - a16z
+  domain: alephsurgical.com
+- name: Dapper Labs
+  sources:
+  - a16z
+  domain: dapperlabs.com
+- name: Incredible Health
+  sources:
+  - a16z
+  domain: incrediblehealth.com
+- name: Shizuku AI
+  sources:
+  - a16z
+  domain: shizuku.ai
+- name: FlyHomes
+  sources:
+  - a16z
+  domain: flyhomes.com
+- name: Gitbutler
+  sources:
+  - a16z
+  domain: gitbutler.com
+- name: TopKey
+  sources:
+  - a16z
+  domain: topkey.io
+- name: Biodock
+  sources:
+  - a16z
+  domain: biodock.ai
+- name: Highstock
+  sources:
+  - a16z
+  domain: highstock.com
+- name: Salt AI
+  sources:
+  - a16z
+  domain: getsalt.ai
+- name: Segura
+  sources:
+  - a16z
+  domain: sejasegura.ai
+- name: Valar Labs
+  sources:
+  - a16z
+  domain: valarlabs.com
+- name: Ventrilo
+  sources:
+  - a16z
+  domain: ventrilo.ai
+- name: Diode
+  sources:
+  - a16z
+  domain: diode.computer
+- name: Inventa
+  sources:
+  - a16z
+  domain: inventa.shop
+- name: Larridin
+  sources:
+  - a16z
+  domain: larridin.com
+- name: Moov
+  sources:
+  - a16z
+  domain: moov.io
+- name: Roboto Games
+  sources:
+  - a16z
+  domain: robotogames.com
+- name: Snapser
+  sources:
+  - a16z
+  domain: snapser.com
+- name: Tapi
+  sources:
+  - a16z
+  domain: tapi.la
+- name: Arcjet
+  sources:
+  - a16z
+  domain: arcjet.com
+- name: Camu
+  sources:
+  - a16z
+  domain: camu.ai
+- name: Cuenca
+  sources:
+  - a16z
+  domain: cuenca.com
+- name: Macro
+  sources:
+  - a16z
+  domain: macro.com
+- name: Mana Bio
+  sources:
+  - a16z
+  domain: mana.bio
+- name: Payall
+  sources:
+  - a16z
+  domain: payall.com
+- name: Phota Labs
+  sources:
+  - a16z
+  domain: photalabs.com
+- name: Reface
+  sources:
+  - a16z
+  domain: reface.ai
+- name: XBuild
+  sources:
+  - a16z
+  domain: x.build
+- name: Castelion
+  sources:
+  - Breakout List
+  domain: castelion.com
+- name: Neion Bio
+  sources:
+  - Breakout List
+  domain: neionbio.com
+- name: Nominal
+  sources:
+  - Breakout List
+  domain: nominal.io
+- name: Standard Intelligence
+  sources:
+  - Breakout List
+  domain: si.inc
+- name: Base
+  sources:
+  - Breakout List
+  domain: basepowercompany.com
+- name: Bitwise
+  sources:
+  - Breakout List
+  domain: bitwiseinvestments.com
+- name: Boom Supersonic
+  sources:
+  - Breakout List
+  domain: boomsupersonic.com
+- name: Cambridge Aerospace
+  sources:
+  - Breakout List
+  domain: cambridgeaerospace.com
+- name: Convergent
+  sources:
+  - Breakout List
+  domain: convergent.dev
+- name: Core Automation
+  sources:
+  - Breakout List
+  domain: coreauto.com
+- name: Instinct
+  sources:
+  - Breakout List
+  domain: instinct.com
+- name: Lumaril
+  sources:
+  - Breakout List
+  domain: lumaril.com
+- name: Luzern Risk
+  sources:
+  - Breakout List
+  domain: luzernrisk.com
+- name: Normal
+  sources:
+  - Breakout List
+  domain: normal.ai
+- name: Re
+  sources:
+  - Breakout List
+  domain: re.xyz
+- name: Sail Research
+  sources:
+  - Breakout List
+  domain: sailresearch.com
+- name: Stoke Space
+  sources:
+  - Breakout List
+  domain: stokespace.com
+- name: Tacit Labs
+  sources:
+  - Breakout List
+  domain: tacitlabs.co
+- name: Nex
+  sources:
+  - Next Play
+  domain: nex.inc
+- name: dysruptiveHR
+  sources:
+  - Next Play
+  domain: dysruptivehr.com
+- name: American Eagle Outfitters
+  sources:
+  - Next Play
+  domain: aeo-inc.com
+- name: Reco
+  sources:
+  - Next Play
+  domain: reco.ai
+- name: Spott
+  sources:
+  - Next Play
+  domain: spott.io
+- name: Hubble
+  sources:
+  - Next Play
+  domain: hubble.com
+- name: Hud
+  sources:
+  - Next Play
+  domain: hudsonrivertrading.com
+- name: Volantis
+  sources:
+  - Next Play
+  domain: volantissemi.ai
+- name: Veridion
+  sources:
+  - Next Play
+  domain: veridion.com
+- name: Vantora
+  sources:
+  - Next Play
+  domain: vantora.us
+- name: Arlequin AI
+  sources:
+  - Next Play
+  domain: arlq.ai
+- name: Noxtua
+  sources:
+  - Next Play
+  domain: noxtua.com
+- name: EMA
+  sources:
+  - Next Play
+  domain: ema.ai
+- name: Mind
+  sources:
+  - Next Play
+  domain: mind.io
+- name: Buildots
+  sources:
+  - Next Play
+  domain: buildots.com
+- name: Positron AI
+  sources:
+  - Next Play
+  domain: positron.ai
+- name: Verda
+  sources:
+  - Next Play
+  domain: verda.com
+- name: Rattle
+  sources:
+  - Ramp
+- name: Relevance Ai
+  sources:
+  - Ramp
+- name: Momentum
+  sources:
+  - Ramp
+- name: Firefliesai
+  sources:
+  - Ramp
+- name: Fathom
+  sources:
+  - Ramp
+- name: Zendesk
+  sources:
+  - Ramp
+- name: Freshworks
+  sources:
+  - Ramp
+- name: Drift
+  sources:
+  - Ramp
+- name: Tidio
+  sources:
+  - Ramp
