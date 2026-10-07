@@ -1,0 +1,51 @@
+job_id: 10087
+company: Wayve
+title: Data Scientist, Data Quality and Provenance
+headline: ds
+summary: Data scientist with a B.Sc. in Statistics who measures when data and evaluation signals can be trusted. Built labelled
+  evaluation sets and replay harnesses, separated retrieval from generation errors, reduced calibration error from 0.0063
+  to 0.0005, and validated forecasts with leakage tests and rolling-origin backtesting.
+skills:
+- group: stats
+  lead:
+  - Statistical Inference
+  - Experiment Design
+  - Power Analysis
+  - Time-Series Backtesting
+- group: ml
+  lead:
+  - Model Calibration (Isotonic Regression, Temperature Scaling)
+  - Scikit-learn
+  - LightGBM
+- group: data
+  lead:
+  - SQL
+  - Pandas
+  - NumPy
+- group: eng
+  lead:
+  - Python
+  - SQL
+  - Pytest
+- ai
+projects:
+- id: rag
+  bullets:
+  - eval
+  - chunking
+- id: fraud
+  bullets:
+  - imbalance
+  - bench
+- id: web3
+  bullets:
+  - eval
+- id: forecast
+  bullets:
+  - validation
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

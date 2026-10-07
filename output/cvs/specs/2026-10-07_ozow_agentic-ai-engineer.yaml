@@ -1,0 +1,49 @@
+job_id: 9928
+company: Ozow
+title: Agentic AI Engineer
+headline: llm
+summary: AI engineer with a B.Sc. in Statistics who builds agents and retrieval systems with evaluations and safe limits.
+  Built a retrieval assistant with refusal guardrails and separate retrieval and generation evaluation, an MCP server limited
+  to read-only tools, and fraud and reconciliation systems for payments.
+skills:
+- group: ai
+  lead:
+  - Retrieval-Augmented Generation (RAG)
+  - LLM Evaluation and Guardrails
+  - Model Context Protocol (MCP)
+  - Prompt Engineering
+- group: eng
+  lead:
+  - Python
+  - FastAPI
+  - Docker
+  - PostgreSQL
+  - Git
+  - Pytest
+- group: domain
+  lead:
+  - Transaction Fraud Detection
+  - Payment Reconciliation
+- ml
+- stats
+projects:
+- id: rag
+  bullets:
+  - system
+  - safety
+  - eval
+  - deploy
+- id: web3
+  bullets:
+  - system
+  - http
+- id: reckon
+  bullets:
+  - system
+  - review
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

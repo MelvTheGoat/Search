@@ -1,0 +1,51 @@
+job_id: 9977
+company: Mastercard
+title: AI Engineer
+headline: llm
+summary: AI engineer with a B.Sc. in Statistics who builds retrieval and agent systems with guardrails and fairness checks.
+  Built a hybrid retrieval assistant with refusal guardrails and citation checks deployed on GCP Cloud Run, an MCP server
+  for AI assistants, and a credit decisioning system with a fairness audit.
+skills:
+- group: ai
+  lead:
+  - Retrieval-Augmented Generation (RAG)
+  - LLM Evaluation and Guardrails
+  - Citation Verification
+  - Model Context Protocol (MCP)
+  - Prompt Engineering
+- group: eng
+  lead:
+  - Python
+  - FastAPI
+  - Docker
+  - GCP Cloud Run
+  - AWS ECS Fargate
+  - CI/CD (GitHub Actions)
+- group: domain
+  lead:
+  - Credit Risk Decisioning
+- ml
+- stats
+projects:
+- id: rag
+  bullets:
+  - system
+  - safety
+  - eval
+  - deploy
+- id: credit
+  bullets:
+  - fairness
+  - system
+- id: web3
+  bullets:
+  - system
+- id: churn
+  bullets:
+  - deploy
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

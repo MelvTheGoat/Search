@@ -1,0 +1,45 @@
+job_id: 10106
+company: micro1
+title: AI/ML Engineer, Internal Platforms
+headline: llm
+summary: AI engineer with a B.Sc. in Statistics who builds LLM applications and measures them. Built a retrieval assistant
+  with a separate evaluation harness and refusal guardrails, an MCP server with resilient API calls, and Python services with
+  FastAPI, deployed on GCP and AWS.
+skills:
+- group: ai
+  lead:
+  - Retrieval-Augmented Generation (RAG)
+  - LLM Evaluation and Guardrails
+  - Prompt Engineering
+  - Model Context Protocol (MCP)
+- group: eng
+  lead:
+  - Python
+  - FastAPI
+  - Docker
+  - GCP Cloud Run
+  - AWS ECS Fargate
+  - Pytest
+- ml
+- stats
+- domain
+projects:
+- id: rag
+  bullets:
+  - system
+  - eval
+  - safety
+  - deploy
+- id: web3
+  bullets:
+  - system
+  - http
+- id: fpl
+  bullets:
+  - engine
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit
