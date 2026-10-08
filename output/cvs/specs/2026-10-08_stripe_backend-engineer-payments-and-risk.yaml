@@ -1,0 +1,45 @@
+job_id: 10151
+company: Stripe
+title: Backend Engineer, Payments and Risk
+headline: backend
+summary: Backend engineer with a B.Sc. in Statistics who builds correct money movement systems. Built a double-entry ledger
+  API with idempotent writes and 138 tests against real PostgreSQL and Redis, benchmarked locking under load, and a reconciliation
+  system that finds duplicate settlements and payout discrepancies.
+skills:
+- group: eng
+  lead:
+  - Python
+  - FastAPI
+  - PostgreSQL
+  - Redis
+  - Docker
+  - Pytest
+  - CI/CD (GitHub Actions)
+- group: domain
+  lead:
+  - Double-Entry Ledgers and Idempotency
+  - Payment Reconciliation
+  - Transaction Fraud Detection
+- ml
+- stats
+projects:
+- id: ledger
+  bullets:
+  - system
+  - idem
+  - locking
+  - load
+  - tests
+- id: reckon
+  bullets:
+  - system
+  - pipeline
+- id: fraud
+  bullets:
+  - deploy
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

@@ -1,0 +1,51 @@
+job_id: 10152
+company: Stripe
+title: Machine Learning Engineer, Radar
+headline: fraud
+summary: Machine learning engineer with a B.Sc. in Statistics who builds deep learning fraud detection. Built GRU, TCN and
+  Transformer models over customer transaction histories that beat a strong LightGBM baseline, cut expected cost per transaction
+  27% and serve in real time at 5.1 ms p99 through ONNX Runtime.
+skills:
+- group: ml
+  lead:
+  - PyTorch
+  - Sequence Models (GRU, TCN, Transformers)
+  - LightGBM
+  - Model Calibration (Isotonic Regression, Temperature Scaling)
+  - SHAP
+  - Feature Engineering
+- group: domain
+  lead:
+  - Transaction Fraud Detection
+  - Web3 Fraud Risk Scoring
+- group: eng
+  lead:
+  - Python
+  - SQL
+  - FastAPI
+  - Docker
+- group: ai
+  lead:
+  - ONNX Runtime
+- stats
+- data
+projects:
+- id: fraud
+  bullets:
+  - models
+  - bench
+  - imbalance
+  - deploy
+- id: web3
+  bullets:
+  - detect
+  - scorer
+- id: credit
+  bullets:
+  - calib
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

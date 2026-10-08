@@ -1,0 +1,49 @@
+job_id: 10131
+company: Elevenlabs
+title: Applied AI Engineer
+headline: llm
+summary: AI engineer with a B.Sc. in Statistics who takes LLM systems beyond the demo and measures them. Built a retrieval
+  assistant with refusal guardrails and a separate evaluation harness deployed on GCP Cloud Run, an MCP server that gives
+  AI assistants read-only tools, and an uplift study that measured what a campaign really changed.
+skills:
+- group: ai
+  lead:
+  - LLM Evaluation and Guardrails
+  - Retrieval-Augmented Generation (RAG)
+  - Model Context Protocol (MCP)
+  - Prompt Engineering
+- group: eng
+  lead:
+  - Python
+  - SQL
+  - FastAPI
+  - Docker
+  - GCP Cloud Run
+- group: stats
+  lead:
+  - Uplift Modeling
+  - Experiment Design
+- ml
+- data
+projects:
+- id: rag
+  bullets:
+  - system
+  - eval
+  - safety
+  - deploy
+- id: web3
+  bullets:
+  - system
+  - http
+  - eval
+- id: uplift
+  bullets:
+  - study
+  - findings
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

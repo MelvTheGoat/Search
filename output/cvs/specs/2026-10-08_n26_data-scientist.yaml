@@ -1,0 +1,54 @@
+job_id: 10185
+company: N26
+title: Data Scientist
+headline: risk
+summary: Data scientist with a B.Sc. in Statistics working on financial crime and credit risk. Built fraud models with careful
+  handling of class imbalance and calibration, a credit decisioning system with calibrated default probabilities and reason
+  codes, and a forecasting platform with rolling-origin backtesting, all deployed with Docker and CI.
+skills:
+- group: domain
+  lead:
+  - Transaction Fraud Detection
+  - Credit Risk Decisioning
+- group: ml
+  lead:
+  - LightGBM
+  - XGBoost
+  - PyTorch
+  - Model Calibration (Isotonic Regression, Temperature Scaling)
+  - SHAP
+  - Feature Engineering
+- group: stats
+  lead:
+  - Time-Series Backtesting
+  - WOE Scorecards
+  - Logistic Regression
+- group: eng
+  lead:
+  - Python
+  - SQL
+  - Docker
+  - CI/CD (GitHub Actions)
+- data
+- ai
+projects:
+- id: fraud
+  bullets:
+  - bench
+  - imbalance
+  - deploy
+- id: credit
+  bullets:
+  - system
+  - calib
+  - fairness
+- id: forecast
+  bullets:
+  - system
+  - validation
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit
