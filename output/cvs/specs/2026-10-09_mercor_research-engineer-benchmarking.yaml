@@ -1,0 +1,46 @@
+job_id: 9584
+company: Mercor
+title: Research Engineer, Benchmarking
+headline: llm
+summary: AI engineer with a B.Sc. in Statistics who builds evaluations and analyses how AI systems fail. Built an evaluation
+  harness that scores retrieval and generation separately on a labelled golden set, a record and replay harness for an MCP
+  tool server, and benchmarks reported across seeds against strong baselines.
+skills:
+- group: ai
+  lead:
+  - LLM Evaluation and Guardrails
+  - Retrieval-Augmented Generation (RAG)
+  - Model Context Protocol (MCP)
+  - Prompt Engineering
+- group: stats
+  lead:
+  - Statistical Inference
+  - Experiment Design
+- group: eng
+  lead:
+  - Python
+  - SQL
+  - Pytest
+  - CI/CD (GitHub Actions)
+- ml
+- domain
+projects:
+- id: rag
+  bullets:
+  - eval
+  - safety
+  - system
+- id: web3
+  bullets:
+  - eval
+  - system
+- id: fraud
+  bullets:
+  - bench
+  - imbalance
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

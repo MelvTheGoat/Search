@@ -1,0 +1,51 @@
+job_id: 10501
+company: White Circle
+title: ML Research Engineer
+headline: ml_ai
+summary: Machine learning and AI engineer with a B.Sc. in Statistics who builds retrieval pipelines and evaluates fuzzy problems.
+  Built hybrid retrieval with dense embeddings and reciprocal rank fusion, section-aware chunking, labelled evaluation sets
+  and replay harnesses, and pipelines with drift monitoring and automated data tests.
+skills:
+- group: ai
+  lead:
+  - Retrieval-Augmented Generation (RAG)
+  - Hybrid Search (BM25, Dense Embeddings, RRF)
+  - LLM Evaluation and Guardrails
+  - Hugging Face
+  - ONNX Runtime
+- group: eng
+  lead:
+  - Python
+  - SQL
+  - DuckDB
+  - Prefect
+  - dbt-core
+  - Evidently
+- group: data
+  lead:
+  - Anomaly Detection
+  - Pandas
+- ml
+- stats
+projects:
+- id: rag
+  bullets:
+  - system
+  - chunking
+  - eval
+  - deploy
+- id: forecast
+  bullets:
+  - system
+- id: web3
+  bullets:
+  - eval
+- id: reckon
+  bullets:
+  - review
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

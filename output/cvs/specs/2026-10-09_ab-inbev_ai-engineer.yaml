@@ -1,0 +1,46 @@
+job_id: 10575
+company: AB InBev
+title: AI Engineer
+headline: llm
+summary: AI engineer with a B.Sc. in Statistics who builds retrieval and agent tools with evaluation and guardrails. Built
+  a hybrid retrieval assistant with refusal guardrails and citation checks, an MCP server with a read-only allow-list, and
+  a real-time model served through ONNX Runtime.
+skills:
+- group: ai
+  lead:
+  - Retrieval-Augmented Generation (RAG)
+  - LLM Evaluation and Guardrails
+  - Model Context Protocol (MCP)
+  - ONNX Runtime
+  - Prompt Engineering
+- group: eng
+  lead:
+  - Python
+  - FastAPI
+  - Docker
+  - GCP Cloud Run
+  - AWS ECS Fargate
+  - CI/CD (GitHub Actions)
+- ml
+- stats
+- domain
+projects:
+- id: rag
+  bullets:
+  - system
+  - safety
+  - eval
+  - deploy
+- id: web3
+  bullets:
+  - system
+  - http
+- id: fraud
+  bullets:
+  - deploy
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

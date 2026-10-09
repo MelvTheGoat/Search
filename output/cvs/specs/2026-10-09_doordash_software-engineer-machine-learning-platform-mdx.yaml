@@ -1,0 +1,49 @@
+job_id: 10371
+company: DoorDash
+title: Software Engineer, Machine Learning Platform, MDX
+headline: mlops
+summary: ML engineer with a B.Sc. in Statistics who builds the systems around models. Built an orchestrated Prefect pipeline
+  with dbt, DuckDB, MLflow, drift monitoring and conditional retraining, a real-time fraud model served through ONNX Runtime
+  at 5.1 ms p99, and services deployed with Docker on GCP and AWS.
+skills:
+- group: eng
+  lead:
+  - Python
+  - SQL
+  - Prefect
+  - MLflow
+  - Evidently
+  - FastAPI
+  - Docker
+  - GCP Cloud Run
+  - AWS ECS Fargate
+  - CI/CD (GitHub Actions)
+- group: ml
+  lead:
+  - PyTorch
+  - LightGBM
+  - XGBoost
+- group: ai
+  lead:
+  - ONNX Runtime
+- stats
+- domain
+projects:
+- id: forecast
+  bullets:
+  - system
+  - validation
+- id: fraud
+  bullets:
+  - deploy
+  - models
+- id: churn
+  bullets:
+  - model
+  - deploy
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit

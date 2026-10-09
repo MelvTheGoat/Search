@@ -1,0 +1,49 @@
+job_id: 9148
+company: Ambient.ai
+title: Software Engineer, AI Infrastructure, LVM Inference and Evaluation
+headline: mlops
+summary: ML engineer with a B.Sc. in Statistics who builds fast inference and evaluation harnesses. Served a deep learning
+  fraud model through ONNX Runtime at 5.1 ms p99, 2.9× faster than eager PyTorch, built evaluation harnesses that separate
+  failure sources, and deployed services with Docker on GCP and AWS.
+skills:
+- group: ai
+  lead:
+  - ONNX Runtime
+  - LLM Evaluation and Guardrails
+  - Retrieval-Augmented Generation (RAG)
+- group: eng
+  lead:
+  - Python
+  - FastAPI
+  - Docker
+  - GCP Cloud Run
+  - AWS ECS Fargate
+  - CI/CD (GitHub Actions)
+  - Pytest
+- group: ml
+  lead:
+  - PyTorch
+  - Sequence Models (GRU, TCN, Transformers)
+- stats
+- domain
+projects:
+- id: fraud
+  bullets:
+  - deploy
+  - models
+- id: rag
+  bullets:
+  - eval
+  - deploy
+- id: web3
+  bullets:
+  - eval
+- id: churn
+  bullets:
+  - deploy
+experience:
+  sqi:
+  - teach
+  - tools
+  niser:
+  - audit
